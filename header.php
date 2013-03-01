@@ -1,10 +1,6 @@
 <?php
 /**
- * Header Template
- *
- * The header template is generally used on every page of your site. Nearly all other templates call it 
- * somewhere near the top of the file. It is used mostly as an opening wrapper, which is closed with the 
- * footer.php file. It also executes key functions needed by the theme, child themes, and plugins. 
+ * Header
  *
  * @package infusion
  * @subpackage Template
@@ -30,13 +26,13 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/modernizr-2.6.2.min.js"></script>
 
 
-<?php wp_head(); ?>
+<?php wp_head(); // wp_head ?>
 
 </head>
 
 <body class="<?php hybrid_body_class(); ?>">
 
-	<div id="container" class="hfeed">
+	<div id="container">
 
 		<header id="header" role="banner">
 			
@@ -45,11 +41,13 @@
 				<h1 id="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 
 				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-				
+
 			</hgroup>
 			
 			<?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template. ?>
-			
+
 		</header>
 
 		<div id="main" role="main">
+
+			<?php if ( current_theme_supports( 'breadcrumb-trail' ) ) breadcrumb_trail( array( 'container' => 'nav', 'separator' => '>', 'before' => __( 'You are here:', 'hybrid-base' ) ) ); ?>

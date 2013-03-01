@@ -1,31 +1,17 @@
-<?php
-/**
- * Subsidiary Menu Template
- *
- * Displays the Subsidiary Menu if it has active menu items.
- *
- * @package Infusion
- * @subpackage Template
- */
+<?php if ( has_nav_menu( 'subsidiary' ) ) {
 
-if ( has_nav_menu( 'subsidiary' ) ) : ?>
+	wp_nav_menu(
+		array(
+			'theme_location'  => 'subsidiary',
+			'container'       => 'nav',
+			'container_id'    => 'menu-subsidiary',
+			'container_class' => 'menu',
+			'container_role'  => 'navigation',
+			'menu_id'         => 'menu-subsidiary-items',
+			'menu_class'      => 'menu-items',
+			'fallback_cb'     => '',
+			'items_wrap'      => '<div class="wrap"><ul id="%1$s" class="%2$s">%3$s</ul></div>'
+		)
+	);
 
-	<?php do_atomic( 'before_menu_subsidiary' ); // infusion_before_menu_subsidiary ?>
-
-	<nav id="menu-subsidiary" class="menu-container" role="navigation">
-
-		<div class="wrap">
-
-			<?php do_atomic( 'open_menu_subsidiary' ); // infusion_open_menu_subsidiary ?>
-
-			<?php wp_nav_menu( array( 'theme_location' => 'subsidiary', 'container_class' => 'menu', 'menu_class' => '', 'menu_id' => 'menu-subsidiary-items', 'depth' => 1, 'fallback_cb' => '' ) ); ?>
-
-			<?php do_atomic( 'close_menu_subsidiary' ); // infusion_close_menu_subsidiary ?>
-
-		</div>
-
-	</nav>
-
-	<?php do_atomic( 'after_menu_subsidiary' ); // infusion_after_menu_subsidiary ?>
-
-<?php endif; ?>
+} ?>

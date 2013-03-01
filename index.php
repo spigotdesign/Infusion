@@ -1,8 +1,6 @@
-<?php get_header(); ?>
+<?php get_header(); // Loads the header.php template. ?>
 
-cha cha cha
-
-	<div id="content" class="hfeed">
+	<div id="content" class="hfeed">CHA CH ALSD
 
 		<?php get_template_part( 'loop-meta' ); // Loads the loop-meta.php template. ?>
 
