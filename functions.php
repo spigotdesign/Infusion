@@ -6,7 +6,7 @@
  *
  * @package infusion
  * @subpackage Functions
- * @version 1.2
+ * @version 1.2.1
  * @author Bryan Hoffman
  * @copyright Copyright (c) 2013 Bryan Hoffman
  * @link http://spigotdesign.com/
@@ -24,7 +24,7 @@ add_action( 'after_setup_theme', 'infusion_theme_setup' );
  * Theme setup function.  This function adds support for theme features and defines the default theme
  * actions and filters.
  *
- * @since 0.1.0
+ * @since 1.0
  */
 function infusion_theme_setup() {
 
