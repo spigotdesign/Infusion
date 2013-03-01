@@ -30,7 +30,7 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/modernizr-2.6.2.min.js"></script>
 
 
-<?php wp_head(); // wp_head ?>
+<?php wp_head(); ?>
 
 </head>
 
@@ -40,30 +40,16 @@
 
 		<header id="header" role="banner">
 			
-			<div class="wrap">
+			<hgroup id="branding">
 
-				<hgroup id="branding">
-					<h1 id="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-					<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-				</hgroup><!-- #branding -->
+				<h1 id="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+
+				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
 				
-				<?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template. ?>
-
-				<?php do_atomic( 'header' ); // infusion_header ?>
-				
-		 		<?php get_sidebar( 'header' ); // Loads the sidebar-header.php template. ?>
-
+			</hgroup>
 			
-			</div><!-- .wrap -->
-
+			<?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template. ?>
+			
 		</header>
 
-		<?php do_atomic( 'after_header' ); // infusion_after_header ?>
-
-		<?php get_template_part( 'menu', 'secondary' ); // Loads the menu-secondary.php template. ?>
-
-		<?php do_atomic( 'before_main' ); // infusion_before_main ?>
-
 		<div id="main" role="main">
-
-			<?php do_atomic( 'open_main' ); // infusion_open_main ?>

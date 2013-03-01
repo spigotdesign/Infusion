@@ -1,19 +1,11 @@
-<?php
-/**
- * Loop Error Template
- *
- * Displays an error message when no posts are found.
- *
- * @package Infusion
- * @subpackage Template
- */
-?>
-	<div id="post-0" class="<?php hybrid_entry_class(); ?>">
+	<article id="post-0" class="<?php hybrid_entry_class(); ?>">
+
+		<header class="entry-header">
+			<h1 class="entry-title"><?php __( 'Nothing found', 'hybrid-base' ); ?></h1>
+		</header>
 
 		<div class="entry-content">
-
-			<p><?php _e( 'Apologies, but no entries were found.', 'infusion' ); ?></p>
-
+			<p><?php _e( 'Apologies, but no entries were found.', 'hybrid-base' ); ?></p>
 		</div><!-- .entry-content -->
 
-	</div><!-- .hentry .error -->
+	</article><!-- .hentry .error -->

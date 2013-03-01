@@ -1,47 +1,27 @@
-<?php
-/**
- * 404 Template
- *
- * The 404 template is used when a reader visits an invalid URL on your site. By default, the template will 
- * display a generic message.
- *
- * @package infusion
- * @subpackage Template
- * @link http://codex.wordpress.org/Creating_an_Error_404_Page
- */
+<?php @header( 'HTTP/1.1 404 Not found', true, 404 );
 
-@header( 'HTTP/1.1 404 Not found', true, 404 );
+get_header(); ?>
 
-get_header(); // Loads the header.php template. ?>
-
-	<?php get_sidebar( 'before-content' ); // Loads the sidebar-before-content.php template. ?>
-
-	<?php do_atomic( 'before_content' ); // infusion_before_content ?>
+	<?php get_sidebar( 'before-content' ); ?>
 
 	<div id="content">
 
-		<?php do_atomic( 'open_content' ); // infusion_open_content ?>
+		<div id="post-0" class="<?php hybrid_entry_class(); ?>">
 
-			<div id="post-0" class="<?php hybrid_entry_class(); ?>">
+			<h1 class="error-404-title entry-title"><?php _e( 'Not Found', 'infusion' ); ?></h1>
 
-				<h1 class="error-404-title entry-title"><?php _e( 'Not Found', 'infusion' ); ?></h1>
+			<div class="entry-content">
 
-				<div class="entry-content">
-
-					<p>
+				<p>
 					<?php printf( __( 'You tried going to %1$s, and it doesn\'t exist. All is not lost! You can search for what you\'re looking for.', 'infusion' ), '<code>' . site_url( esc_url( $_SERVER['REQUEST_URI'] ) ) . '</code>' ); ?>
-					</p>
+				</p>
 
-					<?php get_search_form(); // Loads the searchform.php template. ?>
+				<?php get_search_form(); // Loads the searchform.php template. ?>
 
-				</div><!-- .entry-content -->
+			</div><!-- .entry-content -->
 
-			</div><!-- .hentry -->
-
-		<?php do_atomic( 'close_content' ); // infusion_close_content ?>
+		</div><!-- .hentry -->
 
 	</div><!-- #content -->
 
-	<?php do_atomic( 'after_content' ); // infusion_after_content ?>
-
-<?php get_footer(); // Loads the footer.php template. ?>
+<?php get_footer(); ?>
