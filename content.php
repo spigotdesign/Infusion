@@ -18,7 +18,7 @@
 
 	<?php } else { ?>
 
-		<header class="entry-header">ch ch a page!
+		<header class="entry-header">
 			<?php the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
 			<?php echo apply_atomic_shortcode( 'entry_byline', '<div class="entry-byline">' . __( 'Published by [entry-author] on [entry-published] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'hybrid-base' ) . '</div>' ); ?>
 		</header><!-- .entry-header -->
