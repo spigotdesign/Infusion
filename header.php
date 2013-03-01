@@ -36,29 +36,23 @@
 
 <body class="<?php hybrid_body_class(); ?>">
 
-	<?php do_atomic( 'open_body' ); // infusion_open_body ?>
-
 	<div id="container" class="hfeed">
 
-		<?php do_atomic( 'before_header' ); // infusion_before_header ?>
-
-		<header role="banner">
+		<header id="header" role="banner">
 			
 			<div class="wrap">
 
-			<?php do_atomic( 'open_header' ); // infusion_open_header ?>
-
-					<?php hybrid_site_title(); ?>
-					
-					<?php hybrid_site_description(); ?>
+				<hgroup id="branding">
+					<h1 id="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+					<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+				</hgroup><!-- #branding -->
 				
 				<?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template. ?>
 
 				<?php do_atomic( 'header' ); // infusion_header ?>
 				
-		  <?php get_sidebar( 'header' ); // Loads the sidebar-header.php template. ?>
+		 		<?php get_sidebar( 'header' ); // Loads the sidebar-header.php template. ?>
 
-			<?php do_atomic( 'close_header' ); // infusion_close_header ?>
 			
 			</div><!-- .wrap -->
 

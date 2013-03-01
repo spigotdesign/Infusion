@@ -6,9 +6,9 @@
  *
  * @package infusion
  * @subpackage Functions
- * @version 0.2.0
+ * @version 1.1
  * @author Bryan Hoffman
- * @copyright Copyright (c) 2012 Bryan Hoffman
+ * @copyright Copyright (c) 2013 Bryan Hoffman
  * @link http://spigotdesign.com/
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -22,7 +22,7 @@ add_action( 'after_setup_theme', 'infusion_theme_setup' );
 
 /**
  * Theme setup function.  This function adds support for theme features and defines the default theme
- * actions and filters.  Most of the important functions should be set up in the child theme.
+ * actions and filters.
  *
  * @since 0.1.0
  */
@@ -38,13 +38,10 @@ function infusion_theme_setup() {
 	add_theme_support( 'hybrid-core-template-hierarchy' );
 
 	/* Add content editor styles. */
-	// add_editor_style( 'css/editor-style.css' );
+	add_editor_style( 'css/editor-style.css' );
 	
 	/* Add support for auto-feed links. */
 	add_theme_support( 'automatic-feed-links' );
-
-	
 	
 }
-
 ?>
