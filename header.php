@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="all" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-<script src="<?php echo get_template_directory_uri(); ?>/js/modernizr-2.6.2.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/modernizr.js"></script>
 
 
 <?php wp_head(); // wp_head ?>
