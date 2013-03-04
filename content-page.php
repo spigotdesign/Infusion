@@ -2,31 +2,27 @@
 
 	<?php if ( is_singular( get_post_type() ) ) { ?>
 
-		<header class="entry-header">
-			<h1 class="entry-title"><?php single_post_title(); ?></h1>
-		</header><!-- .entry-header -->
+		<header class="page-header">
+			<h1 class="page-title"><?php single_post_title(); ?></h1>
+		</header>
 
-		<div class="entry-content">
+		<div class="page-content">
 			<?php the_content(); ?>
 			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'hybrid-base' ) . '</span>', 'after' => '</p>' ) ); ?>
-		</div><!-- .entry-content -->
-
-		<footer class="entry-footer">
-			<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">[entry-edit-link]</div>' ); ?>
-		</footer><!-- .entry-footer -->
+		</div>
 
 	<?php } else { ?>
 
-		<header class="entry-header">
-			<?php the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
-		</header><!-- .entry-header -->
+		<header class="page-header">
+			<?php the_title( '<h2 class="page-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
+		</header>
 
-		<div class="entry-summary">
+		<div class="page-summary">
 			<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image(); ?>
 			<?php the_excerpt(); ?>
 			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'hybrid-base' ) . '</span>', 'after' => '</p>' ) ); ?>
-		</div><!-- .entry-summary -->
+		</div>
 
 	<?php } ?>
 
-</article><!-- .hentry -->
+</article>
