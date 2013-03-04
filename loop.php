@@ -6,7 +6,7 @@
 
 		<?php get_template_part( 'content', ( post_type_supports( get_post_type(), 'post-formats' ) ? get_post_format() : get_post_type() ) ); ?>
 
-		<?php if ( is_singular() ) { ?>
+		<?php if ( is_singular() && !is_page() ) { ?>
 
 			<?php comments_template(); // Loads the comments.php template. ?>
 
