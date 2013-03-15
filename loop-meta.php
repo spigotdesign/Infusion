@@ -8,7 +8,7 @@ if ( is_singular() )
 
 	<?php if ( is_home() && !is_front_page() ) { ?>
 
-		<h1 class="page-title blog-title"><?php echo get_post_field( 'post_title', get_queried_object_id() ); ?>cha cha cha</h1>
+		<h1 class="page-title blog-title"><?php echo get_post_field( 'post_title', get_queried_object_id() ); ?></h1>
 
 		<div class="loop-description blog-description">
 			<?php echo apply_filters( 'the_content', get_post_field( 'post_content', get_queried_object_id() ) ); ?>
