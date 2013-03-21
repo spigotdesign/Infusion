@@ -5,22 +5,22 @@
 		<header class="entry-header">
 			<h1 class="entry-title"><?php single_post_title(); ?></h1>
 			<?php echo apply_atomic_shortcode( 'entry_byline', '<div class="entry-byline">' . __( '[post-format-link] published on [entry-published] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'hybrid-base' ) . '</div>' ); ?>
-		</header><!-- .entry-header -->
+		</header>
 
 		<div class="entry-content">
 			<?php the_content(); ?>
 			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'hybrid-base' ) . '</span>', 'after' => '</p>' ) ); ?>
-		</div><!-- .entry-content -->
+		</div>
 
 		<footer class="entry-footer">
 			<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[entry-terms taxonomy="category" before="Posted in "] [entry-terms before="Tagged "]', 'hybrid-base' ) . '</div>' ); ?>
-		</footer><!-- .entry-footer -->
+		</footer>
 
 	<?php } else { ?>
 
 		<header class="entry-header">
 			<?php the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
-		</header><!-- .entry-header -->
+		</header>
 
 		<?php echo ( $video = post_format_tools_get_video() ); ?>
 
@@ -28,21 +28,21 @@
 
 			<div class="entry-summary">
 				<?php the_excerpt(); ?>
-			</div><!-- .entry-summary -->
+			</div>
 
 		<?php } elseif ( empty( $video ) ) { ?>
 
 			<div class="entry-content">
 				<?php the_content( __( 'Read more &rarr;', 'hybrid-base' ) ); ?>
 				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'hybrid-base' ) . '</span>', 'after' => '</p>' ) ); ?>
-			</div><!-- .entry-content -->
+			</div>
 
 		<?php } ?>
 
 		<footer class="entry-footer">
 			<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="entry-meta">' . __( '[post-format-link] published on [entry-published] [entry-permalink before="| "] [entry-comments-link before="| "] [entry-edit-link before="| "]', 'hybrid-base' ) . '</div>' ); ?>
-		</footer><!-- .entry-footer -->
+		</footer>
 
 	<?php } ?>
 
-</article><!-- .hentry -->
+</article>
