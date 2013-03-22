@@ -17,4 +17,14 @@
 require_once( trailingslashit( TEMPLATEPATH ) . 'library/hybrid.php' );
 $theme = new Hybrid();
 
+/* Do theme setup on the 'after_setup_theme' hook. */
+add_action( 'after_setup_theme', 'infusion_theme_setup' );
+
+function infusion_theme_setup() {
+
+	/* Get action/filter hook prefix. */
+	$prefix = hybrid_get_prefix();
+
+}
+
 ?>
