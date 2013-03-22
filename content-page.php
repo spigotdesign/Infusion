@@ -8,7 +8,7 @@
 
 		<div class="page-content">
 			<?php the_content(); ?>
-			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'hybrid-base' ) . '</span>', 'after' => '</p>' ) ); ?>
+			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'infusion' ) . '</span>', 'after' => '</p>' ) ); ?>
 		</div>
 
 	<?php } else { ?>
@@ -20,7 +20,7 @@
 		<div class="page-summary">
 			<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image(); ?>
 			<?php the_excerpt(); ?>
-			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'hybrid-base' ) . '</span>', 'after' => '</p>' ) ); ?>
+			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'infusion' ) . '</span>', 'after' => '</p>' ) ); ?>
 		</div>
 
 	<?php } ?>
