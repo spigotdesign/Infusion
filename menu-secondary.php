@@ -9,7 +9,7 @@
 			'menu_id'         => 'menu-secondary-items',
 			'menu_class'      => 'menu-items',
 			'fallback_cb'     => '',
-			'items_wrap'      => 'div class="wrap"><ul id="%1$s" class="%2$s">%3$s</ul></div>'
+			'items_wrap'      => '<div class="wrap"><ul id="%1$s" class="%2$s">%3$s</ul></div>'
 		)
 	);
 
