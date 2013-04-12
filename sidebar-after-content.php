@@ -1,6 +1,6 @@
 <?php if ( is_active_sidebar( 'after-content' ) ) : ?>
 
-	<aside id="sidebar-after-content" class="sidebar" role="complementary">
+	<aside class="sidebar sidebar-after-content" role="complementary">
 		
 		<div class="wrap">
 

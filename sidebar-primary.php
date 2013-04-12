@@ -1,6 +1,6 @@
 <?php if ( is_active_sidebar( 'primary' ) ) : ?>
 
-	<aside id="sidebar-primary" class="sidebar" role="complementary">
+	<aside class="sidebar sidebar-primary" role="complementary">
 
 		<?php dynamic_sidebar( 'primary' ); ?>
 
