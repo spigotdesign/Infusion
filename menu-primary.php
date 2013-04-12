@@ -4,12 +4,10 @@
 		array(
 			'theme_location'  => 'primary',
 			'container'       => 'nav',
-			'container_id'    => 'menu-primary',
-			'container_class' => 'menu',
-			'menu_id'         => 'menu-primary-items',
+			'container_class' => 'menu menu-primary',
 			'menu_class'      => 'menu-items',
 			'fallback_cb'     => '',
-			'items_wrap'      => '<div class="wrap"><ul id="%1$s" class="%2$s">%3$s</ul></div>'
+			'items_wrap'      => '<ul class="%2$s">%3$s</ul>'
 		)
 	);
 

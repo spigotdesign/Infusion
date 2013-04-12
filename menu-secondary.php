@@ -4,12 +4,10 @@
 		array(
 			'theme_location'  => 'secondary',
 			'container'       => 'nav',
-			'container_id'    => 'menu-secondary',
-			'container_class' => 'menu',
-			'menu_id'         => 'menu-secondary-items',
-			'menu_class'      => 'menu-items',
+			'container_class' => 'menu menu-secondary',
+			'menu_class'      => 'menu-secondary-items',
 			'fallback_cb'     => '',
-			'items_wrap'      => '<div class="wrap"><ul id="%1$s" class="%2$s">%3$s</ul></div>'
+			'items_wrap'      => '<ul>%3$s</ul>'
 		)
 	);
 
