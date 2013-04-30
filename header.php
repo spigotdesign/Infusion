@@ -34,20 +34,18 @@
 
 	<div id="container">
 
-		<header id="header" role="banner">
+		<header class="site-header" role="banner">
 			
-			<hgroup id="branding">
+			<div class="branding">
 
-				<h1 id="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+				<h1 class="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 
-				<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+				<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 
-			</hgroup>
+			</div>
 			
 			<?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template. ?>
 
 		</header>
 
 		<div id="main" role="main">
-
-			<?php if ( current_theme_supports( 'breadcrumb-trail' ) ) breadcrumb_trail( array( 'container' => 'nav', 'separator' => '>', 'before' => __( 'You are here:', 'infusion' ) ) ); ?>
