@@ -1,4 +1,4 @@
-<div class="search" rol="search">
+<div class="searchform" rol="search">
 
 <form method="get" class="search-form" action="<?php echo trailingslashit( home_url() ); ?>">
 <div>
