@@ -23,9 +23,6 @@
 <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="all" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-<script src="<?php echo get_bloginfo( 'stylesheet_directory' ); ?>/js/modernizr.js"></script>
-
-
 <?php wp_head(); // wp_head ?>
 
 </head>
