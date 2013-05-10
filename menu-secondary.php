@@ -3,12 +3,23 @@
 	wp_nav_menu(
 		array(
 			'theme_location'  => 'secondary',
+			'menu'            => '',
 			'container'       => 'nav',
-			'container_class' => 'menu menu-secondary',
-			'menu_class'      => 'menu-secondary-items',
+			'container_class' => 'menu-secondary',
+			'container_id'    => '',
+			'menu_class'      => '',
+			'menu_id'         => '',
+			'echo'            => true,
 			'fallback_cb'     => '',
-			'items_wrap'      => '<ul>%3$s</ul>'
+			'before'          => '',
+			'after'           => '',
+			'link_before'     => '',
+			'link_after'      => '',
+			'items_wrap'      => '<ul>%3$s</ul>',
+			'depth'           => 0,
+			'walker'          => ''
 		)
 	);
 
 } ?>
+
