@@ -3,7 +3,7 @@
 	<?php if ( is_singular( get_post_type() ) ) { ?>
 
 		<header class="page-header">
-			<h1 class="page-title"><?php single_post_title(); ?></h1>
+			<?php the_title( '<h1 class="page-title"><a href="' . get_permalink() . '">', '</a></h1>' ); ?>
 		</header>
 
 		<div class="page-content">

@@ -17,6 +17,9 @@ add_action( 'init', 'hybrid_add_post_type_support' );
 /* Add extra file headers for themes. */
 add_filter( 'extra_theme_headers', 'hybrid_extra_theme_headers' );
 
+/* Filters the title for untitled posts. */
+add_filter( 'the_title', 'hybrid_untitled_post' );
+
 /**
  * This function is for adding extra support for features not default to the core post types.
  * Excerpts are added to the 'page' post type.  Comments and trackbacks are added for the
@@ -31,9 +34,6 @@ function hybrid_add_post_type_support() {
 
 	/* Add support for excerpts to the 'page' post type. */
 	add_post_type_support( 'page', array( 'excerpt' ) );
-
-	/* Add support for trackbacks to the 'attachment' post type. */
-	add_post_type_support( 'attachment', array( 'trackbacks' ) );
 }
 
 /**
@@ -71,39 +71,6 @@ function hybrid_extra_theme_headers( $headers ) {
 
 	/* Return the array of custom theme headers. */
 	return $headers;
-}
-
-/**
- * Looks for a template based on the hybrid_get_context() function.  If the $template parameter
- * is a directory, it will look for files within that directory.  Otherwise, $template becomes the 
- * template name prefix.  The function looks for templates based on the context of the current page
- * being viewed by the user.
- *
- * @since 0.8.0
- * @access public
- * @param string $template The slug of the template whose context we're searching for.
- * @return string $template The full path of the located template.
- */
-function get_atomic_template( $template ) {
-
-	$templates = array();
-
-	$theme_dir = trailingslashit( THEME_DIR ) . $template;
-	$child_dir = trailingslashit( CHILD_THEME_DIR ) . $template;
-
-	if ( is_dir( $child_dir ) || is_dir( $theme_dir ) ) {
-		$dir = true;
-		$templates[] = "{$template}/index.php";
-	}
-	else {
-		$dir = false;
-		$templates[] = "{$template}.php";
-	}
-
-	foreach ( hybrid_get_context() as $context )
-		$templates[] = ( ( $dir ) ? "{$template}/{$context}.php" : "{$template}-{$context}.php" );
-
-	return locate_template( array_reverse( $templates ), true );
 }
 
 /**
@@ -242,6 +209,24 @@ function hybrid_locate_theme_file( $file_names ) {
 	}
 
 	return $located;
+}
+
+/**
+ * The WordPress.org theme review requires that a link be provided to the single post page for untitled 
+ * posts.  This is a filter on 'the_title' so that an '(Untitled)' title appears in that scenario, allowing 
+ * for the normal method to work.
+ *
+ * @since  1.6.0
+ * @access public
+ * @param  string  $title
+ * @return string
+ */
+function hybrid_untitled_post( $title ) {
+
+	if ( empty( $title ) && !is_singular() && in_the_loop() && !is_admin() )
+		$title = __( '(Untitled)', 'hybrid-core' );
+
+	return $title;
 }
 
 ?>

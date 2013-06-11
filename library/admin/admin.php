@@ -31,14 +31,6 @@ function hybrid_admin_setup() {
 
 	/* Loads admin stylesheets for the framework. */
 	add_action( 'admin_enqueue_scripts', 'hybrid_admin_enqueue_styles' );
-
-	/* Add the WordPress 'Customize' page as an admin menu link. */
-	add_theme_page( 
-		esc_html__( 'Customize', 'hybrid-core' ), // Settings page name
-		esc_html__( 'Customize', 'hybrid-core' ), // Menu name
-		'edit_theme_options',                     // Required capability
-		'customize.php'	                          // File to load
-	);
 }
 
 /**
@@ -69,7 +61,7 @@ function hybrid_admin_register_styles() {
 	/* Use the .min stylesheet if SCRIPT_DEBUG is turned off. */
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-	wp_register_style( 'hybrid-core-admin', trailingslashit( HYBRID_CSS ) . "admin{$suffix}.css", false, '20110512', 'screen' );
+	wp_register_style( 'hybrid-core-admin', trailingslashit( HYBRID_CSS ) . "admin{$suffix}.css", false, '20130515', 'screen' );
 }
 
 /**
@@ -95,6 +87,15 @@ function hybrid_admin_enqueue_styles( $hook_suffix ) {
  * @return array $post_templates The array of templates.
  */
 function hybrid_get_post_templates( $post_type = 'post' ) {
+	global $hybrid;
+
+	/* If templates have already been called, just return them. */
+	if ( !empty( $hybrid->post_templates ) && isset( $hybrid->post_templates[ $post_type ] ) )
+		return $hybrid->post_templates[ $post_type ];
+
+	/* Else, set up an empty array to house the templates. */
+	else
+		$hybrid->post_templates = array();
 
 	/* Set up an empty post templates array. */
 	$post_templates = array();
@@ -134,8 +135,11 @@ function hybrid_get_post_templates( $post_type = 'post' ) {
 		$post_templates[ $file ] = $headers["{$post_type_object->name} Template"];
 	}
 
+	/* Add the templates to the global $hybrid object. */
+	$hybrid->post_templates[ $post_type ] = array_flip( $post_templates );
+
 	/* Return array of post templates. */
-	return array_flip( $post_templates );
+	return $hybrid->post_templates[ $post_type ];
 }
 
 ?>

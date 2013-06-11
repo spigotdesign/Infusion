@@ -88,6 +88,7 @@ class Breadcrumb_Trail {
 			'network'         => false,
 			//'show_edit_link'  => false,
 			'show_title'      => true,
+			'show_browse'     => true,
 			'echo'            => true,
 
 			/* Post taxonomy (examples follow). */
@@ -96,19 +97,14 @@ class Breadcrumb_Trail {
 				// 'book'  => 'genre',
 			),
 
-			/* Labels for text used. */
-			'labels' => array(
-				'browse'      => __( 'Browse:',                 'breadcrumb-trail' ), // @todo Use this
-				'home'        => __( 'Home',                    'breadcrumb-trail' ),
-				'search'      => __( 'Search results for "%s"', 'breadcrumb-trail' ),
-				'error_404'   => __( '404 Not Found',           'breadcrumb-trail' ),
-				'paged'       => __( 'Page %d',                 'breadcrumb-trail' ),
-				'archives'    => __( 'Archives',                'breadcrumb-trail' ),
-			//	'edit'        => __( 'Edit',                    'breadcrumb-trail' ), // @todo Implement edit link
-			)
+			/* Labels for text used (see Breadcrumb_Trail::default_labels). */
+			'labels' => array()
 		);
 
-		$this->args = wp_parse_args( $args, $defaults );
+		$this->args = apply_filters( 'breadcrumb_trail_args', wp_parse_args( $args, $defaults ) );
+
+		/* Merge the user-added labels with the defaults. */
+		$this->args['labels'] = wp_parse_args( $this->args['labels'], $this->default_labels() );
 
 		$this->do_trail_items();
 	}
@@ -132,6 +128,10 @@ class Breadcrumb_Trail {
 
 			/* If $before was set, wrap it in a container. */
 			$breadcrumb .= ( !empty( $this->args['before'] ) ? "\n\t\t\t" . '<span class="trail-before">' . $this->args['before'] . '</span> ' . "\n\t\t\t" : '' );
+
+			/* Add 'browse' label if it should be shown. */
+			if ( true === $this->args['show_browse'] )
+				$breadcrumb .= "\n\t\t\t" . '<span class="trail-browse">' . $this->args['labels']['browse'] . '</span>';
 
 			/* Adds the 'trail-begin' class around first item if there's more than one item. */
 			if ( 1 < count( $this->items ) )
@@ -160,6 +160,28 @@ class Breadcrumb_Trail {
 			echo $breadcrumb;
 		else
 			return $breadcrumb;
+	}
+
+	/**
+	 * Returns an array of the default labels.
+	 *
+	 * @since  0.6.0
+	 * @access public
+	 * @return array
+	 */
+	public function default_labels() {
+
+		$labels = array(
+			'browse'      => __( 'Browse:',                 'breadcrumb-trail' ), // @todo Use this
+			'home'        => __( 'Home',                    'breadcrumb-trail' ),
+			'search'      => __( 'Search results for "%s"', 'breadcrumb-trail' ),
+			'error_404'   => __( '404 Not Found',           'breadcrumb-trail' ),
+			'paged'       => __( 'Page %d',                 'breadcrumb-trail' ),
+			'archives'    => __( 'Archives',                'breadcrumb-trail' ),
+		//	'edit'        => __( 'Edit',                    'breadcrumb-trail' ), // @todo Implement edit link
+		);
+
+		return $labels;
 	}
 
 	/**
@@ -351,11 +373,14 @@ class Breadcrumb_Trail {
 		if ( 0 < $post->post_parent )
 			$this->do_post_parents( $post->post_parent );
 
+		/* Get the page title. */
+		$title = get_the_title( $post_id );
+
 		/* Add the posts page item. */
 		if ( is_paged() )
-			$this->items[]  = '<a href="' . get_permalink( $post_id ) . '" title="' . esc_attr( get_the_title( $post_id ) ) . '">' . get_the_title( $post_id ) . '</a>';
+			$this->items[]  = '<a href="' . get_permalink( $post_id ) . '" title="' . esc_attr( $title ) . '">' . $title . '</a>';
 
-		elseif ( $title = get_the_title( $post_id ) && true === $this->args['show_title'] )
+		elseif ( $title && true === $this->args['show_title'] )
 			$this->items[] = $title;
 	}
 
@@ -461,7 +486,7 @@ class Breadcrumb_Trail {
 		$post_type        = get_post_type( $post_id );
 		$post_type_object = get_post_type_object( $post_type );
 
-		/* If this is the 'post' post type, geet the rewrite front items and map the rewrite tags. */
+		/* If this is the 'post' post type, get the rewrite front items and map the rewrite tags. */
 		if ( 'post' === $post_type ) {
 
 			/* Add $wp_rewrite->front to the trail. */
@@ -494,13 +519,39 @@ class Breadcrumb_Trail {
 	}
 
 	/**
+	 * Gets post types by slug.  This is needed because the get_post_types() function doesn't exactly 
+	 * match the 'has_archive' argument when it's set as a string instead of a boolean.
+	 *
+	 * @since  0.6.0
+	 * @access public
+	 * @param  int    $slug  The post type archive slug to search for.
+	 * @return void
+	 */
+	public function get_post_types_by_slug( $slug ) {
+
+		$return = array();
+
+		$post_types = get_post_types( array(), 'objects' );
+
+		foreach ( $post_types as $type ) {
+
+			if ( $slug === $type->has_archive || ( true === $type->has_archive && $slug === $type->rewrite['slug'] ) )
+				$return[] = $type;
+		}
+
+		return $return;
+	}
+
+	/**
 	 * Adds the items to the trail items array for taxonomy term archives.
 	 *
 	 * @since  0.6.0
 	 * @access public
+	 * @global object $wp_rewrite
 	 * @return void
 	 */
 	public function do_term_archive_items() {
+		global $wp_rewrite;
 
 		/* Get some taxonomy and term variables. */
 		$term     = get_queried_object();
@@ -519,25 +570,32 @@ class Breadcrumb_Trail {
 			/* Add post type archive if its 'has_archive' matches the taxonomy rewrite 'slug'. */
 			if ( $taxonomy->rewrite['slug'] ) {
 
-				/* Get public post types that match the rewrite slug. */
-				$post_types = get_post_types(
-					array(
-						'public'      => true, 
-						'has_archive' => $taxonomy->rewrite['slug'] 
-					), 
-					'objects'
-				);
+				$slug = trim( $taxonomy->rewrite['slug'], '/' );
 
-				if ( !empty( $post_types ) ) {
+				/**
+				 * Deals with the situation if the slug has a '/' between multiple strings. For 
+				 * example, "movies/genres" where "movies" is the post type archive.
+				 */
+				$matches = explode( '/', $slug );
 
-					/**
-					 * WP doesn't match 'has_archive' correctly as an argument in 
-					 * get_post_types() if 'has_archive' is a string, so we must loop 
-					 * through them and check for a match.
-					 */
-					foreach ( $post_types as $post_type_object ) {
+				/* If matches are found for the path. */
+				if ( isset( $matches ) ) {
 
-						if ( $taxonomy->rewrite['slug'] === $post_type_object->has_archive ) {
+					/* Reverse the array of matches to search for posts in the proper order. */
+					$matches = array_reverse( $matches );
+
+					/* Loop through each of the path matches. */
+					foreach ( $matches as $match ) {
+
+						/* If a match is found. */
+						$slug = $match;
+
+						/* Get public post types that match the rewrite slug. */
+						$post_types = $this->get_post_types_by_slug( $match );
+
+						if ( !empty( $post_types ) ) {
+
+							$post_type_object = $post_types[0];
 
 							/* Add support for a non-standard label of 'archive_title' (special use case). */
 							$label = !empty( $post_type_object->labels->archive_title ) ? $post_type_object->labels->archive_title : $post_type_object->labels->name;
@@ -843,6 +901,10 @@ class Breadcrumb_Trail {
 
 		/* Trim '/' off $path in case we just got a simple '/' instead of a real path. */
 		$path = trim( $path, '/' );
+
+		/* If there's no path, return. */
+		if ( empty( $path ) )
+			return;
 
 		/* Get parent post by the path. */
 		$post = get_page_by_path( $path );

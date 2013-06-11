@@ -24,7 +24,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package   HybridCore
- * @version   1.6.0 - Alpha
+ * @version   1.6.0-beta-1
  * @author    Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2013, Justin Tadlock
  * @link      http://themehybrid.com/hybrid-core
@@ -242,6 +242,9 @@ class Hybrid {
 		/* Load the metadata functions. */
 		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'meta.php' );
 
+		/* Load the template functions. */
+		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'template.php' );
+
 		/* Load the utility functions. */
 		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'utility.php' );
 
@@ -274,6 +277,9 @@ class Hybrid {
 
 		/* Load the scripts if supported. */
 		require_if_theme_supports( 'hybrid-core-scripts', trailingslashit( HYBRID_FUNCTIONS ) . 'scripts.php' );
+
+		/* Load the post format functionality if post formats are supported. */
+		require_if_theme_supports( 'post-formats', trailingslashit( HYBRID_FUNCTIONS ) . 'post-formats.php' );
 
 		/* Load the deprecated functions if supported. */
 		require_if_theme_supports( 'hybrid-core-deprecated', trailingslashit( HYBRID_FUNCTIONS ) . 'deprecated.php' );
@@ -322,8 +328,11 @@ class Hybrid {
 		/* Load the Random Custom Background extension if supported. */
 		require_if_theme_supports( 'random-custom-background', trailingslashit( HYBRID_EXTENSIONS ) . 'random-custom-background.php' );
 
-		/* Load the Post Format Tools extension if post formats are supported. */
-		require_if_theme_supports( 'post-formats', trailingslashit( HYBRID_EXTENSIONS ) . 'post-format-tools.php' );
+		/* Load the Color Palette extension if supported. */
+		require_if_theme_supports( 'color-palette', trailingslashit( HYBRID_EXTENSIONS ) . 'color-palette.php' );
+
+		/* Load the Theme Fonts extension if supported. */
+		require_if_theme_supports( 'theme-fonts', trailingslashit( HYBRID_EXTENSIONS ) . 'theme-fonts.php' );
 	}
 
 	/**
@@ -361,13 +370,6 @@ class Hybrid {
 
 		/* Add the theme info to the header (lets theme developers give better support). */
 		add_action( 'wp_head', 'hybrid_meta_template', 1 );
-
-		/* Filter the textdomain mofile to allow child themes to load the parent theme translation. */
-		add_filter( 'load_textdomain_mofile', 'hybrid_load_textdomain_mofile', 10, 2 );
-
-		/* Filter text strings for Hybrid Core and extensions so themes can serve up translations. */
-		add_filter( 'gettext', 'hybrid_gettext', 1, 3 );
-		add_filter( 'gettext', 'hybrid_extensions_gettext', 1, 3 );
 
 		/* Make text widgets and term descriptions shortcode aware. */
 		add_filter( 'widget_text', 'do_shortcode' );
