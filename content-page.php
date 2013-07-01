@@ -2,9 +2,7 @@
 
 	<?php if ( is_singular( get_post_type() ) ) { ?>
 
-		<header class="page-header">
-			<?php the_title( '<h1 class="page-title"><a href="' . get_permalink() . '">', '</a></h1>' ); ?>
-		</header>
+		<?php the_title( '<h1 class="page-title"><a href="' . get_permalink() . '">', '</a></h1>' ); ?>
 
 		<div class="page-content">
 			<?php the_content(); ?>
@@ -13,9 +11,7 @@
 
 	<?php } else { ?>
 
-		<header class="page-header">
-			<?php the_title( '<h2 class="page-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
-		</header>
+		<?php the_title( '<h2 class="page-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
 
 		<div class="page-summary">
 			<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image(); ?>

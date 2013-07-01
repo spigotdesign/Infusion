@@ -18,9 +18,7 @@
 
 	<?php } else { ?>
 
-		<header class="entry-header">
-			<?php the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
-		</header>
+		<?php the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
 
 		<?php echo ( $video = post_format_tools_get_video() ); ?>
 

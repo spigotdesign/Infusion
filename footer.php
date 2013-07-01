@@ -2,7 +2,7 @@
 
 	</div><?php // end #main  ?>
 	
-	<footer role="contentinfo">
+	<footer class="site-footer" role="contentinfo">
 
 		<div class="wrap">
 

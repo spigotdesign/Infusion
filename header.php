@@ -29,7 +29,7 @@
 
 <body class="<?php hybrid_body_class(); ?>">
 
-	<div id="container">
+	<div class="container">
 
 		<header class="site-header" role="banner">
 			
@@ -45,5 +45,5 @@
 
 		</header>
 
-		<div id="main" role="main">
+		<div class="main" role="main">
 
