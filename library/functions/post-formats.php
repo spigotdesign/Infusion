@@ -37,14 +37,6 @@ function hybrid_structured_post_formats() {
 	if ( current_theme_supports( 'post-formats', 'aside' ) )
 		add_filter( 'the_content', 'hybrid_aside_infinity', 9 ); // run before wpautop
 
-	/* Add audio to audio posts. */
-	//if ( current_theme_supports( 'post-formats', 'audio' ) )
-	//	add_filter( 'the_content', 'hybrid_audio_content', 7 ); // run before WP_Embed
-
-	/* Add audio to audio posts. */
-	//if ( current_theme_supports( 'post-formats', 'video' ) )
-	//	add_filter( 'the_content', 'hybrid_video_content', 7 ); // run before WP_Embed
-
 	/* Add image to content if the user didn't add it. */
 	if ( current_theme_supports( 'post-formats', 'image' ) )
 		add_filter( 'the_content', 'hybrid_image_content' );
@@ -62,7 +54,7 @@ function hybrid_structured_post_formats() {
 		add_filter( 'the_content', 'hybrid_chat_content' );
 
 		/* Auto-add paragraphs to the chat text. */
-		add_filter( 'post_format_chat_text', 'wpautop' );
+		add_filter( 'hybrid_post_format_chat_text', 'wpautop' );
 	}
 }
 
@@ -142,20 +134,6 @@ function hybrid_clean_post_format_slug( $slug ) {
 	return str_replace( 'post-format-', '', $slug );
 }
 
-/**
- * Checks if a post has any content. Useful if you need to check if the user has written any content 
- * before performing any actions.
- *
- * @since  1.6.0
- * @access public
- * @param  int    $id  The ID of the post.
- * @return bool
- */
-function hybrid_post_has_content( $id = 0 ) {
-	$post = get_post( $id );
-	return !empty( $post->post_content ) ? true : false;
-}
-
 /* === Asides === */
 
 /**
@@ -170,27 +148,6 @@ function hybrid_aside_infinity( $content ) {
 
 	if ( has_post_format( 'aside' ) && !is_singular() )
 		$content .= ' <a class="permalink" href="' . get_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '">&#8734;</a>';
-
-	return $content;
-}
-
-/* === Audio === */
-
-/**
- * Adds the meta audio to the content if it exists.
- *
- * @since  1.6.0
- * @access public
- * @param  string  $content
- * @return string
- */
-function hybrid_audio_content( $content ) {
-
-	if ( has_post_format( 'audio' ) ) {
-		$post    = get_post();
-		$audio   = get_the_post_format_media( 'audio', $post, 1 );
-		$content = $audio . $content;
-	}
 
 	return $content;
 }
@@ -211,11 +168,8 @@ function hybrid_audio_content( $content ) {
  */
 function hybrid_get_gallery_item_count() {
 
-	/* Get the current post. */
-	$post = get_post();
-
 	/* Check the post content for galleries. */
-	$galleries = get_content_galleries( $post->post_content, true );
+	$galleries = get_post_galleries( get_the_ID(), true );
 
 	/* If galleries were found in the content, get the gallery item count. */
 	if ( !empty( $galleries ) ) {
@@ -303,7 +257,7 @@ function hybrid_image_content( $content ) {
 			$content = get_the_image( array( 'meta_key' => false, 'size' => 'large', 'link_to_post' => false, 'echo' => false ) ) . $content;
 
 		elseif ( empty( $matches ) )
-			$content = get_the_post_format_image() . $content;
+			$content = get_the_post_thumbnail( get_the_ID(), 'large' ) . $content;
 	}
 
 	return $content;
@@ -399,18 +353,16 @@ function hybrid_quote_content( $content ) {
  *
  * @since  1.6.0
  * @access public
+ * @param  string $content
  * @return array
  */
-function hybrid_get_the_post_format_chat() {
-
-	$post    = get_post();
-	$stanzas = array();
+function hybrid_get_the_post_format_chat( $content ) {
 
 	/* Allow the separator (separator for speaker/text) to be filtered. */
-	$separator = apply_filters( 'post_format_chat_separator', ':' );
+	$separator = apply_filters( 'hybrid_post_format_chat_separator', ':' );
 
 	/* Split the content to get individual chat rows. */
-	$chat_rows = preg_split( "/(\r?\n)+|(<br\s*\/?>\s*)+/", get_paged_content( $post->post_content ) );
+	$chat_rows = preg_split( "/(\r?\n)+|(<br\s*\/?>\s*)+/", $content );
 
 	/* Loop through each row and format the output. */
 	foreach ( $chat_rows as $chat_row ) {
@@ -479,10 +431,10 @@ function hybrid_chat_content( $content ) {
 	$chat_output = "\n\t\t\t" . '<div id="chat-transcript-' . esc_attr( get_the_ID() ) . '" class="chat-transcript">';
 
 	/* Allow the separator (separator for speaker/text) to be filtered. */
-	$separator = apply_filters( 'post_format_chat_separator', ':' );
+	$separator = apply_filters( 'hybrid_post_format_chat_separator', ':' );
 
 	/* Get the stanzas from the post content. */
-	$stanzas = hybrid_get_the_post_format_chat();
+	$stanzas = hybrid_get_the_post_format_chat( $content );
 
 	/* Loop through the stanzas that were returned. */
 	foreach ( $stanzas as $stanza ) {
@@ -505,10 +457,10 @@ function hybrid_chat_content( $content ) {
 
 			/* Add the chat row author. */
 			if ( !empty( $chat_author ) )
-				$chat_output .= "\n\t\t\t\t\t" . '<div class="chat-author ' . sanitize_html_class( strtolower( "chat-author-{$chat_author}" ) ) . ' vcard">' . $time . '<cite class="fn">' . apply_filters( 'post_format_chat_author', $chat_author, $speaker_id ) . '</cite>:</div>';
+				$chat_output .= "\n\t\t\t\t\t" . '<div class="chat-author ' . sanitize_html_class( strtolower( "chat-author-{$chat_author}" ) ) . ' vcard">' . $time . '<cite class="fn">' . apply_filters( 'hybrid_post_format_chat_author', $chat_author, $speaker_id ) . '</cite>:</div>';
 
 			/* Add the chat row text. */
-			$chat_output .= "\n\t\t\t\t\t" . '<div class="chat-text">' . str_replace( array( "\r", "\n", "\t" ), '', apply_filters( 'post_format_chat_text', $chat_text, $chat_author, $speaker_id ) ) . '</div>';
+			$chat_output .= "\n\t\t\t\t\t" . '<div class="chat-text">' . str_replace( array( "\r", "\n", "\t" ), '', apply_filters( 'hybrid_post_format_chat_text', $chat_text, $chat_author, $speaker_id ) ) . '</div>';
 
 			/* Close the chat row. */
 			$chat_output .= "\n\t\t\t\t" . '</div><!-- .chat-row -->';
@@ -555,27 +507,6 @@ function hybrid_chat_row_id( $chat_author ) {
 
 	/* Return the array key for the chat author and add "1" to avoid an ID of "0". */
 	return absint( array_search( $chat_author, $_hybrid_post_chat_ids ) ) + 1;
-}
-
-/* === Videos === */
-
-/**
- * Adds the post format video to the content if it exists.
- *
- * @since  1.6.0
- * @access public
- * @param  string  $content
- * @return string
- */
-function hybrid_video_content( $content ) {
-
-	if ( has_post_format( 'video' ) ) {
-		$post    = get_post();
-		$video   = get_the_post_format_media( 'video', $post, 1 );
-		$content = $video . $content;
-	}
-
-	return $content;
 }
 
 ?>

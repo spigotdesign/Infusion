@@ -15,7 +15,7 @@
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @package   CleanerGallery
- * @version   1.0.0-alpha
+ * @version   1.0.0
  * @author    Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2013, Justin Tadlock
  * @link      http://justintadlock.com/archives/2008/04/13/cleaner-wordpress-gallery-plugin
@@ -31,10 +31,11 @@ add_filter( 'post_gallery', 'cleaner_gallery', 10, 2 );
  * developers to style the gallery more easily.
  *
  * @since  0.9.0
- * @access private
+ * @access public
+ * @global array  $_wp_additional_image_sizes
  * @param  string $output The output of the gallery shortcode.
  * @param  array  $attr   The arguments for displaying the gallery.
- * @return string $output
+ * @return string
  */
 function cleaner_gallery( $output, $attr ) {
 	global $_wp_additional_image_sizes;
@@ -132,11 +133,29 @@ function cleaner_gallery( $output, $attr ) {
 		/* Open each gallery item. */
 		$output .= "\n\t\t\t\t\t<{$itemtag} class='gallery-item col-{$columns}'>";
 
-		/* Open the element to wrap the image. */
-		$output .= "\n\t\t\t\t\t\t<{$icontag} class='gallery-icon'>";
+		/* Get the image attachment meta. */
+		$image_meta  = wp_get_attachment_metadata( $id );
 
-		/* Add the image. */
-		$image = ( ( isset( $attr['link'] ) && 'file' == $attr['link'] ) ? wp_get_attachment_link( $attachment->ID, $size, false, true ) : wp_get_attachment_link( $attachment->ID, $size, true, true ) );
+		/* Get the image orientation (portrait|landscape) based off the width and height. */
+		$orientation = '';
+
+		if ( isset( $image_meta['height'], $image_meta['width'] ) )
+			$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+
+		/* Open the element to wrap the image. */
+		$output .= "\n\t\t\t\t\t\t<{$icontag} class='gallery-icon {$orientation}'>";
+
+		/* Get the image. */
+		if ( isset( $attr['link'] ) && 'file' == $attr['link'] ) 
+			$image = wp_get_attachment_link( $attachment->ID, $size, false, true );
+
+		elseif ( isset( $attr['link'] ) && 'none' == $attr['link'] )
+			$image = wp_get_attachment_image( $attachment->ID, $size, false );
+
+		else
+			$image = wp_get_attachment_link( $attachment->ID, $size, true, true );
+
+		/* Apply filters over the image itself. */
 		$output .= apply_filters( 'cleaner_gallery_image', $image, $attachment->ID, $attr, $cleaner_gallery_instance );
 
 		/* Close the image wrapper. */

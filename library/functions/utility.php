@@ -34,6 +34,10 @@ function hybrid_add_post_type_support() {
 
 	/* Add support for excerpts to the 'page' post type. */
 	add_post_type_support( 'page', array( 'excerpt' ) );
+
+	/* Add thumbnail support for audio and video attachments. */
+	add_post_type_support( 'attachment:audio', 'thumbnail' );
+	add_post_type_support( 'attachment:video', 'thumbnail' );
 }
 
 /**
@@ -83,7 +87,7 @@ function hybrid_extra_theme_headers( $headers ) {
  * @return void
  */
 function hybrid_meta_template() {
-	$theme = wp_get_theme( get_template(), get_theme_root( get_template_directory() ) );
+	$theme = wp_get_theme( get_template() );
 	$template = '<meta name="template" content="' . esc_attr( $theme->get( 'Name' ) . ' ' . $theme->get( 'Version' ) ) . '" />' . "\n";
 	echo apply_atomic( 'meta_template', $template );
 }
@@ -175,40 +179,6 @@ function hybrid_has_post_template( $template = '' ) {
 
 	/* Return false for everything else. */
 	return false;
-}
-
-/**
- * Retrieves the file with the highest priority that exists.  The function searches both the stylesheet 
- * and template directories.  This function is similar to the locate_template() function in WordPress 
- * but returns the file name with the URI path instead of the directory path.
- *
- * @since 1.5.0
- * @access public
- * @link http://core.trac.wordpress.org/ticket/18302
- * @param array $file_names The files to search for.
- * @return string
- */
-function hybrid_locate_theme_file( $file_names ) {
-
-	$located = '';
-
-	/* Loops through each of the given file names. */
-	foreach ( (array) $file_names as $file ) {
-
-		/* If the file exists in the stylesheet (child theme) directory. */
-		if ( is_child_theme() && file_exists( trailingslashit( get_stylesheet_directory() ) . $file ) ) {
-			$located = trailingslashit( get_stylesheet_directory_uri() ) . $file;
-			break;
-		}
-
-		/* If the file exists in the template (parent theme) directory. */
-		elseif ( file_exists( trailingslashit( get_template_directory() ) . $file ) ) {
-			$located = trailingslashit( get_template_directory_uri() ) . $file;
-			break;
-		}
-	}
-
-	return $located;
 }
 
 /**

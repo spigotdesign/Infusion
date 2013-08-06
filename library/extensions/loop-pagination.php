@@ -14,9 +14,9 @@
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @package   LoopPagination
- * @version   0.3.0-alpha
+ * @version   0.3.0
  * @author    Justin Tadlock <justin@justintadlock.com>
- * @copyright Copyright (c) 2010 - 2012, Justin Tadlock
+ * @copyright Copyright (c) 2010 - 2013, Justin Tadlock
  * @link      http://themehybrid.com/docs/tutorials/loop-pagination
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -71,15 +71,6 @@ function loop_pagination( $args = array() ) {
 	/* Add the $base argument to the array if the user is using permalinks. */
 	if ( $wp_rewrite->using_permalinks() && !is_search() )
 		$defaults['base'] = user_trailingslashit( trailingslashit( get_pagenum_link() ) . "{$pagination_base}/%#%" );
-
-	/* @todo Find a way to make pretty links work for search in all cases. */
-	/**
-	if ( is_search() ) {
-		$search_permastruct = $wp_rewrite->get_search_permastruct();
-		if ( !empty( $search_permastruct ) )
-			$defaults['base'] = user_trailingslashit( trailingslashit( get_search_link() ) . 'page/%#%' );
-	}
-	/**/
 
 	/* Allow developers to overwrite the arguments with a filter. */
 	$args = apply_filters( 'loop_pagination_args', $args );

@@ -104,14 +104,14 @@ function hybrid_get_post_templates( $post_type = 'post' ) {
 	$post_type_object = get_post_type_object( $post_type );
 
 	/* Get the theme (parent theme if using a child theme) object. */
-	$theme = wp_get_theme( get_template(), get_theme_root( get_template_directory() ) );
+	$theme = wp_get_theme( get_template() );
 
 	/* Get the theme PHP files one level deep. */
 	$files = (array) $theme->get_files( 'php', 1 );
 
 	/* If a child theme is active, get its files and merge with the parent theme files. */
 	if ( is_child_theme() ) {
-		$child = wp_get_theme( get_stylesheet(), get_theme_root( get_stylesheet_directory() ) );
+		$child = wp_get_theme();
 		$child_files = (array) $child->get_files( 'php', 1 );
 		$files = array_merge( $files, $child_files );
 	}

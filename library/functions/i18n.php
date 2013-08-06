@@ -93,8 +93,14 @@ function hybrid_get_parent_textdomain() {
 	global $hybrid;
 
 	/* If the global textdomain isn't set, define it. Plugin/theme authors may also define a custom textdomain. */
-	if ( empty( $hybrid->parent_textdomain ) )
-		$hybrid->parent_textdomain = sanitize_key( apply_filters( hybrid_get_prefix() . '_parent_textdomain', get_template() ) );
+	if ( empty( $hybrid->parent_textdomain ) ) {
+
+		$theme = wp_get_theme( get_template() );
+
+		$textdomain = $theme->get( 'TextDomain' ) ? $theme->get( 'TextDomain' ) : get_template();
+
+		$hybrid->parent_textdomain = sanitize_key( apply_filters( hybrid_get_prefix() . '_parent_textdomain', $textdomain ) );
+	}
 
 	/* Return the expected textdomain of the parent theme. */
 	return $hybrid->parent_textdomain;
@@ -121,8 +127,14 @@ function hybrid_get_child_textdomain() {
 		return '';
 
 	/* If the global textdomain isn't set, define it. Plugin/theme authors may also define a custom textdomain. */
-	if ( empty( $hybrid->child_textdomain ) )
-		$hybrid->child_textdomain = sanitize_key( apply_filters( hybrid_get_prefix() . '_child_textdomain', get_stylesheet() ) );
+	if ( empty( $hybrid->child_textdomain ) ) {
+
+		$theme = wp_get_theme();
+
+		$textdomain = $theme->get( 'TextDomain' ) ? $theme->get( 'TextDomain' ) : get_stylesheet();
+
+		$hybrid->child_textdomain = sanitize_key( apply_filters( hybrid_get_prefix() . '_child_textdomain', $textdomain ) );
+	}
 
 	/* Return the expected textdomain of the child theme. */
 	return $hybrid->child_textdomain;
@@ -289,7 +301,7 @@ function hybrid_ngettext_with_context( $translated, $single, $plural, $number, $
  */
 function hybrid_extensions_gettext( $translated, $text, $domain ) {
 
-	$extensions = array( 'breadcrumb-trail', 'custom-field-series', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
+	$extensions = array( 'breadcrumb-trail', 'custom-field-series', 'featured-header', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
 
 	/* Check if the current textdomain matches one of the framework extensions. */
 	if ( in_array( $domain, $extensions ) && current_theme_supports( $domain ) ) {
@@ -319,7 +331,7 @@ function hybrid_extensions_gettext( $translated, $text, $domain ) {
  */
 function hybrid_extensions_gettext_with_context( $translated, $text, $context, $domain ) {
 
-	$extensions = array( 'breadcrumb-trail', 'custom-field-series', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
+	$extensions = array( 'breadcrumb-trail', 'custom-field-series', 'featured-header', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
 
 	/* Check if the current textdomain matches one of the framework extensions. */
 	if ( in_array( $domain, $extensions ) && current_theme_supports( $domain ) ) {
@@ -350,7 +362,7 @@ function hybrid_extensions_gettext_with_context( $translated, $text, $context, $
  */
 function hybrid_extensions_ngettext( $translated, $single, $plural, $number, $domain ) {
 
-	$extensions = array( 'breadcrumb-trail', 'custom-field-series', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
+	$extensions = array( 'breadcrumb-trail', 'custom-field-series', 'featured-header', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
 
 	/* Check if the current textdomain matches one of the framework extensions. */
 	if ( in_array( $domain, $extensions ) && current_theme_supports( $domain ) ) {
@@ -382,7 +394,7 @@ function hybrid_extensions_ngettext( $translated, $single, $plural, $number, $do
  */
 function hybrid_extensions_ngettext_with_context( $translated, $single, $plural, $number, $context, $domain ) {
 
-	$extensions = array( 'breadcrumb-trail', 'custom-field-series', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
+	$extensions = array( 'breadcrumb-trail', 'custom-field-series', 'featured-header', 'post-stylesheets', 'theme-fonts', 'theme-layouts' );
 
 	/* Check if the current textdomain matches one of the framework extensions. */
 	if ( in_array( $domain, $extensions ) && current_theme_supports( $domain ) ) {
