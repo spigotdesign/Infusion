@@ -1,1 +1,7 @@
-<?php /* I am still learning. */ ?>
+<?php  /* 
+
+'...I got nothing'
+
+		~ Silent Bob 
+
+*/ ?>

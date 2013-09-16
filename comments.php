@@ -7,6 +7,7 @@
  *
  * @package infusion
  * @subpackage Template
+ * @version 1.2.2
  */
 
 /* Kill the page if trying to access this template directly. */
@@ -18,26 +19,28 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 	return;
 ?>
 
-	<div id="conversation">
+	<div class="conversation">
 
-		<div id="comments">
+		<div class="comments">
 
 			<?php if ( have_comments() ) : ?>
 
-				<h3 id="comments-number" class="comments-header"><?php comments_number( __( 'No Responses', 'infusion' ), __( 'One Response', 'infusion' ), __( '% Responses', 'infusion' ) ); ?></h3>
-
-				<?php do_atomic( 'before_comment_list' );// infusion_before_comment_list ?>
+				<h3 class="comments-header"><?php comments_number( __( 'No Responses', 'infusion' ), __( 'One Response', 'infusion' ), __( '% Responses', 'infusion' ) ); ?></h3>
 
 				<ol class="comment-list">
-					<?php wp_list_comments( hybrid_list_comments_args() ); ?>
-				</ol><!-- .comment-list -->
 
-				<?php do_atomic( 'after_comment_list' ); // infusion_after_comment_list ?>
+					<?php wp_list_comments( hybrid_list_comments_args() ); ?>
+				
+				</ol>
 
 				<?php if ( get_option( 'page_comments' ) ) : ?>
+
 					<nav class="comment-navigation comment-pagination">
+						
 						<?php paginate_comments_links(); ?>
-					</nav><!-- .comment-navigation -->
+					
+					</nav>
+				
 				<?php endif; ?>
 
 			<?php endif; ?>
@@ -45,19 +48,23 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 			<?php if ( pings_open() && !comments_open() ) : ?>
 
 				<p class="comments-closed pings-open">
+					
 					<?php printf( __( 'Comments are closed, but <a href="%1$s" title="Trackback URL for this post">trackbacks</a> and pingbacks are open.', 'infusion' ), get_trackback_url() ); ?>
-				</p><!-- .comments-closed .pings-open -->
+				
+				</p>
 
 			<?php elseif ( !comments_open() ) : ?>
 
 				<p class="comments-closed">
+					
 					<?php _e( 'Comments are closed.', 'infusion' ); ?>
-				</p><!-- .comments-closed -->
+				
+				</p>
 
 			<?php endif; ?>
 
-		</div><!-- #comments -->
+		</div>
 
 		<?php comment_form(); // Loads the comment form. ?>
 
-	</div><!-- #conversation -->
+	</div>

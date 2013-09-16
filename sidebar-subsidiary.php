@@ -1,6 +1,6 @@
 <?php if ( is_active_sidebar( 'subsidiary' ) ) : ?>
 
-	<aside id="sidebar-subsidiary" class="sidebar" role="complementary">
+	<aside class="sidebar sidebar-subsidiary group" role="complementary">
 		
 		<div class="wrap">
 

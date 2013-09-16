@@ -3,14 +3,21 @@
 	wp_nav_menu(
 		array(
 			'theme_location'  => 'subsidiary',
+			'menu'            => '',
 			'container'       => 'nav',
-			'container_id'    => 'menu-subsidiary',
-			'container_class' => 'menu',
-			'container_role'  => 'navigation',
-			'menu_id'         => 'menu-subsidiary-items',
-			'menu_class'      => 'menu-items',
+			'container_class' => 'menu-subsidiary',
+			'container_id'    => '',
+			'menu_class'      => '',
+			'menu_id'         => '',
+			'echo'            => true,
 			'fallback_cb'     => '',
-			'items_wrap'      => '<div class="wrap"><ul id="%1$s" class="%2$s">%3$s</ul></div>'
+			'before'          => '',
+			'after'           => '',
+			'link_before'     => '',
+			'link_after'      => '',
+			'items_wrap'      => '<ul>%3$s</ul>',
+			'depth'           => 0,
+			'walker'          => ''
 		)
 	);
 
