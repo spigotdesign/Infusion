@@ -130,22 +130,13 @@ function hybrid_get_context() {
  * developers can filter this to add other attributes.
  *
  * @since  1.6.0
+ * @deprecated 2.0.0
  * @access public
  * @return void
  */
 function hybrid_body_attributes() {
-
-	$attributes = array();
-	$output     = '';
-
-	$attributes['class'] = join( ' ', hybrid_get_body_class() );
-
-	$attributes = apply_atomic( 'body_attributes', $attributes );
-
-	foreach( $attributes as $attr => $value )
-		$output .= " {$attr}='{$value}'";
-
-	echo $output;
+	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'body' )" );
+	hybrid_attr( 'body' );
 }
 
 /**
@@ -176,11 +167,17 @@ function hybrid_body_class( $class = '' ) {
 function hybrid_get_body_class( $class = '' ) {
 	global $wp_query;
 
-	/* Text direction (which direction does the text flow). */
-	$classes = array( 'wordpress', get_bloginfo( 'text_direction' ), get_locale() );
+	/* WordPress class for uses when WordPress isn't always the only system on the site. */
+	$classes = array( 'wordpress' );
+
+	/* Text direction. */
+	$classes[] = is_rtl() ? 'rtl' : 'ltr';
+
+	/* Locale. */
+	$classes[] = strtolower( str_replace( '_', '-', get_locale() ) );
 
 	/* Check if the current theme is a parent or child theme. */
-	$classes[] = ( is_child_theme() ? 'child-theme' : 'parent-theme' );
+	$classes[] = is_child_theme() ? 'child-theme' : 'parent-theme';
 
 	/* Multisite check adds the 'multisite' class and the blog ID. */
 	if ( is_multisite() ) {
@@ -193,7 +190,7 @@ function hybrid_get_body_class( $class = '' ) {
 	$classes[] = strtolower( gmdate( '\yY \mm \dd \hH l', $time ) );
 
 	/* Is the current user logged in. */
-	$classes[] = ( is_user_logged_in() ) ? 'logged-in' : 'logged-out';
+	$classes[] = is_user_logged_in() ? 'logged-in' : 'logged-out';
 
 	/* WP admin bar. */
 	if ( is_admin_bar_showing() )
@@ -204,7 +201,7 @@ function hybrid_get_body_class( $class = '' ) {
 		$classes[] = 'custom-background';
 
 	/* Add the '.custom-header' class if the user is using a custom header. */
-	if ( get_header_image() )
+	if ( get_header_image() || ( display_header_text() && get_header_textcolor() ) )
 		$classes[] = 'custom-header';
 
 	/* Merge base contextual classes with $classes. */
@@ -224,7 +221,7 @@ function hybrid_get_body_class( $class = '' ) {
 		/* Post format. */
 		if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post->post_type, 'post-formats' ) ) {
 			$post_format = get_post_format( get_queried_object_id() );
-			$classes[] = ( ( empty( $post_format ) || is_wp_error( $post_format ) ) ? "{$post->post_type}-format-standard" : "{$post->post_type}-format-{$post_format}" );
+			$classes[] = ( empty( $post_format ) || is_wp_error( $post_format ) ) ? "{$post->post_type}-format-standard" : "{$post->post_type}-format-{$post_format}";
 		}
 
 		/* Attachment mime types. */
@@ -254,23 +251,13 @@ function hybrid_get_body_class( $class = '' ) {
  * but developers can filter this to add other attributes.
  *
  * @since  1.6.0
+ * @deprecated 2.0.0
  * @access public
  * @return void
  */
 function hybrid_post_attributes() {
-
-	$attributes = array();
-	$output     = '';
-
-	$attributes['id']    = 'post-' . get_the_ID();
-	$attributes['class'] = join( ' ', hybrid_get_post_class() );
-
-	$attributes = apply_atomic( 'post_attributes', $attributes );
-
-	foreach( $attributes as $attr => $value )
-		$output .= " {$attr}='{$value}'";
-
-	echo $output;
+	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'post' )" );
+	hybrid_attr( 'post' );
 }
 
 /**
@@ -397,23 +384,13 @@ function hybrid_get_post_class( $class = '', $post_id = null ) {
  * but developers can filter this to add other attributes.
  *
  * @since  1.6.0
+ * @deprecated 2.0.0
  * @access public
  * @return void
  */
 function hybrid_comment_attributes() {
-
-	$attributes = array();
-	$output     = '';
-
-	$attributes['id']    = 'comment-' . get_comment_ID();
-	$attributes['class'] = join( ' ', hybrid_get_comment_class() );
-
-	$attributes = apply_atomic( 'comment_attributes', $attributes );
-
-	foreach( $attributes as $attr => $value )
-		$output .= " {$attr}='{$value}'";
-
-	echo $output;
+	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'comment' )" );
+	hybrid_attr( 'comment' );
 }
 
 /**

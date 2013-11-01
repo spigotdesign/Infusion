@@ -12,12 +12,6 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-/* Filter the comment form defaults. */
-add_filter( 'comment_form_defaults', 'hybrid_comment_form_args' );
-
-/* Add a few comment types to the allowed avatar comment types list. */
-add_filter( 'get_avatar_comment_types', 'hybrid_avatar_comment_types' );
-
 /**
  * Arguments for the wp_list_comments_function() used in comments.php. Users can set up a 
  * custom comments callback function by changing $callback to the custom function.  Note that 
@@ -75,14 +69,20 @@ function hybrid_comments_callback( $comment, $args, $depth ) {
 	if ( !isset( $hybrid->comment_template[$comment_type] ) ) {
 
 		/* Create an array of template files to look for. */
-		$templates = array( "comment-{$comment_type}.php" );
+		$templates = array( "comment-{$comment_type}.php", "comment/{$comment_type}.php" );
 
 		/* If the comment type is a 'pingback' or 'trackback', allow the use of 'comment-ping.php'. */
-		if ( 'pingback' == $comment_type || 'trackback' == $comment_type )
+		if ( 'pingback' == $comment_type || 'trackback' == $comment_type ) {
 			$templates[] = 'comment-ping.php';
+			$templates[] = 'comment/ping.php';
+		}
 
 		/* Add the fallback 'comment.php' template. */
+		$templates[] = 'comment/comment.php';
 		$templates[] = 'comment.php';
+
+		/* Allow devs to filter the template hierarchy. */
+		$templates = apply_filters( 'hybrid_comment_template_hierarchy', $templates, $comment_type );
 
 		/* Locate the comment template. */
 		$template = locate_template( $templates );
@@ -115,6 +115,7 @@ function hybrid_comments_end_callback() {
  * trackbacks and pingbacks.
  *
  * @since 0.2.0
+ * @deprecated 2.0.0
  * @access public
  * @global $comment The current comment's DB object.
  * @global $hybrid The global Hybrid object.
@@ -123,111 +124,17 @@ function hybrid_comments_end_callback() {
 function hybrid_avatar() {
 	global $comment, $hybrid;
 
+	_deprecated_function( __FUNCTION__, '2.0.0', 'get_avatar' );
+
 	/* Make sure avatars are allowed before proceeding. */
 	if ( !get_option( 'show_avatars' ) )
 		return false;
 
-	/* Get/set some comment variables. */
-	$comment_type = get_comment_type( $comment->comment_ID );
-	$author = get_comment_author( $comment->comment_ID );
-	$url = get_comment_author_url( $comment->comment_ID );
-	$avatar = '';
-	$default_avatar = '';
-
-	/* Get comment types that are allowed to have an avatar. */
-	$avatar_comment_types = apply_filters( 'get_avatar_comment_types', array( 'comment' ) );
-
-	/* If comment type is in the allowed list, check if it's a pingback or trackback. */
-	if ( in_array( $comment_type, $avatar_comment_types ) ) {
-
-		/* Set a default avatar for pingbacks and trackbacks. */
-		$default_avatar = ( ( 'pingback' == $comment_type || 'trackback' == $comment_type ) ? trailingslashit( HYBRID_IMAGES ) . 'ping.png' : '' );
-
-		/* Allow the default avatar to be filtered by comment type. */
-		$default_avatar = apply_filters( "{$hybrid->prefix}_{$comment_type}_avatar", $default_avatar );
-	}
-
-	/* Set up the avatar size. */
-	$comment_list_args = hybrid_list_comments_args();
-	$size = ( ( $comment_list_args['avatar_size'] ) ? $comment_list_args['avatar_size'] : 80 );
-
 	/* Get the avatar provided by the get_avatar() function. */
-	$avatar = get_avatar( $comment, absint( $size ), $default_avatar, $author );
-
-	/* If URL input, wrap avatar in hyperlink. */
-	if ( !empty( $url ) && !empty( $avatar ) )
-		$avatar = '<a href="' . esc_url( $url ) . '" rel="external nofollow" title="' . esc_attr( $author ) . '">' . $avatar . '</a>';
+	$avatar = get_avatar( $comment, 80, '', get_comment_author( $comment->comment_ID ) );
 
 	/* Display the avatar and allow it to be filtered. Note: Use the get_avatar filter hook where possible. */
 	echo apply_filters( "{$hybrid->prefix}_avatar", $avatar );
-}
-
-/**
- * Filters the WordPress comment_form() function that was added in WordPress 3.0.  This allows
- * the theme to preserve some backwards compatibility with its old comment form.  It also allows 
- * users to build custom comment forms by filtering 'comment_form_defaults' in their child theme.
- *
- * @since 0.8.0
- * @access public
- * @param array $args The default comment form arguments.
- * @return array $args The filtered comment form arguments.
- */
-function hybrid_comment_form_args( $args ) {
-	global $user_identity;
-
-	/* Get the current commenter. */
-	$commenter = wp_get_current_commenter();
-
-	/* Create the required <span> and <input> element class. */
-	$req = ( ( get_option( 'require_name_email' ) ) ? ' <span class="required">' . __( '*', 'hybrid-core' ) . '</span> ' : '' );
-	$input_class = ( ( get_option( 'require_name_email' ) ) ? ' req' : '' );
-
-	/* Sets up the default comment form fields. */
-	$fields = array(
-		'author' => '<p class="form-author' . esc_attr( $input_class ) . '"><label for="author">' . __( 'Name', 'hybrid-core' ) . $req . '</label> <input type="text" class="text-input" name="author" id="author" value="' . esc_attr( $commenter['comment_author'] ) . '" size="40" /></p>',
-		'email'  => '<p class="form-email' . esc_attr( $input_class ) . '"><label for="email">' . __( 'Email', 'hybrid-core' ) . $req . '</label> <input type="email" class="text-input" name="email" id="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="40" /></p>',
-		'url'    => '<p class="form-url"><label for="url">' . __( 'Website', 'hybrid-core' ) . '</label><input type="url" class="text-input" name="url" id="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="40" /></p>'
-	);
-
-	/* Sets the default arguments for displaying the comment form. */
-	$args = array(
-		'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-		'comment_field'        => '<p class="form-textarea req"><label for="comment">' . __( 'Comment', 'hybrid-core' ) . '</label><textarea name="comment" id="comment" cols="60" rows="10"></textarea></p>',
-		'must_log_in'          => '<p class="alert">' . sprintf( __( 'You must be <a href="%1$s" title="Log in">logged in</a> to post a comment.', 'hybrid-core' ), wp_login_url( get_permalink() ) ) . '</p><!-- .alert -->',
-		'logged_in_as'         => '<p class="log-in-out">' . sprintf( __( 'Logged in as <a href="%1$s" title="%2$s">%2$s</a>.', 'hybrid-core' ), admin_url( 'profile.php' ), esc_attr( $user_identity ) ) . ' <a href="' . wp_logout_url( get_permalink() ) . '" title="' . esc_attr__( 'Log out of this account', 'hybrid-core' ) . '">' . __( 'Log out &raquo;', 'hybrid-core' ) . '</a></p><!-- .log-in-out -->',
-		'comment_notes_before' => '',
-		'comment_notes_after'  => '',
-		'id_form'              => 'commentform',
-		'id_submit'            => 'submit',
-		'title_reply'          => __( 'Leave a Reply', 'hybrid-core' ),
-		'title_reply_to'       => __( 'Leave a Reply to %s', 'hybrid-core' ),
-		'cancel_reply_link'    => __( 'Click here to cancel reply.', 'hybrid-core' ),
-		'label_submit'         => __( 'Post Comment', 'hybrid-core' ),
-	);
-
-	/* Return the arguments for displaying the comment form. */
-	return $args;
-}
-
-/**
- * Adds the 'pingback' and 'trackback' comment types to the allowed list of avatar comment types.  By
- * default, WordPress only allows the 'comment' comment type to have an avatar.
- *
- * @since 1.2.0
- * @access public
- * @param array $types List of all comment types allowed to have avatars.
- * @return array $types
- */
-function hybrid_avatar_comment_types( $types ) {
-
-	/* Add the 'pingback' comment type. */
-	$types[] = 'pingback';
-
-	/* Add the 'trackback' comment type. */
-	$types[] = 'trackback';
-
-	/* Return the array of comment types. */
-	return $types;
 }
 
 ?>

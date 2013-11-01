@@ -24,7 +24,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package   HybridCore
- * @version   1.6.1
+ * @version   2.0.0-alpha-1
  * @author    Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2008 - 2013, Justin Tadlock
  * @link      http://themehybrid.com/hybrid-core
@@ -93,7 +93,7 @@ class Hybrid {
 	function constants() {
 
 		/* Sets the framework version number. */
-		define( 'HYBRID_VERSION', '1.6.1' );
+		define( 'HYBRID_VERSION', '2.0.0' );
 
 		/* Sets the path to the parent theme directory. */
 		define( 'THEME_DIR', get_template_directory() );
@@ -154,6 +154,21 @@ class Hybrid {
 
 		/* Load the core framework internationalization functions. */
 		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'i18n.php' );
+
+		/* Load the framework customize functions. */
+		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'customize.php' );
+
+		/* Load the general template functions. */
+		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'general.php' );
+
+		/* Load the sidebar functions. */
+		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'sidebars.php' );
+
+		/* Load the styles if supported. */
+		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'styles.php' );
+
+		/* Load the wish-list functions. */
+		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'wish-list.php' );
 	}
 
 	/**
@@ -200,10 +215,6 @@ class Hybrid {
 	 */
 	function theme_support() {
 
-		/* Remove support for the core SEO component if the WP SEO plugin is installed. */
-		if ( defined( 'WPSEO_VERSION' ) )
-			remove_theme_support( 'hybrid-core-seo' );
-
 		/* Remove support for the the Breadcrumb Trail extension if the plugin is installed. */
 		if ( function_exists( 'breadcrumb_trail' ) )
 			remove_theme_support( 'breadcrumb-trail' );
@@ -233,6 +244,9 @@ class Hybrid {
 	 */
 	function functions() {
 
+		/* Load the HTML attributes functions. */
+		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'attr.php' );
+
 		/* Load the comments functions. */
 		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'comments.php' );
 
@@ -248,35 +262,17 @@ class Hybrid {
 		/* Load the utility functions. */
 		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'utility.php' );
 
-		/* Load the wish-list functions. */
-		require_once( trailingslashit( HYBRID_FUNCTIONS ) . 'wish-list.php' );
-
 		/* Load the theme settings functions if supported. */
 		require_if_theme_supports( 'hybrid-core-theme-settings', trailingslashit( HYBRID_FUNCTIONS ) . 'settings.php' );
 
-		/* Load the customizer functions if theme settings are supported. */
-		require_if_theme_supports( 'hybrid-core-theme-settings', trailingslashit( HYBRID_FUNCTIONS ) . 'customize.php' );
-
-		/* Load the menus functions if supported. */
-		require_if_theme_supports( 'hybrid-core-menus', trailingslashit( HYBRID_FUNCTIONS ) . 'menus.php' );
-
-		/* Load the core SEO component if supported. */
-		require_if_theme_supports( 'hybrid-core-seo', trailingslashit( HYBRID_FUNCTIONS ) . 'core-seo.php' );
-
 		/* Load the shortcodes if supported. */
 		require_if_theme_supports( 'hybrid-core-shortcodes', trailingslashit( HYBRID_FUNCTIONS ) . 'shortcodes.php' );
-
-		/* Load the sidebars if supported. */
-		require_if_theme_supports( 'hybrid-core-sidebars', trailingslashit( HYBRID_FUNCTIONS ) . 'sidebars.php' );
 
 		/* Load the widgets if supported. */
 		require_if_theme_supports( 'hybrid-core-widgets', trailingslashit( HYBRID_FUNCTIONS ) . 'widgets.php' );
 
 		/* Load the template hierarchy if supported. */
 		require_if_theme_supports( 'hybrid-core-template-hierarchy', trailingslashit( HYBRID_FUNCTIONS ) . 'template-hierarchy.php' );
-
-		/* Load the styles if supported. */
-		require_if_theme_supports( 'hybrid-core-styles', trailingslashit( HYBRID_FUNCTIONS ) . 'styles.php' );
 
 		/* Load the scripts if supported. */
 		require_if_theme_supports( 'hybrid-core-scripts', trailingslashit( HYBRID_FUNCTIONS ) . 'scripts.php' );
@@ -313,14 +309,8 @@ class Hybrid {
 		/* Load the Cleaner Caption extension if supported. */
 		require_if_theme_supports( 'cleaner-caption', trailingslashit( HYBRID_EXTENSIONS ) . 'cleaner-caption.php' );
 
-		/* Load the Custom Field Series extension if supported. */
-		require_if_theme_supports( 'custom-field-series', trailingslashit( HYBRID_EXTENSIONS ) . 'custom-field-series.php' );
-
 		/* Load the Loop Pagination extension if supported. */
 		require_if_theme_supports( 'loop-pagination', trailingslashit( HYBRID_EXTENSIONS ) . 'loop-pagination.php' );
-
-		/* Load the Entry Views extension if supported. */
-		require_if_theme_supports( 'entry-views', trailingslashit( HYBRID_EXTENSIONS ) . 'entry-views.php' );
 
 		/* Load the Theme Layouts extension if supported. */
 		require_if_theme_supports( 'theme-layouts', trailingslashit( HYBRID_EXTENSIONS ) . 'theme-layouts.php' );
@@ -365,6 +355,7 @@ class Hybrid {
 	 * @since 1.0.0
 	 */
 	function default_filters() {
+		global $wp_embed;
 
 		/* Remove bbPress theme compatibility if current theme supports bbPress. */
 		if ( current_theme_supports( 'bbpress' ) )
@@ -379,7 +370,16 @@ class Hybrid {
 
 		/* Make text widgets and term descriptions shortcode aware. */
 		add_filter( 'widget_text', 'do_shortcode' );
-		add_filter( 'term_description', 'do_shortcode' );
+
+		/* Use same default filters as 'the_content' with a little more flexibility. */
+		add_filter( 'hybrid_loop_description', array( $wp_embed, 'run_shortcode' ),   5 );
+		add_filter( 'hybrid_loop_description', array( $wp_embed, 'autoembed'     ),   5 );
+		add_filter( 'hybrid_loop_description',                   'wptexturize',       10 );
+		add_filter( 'hybrid_loop_description',                   'convert_smilies',   15 );
+		add_filter( 'hybrid_loop_description',                   'convert_chars',     20 );
+		add_filter( 'hybrid_loop_description',                   'wpautop',           25 );
+		add_filter( 'hybrid_loop_description',                   'do_shortcode',      30 );
+		add_filter( 'hybrid_loop_description',                   'shortcode_unautop', 35 );
 	}
 }
 
