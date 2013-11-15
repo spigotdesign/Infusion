@@ -6,7 +6,7 @@
  *
  * @package infusion
  * @subpackage Functions
- * @version 1.2.2
+ * @version 1.3 beta
  * @author Bryan Hoffman
  * @copyright Copyright (c) 2013 Bryan Hoffman
  * @link http://spigotdesign.com/
