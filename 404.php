@@ -15,7 +15,7 @@
 
 get_header(); // Loads the header.php template. ?>
 
-	<div class="main-content">
+	<div class="content">
 
 		<?php do_atomic( 'open_content' ); // infusion_open_content ?>
 

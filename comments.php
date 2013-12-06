@@ -21,7 +21,7 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 
 	<div class="conversation">
 
-		<div class="comments">
+		<div id="comments" class="comments">
 
 			<?php if ( have_comments() ) : ?>
 
