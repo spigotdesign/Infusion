@@ -19,7 +19,7 @@
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @package   ThemeLayouts
- * @version   0.5.3
+ * @version   0.6.0-alpha
  * @author    Justin Tadlock <justin@justintadlock.com>
  * @copyright Copyright (c) 2010 - 2013, Justin Tadlock
  * @link      http://justintadlock.com
@@ -113,7 +113,7 @@ function theme_layouts_get_layouts() {
 
 	$layouts = get_theme_support( 'theme-layouts' );
 
-	return isset( $layouts[0] ) ? $layouts[0] : array_keys( theme_layouts_strings() );
+	return isset( $layouts[0] ) ? array_keys( $layouts[0] ) : array_keys( theme_layouts_strings() );
 }
 
 /**
@@ -341,14 +341,16 @@ function theme_layouts_strings() {
 
 	/* Set up the default layout strings. */
 	$strings = array(
-		'default' => __( 'Default', 'theme-layouts' ),
-		'1c'      => __( 'One Column', 'theme-layouts' ),
-		'2c-l'    => __( 'Two Columns, Left', 'theme-layouts' ),
-		'2c-r'    => __( 'Two Columns, Right', 'theme-layouts' ),
-		'3c-l'    => __( 'Three Columns, Left', 'theme-layouts' ),
-		'3c-r'    => __( 'Three Columns, Right', 'theme-layouts' ),
-		'3c-c'    => __( 'Three Columns, Center', 'theme-layouts' )
+		/* Translators: Default theme layout option. */
+		'default' => _x( 'Default', 'theme layout', 'theme-layouts' )
 	);
+
+	/* Get theme-supported layouts. */
+	$layouts = get_theme_support( 'theme-layouts' );
+
+	/* Assign the strings passed in by the theme author. */
+	if ( isset( $layouts[0] ) )
+		$strings = array_merge( $layouts[0], $strings );
 
 	/* Allow devs to filter the strings for custom layouts. */
 	return apply_filters( 'theme_layouts_strings', $strings );
@@ -628,7 +630,7 @@ function theme_layouts_customize_register( $wp_customize ) {
 			'layout',
 			array(
 				'title'      => esc_html__( 'Layout', 'theme-layouts' ),
-				'priority'   => 190,
+				'priority'   => 30,
 				'capability' => 'edit_theme_options'
 			)
 		);

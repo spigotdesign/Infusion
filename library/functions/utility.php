@@ -38,33 +38,6 @@ function hybrid_add_post_type_support() {
 }
 
 /**
- * Generates the relevant template info.  Adds template meta with theme version.  Uses the theme 
- * name and version from style.css.  In 0.6, added the hybrid_meta_template 
- * filter hook.
- *
- * @since 0.4.0
- * @access public
- * @return void
- */
-function hybrid_meta_template() {
-	$theme = wp_get_theme( get_template() );
-	$template = '<meta name="template" content="' . esc_attr( $theme->get( 'Name' ) . ' ' . $theme->get( 'Version' ) ) . '" />' . "\n";
-	echo apply_atomic( 'meta_template', $template );
-}
-
-/**
- * Standardized function for outputting the footer content.
- *
- * @since  1.4.0
- * @deprecated 2.0.0
- * @access public
- * @return void
- */
-function hybrid_footer_content() {
-	_deprecated_function( __FUNCTION__, '2.0.0', '' );
-}
-
-/**
  * Checks if a post of any post type has a custom template.  This is the equivalent of WordPress' 
  * is_page_template() function with the exception that it works for all post types.
  *
@@ -115,4 +88,62 @@ function hybrid_untitled_post( $title ) {
 	return $title;
 }
 
-?>
+/**
+ * Retrieves the file with the highest priority that exists.  The function searches both the stylesheet 
+ * and template directories.  This function is similar to the locate_template() function in WordPress 
+ * but returns the file name with the URI path instead of the directory path.
+ *
+ * @since  1.5.0
+ * @access public
+ * @link   http://core.trac.wordpress.org/ticket/18302
+ * @param  array  $file_names The files to search for.
+ * @return string
+ */
+function hybrid_locate_theme_file( $file_names ) {
+
+	$located = '';
+
+	/* Loops through each of the given file names. */
+	foreach ( (array) $file_names as $file ) {
+
+		/* If the file exists in the stylesheet (child theme) directory. */
+		if ( is_child_theme() && file_exists( trailingslashit( get_stylesheet_directory() ) . $file ) ) {
+			$located = trailingslashit( get_stylesheet_directory_uri() ) . $file;
+			break;
+		}
+
+		/* If the file exists in the template (parent theme) directory. */
+		elseif ( file_exists( trailingslashit( get_template_directory() ) . $file ) ) {
+			$located = trailingslashit( get_template_directory_uri() ) . $file;
+			break;
+		}
+	}
+
+	return $located;
+}
+
+/**
+ * Converts a hex color to RGB.  Returns the RGB values as an array.
+ *
+ * @since  2.0.0
+ * @access public
+ * @param  string  $hex
+ * @return array
+ */
+function hybrid_hex_to_rgb( $hex ) {
+
+	/* Remove "#" if it was added. */
+	$color = trim( $hex, '#' );
+
+	/* If the color is three characters, convert it to six. */
+        if ( 3 === strlen( $color ) )
+		$color = $color[0] . $color[0] . $color[1] . $color[1] . $color[2] . $color[2];
+
+	/* Get the red, green, and blue values. */
+	$red   = hexdec( $color[0] . $color[1] );
+	$green = hexdec( $color[2] . $color[3] );
+	$blue  = hexdec( $color[4] . $color[5] );
+
+	/* Return the RGB colors as an array. */
+	return array( 'r' => $red, 'g' => $green, 'b' => $blue );
+}

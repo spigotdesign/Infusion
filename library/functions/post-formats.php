@@ -75,96 +75,12 @@ function hybrid_clean_post_format_slug( $slug ) {
  */
 function hybrid_aside_infinity( $content ) {
 
-	if ( has_post_format( 'aside' ) && !is_singular() )
-		$content .= ' <a class="permalink" href="' . get_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '">&#8734;</a>';
+	if ( has_post_format( 'aside' ) && !is_singular() ) {
+		$infinity = '<a class="permalink" href="' . get_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '">&#8734;</a>';
+		$content .= ' ' . apply_filters( 'hybrid_aside_infinity', $infinity );
+	}
 
 	return $content;
-}
-
-/* === Galleries === */
-
-/**
- * Gets the gallery *item* count.  This is different from getting the gallery *image* count.  By default, 
- * WordPress only allows attachments with the 'image' mime type in galleries.  However, some scripts such 
- * as Cleaner Gallery allow for other mime types.  This is a more accurate count than the 
- * hybrid_get_gallery_image_count() function since it will count all gallery items regardless of mime type.
- *
- * @todo Check for the [gallery] shortcode with the 'mime_type' parameter and use that in get_posts().
- *
- * @since  1.6.0
- * @access public
- * @return int
- */
-function hybrid_get_gallery_item_count() {
-
-	/* Check the post content for galleries. */
-	$galleries = get_post_galleries( get_the_ID(), true );
-
-	/* If galleries were found in the content, get the gallery item count. */
-	if ( !empty( $galleries ) ) {
-		$items = '';
-
-		foreach ( $galleries as $gallery => $gallery_items )
-			$items .= $gallery_items;
-
-		preg_match_all( '#src=([\'"])(.+?)\1#is', $items, $sources, PREG_SET_ORDER );
-
-		if ( !empty( $sources ) )
-			return count( $sources );
-	}
-
-	/* If an item count wasn't returned, get the post attachments. */
-	$attachments = get_posts( 
-		array( 
-			'fields'         => 'ids',
-			'post_parent'    => get_the_ID(), 
-			'post_type'      => 'attachment', 
-			'numberposts'    => -1 
-		) 
-	);
-
-	/* Return the attachment count if items were found. */
-	if ( !empty( $attachments ) )
-		return count( $attachments );
-
-	/* Return 0 for everything else. */
-	return 0;
-}
-
-/**
- * Returns the number of images displayed by the gallery or galleries in a post.
- *
- * @since  1.6.0
- * @access public
- * @return int
- */
-function hybrid_get_gallery_image_count() {
-
-	/* Set up an empty array for images. */
-	$images = array();
-
-	/* Get the images from all post galleries. */
-	$galleries = get_post_galleries_images();
-
-	/* Merge each gallery image into a single array. */
-	foreach ( $galleries as $gallery_images )
-		$images = array_merge( $images, $gallery_images );
-
-	/* If there are no images in the array, just grab the attached images. */
-	if ( empty( $images ) ) {
-		$images = get_posts( 
-			array( 
-				'fields'         => 'ids',
-				'post_parent'    => get_the_ID(), 
-				'post_type'      => 'attachment', 
-				'post_mime_type' => 'image', 
-				'numberposts'    => -1 
-			) 
-		);
-	}
-
-	/* Return the count of the images. */
-	return count( $images );
 }
 
 /* === Images === */
@@ -194,47 +110,6 @@ function hybrid_image_content( $content ) {
 }
 
 /* === Links === */
-
-/**
- * Gets a URL from the content, even if it's not wrapped in an <a> tag.
- *
- * @since  1.6.0
- * @access public
- * @param  string  $content
- * @return string
- */
-function hybrid_get_content_url( $content ) {
-
-	/* Catch links that are not wrapped in an '<a>' tag. */
-	preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', make_clickable( $content ), $matches );
-
-	return !empty( $matches[1] ) ? esc_url_raw( $matches[1] ) : '';
-}
-
-/**
- * Filters 'get_the_post_format_url' to make for a more robust and back-compatible function.  If WP did 
- * not find a URL, check the post content for one.  If nothing is found, return the post permalink.
- *
- * @since  1.6.0
- * @access public
- * @param  string  $url
- * @param  object  $post
- * @note   Setting defaults for the parameters so that this function can become a filter in future WP versions.
- * @return string
- */
-function hybrid_get_the_post_format_url( $url = '', $post = null ) {
-
-	if ( empty( $url ) ) {
-
-		$post = is_null( $post ) ? get_post() : $post;
-
-		$content_url = hybrid_get_content_url( $post->post_content );
-
-		$url = !empty( $content_url ) ? $content_url : get_permalink( $post->ID );
-	}
-
-	return $url;
-}
 
 /**
  * Filters the content of the link format posts.  Wraps the content in the make_clickable() function 
@@ -354,7 +229,7 @@ function hybrid_get_the_post_format_chat( $content ) {
 function hybrid_chat_content( $content ) {
 
 	/* If this isn't a chat, return. */
-	if ( !has_post_format( 'chat' ) )
+	if ( !has_post_format( 'chat' ) || post_password_required() )
 		return $content;
 
 	/* Open the chat transcript div and give it a unique ID based on the post ID. */
@@ -438,5 +313,3 @@ function hybrid_chat_row_id( $chat_author ) {
 	/* Return the array key for the chat author and add "1" to avoid an ID of "0". */
 	return absint( array_search( $chat_author, $_hybrid_post_chat_ids ) ) + 1;
 }
-
-?>

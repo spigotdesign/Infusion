@@ -26,6 +26,7 @@
  * with the WordPress settings API.
  *
  * @since  1.0.0
+ * @param  string  $setting
  * @return string
  */
 function hybrid_settings_field_id( $setting ) {
@@ -37,6 +38,7 @@ function hybrid_settings_field_id( $setting ) {
  * use with the WordPress settings API.
  *
  * @since  1.0.0
+ * @param  string  $setting
  * @return string
  */
 function hybrid_settings_field_name( $setting ) {
@@ -44,7 +46,10 @@ function hybrid_settings_field_name( $setting ) {
 }
 
 /**
- * @since 2.0.0
+ * Creates a theme settings page for the theme.
+ *
+ * @since  2.0.0
+ * @access public
  */
 final class Hybrid_Theme_Settings{
 
@@ -198,7 +203,7 @@ final class Hybrid_Theme_Settings{
 			<form method="post" action="options.php">
 				<?php settings_fields( "{$this->prefix}_theme_settings" ); ?>
 				<?php do_settings_sections( $this->settings_page ); ?>
-				<?php submit_button( esc_attr__( 'Update Settings', 'hybrid-core' ), 'primary' ); ?>
+				<?php submit_button( '', 'primary' ); ?>
 			</form>
 
 		</div><!-- wrap -->

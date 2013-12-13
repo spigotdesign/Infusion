@@ -13,16 +13,16 @@
  */
 
 /* Register Hybrid Core styles. */
-add_action( 'wp_enqueue_scripts', 'hybrid_register_styles', 1 );
+add_action( 'wp_enqueue_scripts', 'hybrid_register_styles', 0 );
 
 /* Load Hybrid Core styles. */
 add_action( 'wp_enqueue_scripts', 'hybrid_enqueue_styles', 5 );
 
 /* Load the development stylsheet in script debug mode. */
-add_filter( 'stylesheet_uri', 'hybrid_min_stylesheet_uri', 10, 2 );
+add_filter( 'stylesheet_uri', 'hybrid_min_stylesheet_uri', 5, 2 );
 
 /* Filters the WP locale stylesheet. */
-add_filter( 'locale_stylesheet_uri', 'hybrid_locale_stylesheet_uri' );
+add_filter( 'locale_stylesheet_uri', 'hybrid_locale_stylesheet_uri', 5 );
 
 /**
  * Registers stylesheets for the framework.  This function merely registers styles with WordPress using
@@ -80,15 +80,9 @@ function hybrid_enqueue_styles() {
 	if ( !is_array( $supports[0] ) )
 		return;
 
-	/* Get framework styles. */
-	$styles = hybrid_get_styles();
-
 	/* Loop through each of the core framework styles and enqueue them if supported. */
-	foreach ( $supports[0] as $style ) {
-
-		if ( isset( $styles[$style] ) )
-			wp_enqueue_style( $style );
-	}
+	foreach ( $supports[0] as $style )
+		wp_enqueue_style( $style );
 }
 
 /**
@@ -105,7 +99,7 @@ function hybrid_get_styles() {
 
 	/* Default styles available. */
 	$styles = array(
-		'one-five'   => array( 'version' => '20130523' ),
+		'one-five'   => array( 'version' => '20131105' ),
 		'gallery'    => array( 'version' => '20130526' ),
 	);
 
@@ -127,7 +121,7 @@ function hybrid_get_styles() {
 	$styles['style'] = array( 'src' => get_stylesheet_uri(), 'version' => wp_get_theme()->get( 'Version' ) );
 
 	/* Return the array of styles. */
-	return apply_filters( hybrid_get_prefix() . '_styles', $styles );
+	return apply_filters( 'hybrid_styles', $styles );
 }
 
 /**
@@ -208,4 +202,3 @@ function hybrid_get_locale_style() {
 
 	return hybrid_locate_theme_file( $styles );
 }
-

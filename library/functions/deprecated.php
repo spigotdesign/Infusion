@@ -78,48 +78,157 @@ function get_atomic_template( $template ) {
 }
 
 /**
- * Dynamic element to wrap the site title in.  If it is the front page, wrap it in an <h1> element.  One other 
- * pages, wrap it in a <div> element. 
- *
- * @since      0.1.0
+ * @since      0.7.0
  * @deprecated 2.0.0
- * @access     public
- * @return     void
  */
-function hybrid_site_title() {
-	_deprecated_function( __FUNCTION__, '2.0.0', '' );
-
-	/* If viewing the front page of the site, use an <h1> tag.  Otherwise, use a <div> tag. */
-	$tag = ( is_front_page() ) ? 'h1' : 'div';
-
-	/* Get the site title.  If it's not empty, wrap it with the appropriate HTML. */
-	if ( $title = get_bloginfo( 'name' ) )
-		$title = sprintf( '<%1$s id="site-title"><a href="%2$s" title="%3$s" rel="home"><span>%4$s</span></a></%1$s>', tag_escape( $tag ), home_url(), esc_attr( $title ), $title );
-
-	/* Display the site title and apply filters for developers to overwrite. */
-	echo apply_atomic( 'site_title', $title );
+function do_atomic( $tag = '', $arg = '' ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', 'hybrid_do_atomic' );
+	hybrid_do_atomic( $tag, $arg );
 }
 
 /**
- * Dynamic element to wrap the site description in.  If it is the front page, wrap it in an <h2> element.  
- * On other pages, wrap it in a <div> element.
- *
- * @since 0.1.0
- * @access public
- * @return void
+ * @since      0.7.0
+ * @deprecated 2.0.0
  */
-function hybrid_site_description() {
+function apply_atomic( $tag = '', $value = '' ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', 'hybrid_apply_atomic' );
+	return hybrid_apply_atomic( $tag, $value );
+}
+
+/**
+ * @since      0.7.0
+ * @deprecated 2.0.0
+ */
+function apply_atomic_shortcode( $tag = '', $value = '' ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', 'hybrid_apply_atomic_shortcode' );
+	return hybrid_apply_atomic_shortcode( $tag, $value );
+}
+
+/**
+ * @since      1.6.0
+ * @deprecated 2.0.0
+ */
+function hybrid_body_attributes() {
+	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'body' )" );
+	hybrid_attr( 'body' );
+}
+
+/**
+ * @since      0.1.0
+ * @deprecated 2.0.0
+ */
+function hybrid_body_class( $class = '' ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'body' )" );
+	hybrid_attr( 'body' );
+}
+
+/**
+ * @since      1.6.0
+ * @deprecated 2.0.0
+ */
+function hybrid_get_body_class( $class = '' ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', 'get_body_class' );
+	return get_body_class( $class );
+}
+
+/**
+ * @since      1.4.0
+ * @deprecated 2.0.0
+ */
+function hybrid_footer_content() {
 	_deprecated_function( __FUNCTION__, '2.0.0', '' );
+}
 
-	/* If viewing the front page of the site, use an <h2> tag.  Otherwise, use a <div> tag. */
-	$tag = ( is_front_page() ) ? 'h2' : 'div';
+/**
+ * @since      1.6.0
+ * @deprecated 2.0.0
+ */
+function hybrid_post_attributes() {
+	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'post' )" );
+	hybrid_attr( 'post' );
+}
 
-	/* Get the site description.  If it's not empty, wrap it with the appropriate HTML. */
-	if ( $desc = get_bloginfo( 'description' ) )
-		$desc = sprintf( '<%1$s id="site-description"><span>%2$s</span></%1$s>', tag_escape( $tag ), $desc );
+/**
+ * @since      1.6.0
+ * @deprecated 2.0.0
+ */
+function hybrid_post_class( $class = '', $post_id = null ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'post' )" );
+	echo join( ' ', get_post_class( $class, $post_id ) );
+}
 
-	/* Display the site description and apply filters for developers to overwrite. */
-	echo apply_atomic( 'site_description', $desc );
+/**
+ * @since      0.5.0
+ * @deprecated 1.6.0
+ */
+function hybrid_entry_class( $class = '', $post_id = null ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'post' )" );
+	echo join( ' ', get_post_class( $class, $post_id ) );
+}
+
+/**
+ * @since      1.6.0
+ * @deprecated 2.0.0
+ */
+function hybrid_get_post_class( $class = '', $post_id = null ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', 'get_post_class' );
+	return get_post_class( $class, $post_id );
+}
+
+/**
+ * @since      1.6.0
+ * @deprecated 2.0.0
+ */
+function hybrid_comment_attributes() {
+	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'comment' )" );
+	hybrid_attr( 'comment' );
+}
+
+/**
+ * @since      0.2.0
+ * @deprecated 2.0.0
+ */
+function hybrid_comment_class( $class = '' ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'comment' )" );
+	hybrid_attr( 'comment' );
+}
+
+/**
+ * @since      1.6.0
+ * @deprecated 2.0.0
+ */
+function hybrid_get_comment_class( $class = '' ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', 'get_comment_class' );
+	return get_comment_class( $class );
+}
+
+/**
+ * @since      0.2.0
+ * @deprecated 2.0.0
+ */
+function hybrid_avatar() {
+	global $comment, $hybrid;
+
+	_deprecated_function( __FUNCTION__, '2.0.0', 'get_avatar' );
+
+	/* Make sure avatars are allowed before proceeding. */
+	if ( !get_option( 'show_avatars' ) )
+		return false;
+
+	/* Get the avatar provided by the get_avatar() function. */
+	$avatar = get_avatar( $comment, 80, '', get_comment_author( $comment->comment_ID ) );
+
+	/* Display the avatar and allow it to be filtered. Note: Use the get_avatar filter hook where possible. */
+	echo apply_filters( 'hybrid_avatar', $avatar );
+}
+
+/**
+ * @since      0.1.0
+ * @deprecated 2.0.0
+ */
+function hybrid_document_title() {
+	_deprecated_function( __FUNCTION__, '2.0.0', 'wp_title' );
+	wp_title();
 }
 
 /**
@@ -751,5 +860,3 @@ function hybrid_get_plural_post_format_strings() {
 function hybrid_function_removed( $func = '' ) {
 	die( sprintf( __( '<code>%1$s</code> &mdash; This function has been removed or replaced by another function.', 'hybrid-core' ), $func ) );
 }
-
-?>

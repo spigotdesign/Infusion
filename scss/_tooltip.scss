@@ -1,0 +1,94 @@
+//
+/* Tooltips */
+// 
+// @package   Oblates of St Joseph
+// @subpackage  Sass stylesheet
+//
+// @version 1.0
+
+/* Tooltips */
+.tooltip {
+  position: absolute;
+  z-index: 1020;
+  display: block;
+  visibility: visible;
+  padding: 5px;
+  font-size: 11px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+
+  &.in {
+    opacity: .8;
+    filter: alpha(opacity=100);
+  }
+
+  &.top       { 
+    margin-top: -2px; 
+    
+    &.tooltip-arrow {
+      bottom: 0;
+      left: 50%;
+      margin-left: -5px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid $toolTipColor;
+    }
+  }
+  &.right {
+    margin-left: 2px; 
+
+    .tooltip-arrow {
+      top: 50%;
+      left: 0;
+      margin-top: -5px;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-right: 5px solid $toolTipColor;
+    }
+  }
+  &.bottom {
+    margin-top: 2px;
+
+    .tooltip-arrow {
+      top: 0;
+      left: 50%;
+      margin-left: -5px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid $toolTipColor;
+    }
+  }
+  &.left {
+    margin-left: -2px;
+
+    .tooltip-arrow {
+      top: 50%;
+      right: 0;
+      margin-top: -5px;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 5px solid $toolTipColor;
+    }
+  }
+
+}
+
+
+.tooltip.left, 
+.tooltip.bottom, 
+.tooltip.right, 
+.tooltip-inner {
+  max-width: 250px;
+  padding: 3px 8px;
+  color: $toolTipTextColor;
+  text-align: center;
+  text-decoration: none;
+  background-color: $toolTipColor;
+
+  @include border-radius(4px);
+}
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+}

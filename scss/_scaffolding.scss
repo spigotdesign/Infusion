@@ -1,0 +1,55 @@
+//
+ /* Scaffolding  */
+ // 
+ // @package 	Infusion-child
+ // @subpackage 	Sass stylesheet
+ //
+ // @version 1.0
+
+
+// Body reset
+// ----------
+
+* {
+  @include box-sizing(border-box);
+}
+
+
+html {
+  -webkit-font-smoothing: antialiased;
+    
+  }
+
+
+body {
+  margin: 0;
+  font-family: $baseFontFamily;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  font-style: $baseFontStyle;
+  color: $textColor;
+  background-color: $bodyBackground;
+}
+
+
+// Site Structure
+
+// Container (centered, fixed-width layouts)
+#container {
+
+}
+
+
+// Main
+#main {
+
+  
+}
+
+
+// Content
+
+#content {
+  
+}
+

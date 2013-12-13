@@ -1,0 +1,87 @@
+//
+/* Utility */
+// 
+// @package 	Infusion-child
+// @subpackage 	Less stylesheet
+//
+// @version 1.0
+
+// UTILITY CLASSES
+// ---------------
+
+// Clear floats
+.group {
+  @include group;
+}
+
+
+// Quick floats
+.pull-right {
+  float: right
+}
+.pull-left {
+  float: left
+}
+// Toggling content
+.hide {
+  display: none
+}
+.show {
+  display: block
+}
+// Visibility
+.invisible {
+  visibility: hidden
+}
+// Separate
+.separate {
+  padding-top: 32px;
+  border-top: 1px solid $gray;
+  clear: both;
+}
+.separate.nohr {
+  border: none
+}
+
+// WordPress allignment
+
+.alignleft,
+.left {
+    float: left;
+    margin-right: $floatMarginRight;
+}
+.alignright,
+.right {
+    float: right;
+    margin-left: $floatMarginLeft;
+}
+.aligncenter,
+.center {
+    display: block;
+    margin: 0 auto $floatMarginBottom auto;
+}
+.alignnone,
+.block {
+    clear: both;
+    margin: 0 0 $floatMarginBottom 0;
+}
+
+img.alignleft,
+img.alignright { display: inline }
+blockquote.alignleft,
+blockquote.alignright { width: 33% }
+
+// Show Template
+span.show-template {
+  font-family: $monoFontFamily;
+}
+
+
+// Print Styles
+
+ 
+ @media print {
+ *,html,body,#main{background:transparent!important;color:#000!important}a,a:visited{text-decoration:underline}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100%!important;border:1px solid #000;margin:20px 0}p,h2,h3{orphans:3;widows:3}h2,h3{page-break-after:avoid}header,#sidebar-primary,#sidebar-subsidiary,#comments-template,footer,.entry-meta{display:none}h1,h2,h3,h4,h5,h6,p,li,em{font-family:Helvetica, Arial, sans-serif;text-transform:none}h1{font-size:20px}h2{font-size:18px}h3,h4,h5,h6{font-size:15px}p,ul li,li,ul li a{font-size:12px!important}
+ 
+ }
+ 

@@ -13,12 +13,50 @@
  */
 
 /**
+ * Outputs the comment reply link.  Only use outside of `wp_list_comments()`.
+ *
+ * @since  2.0.0
+ * @access public
+ * @param  array   $args
+ * @return void
+ */
+function hybrid_comment_reply_link( $args = array() ) {
+	echo hybrid_get_comment_reply_link( $args );
+}
+
+/**
+ * Outputs the comment reply link.  Note that WP's `comment_reply_link()` doesn't work outside of 
+ * `wp_list_comments()` without passing in the proper arguments (it isn't meant to).  This function is just a 
+ * wrapper for `get_comment_reply_link()`, which adds in the arguments automatically.
+ *
+ * @since  2.0.0
+ * @access public
+ * @param  array  $args
+ * @return string
+ */
+function hybrid_get_comment_reply_link( $args = array() ) {
+
+	if ( !get_option( 'thread_comments' ) || in_array( get_comment_type(), array( 'pingback', 'trackback' ) ) )
+		return '';
+
+	$args = wp_parse_args(
+		$args,
+		array(
+			'depth'     => intval( $GLOBALS['comment_depth'] ),
+			'max_depth' => get_option( 'thread_comments_depth' ),
+		)
+	);
+
+	return get_comment_reply_link( $args );
+}
+
+/**
  * Arguments for the wp_list_comments_function() used in comments.php. Users can set up a 
  * custom comments callback function by changing $callback to the custom function.  Note that 
  * $style should remain 'ol' since this is hardcoded into the theme and is the semantically correct
  * element to use for listing comments.
  *
- * @since 0.7.0
+ * @since  0.7.0
  * @access public
  * @return array $args Arguments for listing comments.
  */
@@ -34,7 +72,7 @@ function hybrid_list_comments_args() {
 	);
 
 	/* Return the arguments and allow devs to overwrite them. */
-	return apply_atomic( 'list_comments_args', $args );
+	return apply_filters( 'hybrid_list_comments_args', $args );
 }
 
 /**
@@ -46,17 +84,15 @@ function hybrid_list_comments_args() {
  * The templates are saved in $hybrid->comment_template[$comment_type], so each comment template
  * is only located once if it is needed. Following comments will use the saved template.
  *
- * @since 0.2.3
+ * @since  0.2.3
  * @access public
- * @param $comment The comment object.
- * @param $args Array of arguments passed from wp_list_comments().
- * @param $depth What level the particular comment is.
+ * @param  $comment The comment object.
+ * @param  $args    Array of arguments passed from wp_list_comments().
+ * @param  $depth   What level the particular comment is.
  * @return void
  */
 function hybrid_comments_callback( $comment, $args, $depth ) {
 	global $hybrid;
-	$GLOBALS['comment'] = $comment;
-	$GLOBALS['comment_depth'] = $depth;
 
 	/* Get the comment type of the current comment. */
 	$comment_type = get_comment_type( $comment->comment_ID );
@@ -101,40 +137,10 @@ function hybrid_comments_callback( $comment, $args, $depth ) {
  * Needs to be used in conjunction with hybrid_comments_callback(). Not needed but used just in 
  * case something is changed.
  *
- * @since 0.2.3
+ * @since  0.2.3
  * @access public
  * @return void
  */
 function hybrid_comments_end_callback() {
 	echo '</li><!-- .comment -->';
 }
-
-/**
- * Displays the avatar for the comment author and wraps it in the comment author's URL if it is
- * available.  Adds a call to HYBRID_IMAGES . "/{$comment_type}.png" for the default avatars for
- * trackbacks and pingbacks.
- *
- * @since 0.2.0
- * @deprecated 2.0.0
- * @access public
- * @global $comment The current comment's DB object.
- * @global $hybrid The global Hybrid object.
- * @return void
- */
-function hybrid_avatar() {
-	global $comment, $hybrid;
-
-	_deprecated_function( __FUNCTION__, '2.0.0', 'get_avatar' );
-
-	/* Make sure avatars are allowed before proceeding. */
-	if ( !get_option( 'show_avatars' ) )
-		return false;
-
-	/* Get the avatar provided by the get_avatar() function. */
-	$avatar = get_avatar( $comment, 80, '', get_comment_author( $comment->comment_ID ) );
-
-	/* Display the avatar and allow it to be filtered. Note: Use the get_avatar filter hook where possible. */
-	echo apply_filters( "{$hybrid->prefix}_avatar", $avatar );
-}
-
-?>

@@ -1,0 +1,52 @@
+//
+/* Loop Nav */
+// 
+// @package   Infusion-child
+// @subpackage  Sass stylesheet
+//
+// @version 1.0
+
+
+.loop-nav {
+  ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   li {
+     position: fixed;
+     top: 50%;
+     padding: 0;
+     margin: 0;
+     
+     a {
+       color: $textColor;
+       background: $white;
+       @include myBoxShadow();
+       opacity: .6;
+       display: block;
+       line-height: 1;
+       
+     &:hover { opacity: 1;}
+     
+     i { padding: 8px 6px 6px 6px; }
+     }
+   } //li 
+   
+   .previous {
+      right: 0;
+      a {
+        @include border-radius(3px 0 0 3px);
+     
+     }
+   }
+   
+   .next {
+     
+     
+     a {
+      @include border-radius(0 3px 3px 0);
+     }
+   }  
+  
+  } // ul
+}

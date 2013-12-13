@@ -1,0 +1,25 @@
+//
+/* btns */
+// 
+// @package 	Infusion-child
+// @subpackage 	Sass Stylesheet
+//
+// @version 1.0
+
+
+// Site btns - See _mixins.scss for button styles
+
+// Comment Form Submit
+
+input#submit {
+  @include btn(#f0f0f0, #f9f9f9);
+  // .btn-blue();
+  @include border-radius(3px);
+}
+
+.btn, .button {
+	@include btn(#f0f0f0, #f9f9f9);
+}
+
+
+

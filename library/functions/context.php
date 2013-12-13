@@ -13,6 +13,15 @@
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+/* Filters the WordPress 'body_class' early. */
+add_filter( 'body_class', 'hybrid_body_class_filter', 0, 2 );
+
+/* Filters the WordPress 'post_class' early. */
+add_filter( 'post_class', 'hybrid_post_class_filter', 0, 3 );
+
+/* Filters the WordPress 'comment_class' early. */
+add_filter( 'comment_class', 'hybrid_comment_class_filter', 0, 3 );
+
 /**
  * Hybrid's main contextual function.  This allows code to be used more than once without running 
  * hundreds of conditional checks within the theme.  It returns an array of contexts based on what 
@@ -126,46 +135,17 @@ function hybrid_get_context() {
 }
 
 /**
- * Outputs the attributes for the <body> element.  By default, this is just the 'class' attribute, but 
- * developers can filter this to add other attributes.
+ * Filters the WordPress body class with a better set of classes that are more consistently handled and 
+ * are backwards compatible with the original body class functionality that existed prior to WordPress 
+ * core adopting this feature.
  *
- * @since  1.6.0
- * @deprecated 2.0.0
+ * @since  2.0.0
  * @access public
- * @return void
- */
-function hybrid_body_attributes() {
-	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'body' )" );
-	hybrid_attr( 'body' );
-}
-
-/**
- * Outputs classes for the <body> element depending on page context.
- *
- * @since 0.1.0
- * @access public
- * @param string|array $class Additional classes for more control.
- * @return void
- */
-function hybrid_body_class( $class = '' ) {
-
-	/* Get the body class. */
-	$classes = hybrid_get_body_class( $class );
-
-	/* Print the body class. */
-	echo apply_atomic( 'body_class', join( ' ', $classes ) );
-}
-
-/**
- * Returns classes for the <body> element depending on page context.
- * 
- * @since  1.6.0
- * @access public
- * @param  string|array $class Additional classes for more control.
+ * @param  array        $classes
+ * @param  string|array $class
  * @return array
  */
-function hybrid_get_body_class( $class = '' ) {
-	global $wp_query;
+function hybrid_body_class_filter( $classes, $class ) {
 
 	/* WordPress class for uses when WordPress isn't always the only system on the site. */
 	$classes = array( 'wordpress' );
@@ -173,8 +153,14 @@ function hybrid_get_body_class( $class = '' ) {
 	/* Text direction. */
 	$classes[] = is_rtl() ? 'rtl' : 'ltr';
 
-	/* Locale. */
-	$classes[] = strtolower( str_replace( '_', '-', get_locale() ) );
+	/* Locale and language. */
+	$locale = get_locale();
+	$lang   = hybrid_get_language( $locale );
+
+	if ( $locale !== $lang )
+		$classes[] = $lang;
+
+	$classes[] = strtolower( str_replace( '_', '-', $locale ) );
 
 	/* Check if the current theme is a parent or child theme. */
 	$classes[] = is_child_theme() ? 'child-theme' : 'parent-theme';
@@ -204,6 +190,14 @@ function hybrid_get_body_class( $class = '' ) {
 	if ( get_header_image() || ( display_header_text() && get_header_textcolor() ) )
 		$classes[] = 'custom-header';
 
+	/* Add the '.display-header-text' class if the user chose to display it. */
+	if ( display_header_text() )
+		$classes[] = 'display-header-text';
+
+	/* Plural/multiple-post view (opposite of singular). */
+	if ( is_home() || is_archive() || is_search() )
+		$classes[] = 'plural';
+
 	/* Merge base contextual classes with $classes. */
 	$classes = array_merge( $classes, hybrid_get_context() );
 
@@ -232,209 +226,100 @@ function hybrid_get_body_class( $class = '' ) {
 	}
 
 	/* Paged views. */
-	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
-		$classes[] = 'paged paged-' . intval( $page );
+	if ( is_paged() ) {
+		$classes[] = 'paged';
+		$classes[] = 'paged-' . intval( get_query_var( 'paged' ) );
+	}
+
+	/* Singular post paged views using <!-- nextpage -->. */
+	elseif ( is_singular() && 1 < get_query_var( 'page' ) ) {
+		$classes[] = 'paged';
+		$classes[] = 'paged-' . intval( get_query_var( 'page' ) );
+	}
 
 	/* Input class. */
 	if ( !empty( $class ) ) {
-		if ( !is_array( $class ) )
-			$class = preg_split( '#\s+#', $class );
+		$class   = is_array( $class ) ? $class : preg_split( '#\s+#', $class );
 		$classes = array_merge( $classes, $class );
 	}
 
-	/* Apply the filters for WP's 'body_class'. */
-	return array_unique( apply_filters( 'body_class', $classes, $class ) );
+	return array_map( 'esc_attr', $classes );
 }
 
 /**
- * Outputs the attributes for the post wrapper.  By default, this is the 'class' and 'id' attributes, 
- * but developers can filter this to add other attributes.
+ * Filters the WordPress post class with a better set of classes that are more consistently handled and 
+ * are backwards compatible with the original post class functionality that existed prior to WordPress 
+ * core adopting this feature.
  *
- * @since  1.6.0
- * @deprecated 2.0.0
+ * @since  2.0.0
  * @access public
- * @return void
- */
-function hybrid_post_attributes() {
-	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'post' )" );
-	hybrid_attr( 'post' );
-}
-
-/**
- * Outputs the class for the post wrapper.
- *
- * @since  1.6.0
- * @access public
- * @param  string|array $class    Additional classes for more control.
- * @param  int          $post_id  ID of a specific post to get the class for.
- * @return void
- */
-function hybrid_post_class( $class = '', $post_id = null ) {
-
-	/* Get the post class. */
-	$classes = hybrid_get_post_class( $class, $post_id );
-
-	/* Print the body class. */
-	echo apply_atomic( 'post_class', join( ' ', $classes ) );
-}
-
-/**
- * Outputs the class for the post wrapper.  Use hybrid_post_class() instead.
- *
- * @since      0.5.0
- * @deprecated 1.6.0
- * @access     public
- * @param      string|array $class    Additional classes for more control.
- * @param      int          $post_id  ID of a specific post to get the class for.
- * @return     void
- */
-function hybrid_entry_class( $class = '', $post_id = null ) {
-
-	/* Get the post class. */
-	$classes = hybrid_get_post_class( $class );
-
-	/* Print the entry class. */
-	echo apply_atomic( 'entry_class', join( ' ', $classes ) );
-}
-
-/**
- * Creates a set of classes for each site entry upon display. Each entry is given the class of 
- * 'hentry'. Posts are given category, tag, and author classes. Alternate post classes of odd, 
- * even, and alt are added.
- *
- * @since  1.6.0
- * @access public
- * @param  string|array $class    Additional classes for more control.
- * @param  int          $post_id  ID of a specific post to get the class for.
+ * @param  array        $classes
+ * @param  string|array $class
+ * @param  int          $post_id
  * @return array
  */
-function hybrid_get_post_class( $class = '', $post_id = null ) {
-	static $post_alt;
+function hybrid_post_class_filter( $classes, $class, $post_id ) {
 
-	$post = get_post( $post_id );
+	if ( is_admin() )
+		return $classes;
 
-	/* Make sure we have a real post first. */
-	if ( !empty( $post ) ) {
+	$_classes    = array();
+	$post        = get_post( $post_id );
+	$post_type   = get_post_type();
+	$post_status = get_post_status();
 
-		$post_id = $post->ID;
+	$remove = array( 'hentry', "type-{$post_type}", "status-{$post_status}", 'post-password-required' );
 
-		/* Add hentry for microformats compliance, the post type, and post status. */
-		$classes = array( 'hentry', $post->post_type, $post->post_status );
+	foreach ( $classes as $key => $class ) {
 
-		/* Post alt class. */
-		$classes[] = 'post-' . ++$post_alt;
-		$classes[] = ( $post_alt % 2 ) ? 'odd' : 'even alt';
-
-		/* Author class. */
-		$classes[] = 'author-' . sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
-
-		/* Sticky class (only on home/blog page). */
-		if ( is_home() && is_sticky() && !is_paged() )
-			$classes[] = 'sticky';
-
-		/* Password-protected posts. */
-		if ( post_password_required() )
-			$classes[] = 'protected';
-
-		/* Has excerpt. */
-		if ( post_type_supports( $post->post_type, 'excerpt' ) && has_excerpt() )
-			$classes[] = 'has-excerpt';
-
-		/* Has <!--more--> link. */
-		if ( !is_singular() && false !== strpos( $post->post_content, '<!--more-->' ) )
-			$classes[] = 'has-more-link';
-
-		/* Post format. */
-		if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post->post_type, 'post-formats' ) ) {
-			$post_format = get_post_format( $post_id );
-			$classes[] = ( ( empty( $post_format ) || is_wp_error( $post_format ) ) ? 'format-standard' : "format-{$post_format}" );
-		}
-
-		/* Add category and post tag terms as classes. */
-		if ( 'post' == $post->post_type ) {
-
-			foreach ( array( 'category', 'post_tag' ) as $tax ) {
-
-				foreach ( (array)get_the_terms( $post->ID, $tax ) as $term ) {
-					if ( !empty( $term->slug ) )
-						$classes[] = $tax . '-' . sanitize_html_class( $term->slug, $term->term_id );
-				}
-			}
-		}
+		if ( in_array( $class, $remove ) )
+			unset( $classes[ $key ] );
+		else
+			$classes[ $key ] = str_replace( 'tag-', 'post_tag-', $class );
 	}
 
-	/* If not a post. */
-	else {
-		$classes = array( 'hentry', 'error' );
-	}
+	$_classes[] = 'entry';
+	$_classes[] = $post_type;
+	$_classes[] = $post_status;
 
-	/* User-created classes. */
-	if ( !empty( $class ) ) {
-		if ( !is_array( $class ) )
-			$class = preg_split( '#\s+#', $class );
-		$classes = array_merge( $classes, $class );
-	}
+	/* Author class. */
+	$_classes[] = 'author-' . sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
 
-	/* Apply the filters for WP's 'post_class'. */
-	return array_unique( apply_filters( 'post_class', $classes, $class, $post_id ) );
+	/* Password-protected posts. */
+	if ( post_password_required() )
+		$_classes[] = 'protected';
+
+	/* Has excerpt. */
+	if ( post_type_supports( $post->post_type, 'excerpt' ) && has_excerpt() )
+		$_classes[] = 'has-excerpt';
+
+	/* Has <!--more--> link. */
+	if ( !is_singular() && false !== strpos( $post->post_content, '<!--more-->' ) )
+		$_classes[] = 'has-more-link';
+
+	return array_map( 'esc_attr', array_unique( array_merge( $_classes, $classes ) ) );
 }
 
 /**
- * Outputs the attributes for the comment wrapper.  By default, this is the 'class' and 'id' attributes, 
- * but developers can filter this to add other attributes.
+ * Adds custom classes to the WordPress comment class.
  *
- * @since  1.6.0
- * @deprecated 2.0.0
+ * @since  2.0.0
  * @access public
- * @return void
+ * @param  array        $classes
+ * @param  string|array $class
+ * @param  int          $comment_id
+ * @return array
  */
-function hybrid_comment_attributes() {
-	_deprecated_function( __FUNCTION__, '2.0.0', "hybrid_attr( 'comment' )" );
-	hybrid_attr( 'comment' );
-}
+function hybrid_comment_class_filter( $classes, $class, $comment_id ) {
 
-/**
- * Outputs the class for the current comment wrapper element.
- *
- * @since  0.2.0
- * @access public
- * @global $comment The current comment's DB object.
- * @return void
- */
-function hybrid_comment_class( $class = '' ) {
-	global $hybrid;
-
-	/* Join all the classes into one string and echo them. */
-	$class = join( ' ', hybrid_get_comment_class( $class ) );
-
-	echo apply_filters( "{$hybrid->prefix}_comment_class", $class );
-}
-
-/**
- * Sets a class for each comment. Sets alt, odd/even, and author/user classes. Adds author, user, 
- * and reader classes. Needs more work because WP, by default, assigns even/odd backwards 
- * (Odd should come first, even second).
- *
- * @since  1.6.0
- * @access public
- * @global $comment The current comment's DB object
- * @return void
- */
-function hybrid_get_comment_class( $class = '' ) {
-	global $comment;
-
-	/* Gets default WP comment classes. */
-	$classes = get_comment_class( $class );
-
-	/* Get the comment type. */
-	$comment_type = get_comment_type();
+	$comment = get_comment( $comment_id );
 
 	/* If the comment type is 'pingback' or 'trackback', add the 'ping' comment class. */
-	if ( 'pingback' == $comment_type || 'trackback' == $comment_type )
+	if ( in_array( $comment->comment_type, array( 'pingback', 'trackback' ) ) )
 		$classes[] = 'ping';
 
 	/* User classes to match user role and user. */
-	if ( $comment->user_id > 0 ) {
+	if ( 0 < $comment->user_id ) {
 
 		/* Create new user object. */
 		$user = new WP_User( $comment->user_id );
@@ -444,136 +329,14 @@ function hybrid_get_comment_class( $class = '' ) {
 			foreach ( $user->roles as $role )
 				$classes[] = sanitize_html_class( "role-{$role}" );
 		}
-
-		/* Set a class with the user's name. */
-		$classes[] = sanitize_html_class( "user-{$user->user_nicename}", "user-{$user->ID}" );
-	}
-
-	/* If not a registered user */
-	else {
-		$classes[] = 'reader';
-	}
-
-	/* Comment by the entry/post author. */
-	if ( $post = get_post( get_the_ID() ) ) {
-		if ( $comment->user_id == $post->post_author )
-			$classes[] = 'entry-author';
 	}
 
 	/* Get comment types that are allowed to have an avatar. */
-	$avatar_comment_types = apply_filters( 'get_avatar_comment_types', array( 'comment' ) );
+	$avatar_types = apply_filters( 'get_avatar_comment_types', array( 'comment' ) );
 
 	/* If avatars are enabled and the comment types can display avatars, add the 'has-avatar' class. */
-	if ( get_option( 'show_avatars' ) && in_array( $comment->comment_type, $avatar_comment_types ) )
+	if ( get_option( 'show_avatars' ) && in_array( $comment->comment_type, $avatar_types ) )
 		$classes[] = 'has-avatar';
 
-	/* Make sure comment classes doesn't have any duplicates. */
-	return array_unique( $classes );
+	return array_map( 'esc_attr', array_unique( $classes ) );
 }
-
-/**
- * Function for handling what the browser/search engine title should be. Attempts to handle every 
- * possible situation WordPress throws at it for the best optimization.
- *
- * @since 0.1.0
- * @access public
- * @global $wp_query
- * @return void
- */
-function hybrid_document_title() {
-	global $wp_query;
-
-	/* Set up some default variables. */
-	$doctitle = '';
-	$separator = ':';
-
-	/* If viewing the front page and posts page of the site. */
-	if ( is_front_page() && is_home() )
-		$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
-
-	/* If viewing the posts page or a singular post. */
-	elseif ( is_home() || is_singular() ) {
-
-		$doctitle = get_post_meta( get_queried_object_id(), 'Title', true );
-
-		if ( empty( $doctitle ) && is_front_page() )
-			$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
-
-		elseif ( empty( $doctitle ) )
-			$doctitle = single_post_title( '', false );
-	}
-
-	/* If viewing any type of archive page. */
-	elseif ( is_archive() ) {
-
-		/* If viewing a taxonomy term archive. */
-		if ( is_category() || is_tag() || is_tax() ) {
-			$doctitle = single_term_title( '', false );
-		}
-
-		/* If viewing a post type archive. */
-		elseif ( is_post_type_archive() ) {
-			$doctitle = post_type_archive_title( '', false );
-		}
-
-		/* If viewing an author/user archive. */
-		elseif ( is_author() ) {
-			$doctitle = get_user_meta( get_query_var( 'author' ), 'Title', true );
-
-			if ( empty( $doctitle ) )
-				$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
-		}
-
-		/* If viewing a date-/time-based archive. */
-		elseif ( is_date () ) {
-			if ( get_query_var( 'minute' ) && get_query_var( 'hour' ) )
-				$doctitle = sprintf( __( 'Archive for %s', 'hybrid-core' ), get_the_time( __( 'g:i a', 'hybrid-core' ) ) );
-
-			elseif ( get_query_var( 'minute' ) )
-				$doctitle = sprintf( __( 'Archive for minute %s', 'hybrid-core' ), get_the_time( __( 'i', 'hybrid-core' ) ) );
-
-			elseif ( get_query_var( 'hour' ) )
-				$doctitle = sprintf( __( 'Archive for %s', 'hybrid-core' ), get_the_time( __( 'g a', 'hybrid-core' ) ) );
-
-			elseif ( is_day() )
-				$doctitle = sprintf( __( 'Archive for %s', 'hybrid-core' ), get_the_time( __( 'F jS, Y', 'hybrid-core' ) ) );
-
-			elseif ( get_query_var( 'w' ) )
-				$doctitle = sprintf( __( 'Archive for week %s of %s', 'hybrid-core' ), get_the_time( __( 'W', 'hybrid-core' ) ), get_the_time( __( 'Y', 'hybrid-core' ) ) );
-
-			elseif ( is_month() )
-				$doctitle = sprintf( __( 'Archive for %s', 'hybrid-core' ), single_month_title( ' ', false) );
-
-			elseif ( is_year() )
-				$doctitle = sprintf( __( 'Archive for %s', 'hybrid-core' ), get_the_time( __( 'Y', 'hybrid-core' ) ) );
-		}
-
-		/* For any other archives. */
-		else {
-			$doctitle = __( 'Archives', 'hybrid-core' );
-		}
-	}
-
-	/* If viewing a search results page. */
-	elseif ( is_search() )
-		$doctitle = sprintf( __( 'Search results for "%s"', 'hybrid-core' ), esc_attr( get_search_query() ) );
-
-	/* If viewing a 404 not found page. */
-	elseif ( is_404() )
-		$doctitle = __( '404 Not Found', 'hybrid-core' );
-
-	/* If the current page is a paged page. */
-	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
-		$doctitle = sprintf( __( '%1$s Page %2$s', 'hybrid-core' ), $doctitle . $separator, number_format_i18n( $page ) );
-
-	/* Apply the wp_title filters so we're compatible with plugins. */
-	$doctitle = apply_filters( 'wp_title', strip_tags( $doctitle ), $separator, '' );
-
-	/* Trim separator + space from beginning and end in case a plugin adds it. */
-	$doctitle = trim( $doctitle, "{$separator} " );
-
-	/* Print the title to the screen. */
-	echo apply_atomic( 'document_title', esc_attr( $doctitle ) );
-}
-
-?>

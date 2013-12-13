@@ -1,0 +1,141 @@
+//
+/* Comments */
+// 
+// @package   Infusion-child
+// @subpackage  Sass stylesheet
+//
+// @version 1.2.2
+ 
+
+ 
+
+// Conversation 
+
+.conversation {
+  margin-top: 3em;
+  border-top: 1px solid $grayLight;
+
+  .comments {
+  
+    ol {
+      list-style: none;
+      margin: 0 ;
+      padding: 0;
+ 
+      li {
+        padding: 1em;
+        margin: 0;
+        margin-bottom: 1em;
+      
+      
+        li {
+          
+          img.avatar { background: #fff; }
+        } 
+      } 
+    } // end ol
+    
+    .comment-text {
+      clear: both;
+      margin-top: 35px;
+    }
+  } // end .comments
+  
+  
+  h3.comments-header {
+    margin-bottom: 1.5em;
+  }
+  
+  img.avatar {
+    width: 5em;
+    height: 5em;
+    float: left;
+    margin: 0 1em 0 0;
+    padding: .25em;
+    border: 1px solid $grayLight;
+    @include group();
+    @include border-radius(50px);
+  }
+    
+    .comment-meta {
+      font-size: 12px;
+      margin-top: 5px
+    } 
+    
+    .comment-byline {
+       font-size: 15px;
+       margin-right: 40px;
+       
+    }
+  
+  #respond { 
+    position: relative; 
+    h3#reply-title {  
+   }
+  
+  }
+  
+  .comment-list { 
+   
+     #respond {
+     
+      h3#reply-title span { padding-right: 3px; margin-right: 0; }
+     
+     }
+   
+   }
+  
+}
+
+/* Comment meta data */
+
+
+.comments .comment-meta .comment-author cite {
+  font-style: normal
+}
+.comments .comment-meta-data:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.comments .comment-meta-data cite {
+  position: relative;
+  top: -3px;
+  float: none;
+}
+.comments .comment-meta-data cite:before {
+  content: ""
+}
+/* Comment text */
+
+/* Comment form elements */
+#respond label {
+  display: block;
+  text-transform: uppercase;
+  padding-left: 3px;
+}
+#respond input[type=text],
+#respond input.text-input {
+  padding: 10px 15px
+}
+#respond form p {
+  margin-bottom: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+#respond textarea,
+#respond input[type=text],
+#respond input.text-input {
+  
+  width: 95.75%;
+  padding: 10px 15px;
+}
+#respond form .comment-action label,
+.comment-action input {
+  display: inline
+}
+.comment-author {
+  margin-bottom: 8px
+}

@@ -1,33 +1,11 @@
-<?php
-/**
- * Header
- *
- * @package infusion
- * @subpackage Template
- */
-?>
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html <?php language_attributes( 'html' ); ?>>
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title><?php hybrid_document_title(); ?></title>
-
-<meta name="viewport" content="width=device-width">
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="<?php bloginfo( 'stylesheet_directory' ); ?>/img/icons/apple-touch-icon.png">
-
-<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="all" />
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-
-<?php wp_head(); // wp_head ?>
-
+<?php wp_head(); // Hook required for scripts, styles, and other <head> items. ?>
 </head>
 
-<body class="<?php hybrid_body_class(); ?>">
+<body <?php hybrid_attr( 'body' ); ?>>
 
 	<div class="container">
 
@@ -41,9 +19,8 @@
 
 			</div>
 			
-			<?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template. ?>
+			<?php hybrid_get_menu( 'primary' ); // Loads the menu/primary.php template. ?>
 
 		</header>
 
 		<div class="main" role="main">
-

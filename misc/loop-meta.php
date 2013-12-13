@@ -1,10 +1,4 @@
-<?php
-/* If viewing a singular page, return. */
-if ( is_singular() )
-	return;
-?>
-
-<div class="loop-meta">
+<div <?php hybrid_attr( 'loop-meta' ); ?>>
 
 	<?php if ( is_home() && !is_front_page() ) { ?>
 
