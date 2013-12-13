@@ -1,0 +1,499 @@
+//
+/* Forms */
+// 
+// @package   Infusion-child
+// @subpackage  Sass stylesheet
+//
+// @version 1.0
+
+// GENERAL STYLES
+// --------------
+
+// Make all forms have space below them
+form {
+  margin: 0 0 $baseLineHeight;
+}
+
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+// Groups of fields with labels on top (legends)
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: $baseLineHeight * 1.5;
+  font-size: $baseFontSize * 1.5;
+  line-height: $baseLineHeight * 2;
+  border: 0;
+  border-bottom: 1px solid #e5e5e5;
+
+}
+
+// Set font for forms
+label,
+input,
+button,
+select,
+textarea {
+  font-size: $baseFontSize;
+  font-weight: normal;
+  line-height: $baseLineHeight;
+}
+input,
+button,
+select,
+textarea {
+  font-family: $baseFontFamily; // And only set font-family here for those that need it (note the missing label element)
+}
+
+// Identify controls by their labels
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+// Form controls
+// -------------------------
+
+// Shared size and type resets
+select,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="search"]  {
+  display: inline-block;
+  height: auto;
+  padding: 7px 10px;
+  margin-bottom: 9px;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+}
+
+
+// Reset height since textareas have rows
+textarea {
+  height: auto;
+}
+
+// Everything else
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="search"] {
+  background-color: $inputBackground;
+  border: 1px solid $inputBorder;
+  @include border-radius($inputBorderRadius);
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  $transition: border linear .2s, box-shadow linear .2s;
+  @include transition($transition);
+
+  // Focus state
+  &:focus {
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    outline: thin dotted \9; /* IE6-9 */
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 10px rgba(44,172,219,.75));
+  }
+}
+
+// Position radios and checkboxes better
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 3px 0;
+  *margin-top: 0; /* IE7 */
+  line-height: normal;
+  cursor: pointer;
+}
+
+// Reset width of input buttons, radios, checkboxes
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto; // Override of generic input selector
+}
+
+// Make uneditable textareas behave like a textarea
+.uneditable-textarea {
+  width: auto;
+  height: auto;
+}
+
+// Set the height of select and file controls to match text inputs
+select,
+input[type="file"] {
+  height: 28px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
+  *margin-top: 4px; /* For IE7, add top margin to align select with labels */
+  line-height: 28px;
+}
+
+// Make select elements obey height by applying a border
+select {
+  width: 220px; // default input width + 10px of padding that doesn't get applied
+  border: 1px solid #bbb;
+}
+
+// Make multiple select elements height not fixed
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+
+// CHECKBOXES & RADIOS
+// -------------------
+
+// Indent the labels to position radios/checkboxes as hanging
+.radio,
+.checkbox {
+  min-height: 18px; // clear the floating input if there is no label text
+  padding-left: 18px;
+}
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+  float: left;
+  margin-left: -18px;
+}
+
+
+// Gravity Forms
+// ------------------------------------ //
+
+
+.gform_wrapper {
+  overflow: inherit;
+  margin: 10px 0;
+  max-width: 98%
+}
+
+.gform_wrapper ul {
+  margin: 0;
+  list-style-type: none
+}
+
+.gform_wrapper li,
+.gform_wrapper form li {
+  list-style-type: none !important;
+  list-style-image: none !important;
+  list-style: none !important;
+  overflow: visible
+}
+.gform_wrapper ul li.gfield {
+  clear: both
+}
+
+
+.gform_wrapper .gform_heading {
+  width: 98%;
+  margin-bottom: $baseLineHeight;
+}
+
+
+
+.gform_wrapper .ginput_complex .ginput_left  {
+  width: 50%;
+  float: left
+}
+.gform_wrapper .ginput_complex .ginput_right {
+  width: 49%;
+  float: right
+}
+.gform_wrapper .gfield_error .ginput_complex .ginput_left,
+.gform_wrapper .gfield_error .ginput_complex .ginput_right {
+  width: 50%
+}
+.gform_wrapper .gfield_error .ginput_complex .ginput_left input {
+  width: 90% !important
+}
+.gform_wrapper .gfield_error .ginput_complex .ginput_right input {
+  width: 93% !important
+}
+.gform_wrapper .ginput_complex input,
+.gform_wrapper .ginput_complex select {
+  width: 95% !important
+}
+.gform_wrapper .ginput_complex .ginput_right input,
+.gform_wrapper .ginput_complex .ginput_right select {
+  width: 96% !important
+}
+
+.gform_wrapper .ginput_complex .name_prefix {
+  float: left;
+  width: 30px !important;
+  margin-right: 14px
+}
+.gform_wrapper .ginput_complex .name_suffix {
+  float: left;
+  width: 30px !important
+}
+.gform_wrapper .ginput_complex .name_first,
+.gform_wrapper .ginput_complex .name_last {
+  float: left;
+  width: 100px;
+  margin-right: 8px
+}
+.gform_wrapper .top_label .gfield_label {
+  margin: 10px 0 4px 0;
+  font-weight: bold;
+  display: -moz-inline-stack;
+  display: inline-block;
+  line-height: 1.3em;
+  clear: both
+}
+.gform_wrapper .left_label .gfield_label {
+  float: left;
+  margin: 0 15px 0 0;
+  width: 29%;
+  font-weight: bold;
+}
+.gform_wrapper .right_label .gfield_label {
+  float: left;
+  margin: 0 15px 0 0;
+  width: 29%;
+  font-weight: bold;
+  text-align: right
+}
+.gform_wrapper .left_label ul.gfield_checkbox,
+.gform_wrapper .right_label ul.gfield_checkbox,
+.gform_wrapper .left_label ul.gfield_radio,
+.gform_wrapper .right_label ul.gfield_radio {
+  margin-left: 32%;
+  overflow: hidden
+}
+.gform_wrapper .top_label input.small,
+.gform_wrapper .top_label select.small {
+  width: 25%
+}
+.gform_wrapper .top_label input.medium,
+.gform_wrapper .top_label select.medium {
+  width: 47%
+}
+.gform_wrapper .top_label input.medium {
+  padding-right: 2px
+}
+.gform_wrapper .top_label input.large,
+.gform_wrapper .top_label select.large,
+.gform_wrapper .top_label textarea.textarea {
+  width: 99.2%
+}
+.gform_wrapper .right_label input.small,
+.gform_wrapper .right_label select.small,
+.gform_wrapper .left_label input.small,
+.gform_wrapper .left_label select.small {
+  width: 15%
+}
+.gform_wrapper .right_label input.medium,
+.gform_wrapper .right_label select.medium,
+.gform_wrapper .left_label input.medium,
+.gform_wrapper .left_label select.medium {
+  width: 35%
+}
+.gform_wrapper .right_label input.large,
+.gform_wrapper .right_label select.large,
+.gform_wrapper .left_label input.large,
+.gform_wrapper .left_label select.large,
+.gform_wrapper textarea.textarea {
+  width: 63%
+}
+.gform_wrapper .right_label div.ginput_complex,
+.gform_wrapper .left_label div.ginput_complex {
+  width: 64%
+}
+.gform_wrapper h2.gsection_title {
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: normal !important
+}
+.gform_wrapper .gsection .gfield_label,
+.gform_wrapper h2.gsection_title,
+.gform_wrapper h3.gform_title {
+  font-weight: bold;
+  font-size: 1.3em
+}
+.gform_wrapper h3.gform_title {
+  letter-spacing: normal !important;
+  margin: 10px 0 6px 0
+}
+.gform_wrapper span.gform_description {
+  font-weight: normal
+}
+.gform_wrapper h2.gsection_title,
+.gform_wrapper .gsection_description,
+.gform_wrapper h3.gform_title {
+  width: 98%
+}
+.gform_wrapper .gsection {
+  border-bottom: 1px dotted #CCC;
+  padding: 0 0 8px 0;
+  margin: 16px 0;
+  clear: both
+}
+.gform_wrapper ul.gfield_checkbox li input[type=checkbox],
+.gform_wrapper ul.gfield_radio li input[type=radio] {
+  width: auto !important;  
+  position: relative;
+  top: 2px;
+}
+
+/* radio and checkbox styling - justifies lenghty labels ------------------------------------------------------*/
+
+.gform_wrapper .gfield_checkbox li,
+.gform_wrapper .gfield_radio li {
+  position: relative
+}
+.gform_wrapper ul.gfield_checkbox,
+.gform_wrapper ul.gfield_radio {
+  margin: 6px 0; padding: 0
+}
+.gform_wrapper .gfield_checkbox li label,
+.gform_wrapper .gfield_radio li label {
+  display: block;
+  margin: 0 0 0 24px;
+  padding: 0;
+  width: auto;
+  line-height: 1.5;
+  vertical-align: top
+}
+.gform_wrapper .gfield_checkbox li input[type=checkbox],
+.gform_wrapper .gfield_radio li input[type=radio],
+.gform_wrapper .gfield_checkbox li input {
+  float: left;
+  margin-top: 2px
+}
+.gform_wrapper .description,
+.gform_wrapper .gfield_description,
+.gform_wrapper .gsection_description,
+.gform_wrapper .instruction {
+  font-size: 0.85em;
+  line-height: 1.5em;
+  clear: both;
+  font-family: sans-serif;
+  letter-spacing: normal
+}
+.gform_wrapper .description,
+.gform_wrapper .gfield_description,
+.gform_wrapper .gsection_description {
+  padding: 4px 0 8px 0
+}
+.gform_wrapper .gfield_description {
+  padding: 10px 0 0 0;
+  width: 99.8%
+}
+.gform_wrapper .left_label .gfield_description,
+.gform_wrapper .right_label .gfield_description {
+  width:63%
+}
+.gform_wrapper .description_above .gfield_description {
+  padding: 0 0 10px 0
+}
+.gfield_date_year+.gfield_description {
+  padding: 0
+}
+.gform_wrapper .right_label .gfield_description,
+.gform_wrapper .left_label .gfield_description,
+.gform_wrapper .left_label .instruction,
+.gform_wrapper .right_label .instruction {
+  margin-left: 31%
+}
+
+.gform_wrapper .gfield_required {
+  color: #790000;
+  margin-left: 4px
+}
+.gform_wrapper textarea.small {
+  height: 80px
+}
+.gform_wrapper textarea.medium {
+  height: 190px
+}
+.gform_wrapper textarea.large {
+  height: 250px
+}
+.gform_wrapper li.gfield.gfield_error {
+  background-color: #FFDFDF;
+  margin-bottom: 6px !important;
+  padding: 6px 6px 4px 6px !important;
+  border: 1px solid #C89797
+}
+
+
+li.gfield + li.gfield.gfield_creditcard_warning {
+  margin-top: 14px !important
+}
+.gform_wrapper li.gfield.gfield_error .gfield_description {
+  color: #790000
+}
+.gform_wrapper .top_label .gfield_error .ginput_container {
+  max-width: 99%
+}
+.gform_wrapper .top_label .gfield_error {
+  width: 97%
+}
+.gform_wrapper .top_label .gfield_error input.large,
+.gform_wrapper .top_label .gfield_error select.large,
+.gform_wrapper .top_label .gfield_error textarea.textarea {
+  width: 100%
+}
+.gform_wrapper .right_label .gfield_error input.large,
+.gform_wrapper .right_label .gfield_error select.large,
+.gform_wrapper .right_label .gfield_error textarea.textarea,
+.gform_wrapper .left_label .gfield_error input.large,
+.gform_wrapper .left_label .gfield_error select.large,
+.gform_wrapper .left_label .gfield_error textarea.textarea {
+  width: 66%
+}
+.gform_wrapper .gfield_error .gfield_label {
+  color: #790000
+}
+.gform_wrapper li.gfield.gfield_error.gfield_contains_required {
+  margin-top: 12px;
+  margin-bottom: 12px !important
+}
+.gform_wrapper li.gfield.gfield_error.gfield_contains_required label.gfield_label,
+.gform_wrapper li.gfield.gfield_error.gfield_contains_required div.ginput_container  {
+  margin-top: 12px
+}
+.gform_wrapper .validation_error {
+  color: #790000;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.5em;
+  margin-bottom: 16px
+}
+.gform_wrapper .validation_message {
+  color: #790000;
+  letter-spacing: normal
+}
+.gform_wrapper .gform_footer {
+  padding: 16px 0 10px 0;
+  margin: 16px 0 0 0;
+  clear: both
+}
+
+.gform_wrapper .ginput_complex .ginput_left,
+.gform_wrapper .ginput_complex .ginput_right,
+.gform_wrapper .ginput_complex .ginput_full {
+  min-height: 43px;
+  display: block;
+}
+.gform_wrapper .ginput_complex .ginput_full input {
+  width: 98% !important
+}
+.gform_wrapper .gfield_checkbox li,
+.gform_wrapper .gfield_radio li {
+  margin: 0 0 8px 0;
+  line-height: 1.3em
+}
+.gform_wrapper ul.gfield_radio li input[type="radio"]:checked+label,
+.gform_wrapper ul.gfield_checkbox li input[type="checkbox"]:checked+label {
+    font-weight: bold
+}
+
+
+
+

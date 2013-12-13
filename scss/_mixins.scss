@@ -1,0 +1,50 @@
+//
+/* Mixins */
+// 
+// @package 	Infusion-child
+// @subpackage 	Sass stylesheet
+//
+// @version 1.0
+ 
+
+// Clearfix
+
+@mixin group {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+ // Layout and Structure
+
+ // Centered container element
+@mixin containerFixed {
+  margin-right: auto;
+  margin-left: auto;
+  
+}
+// Image Replace
+@mixin hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+// Sizing shortcuts
+
+@mixin size($height, $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin square($size) {
+  @include size($size, $size);
+}

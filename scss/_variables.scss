@@ -1,0 +1,99 @@
+//
+/* Variables */
+// 
+// @package 	Infusion-child
+// @subpackage 	Sass stylesheet
+//
+// @version 1.0
+
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+$black:                 black;
+$grayDarker:            #4e5055;
+$grayDark:              #333333;
+$gray:                  #a7a9ac;
+$grayLight:             #dfdfdf;
+$grayLighter:           #f3f3f3;
+$white:                 white;
+
+
+// Accent colors
+// -------------------------
+$blue:                  #049cdb;
+
+
+
+// Scaffolding
+// -------------------------
+$bodyBackground:        $white;
+$textColor:             $black;
+
+
+// Links
+// -------------------------
+$linkColor:             $blue;
+$linkColorHover:        darken($linkColor, 15%);
+
+// Borders
+// -------------------------
+$borderColor:			$grayLight;
+
+// Tooltips
+$toolTipColor:			$grayDarker;
+$toolTipTextColor:		$white;
+
+
+// Typography
+// -------------------------
+$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+$monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+
+
+$iconFontFamily:        "icomoon";
+
+$baseFontSize:          16px;
+$baseFontFamily:        $sansFontFamily;
+$baseLineHeight:        18px;
+$baseFontStyle:         normal;
+$altFontFamily:         $serifFontFamily;
+
+
+$headingsFontFamily:    $sansFontFamily;
+$headingsFontWeight:    700;   
+$headingsColor:         $black;
+
+$primaryNavFontFamily:  $sansFontFamily;
+$primaryNavFontWeight:  300;
+$primaryNavFontStyle:   normal;
+
+
+
+// Forms
+// -------------------------
+$inputBackground:               $white;
+$inputBorder:                   #ccc;
+$inputBorderRadius:             3px;
+
+
+// CONTAINER
+// --------------------------------------------------
+$containerWidth:          940px;
+
+
+// Alignment
+// -------------------------
+
+$floatMarginLeft:         20px;
+$floatMarginRight:        20px;
+$floatMarginBottom:       24px;
+
+
+
+

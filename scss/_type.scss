@@ -1,0 +1,127 @@
+//
+/* Type */
+// 
+// @package   Infusion-child
+// @subpackage 	Sass Stylesheet
+//
+// @version 1.0
+
+
+// BODY TEXT
+// ---------
+
+p {
+  margin: 0 0 $baseLineHeight / 2;
+  line-height: $baseLineHeight * 1.333333334;
+}
+
+
+// HEADINGS
+// --------
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: $headingsFontFamily;
+  font-weight: $headingsFontWeight;
+  color: $headingsColor;
+  text-rendering: optimizelegibility; // Fix the character spacing for headings
+}
+h1 {
+  font-size: 45px;
+  line-height: $baseLineHeight * 2;
+
+}
+h2 {
+  font-size: 24px;
+  line-height: $baseLineHeight * 2;
+
+}
+h3 {
+  font-size: 18px;
+  line-height: $baseLineHeight * 1.5;
+
+}
+h4, h5, h6 {
+  line-height: $baseLineHeight;
+}
+h4 {
+  font-size: 14px;
+
+}
+h5 {
+  font-size: 12px;
+}
+h6 {
+  font-size: 12px;
+}
+
+// Inline and block code styles
+
+
+// Blocks of code
+pre {
+  display: block;
+  line-height: $baseLineHeight;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
+  font-family: $monoFontFamily;
+
+}
+
+// LISTS
+// -----
+
+// Unordered and Ordered lists
+ul, ol {
+  padding: 0;
+  margin: 0 0 $baseLineHeight / 2 25px;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+ul {
+  list-style: disc;
+}
+ol {
+  list-style: decimal;
+}
+li {
+  line-height: $baseLineHeight;
+}
+
+
+// MISC
+// ----
+
+// Horizontal rules
+hr {
+  margin: $baseLineHeight 0;
+  border: 0;
+  border-top: 1px solid $black;
+  border-bottom: 1px solid $white;
+}
+
+// Emphasis
+strong {
+   font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+
+// Abbreviations and acronyms
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted $black;
+}
+
+// Blockquotes
+blockquote {
+  
+}
+

@@ -1,0 +1,31 @@
+//
+/* Header */
+// 
+// @package 	Infusion-child
+// @subpackage 	Sass stylesheet
+//
+// @version 1.2.2
+
+
+// Header
+.site-header {
+
+}
+
+// Site Title 
+.site-title { 
+   
+   a {
+   	@include hide-text;
+  	display: block;
+  	// background: url(img/icons/spigot-logo.png) center center no-repeat;
+  	// width: 250px;
+  	// height: 100px;
+  	// position: relative;
+  	// top: 5px;
+  	// left: -13px;
+   }
+}
+
+// Site Description 
+.site-description 		{ display: none; }

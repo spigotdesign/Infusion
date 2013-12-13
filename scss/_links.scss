@@ -1,0 +1,20 @@
+//
+/* Links */
+// 
+// @package 	Infusion-child
+// @subpackage 	Sass stylesheet
+//
+// @version 1.0
+
+
+// General Links
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+  @include transition(all .2s ease-in-out)
+}
+a:hover {
+  color: $linkColorHover;
+  text-decoration: none;
+}
