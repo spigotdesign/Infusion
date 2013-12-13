@@ -30,7 +30,7 @@ add_action( 'after_setup_theme', 'infusion_theme_setup', 5 );
 /**
  * The theme setup function.  This function sets up support for various WordPress and framework functionality.
  *
- * @since  1.0.0
+ * @since  1.0
  * @access public
  * @return void
  */
@@ -54,7 +54,7 @@ function infusion_theme_setup() {
 	/* Load stylesheets. */
 	add_theme_support(
 		'hybrid-core-styles',
-		array( 'parent', 'style', 'gallery' )
+		array( 'style' )
 	);
 
 	/* Hybrid Core functions and extensions */

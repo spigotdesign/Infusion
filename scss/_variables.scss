@@ -1,19 +1,14 @@
-//
-/* Variables */
-// 
-// @package 	Infusion-child
-// @subpackage 	Sass stylesheet
-//
-// @version 1.0
+/*
+ * Variables
+ *
+ * @package   Sass Stylesheet
+ * @version   1.0
+ *
+ */
 
-
-
-// GLOBAL VALUES
-// --------------------------------------------------
 
 
 // Grays
-// -------------------------
 $black:                 black;
 $grayDarker:            #4e5055;
 $grayDark:              #333333;
@@ -24,24 +19,20 @@ $white:                 white;
 
 
 // Accent colors
-// -------------------------
 $blue:                  #049cdb;
 
 
 
 // Scaffolding
-// -------------------------
 $bodyBackground:        $white;
 $textColor:             $black;
 
 
 // Links
-// -------------------------
 $linkColor:             $blue;
 $linkColorHover:        darken($linkColor, 15%);
 
 // Borders
-// -------------------------
 $borderColor:			$grayLight;
 
 // Tooltips
@@ -50,7 +41,6 @@ $toolTipTextColor:		$white;
 
 
 // Typography
-// -------------------------
 $sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
 $serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 $monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -76,19 +66,16 @@ $primaryNavFontStyle:   normal;
 
 
 // Forms
-// -------------------------
 $inputBackground:               $white;
 $inputBorder:                   #ccc;
 $inputBorderRadius:             3px;
 
 
 // CONTAINER
-// --------------------------------------------------
 $containerWidth:          940px;
 
 
 // Alignment
-// -------------------------
 
 $floatMarginLeft:         20px;
 $floatMarginRight:        20px;
