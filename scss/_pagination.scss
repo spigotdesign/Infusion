@@ -14,7 +14,6 @@
   
   ul {
     display: inline-block;
-    @include ie7-inline-block();
     background: $white;
     text-align: center;
     @include box-shadow(0 0 1px rgba(0,0,0,.15));

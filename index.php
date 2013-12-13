@@ -32,6 +32,6 @@
 
 	<?php endif; // End check for posts. ?>
 
-</main><!-- #content -->
+</main>
 
 <?php get_footer(); // Loads the footer.php template. ?>

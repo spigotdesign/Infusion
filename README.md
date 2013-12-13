@@ -1,20 +1,17 @@
 Infusion
 ========
 
-A starter parent/child theme for WordPress
+A starter parent theme for WordPress
 
-Author: Spigot 
+Author: Bryan Hoffman
 Author URI: http://spigotdesign.com
 
 Features
 --------
 
 + Built on Hybrid Core framework
-+ Includes child starter theme
 + HTML5 Markup
-+ Uses Modernizr for feature detection and HTML5 shiv
-+ Uses some Twitter Bootstrap features
-+ LESS CSS 
++ Sass CSS 
 
 
 Notes to other subcontracted developers

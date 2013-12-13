@@ -1,19 +1,18 @@
 /*!
- Theme Name:     Infusion Child
+ Theme Name:     Infusion
  Theme URI:      http://spigotdesign.com/
  Description:    Description: A custom child theme for Enter Client Name Here. This is a child theme and requires Infusion to function properly.
  Author:         Spigot Design
  Author URI:     http://spigotdesign.com/
- Template:       infusion
- Version:        1.0
+ Version:        3.0
 */
 /* Normalize */
-/*! normalize.css v2.0.1 | MIT License | git.io/normalize */
+/*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
    ========================================================================== */
-/*
- * Corrects `block` display not defined in IE 8/9.
+/**
+ * Correct `block` display not defined in IE 8/9.
  */
 /* line 30, scss/_normalize.scss */
 article,
@@ -24,14 +23,15 @@ figure,
 footer,
 header,
 hgroup,
+main,
 nav,
 section,
 summary {
   display: block;
 }
 
-/*
- * Corrects `inline-block` display not defined in IE 8/9.
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
  */
 /* line 40, scss/_normalize.scss */
 audio,
@@ -40,8 +40,8 @@ video {
   display: inline-block;
 }
 
-/*
- * Prevents modern browsers from displaying `audio` without controls.
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
 /* line 49, scss/_normalize.scss */
@@ -50,53 +50,200 @@ audio:not([controls]) {
   height: 0;
 }
 
-/*
- * Addresses styling for `hidden` attribute not present in IE 8/9.
+/**
+ * Address `[hidden]` styling not present in IE 8/9.
+ * Hide the `template` element in IE, Safari, and Firefox < 22.
  */
-/* line 58, scss/_normalize.scss */
-[hidden] {
+/* line 60, scss/_normalize.scss */
+[hidden],
+template {
   display: none;
 }
 
 /* ==========================================================================
    Base
    ========================================================================== */
-/*
- * 1. Sets default font family to sans-serif.
- * 2. Prevents iOS text size adjust after orientation change, without disabling
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  */
-/* line 72, scss/_normalize.scss */
+/* line 74, scss/_normalize.scss */
 html {
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
+  font-family: sans-serif;
+  /* 1 */
   -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
   /* 2 */
 }
 
-/*
- * Removes default margin.
+/**
+ * Remove default margin.
  */
-/* line 81, scss/_normalize.scss */
+/* line 84, scss/_normalize.scss */
 body {
   margin: 0;
 }
 
 /* ==========================================================================
+   Links
+   ========================================================================== */
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+/* line 96, scss/_normalize.scss */
+a {
+  background: transparent;
+}
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+/* line 104, scss/_normalize.scss */
+a:focus {
+  outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+/* line 113, scss/_normalize.scss */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 126, scss/_normalize.scss */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+/* line 135, scss/_normalize.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+/* line 144, scss/_normalize.scss */
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+/* line 152, scss/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+/* line 160, scss/_normalize.scss */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+/* line 170, scss/_normalize.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+/* line 182, scss/_normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+/* line 191, scss/_normalize.scss */
+pre {
+  white-space: pre-wrap;
+}
+
+/**
+ * Set consistent quote types.
+ */
+/* line 199, scss/_normalize.scss */
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+/* line 207, scss/_normalize.scss */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+/* line 216, scss/_normalize.scss */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* line 223, scss/_normalize.scss */
+sup {
+  top: -0.5em;
+}
+
+/* line 227, scss/_normalize.scss */
+sub {
+  bottom: -0.25em;
+}
+
+/* ==========================================================================
    Embedded content
    ========================================================================== */
-/*
- * Removes border when inside `a` element in IE 8/9.
+/**
+ * Remove border when inside `a` element in IE 8/9.
  */
-/* line 93, scss/_normalize.scss */
+/* line 239, scss/_normalize.scss */
 img {
   border: 0;
 }
 
-/*
- * Corrects overflow displayed oddly in IE 9.
+/**
+ * Correct overflow displayed oddly in IE 9.
  */
-/* line 101, scss/_normalize.scss */
+/* line 247, scss/_normalize.scss */
 svg:not(:root) {
   overflow: hidden;
 }
@@ -104,10 +251,10 @@ svg:not(:root) {
 /* ==========================================================================
    Figures
    ========================================================================== */
-/*
- * Addresses margin not present in IE 8/9 and Safari 5.
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
  */
-/* line 113, scss/_normalize.scss */
+/* line 259, scss/_normalize.scss */
 figure {
   margin: 0;
 }
@@ -115,21 +262,21 @@ figure {
 /* ==========================================================================
    Forms
    ========================================================================== */
-/*
+/**
  * Define consistent border, margin, and padding.
  */
-/* line 125, scss/_normalize.scss */
+/* line 271, scss/_normalize.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
 
-/*
- * 1. Corrects color not being inherited in IE 8/9.
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
-/* line 136, scss/_normalize.scss */
+/* line 282, scss/_normalize.scss */
 legend {
   border: 0;
   /* 1 */
@@ -137,12 +284,12 @@ legend {
   /* 2 */
 }
 
-/*
- * 1. Corrects font family not being inherited in all browsers.
- * 2. Corrects font size not being inherited in all browsers.
- * 3. Addresses margins set differently in Firefox 4+, Safari 5, and Chrome
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
  */
-/* line 150, scss/_normalize.scss */
+/* line 296, scss/_normalize.scss */
 button,
 input,
 select,
@@ -155,24 +302,36 @@ textarea {
   /* 3 */
 }
 
-/*
- * Addresses Firefox 4+ setting `line-height` on `input` using `!important` in
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
  * the UA stylesheet.
  */
-/* line 162, scss/_normalize.scss */
+/* line 308, scss/_normalize.scss */
 button,
 input {
   line-height: normal;
 }
 
-/*
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+/* line 320, scss/_normalize.scss */
+button,
+select {
+  text-transform: none;
+}
+
+/**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
  *    and `video` controls.
- * 2. Corrects inability to style clickable `input` types in iOS.
- * 3. Improves usability and consistency of cursor style between image-type
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-/* line 177, scss/_normalize.scss */
+/* line 335, scss/_normalize.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -183,20 +342,20 @@ input[type="submit"] {
   /* 3 */
 }
 
-/*
+/**
  * Re-set default cursor for disabled elements.
  */
-/* line 187, scss/_normalize.scss */
+/* line 345, scss/_normalize.scss */
 button[disabled],
-input[disabled] {
+html input[disabled] {
   cursor: default;
 }
 
-/*
- * 1. Addresses box sizing set to `content-box` in IE 8/9.
- * 2. Removes excess padding in IE 8/9.
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
  */
-/* line 197, scss/_normalize.scss */
+/* line 355, scss/_normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -205,12 +364,12 @@ input[type="radio"] {
   /* 2 */
 }
 
-/*
- * 1. Addresses `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Addresses `box-sizing` set to `border-box` in Safari 5 and Chrome
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-/* line 208, scss/_normalize.scss */
+/* line 366, scss/_normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -220,31 +379,31 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-/*
- * Removes inner padding and search cancel button in Safari 5 and Chrome
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-/* line 221, scss/_normalize.scss */
+/* line 379, scss/_normalize.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/*
- * Removes inner padding and border in Firefox 4+.
+/**
+ * Remove inner padding and border in Firefox 4+.
  */
-/* line 230, scss/_normalize.scss */
+/* line 388, scss/_normalize.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/*
- * 1. Removes default vertical scrollbar in IE 8/9.
- * 2. Improves readability and alignment in all browsers.
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
  */
-/* line 240, scss/_normalize.scss */
+/* line 398, scss/_normalize.scss */
 textarea {
   overflow: auto;
   /* 1 */
@@ -255,10 +414,10 @@ textarea {
 /* ==========================================================================
    Tables
    ========================================================================== */
-/*
+/**
  * Remove most spacing between table cells.
  */
-/* line 253, scss/_normalize.scss */
+/* line 411, scss/_normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -266,7 +425,6 @@ table {
 
 /* Variables */
 /* Mixins */
-/* Base btn */
 /* Scaffolding  */
 /* line 13, scss/_scaffolding.scss */
 * {
@@ -309,87 +467,95 @@ body {
 
 /* Navigation */
 /* line 12, scss/_navigation.scss */
-.menu-primary {
+#menu-primary {
   position: relative;
-  top: -1em;
-  *zoom: 1;
   margin-bottom: 2em;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border-bottom: 1px solid #049cdb;
+  *zoom: 1;
 }
 /* line 15, scss/_mixins.scss */
-.menu-primary:before, .menu-primary:after {
+#menu-primary:before, #menu-primary:after {
   display: table;
   content: "";
 }
 /* line 19, scss/_mixins.scss */
-.menu-primary:after {
+#menu-primary:after {
   clear: both;
 }
-/* line 20, scss/_navigation.scss */
-.menu-primary ul {
+/* line 19, scss/_navigation.scss */
+#menu-primary ul {
   position: relative;
-  top: 3.25em;
-  text-align: center;
-  width: 960px;
   margin: 0;
   padding: 0;
   list-style: none;
-  line-height: 1.0;
 }
-/* line 30, scss/_navigation.scss */
-.menu-primary ul li {
+/* line 25, scss/_navigation.scss */
+#menu-primary ul li {
   padding: 0 0 1em 0;
   margin: 0 .625em;
-  font-size: 2em;
+  font-size: 1rem;
   display: inline-block;
   text-transform: uppercase;
   position: relative;
 }
-/* line 38, scss/_navigation.scss */
-.menu-primary ul li:hover {
+/* line 33, scss/_navigation.scss */
+#menu-primary ul li:hover {
   visibility: inherit;
 }
-/* line 41, scss/_navigation.scss */
-.menu-primary ul li:hover ul {
+/* line 36, scss/_navigation.scss */
+#menu-primary ul li:hover > ul {
   left: .625em;
   top: 1.5em;
   z-index: 99;
+  visibility: visible;
+  opacity: 1;
 }
-/* line 48, scss/_navigation.scss */
-.menu-primary ul li a {
+/* line 43, scss/_navigation.scss */
+#menu-primary ul li:hover > ul ul {
+  left: 100%;
+  top: 0;
+}
+/* line 50, scss/_navigation.scss */
+#menu-primary ul li a {
   background: white;
   padding: 0 1em;
 }
-
-/* line 58, scss/_navigation.scss */
-ul.sub-menu {
+/* line 59, scss/_navigation.scss */
+#menu-primary ul.sub-menu {
   position: absolute;
+  width: 15em;
   top: -999em;
-  width: 8em;
   text-align: left;
-  background: black;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
 }
-/* line 66, scss/_navigation.scss */
-ul.sub-menu li {
+/* line 70, scss/_navigation.scss */
+#menu-primary ul.sub-menu li {
   width: 100%;
   padding: 0;
   margin: 0;
-  font-size: .675em;
   line-height: 1.3;
 }
-/* line 73, scss/_navigation.scss */
-ul.sub-menu li a {
+/* line 76, scss/_navigation.scss */
+#menu-primary ul.sub-menu li a {
   display: block;
   padding: 5px 0 5px 10px;
 }
-/* line 79, scss/_navigation.scss */
-ul.sub-menu li a:hover, ul.sub-menu li.current-menu-item a {
+/* line 82, scss/_navigation.scss */
+#menu-primary ul.sub-menu li a:hover, #menu-primary ul.sub-menu li.current-menu-item a {
   background: #049cdb;
   color: white;
+}
+/* line 88, scss/_navigation.scss */
+#menu-primary ul.sub-menu ul {
+  left: 0;
 }
 
 /* Page Styles */
@@ -612,48 +778,47 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: black;
   text-rendering: optimizelegibility;
-  text-shadow: 1px 1px 1px white;
 }
 
-/* line 31, scss/_type.scss */
+/* line 29, scss/_type.scss */
 h1 {
   font-size: 45px;
   line-height: 36px;
 }
 
-/* line 36, scss/_type.scss */
+/* line 34, scss/_type.scss */
 h2 {
   font-size: 24px;
   line-height: 36px;
 }
 
-/* line 41, scss/_type.scss */
+/* line 39, scss/_type.scss */
 h3 {
   font-size: 18px;
   line-height: 27px;
 }
 
-/* line 46, scss/_type.scss */
+/* line 44, scss/_type.scss */
 h4, h5, h6 {
   line-height: 18px;
 }
 
-/* line 49, scss/_type.scss */
+/* line 47, scss/_type.scss */
 h4 {
   font-size: 14px;
 }
 
-/* line 53, scss/_type.scss */
+/* line 51, scss/_type.scss */
 h5 {
   font-size: 12px;
 }
 
-/* line 56, scss/_type.scss */
+/* line 54, scss/_type.scss */
 h6 {
   font-size: 12px;
 }
 
-/* line 64, scss/_type.scss */
+/* line 62, scss/_type.scss */
 pre {
   display: block;
   line-height: 18px;
@@ -664,13 +829,13 @@ pre {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-/* line 79, scss/_type.scss */
+/* line 77, scss/_type.scss */
 ul, ol {
   padding: 0;
   margin: 0 0 9px 25px;
 }
 
-/* line 86, scss/_type.scss */
+/* line 84, scss/_type.scss */
 ul ul,
 ul ol,
 ol ol,
@@ -678,22 +843,22 @@ ol ul {
   margin-bottom: 0;
 }
 
-/* line 89, scss/_type.scss */
+/* line 87, scss/_type.scss */
 ul {
   list-style: disc;
 }
 
-/* line 92, scss/_type.scss */
+/* line 90, scss/_type.scss */
 ol {
   list-style: decimal;
 }
 
-/* line 95, scss/_type.scss */
+/* line 93, scss/_type.scss */
 li {
   line-height: 18px;
 }
 
-/* line 104, scss/_type.scss */
+/* line 102, scss/_type.scss */
 hr {
   margin: 18px 0;
   border: 0;
@@ -701,17 +866,17 @@ hr {
   border-bottom: 1px solid white;
 }
 
-/* line 112, scss/_type.scss */
+/* line 110, scss/_type.scss */
 strong {
   font-weight: bold;
 }
 
-/* line 115, scss/_type.scss */
+/* line 113, scss/_type.scss */
 em {
   font-style: italic;
 }
 
-/* line 120, scss/_type.scss */
+/* line 118, scss/_type.scss */
 abbr[title] {
   cursor: help;
   border-bottom: 1px dotted black;
@@ -1126,11 +1291,12 @@ label {
   margin-bottom: 5px;
 }
 
-/* line 66, scss/_forms.scss */
+/* line 67, scss/_forms.scss */
 select,
 textarea,
-input[type="text"]
-input[type="email"] {
+input[type="text"],
+input[type="email"],
+input[type="search"] {
   display: inline-block;
   height: auto;
   padding: 7px 10px;
@@ -1139,15 +1305,16 @@ input[type="email"] {
   line-height: 18px;
 }
 
-/* line 77, scss/_forms.scss */
+/* line 78, scss/_forms.scss */
 textarea {
   height: auto;
 }
 
-/* line 84, scss/_forms.scss */
+/* line 86, scss/_forms.scss */
 textarea,
-input[type="text"]
-input[type="email"] {
+input[type="text"],
+input[type="email"],
+input[type="search"] {
   background-color: white;
   border: 1px solid #cccccc;
   -webkit-border-radius: 3px;
@@ -1164,10 +1331,11 @@ input[type="email"] {
   -o-transition: border linear 0.2s, box-shadow linear 0.2s;
   transition: border linear 0.2s, box-shadow linear 0.2s;
 }
-/* line 93, scss/_forms.scss */
+/* line 95, scss/_forms.scss */
 textarea:focus,
-input[type="text"]
-input[type="email"]:focus {
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="search"]:focus {
   border-color: rgba(82, 168, 236, 0.8);
   outline: 0;
   outline: thin dotted \9;
@@ -1177,7 +1345,7 @@ input[type="email"]:focus {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px rgba(44, 172, 219, 0.75);
 }
 
-/* line 103, scss/_forms.scss */
+/* line 105, scss/_forms.scss */
 input[type="radio"],
 input[type="checkbox"] {
   margin: 3px 0;
@@ -1187,7 +1355,7 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-/* line 115, scss/_forms.scss */
+/* line 117, scss/_forms.scss */
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
@@ -1196,13 +1364,13 @@ input[type="checkbox"] {
   width: auto;
 }
 
-/* line 120, scss/_forms.scss */
+/* line 122, scss/_forms.scss */
 .uneditable-textarea {
   width: auto;
   height: auto;
 }
 
-/* line 127, scss/_forms.scss */
+/* line 129, scss/_forms.scss */
 select,
 input[type="file"] {
   height: 28px;
@@ -1212,56 +1380,46 @@ input[type="file"] {
   line-height: 28px;
 }
 
-/* line 134, scss/_forms.scss */
+/* line 136, scss/_forms.scss */
 select {
   width: 220px;
   border: 1px solid #bbb;
 }
 
-/* line 141, scss/_forms.scss */
+/* line 143, scss/_forms.scss */
 select[multiple],
 select[size] {
   height: auto;
 }
 
-/* line 149, scss/_forms.scss */
-select:focus,
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
-  outline: thin dotted #333;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-
-/* line 160, scss/_forms.scss */
+/* line 153, scss/_forms.scss */
 .radio,
 .checkbox {
   min-height: 18px;
   padding-left: 18px;
 }
 
-/* line 165, scss/_forms.scss */
+/* line 158, scss/_forms.scss */
 .radio input[type="radio"],
 .checkbox input[type="checkbox"] {
   float: left;
   margin-left: -18px;
 }
 
-/* line 175, scss/_forms.scss */
+/* line 168, scss/_forms.scss */
 .gform_wrapper {
   overflow: inherit;
   margin: 10px 0;
   max-width: 98%;
 }
 
-/* line 181, scss/_forms.scss */
+/* line 174, scss/_forms.scss */
 .gform_wrapper ul {
   margin: 0;
   list-style-type: none;
 }
 
-/* line 187, scss/_forms.scss */
+/* line 180, scss/_forms.scss */
 .gform_wrapper li,
 .gform_wrapper form li {
   list-style-type: none !important;
@@ -1270,71 +1428,71 @@ input[type="checkbox"]:focus {
   overflow: visible;
 }
 
-/* line 193, scss/_forms.scss */
+/* line 186, scss/_forms.scss */
 .gform_wrapper ul li.gfield {
   clear: both;
 }
 
-/* line 198, scss/_forms.scss */
+/* line 191, scss/_forms.scss */
 .gform_wrapper .gform_heading {
   width: 98%;
   margin-bottom: 18px;
 }
 
-/* line 205, scss/_forms.scss */
+/* line 198, scss/_forms.scss */
 .gform_wrapper .ginput_complex .ginput_left {
   width: 50%;
   float: left;
 }
 
-/* line 209, scss/_forms.scss */
+/* line 202, scss/_forms.scss */
 .gform_wrapper .ginput_complex .ginput_right {
   width: 49%;
   float: right;
 }
 
-/* line 214, scss/_forms.scss */
+/* line 207, scss/_forms.scss */
 .gform_wrapper .gfield_error .ginput_complex .ginput_left,
 .gform_wrapper .gfield_error .ginput_complex .ginput_right {
   width: 50%;
 }
 
-/* line 217, scss/_forms.scss */
+/* line 210, scss/_forms.scss */
 .gform_wrapper .gfield_error .ginput_complex .ginput_left input {
   width: 90% !important;
 }
 
-/* line 220, scss/_forms.scss */
+/* line 213, scss/_forms.scss */
 .gform_wrapper .gfield_error .ginput_complex .ginput_right input {
   width: 93% !important;
 }
 
-/* line 224, scss/_forms.scss */
+/* line 217, scss/_forms.scss */
 .gform_wrapper .ginput_complex input,
 .gform_wrapper .ginput_complex select {
   width: 95% !important;
 }
 
-/* line 228, scss/_forms.scss */
+/* line 221, scss/_forms.scss */
 .gform_wrapper .ginput_complex .ginput_right input,
 .gform_wrapper .ginput_complex .ginput_right select {
   width: 96% !important;
 }
 
-/* line 232, scss/_forms.scss */
+/* line 225, scss/_forms.scss */
 .gform_wrapper .ginput_complex .name_prefix {
   float: left;
   width: 30px !important;
   margin-right: 14px;
 }
 
-/* line 237, scss/_forms.scss */
+/* line 230, scss/_forms.scss */
 .gform_wrapper .ginput_complex .name_suffix {
   float: left;
   width: 30px !important;
 }
 
-/* line 242, scss/_forms.scss */
+/* line 235, scss/_forms.scss */
 .gform_wrapper .ginput_complex .name_first,
 .gform_wrapper .ginput_complex .name_last {
   float: left;
@@ -1342,7 +1500,7 @@ input[type="checkbox"]:focus {
   margin-right: 8px;
 }
 
-/* line 247, scss/_forms.scss */
+/* line 240, scss/_forms.scss */
 .gform_wrapper .top_label .gfield_label {
   margin: 10px 0 4px 0;
   font-weight: bold;
@@ -1352,7 +1510,7 @@ input[type="checkbox"]:focus {
   clear: both;
 }
 
-/* line 255, scss/_forms.scss */
+/* line 248, scss/_forms.scss */
 .gform_wrapper .left_label .gfield_label {
   float: left;
   margin: 0 15px 0 0;
@@ -1360,7 +1518,7 @@ input[type="checkbox"]:focus {
   font-weight: bold;
 }
 
-/* line 261, scss/_forms.scss */
+/* line 254, scss/_forms.scss */
 .gform_wrapper .right_label .gfield_label {
   float: left;
   margin: 0 15px 0 0;
@@ -1369,7 +1527,7 @@ input[type="checkbox"]:focus {
   text-align: right;
 }
 
-/* line 271, scss/_forms.scss */
+/* line 264, scss/_forms.scss */
 .gform_wrapper .left_label ul.gfield_checkbox,
 .gform_wrapper .right_label ul.gfield_checkbox,
 .gform_wrapper .left_label ul.gfield_radio,
@@ -1378,31 +1536,31 @@ input[type="checkbox"]:focus {
   overflow: hidden;
 }
 
-/* line 276, scss/_forms.scss */
+/* line 269, scss/_forms.scss */
 .gform_wrapper .top_label input.small,
 .gform_wrapper .top_label select.small {
   width: 25%;
 }
 
-/* line 280, scss/_forms.scss */
+/* line 273, scss/_forms.scss */
 .gform_wrapper .top_label input.medium,
 .gform_wrapper .top_label select.medium {
   width: 47%;
 }
 
-/* line 283, scss/_forms.scss */
+/* line 276, scss/_forms.scss */
 .gform_wrapper .top_label input.medium {
   padding-right: 2px;
 }
 
-/* line 288, scss/_forms.scss */
+/* line 281, scss/_forms.scss */
 .gform_wrapper .top_label input.large,
 .gform_wrapper .top_label select.large,
 .gform_wrapper .top_label textarea.textarea {
   width: 99.2%;
 }
 
-/* line 294, scss/_forms.scss */
+/* line 287, scss/_forms.scss */
 .gform_wrapper .right_label input.small,
 .gform_wrapper .right_label select.small,
 .gform_wrapper .left_label input.small,
@@ -1410,7 +1568,7 @@ input[type="checkbox"]:focus {
   width: 15%;
 }
 
-/* line 300, scss/_forms.scss */
+/* line 293, scss/_forms.scss */
 .gform_wrapper .right_label input.medium,
 .gform_wrapper .right_label select.medium,
 .gform_wrapper .left_label input.medium,
@@ -1418,7 +1576,7 @@ input[type="checkbox"]:focus {
   width: 35%;
 }
 
-/* line 307, scss/_forms.scss */
+/* line 300, scss/_forms.scss */
 .gform_wrapper .right_label input.large,
 .gform_wrapper .right_label select.large,
 .gform_wrapper .left_label input.large,
@@ -1427,20 +1585,20 @@ input[type="checkbox"]:focus {
   width: 63%;
 }
 
-/* line 311, scss/_forms.scss */
+/* line 304, scss/_forms.scss */
 .gform_wrapper .right_label div.ginput_complex,
 .gform_wrapper .left_label div.ginput_complex {
   width: 64%;
 }
 
-/* line 314, scss/_forms.scss */
+/* line 307, scss/_forms.scss */
 .gform_wrapper h2.gsection_title {
   margin: 0 !important;
   padding: 0 !important;
   letter-spacing: normal !important;
 }
 
-/* line 321, scss/_forms.scss */
+/* line 314, scss/_forms.scss */
 .gform_wrapper .gsection .gfield_label,
 .gform_wrapper h2.gsection_title,
 .gform_wrapper h3.gform_title {
@@ -1448,25 +1606,25 @@ input[type="checkbox"]:focus {
   font-size: 1.3em;
 }
 
-/* line 325, scss/_forms.scss */
+/* line 318, scss/_forms.scss */
 .gform_wrapper h3.gform_title {
   letter-spacing: normal !important;
   margin: 10px 0 6px 0;
 }
 
-/* line 329, scss/_forms.scss */
+/* line 322, scss/_forms.scss */
 .gform_wrapper span.gform_description {
   font-weight: normal;
 }
 
-/* line 334, scss/_forms.scss */
+/* line 327, scss/_forms.scss */
 .gform_wrapper h2.gsection_title,
 .gform_wrapper .gsection_description,
 .gform_wrapper h3.gform_title {
   width: 98%;
 }
 
-/* line 337, scss/_forms.scss */
+/* line 330, scss/_forms.scss */
 .gform_wrapper .gsection {
   border-bottom: 1px dotted #CCC;
   padding: 0 0 8px 0;
@@ -1474,7 +1632,7 @@ input[type="checkbox"]:focus {
   clear: both;
 }
 
-/* line 344, scss/_forms.scss */
+/* line 337, scss/_forms.scss */
 .gform_wrapper ul.gfield_checkbox li input[type=checkbox],
 .gform_wrapper ul.gfield_radio li input[type=radio] {
   width: auto !important;
@@ -1483,20 +1641,20 @@ input[type="checkbox"]:focus {
 }
 
 /* radio and checkbox styling - justifies lenghty labels ------------------------------------------------------*/
-/* line 353, scss/_forms.scss */
+/* line 346, scss/_forms.scss */
 .gform_wrapper .gfield_checkbox li,
 .gform_wrapper .gfield_radio li {
   position: relative;
 }
 
-/* line 357, scss/_forms.scss */
+/* line 350, scss/_forms.scss */
 .gform_wrapper ul.gfield_checkbox,
 .gform_wrapper ul.gfield_radio {
   margin: 6px 0;
   padding: 0;
 }
 
-/* line 361, scss/_forms.scss */
+/* line 354, scss/_forms.scss */
 .gform_wrapper .gfield_checkbox li label,
 .gform_wrapper .gfield_radio li label {
   display: block;
@@ -1507,7 +1665,7 @@ input[type="checkbox"]:focus {
   vertical-align: top;
 }
 
-/* line 371, scss/_forms.scss */
+/* line 364, scss/_forms.scss */
 .gform_wrapper .gfield_checkbox li input[type=checkbox],
 .gform_wrapper .gfield_radio li input[type=radio],
 .gform_wrapper .gfield_checkbox li input {
@@ -1515,7 +1673,7 @@ input[type="checkbox"]:focus {
   margin-top: 2px;
 }
 
-/* line 378, scss/_forms.scss */
+/* line 371, scss/_forms.scss */
 .gform_wrapper .description,
 .gform_wrapper .gfield_description,
 .gform_wrapper .gsection_description,
@@ -1527,36 +1685,36 @@ input[type="checkbox"]:focus {
   letter-spacing: normal;
 }
 
-/* line 387, scss/_forms.scss */
+/* line 380, scss/_forms.scss */
 .gform_wrapper .description,
 .gform_wrapper .gfield_description,
 .gform_wrapper .gsection_description {
   padding: 4px 0 8px 0;
 }
 
-/* line 390, scss/_forms.scss */
+/* line 383, scss/_forms.scss */
 .gform_wrapper .gfield_description {
   padding: 10px 0 0 0;
   width: 99.8%;
 }
 
-/* line 395, scss/_forms.scss */
+/* line 388, scss/_forms.scss */
 .gform_wrapper .left_label .gfield_description,
 .gform_wrapper .right_label .gfield_description {
   width: 63%;
 }
 
-/* line 398, scss/_forms.scss */
+/* line 391, scss/_forms.scss */
 .gform_wrapper .description_above .gfield_description {
   padding: 0 0 10px 0;
 }
 
-/* line 401, scss/_forms.scss */
+/* line 394, scss/_forms.scss */
 .gfield_date_year + .gfield_description {
   padding: 0;
 }
 
-/* line 407, scss/_forms.scss */
+/* line 400, scss/_forms.scss */
 .gform_wrapper .right_label .gfield_description,
 .gform_wrapper .left_label .gfield_description,
 .gform_wrapper .left_label .instruction,
@@ -1564,28 +1722,28 @@ input[type="checkbox"]:focus {
   margin-left: 31%;
 }
 
-/* line 411, scss/_forms.scss */
+/* line 404, scss/_forms.scss */
 .gform_wrapper .gfield_required {
   color: #790000;
   margin-left: 4px;
 }
 
-/* line 415, scss/_forms.scss */
+/* line 408, scss/_forms.scss */
 .gform_wrapper textarea.small {
   height: 80px;
 }
 
-/* line 418, scss/_forms.scss */
+/* line 411, scss/_forms.scss */
 .gform_wrapper textarea.medium {
   height: 190px;
 }
 
-/* line 421, scss/_forms.scss */
+/* line 414, scss/_forms.scss */
 .gform_wrapper textarea.large {
   height: 250px;
 }
 
-/* line 424, scss/_forms.scss */
+/* line 417, scss/_forms.scss */
 .gform_wrapper li.gfield.gfield_error {
   background-color: #FFDFDF;
   margin-bottom: 6px !important;
@@ -1593,34 +1751,34 @@ input[type="checkbox"]:focus {
   border: 1px solid #c89797;
 }
 
-/* line 432, scss/_forms.scss */
+/* line 425, scss/_forms.scss */
 li.gfield + li.gfield.gfield_creditcard_warning {
   margin-top: 14px !important;
 }
 
-/* line 435, scss/_forms.scss */
+/* line 428, scss/_forms.scss */
 .gform_wrapper li.gfield.gfield_error .gfield_description {
   color: #790000;
 }
 
-/* line 438, scss/_forms.scss */
+/* line 431, scss/_forms.scss */
 .gform_wrapper .top_label .gfield_error .ginput_container {
   max-width: 99%;
 }
 
-/* line 441, scss/_forms.scss */
+/* line 434, scss/_forms.scss */
 .gform_wrapper .top_label .gfield_error {
   width: 97%;
 }
 
-/* line 446, scss/_forms.scss */
+/* line 439, scss/_forms.scss */
 .gform_wrapper .top_label .gfield_error input.large,
 .gform_wrapper .top_label .gfield_error select.large,
 .gform_wrapper .top_label .gfield_error textarea.textarea {
   width: 100%;
 }
 
-/* line 454, scss/_forms.scss */
+/* line 447, scss/_forms.scss */
 .gform_wrapper .right_label .gfield_error input.large,
 .gform_wrapper .right_label .gfield_error select.large,
 .gform_wrapper .right_label .gfield_error textarea.textarea,
@@ -1630,24 +1788,24 @@ li.gfield + li.gfield.gfield_creditcard_warning {
   width: 66%;
 }
 
-/* line 457, scss/_forms.scss */
+/* line 450, scss/_forms.scss */
 .gform_wrapper .gfield_error .gfield_label {
   color: #790000;
 }
 
-/* line 460, scss/_forms.scss */
+/* line 453, scss/_forms.scss */
 .gform_wrapper li.gfield.gfield_error.gfield_contains_required {
   margin-top: 12px;
   margin-bottom: 12px !important;
 }
 
-/* line 465, scss/_forms.scss */
+/* line 458, scss/_forms.scss */
 .gform_wrapper li.gfield.gfield_error.gfield_contains_required label.gfield_label,
 .gform_wrapper li.gfield.gfield_error.gfield_contains_required div.ginput_container {
   margin-top: 12px;
 }
 
-/* line 468, scss/_forms.scss */
+/* line 461, scss/_forms.scss */
 .gform_wrapper .validation_error {
   color: #790000;
   font-weight: bold;
@@ -1656,20 +1814,20 @@ li.gfield + li.gfield.gfield_creditcard_warning {
   margin-bottom: 16px;
 }
 
-/* line 475, scss/_forms.scss */
+/* line 468, scss/_forms.scss */
 .gform_wrapper .validation_message {
   color: #790000;
   letter-spacing: normal;
 }
 
-/* line 479, scss/_forms.scss */
+/* line 472, scss/_forms.scss */
 .gform_wrapper .gform_footer {
   padding: 16px 0 10px 0;
   margin: 16px 0 0 0;
   clear: both;
 }
 
-/* line 487, scss/_forms.scss */
+/* line 480, scss/_forms.scss */
 .gform_wrapper .ginput_complex .ginput_left,
 .gform_wrapper .ginput_complex .ginput_right,
 .gform_wrapper .ginput_complex .ginput_full {
@@ -1677,19 +1835,19 @@ li.gfield + li.gfield.gfield_creditcard_warning {
   display: block;
 }
 
-/* line 491, scss/_forms.scss */
+/* line 484, scss/_forms.scss */
 .gform_wrapper .ginput_complex .ginput_full input {
   width: 98% !important;
 }
 
-/* line 495, scss/_forms.scss */
+/* line 488, scss/_forms.scss */
 .gform_wrapper .gfield_checkbox li,
 .gform_wrapper .gfield_radio li {
   margin: 0 0 8px 0;
   line-height: 1.3em;
 }
 
-/* line 500, scss/_forms.scss */
+/* line 493, scss/_forms.scss */
 .gform_wrapper ul.gfield_radio li input[type="radio"]:checked + label,
 .gform_wrapper ul.gfield_checkbox li input[type="checkbox"]:checked + label {
   font-weight: bold;
@@ -1713,9 +1871,6 @@ table {
 /* line 15, scss/_pagination.scss */
 .pagination ul {
   display: inline-block;
-  *display: inline;
-  /* IE7 inline-block hack */
-  *zoom: 1;
   background: white;
   text-align: center;
   -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
@@ -1724,11 +1879,11 @@ table {
   padding: 0;
   margin: 0;
 }
-/* line 25, scss/_pagination.scss */
+/* line 24, scss/_pagination.scss */
 .pagination li {
   display: inline;
 }
-/* line 29, scss/_pagination.scss */
+/* line 28, scss/_pagination.scss */
 .pagination a, .pagination span {
   float: left;
   padding: 0 14px;
@@ -1737,26 +1892,26 @@ table {
   border: 1px solid #dfdfdf;
   border-left-width: 0;
 }
-/* line 38, scss/_pagination.scss */
+/* line 37, scss/_pagination.scss */
 .pagination a:hover {
   background-color: black;
   color: white;
 }
-/* line 43, scss/_pagination.scss */
+/* line 42, scss/_pagination.scss */
 .pagination span.current {
   background-color: black;
   color: white;
 }
-/* line 48, scss/_pagination.scss */
+/* line 47, scss/_pagination.scss */
 .pagination .prev {
   border-left: 1px solid #dfdfdf;
 }
-/* line 52, scss/_pagination.scss */
+/* line 51, scss/_pagination.scss */
 .pagination i {
   line-height: 1;
   font-size: 14px;
 }
-/* line 57, scss/_pagination.scss */
+/* line 56, scss/_pagination.scss */
 .pagination li:first-child a {
   border-left-width: 1px;
 }
@@ -1779,22 +1934,19 @@ table {
 .loop-nav ul li a {
   color: black;
   background: white;
-  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.4);
   opacity: .6;
   display: block;
   line-height: 1;
 }
-/* line 29, scss/_loop-nav.scss */
+/* line 28, scss/_loop-nav.scss */
 .loop-nav ul li a:hover {
   opacity: 1;
 }
-/* line 31, scss/_loop-nav.scss */
+/* line 30, scss/_loop-nav.scss */
 .loop-nav ul li a i {
   padding: 8px 6px 6px 6px;
 }
-/* line 35, scss/_loop-nav.scss */
+/* line 34, scss/_loop-nav.scss */
 .loop-nav ul .previous {
   right: 0;
 }
@@ -1806,7 +1958,7 @@ table {
   -o-border-radius: 3px 0 0 3px;
   border-radius: 3px 0 0 3px;
 }
-/* line 46, scss/_loop-nav.scss */
+/* line 45, scss/_loop-nav.scss */
 .loop-nav ul .next a {
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
@@ -1816,7 +1968,8 @@ table {
 }
 
 /* btns */
-/* line 14, scss/_buttons.scss */
+/* Base btn */
+/* line 81, scss/_buttons.scss */
 input#submit {
   color: #565656;
   display: inline-block;
@@ -1859,7 +2012,7 @@ input#submit {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 132, scss/_mixins.scss */
+/* line 51, scss/_buttons.scss */
 input#submit:hover {
   border-color: #b0b0b0;
   text-decoration: none !important;
@@ -1881,7 +2034,7 @@ input#submit:hover {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$baseBG', endColorstr='$baseHL',GradientType=0 );
   /* IE6-9 */
 }
-/* line 148, scss/_mixins.scss */
+/* line 67, scss/_buttons.scss */
 input#submit:active {
   /*Box shadow*/
   -webkit-box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.3), 0 1px 0 white;
@@ -1889,7 +2042,7 @@ input#submit:active {
   box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.3), 0 1px 0 white;
 }
 
-/* line 20, scss/_buttons.scss */
+/* line 87, scss/_buttons.scss */
 .btn, .button {
   color: #565656;
   display: inline-block;
@@ -1927,7 +2080,7 @@ input#submit:active {
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 0 2px rgba(255, 255, 255, 0.3), 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 0 2px rgba(255, 255, 255, 0.3), 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
 }
-/* line 132, scss/_mixins.scss */
+/* line 51, scss/_buttons.scss */
 .btn:hover, .button:hover {
   border-color: #b0b0b0;
   text-decoration: none !important;
@@ -1949,7 +2102,7 @@ input#submit:active {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$baseBG', endColorstr='$baseHL',GradientType=0 );
   /* IE6-9 */
 }
-/* line 148, scss/_mixins.scss */
+/* line 67, scss/_buttons.scss */
 .btn:active, .button:active {
   /*Box shadow*/
   -webkit-box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.3), 0 1px 0 white;
@@ -2069,161 +2222,132 @@ input#submit:active {
   clear: both;
 }
 
-/* line 19, scss/_utilities.scss */
-.pull-right {
-  float: right;
-}
-
-/* line 22, scss/_utilities.scss */
-.pull-left {
-  float: left;
-}
-
-/* line 26, scss/_utilities.scss */
+/* line 17, scss/_utilities.scss */
 .hide {
   display: none;
 }
 
-/* line 29, scss/_utilities.scss */
-.show {
-  display: block;
-}
-
-/* line 33, scss/_utilities.scss */
-.invisible {
-  visibility: hidden;
-}
-
-/* line 37, scss/_utilities.scss */
-.separate {
-  padding-top: 32px;
-  border-top: 1px solid #a7a9ac;
-  clear: both;
-}
-
-/* line 42, scss/_utilities.scss */
-.separate.nohr {
-  border: none;
-}
-
-/* line 49, scss/_utilities.scss */
+/* line 22, scss/_utilities.scss */
 .alignleft,
 .left {
   float: left;
   margin-right: 20px;
 }
 
-/* line 54, scss/_utilities.scss */
+/* line 27, scss/_utilities.scss */
 .alignright,
 .right {
   float: right;
   margin-left: 20px;
 }
 
-/* line 59, scss/_utilities.scss */
+/* line 32, scss/_utilities.scss */
 .aligncenter,
 .center {
   display: block;
   margin: 0 auto 24px auto;
 }
 
-/* line 64, scss/_utilities.scss */
+/* line 37, scss/_utilities.scss */
 .alignnone,
 .block {
   clear: both;
   margin: 0 0 24px 0;
 }
 
-/* line 70, scss/_utilities.scss */
+/* line 43, scss/_utilities.scss */
 img.alignleft,
 img.alignright {
   display: inline;
 }
 
-/* line 72, scss/_utilities.scss */
-blockquote.alignleft,
-blockquote.alignright {
-  width: 33%;
-}
-
-/* line 75, scss/_utilities.scss */
+/* line 46, scss/_utilities.scss */
 span.show-template {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+/* line 50, scss/_utilities.scss */
+.screen-reader-text, .assistive-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
 @media print {
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   *, html, body, #main {
     background: transparent !important;
     color: black !important;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   a, a:visited {
     text-decoration: underline;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   pre, blockquote {
     border: 1px solid #999;
     page-break-inside: avoid;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   thead {
     display: table-header-group;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   tr, img {
     page-break-inside: avoid;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   img {
     max-width: 100% !important;
     border: 1px solid #000;
     margin: 20px 0;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   p, h2, h3 {
     orphans: 3;
     widows: 3;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   h2, h3 {
     page-break-after: avoid;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   header, #sidebar-primary, #sidebar-subsidiary, #comments-template, footer, .entry-meta {
     display: none;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   h1, h2, h3, h4, h5, h6, p, li, em {
     font-family: Helvetica, Arial, sans-serif;
     text-transform: none;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   h1 {
     font-size: 20px;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   h2 {
     font-size: 18px;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   h3, h4, h5, h6 {
     font-size: 15px;
   }
 
-  /* line 84, scss/_utilities.scss */
+  /* line 59, scss/_utilities.scss */
   p, ul li, li, ul li a {
     font-size: 12px !important;
   }

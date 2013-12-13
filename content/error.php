@@ -4,7 +4,7 @@
 		<h1 class="entry-title"><?php _e( 'Nothing found', 'infusion' ); ?></h1>
 	</header><!-- .entry-header -->
 
-	<div <?php hybrid_attr( 'entry-content' ); ?>>
+	<div <?php hybrid_attr( 'entry-contentdssdf' ); ?>>
 		<?php wpautop( __( 'Apologies, but no entries were found.', 'infusion' ) ); ?>
 	</div><!-- .entry-content -->
 

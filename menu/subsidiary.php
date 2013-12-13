@@ -1,24 +1,22 @@
-<?php if ( has_nav_menu( 'subsidiary' ) ) {
+<?php if ( has_nav_menu( 'subsidiary' ) ) : // Check if there's a menu assigned to the 'subsidiary' location. ?>
 
-	wp_nav_menu(
-		array(
-			'theme_location'  => 'subsidiary',
-			'menu'            => '',
-			'container'       => 'nav',
-			'container_class' => 'menu-subsidiary',
-			'container_id'    => '',
-			'menu_class'      => '',
-			'menu_id'         => '',
-			'echo'            => true,
-			'fallback_cb'     => '',
-			'before'          => '',
-			'after'           => '',
-			'link_before'     => '',
-			'link_after'      => '',
-			'items_wrap'      => '<ul>%3$s</ul>',
-			'depth'           => 0,
-			'walker'          => ''
-		)
-	);
+	<nav <?php hybrid_attr( 'menu', 'subsidiary' ); ?>>
 
-} ?>
+		<h3 class="menu-toggle">
+			<span class="screen-reader-text"><?php _e( 'Navigation', 'stargazer' ); ?></span>
+		</h3><!-- .menu-toggle -->
+
+		<?php wp_nav_menu(
+			array(
+				'theme_location'  => 'subsidiary',
+				'container'       => '',
+				'menu_id'         => 'menu-subsidiary-items',
+				'menu_class'      => 'menu-items',
+				'fallback_cb'     => '',
+				'items_wrap'      => '<div class="wrap"><ul id="%s" class="%s">%s</ul></div>'
+			)
+		); ?>
+
+	</nav><!-- #menu-subsidiary -->
+
+<?php endif; // End check for menu. ?>

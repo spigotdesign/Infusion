@@ -62,8 +62,9 @@ label {
 // Shared size and type resets
 select,
 textarea,
-input[type="text"]
-input[type="email"] {
+input[type="text"],
+input[type="email"],
+input[type="search"]  {
   display: inline-block;
   height: auto;
   padding: 7px 10px;
@@ -80,8 +81,9 @@ textarea {
 
 // Everything else
 textarea,
-input[type="text"]
-input[type="email"] {
+input[type="text"],
+input[type="email"],
+input[type="search"] {
   background-color: $inputBackground;
   border: 1px solid $inputBorder;
   @include border-radius($inputBorderRadius);
@@ -141,15 +143,6 @@ select[multiple],
 select[size] {
   height: auto;
 }
-
-// Focus for select, file, radio, and checkbox
-select:focus,
-input[type="file"]:focus,
-input[type="radio"]:focus,
-input[type="checkbox"]:focus {
-  @include tab-focus;
-}
-
 
 
 // CHECKBOXES & RADIOS
