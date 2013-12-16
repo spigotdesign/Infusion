@@ -1310,6 +1310,11 @@ img {
   position: relative;
 }
 
+/* line 16, scss/_images.scss */
+#wpstats {
+  display: none;
+}
+
 /*
  * Figures & Captions
  *
