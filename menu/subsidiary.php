@@ -3,7 +3,7 @@
 	<nav <?php hybrid_attr( 'menu', 'subsidiary' ); ?>>
 
 		<h3 class="menu-toggle">
-			<span class="screen-reader-text"><?php _e( 'Navigation', 'stargazer' ); ?></span>
+			<span class="screen-reader-text"><?php _e( 'Navigation', 'infusion' ); ?></span>
 		</h3><!-- .menu-toggle -->
 
 		<?php wp_nav_menu(
