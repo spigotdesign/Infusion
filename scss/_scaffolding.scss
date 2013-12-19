@@ -9,12 +9,10 @@
   @include box-sizing(border-box);
 }
 
-
 html {
   -webkit-font-smoothing: antialiased;
     
   }
-
 
 body {
   margin: 0;
@@ -26,25 +24,16 @@ body {
   background-color: $bodyBackground;
 }
 
-
 // Site Structure
 
-// Container (centered, fixed-width layouts)
-#container {
+.container {
 
 }
 
-
-// Main
-#main {
-
+.main-container {
   
 }
 
-
-// Content
-
-#content {
+.content {
   
 }
-

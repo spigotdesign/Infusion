@@ -23,4 +23,4 @@
 
 		</header>
 
-		<div class="main" role="main">
+		<div class="main-container" role="main">

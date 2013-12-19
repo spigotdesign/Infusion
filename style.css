@@ -454,12 +454,12 @@ table {
   box-sizing: border-box;
 }
 
-/* line 13, scss/_scaffolding.scss */
+/* line 12, scss/_scaffolding.scss */
 html {
   -webkit-font-smoothing: antialiased;
 }
 
-/* line 19, scss/_scaffolding.scss */
+/* line 17, scss/_scaffolding.scss */
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
