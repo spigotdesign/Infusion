@@ -77,7 +77,7 @@ function infusion_theme_setup() {
 	// add_action( 'wp_head', 'show_template');
 
 	/* Register custom image sizes. */
-	add_action( 'init', 'infusion_register_image_sizes', 5 );
+	// add_action( 'init', 'infusion_register_image_sizes', 5 );
 
 	/* Register custom menus. */
 	add_action( 'init', 'infusion_register_menus', 5 );
@@ -126,10 +126,10 @@ function show_template() {
 function infusion_register_image_sizes() {
 
 	/* Sets the 'post-thumbnail' size. */
-	set_post_thumbnail_size( 175, 131, true );
+	// set_post_thumbnail_size( 175, 131, true );
 
 	/* Adds the 'infusion-full' image size. */
-	add_image_size( 'infusion-full', 1025, 500, false );
+	// add_image_size( 'infusion-full', 1025, 500, false );
 }
 
 /**
