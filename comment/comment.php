@@ -1,42 +1,19 @@
-<?php
-/**
- * Comment Template
- *
- * The comment template displays an individual comment. This can be overwritten by templates specific
- * to the comment type (comment.php, comment-{$comment_type}.php, comment-pingback.php, 
- * comment-trackback.php) in a child theme.
- *
- * @package infusion
- * @subpackage Template
- */
+<li <?php hybrid_attr( 'comment' ); ?>>
 
-	global $post, $comment;
-?>
+	<article>
+		<header class="comment-meta">
+			<?php echo get_avatar( $comment ); ?>
+			<cite <?php hybrid_attr( 'comment-author' ); ?>><?php comment_author_link(); ?></cite><br />
+			<time <?php hybrid_attr( 'comment-published' ); ?>><?php printf( __( '%s ago', 'infusion' ), human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) ); ?></time>
+			<a <?php hybrid_attr( 'comment-permalink' ); ?>><?php _e( 'Permalink', 'infusion' ); ?></a>
+			<?php edit_comment_link(); ?>
+		</header><!-- .comment-meta -->
 
-	<li id="comment-<?php comment_ID(); ?>" class="<?php hybrid_comment_class(); ?>">
+		<div <?php hybrid_attr( 'comment-content' ); ?>>
+			<?php comment_text(); ?>
+		</div><!-- .comment-content -->
 
-		<?php do_atomic( 'before_comment' ); // infusion_before_comment ?>
+		<?php hybrid_comment_reply_link(); ?>
+	</article>
 
-		<div class="comment-wrap">
-
-			<?php do_atomic( 'open_comment' ); // infusion_open_comment ?>
-
-			<?php echo hybrid_avatar(); ?>
-
-			<?php echo apply_atomic_shortcode( 'comment_meta', '<div class="comment-byline">[comment-author]</div> <div class="comment-meta">[comment-published] [comment-permalink before="| "] [comment-edit-link before="| "] [comment-reply-link before="| "]</div>' ); ?>
-
-			<div class="comment-content comment-text">
-				<?php if ( '0' == $comment->comment_approved ) : ?>
-					<?php echo apply_atomic_shortcode( 'comment_moderation', '<p class="alert moderation">' . __( 'Your comment is awaiting moderation.', 'infusion' ) . '</p>' ); ?>
-				<?php endif; ?>
-
-				<?php comment_text( $comment->comment_ID ); ?>
-			</div><!-- .comment-content .comment-text -->
-
-			<?php do_atomic( 'close_comment' ); // infusion_close_comment ?>
-
-		</div><!-- .comment-wrap -->
-
-		<?php do_atomic( 'after_comment' ); // infusion_after_comment ?>
-
-	<?php /* No closing </li> is needed.  WordPress will know where to add it. */ ?>
+<?php /* No closing </li> is needed.  WordPress will know where to add it. */ ?>
