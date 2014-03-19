@@ -45,7 +45,7 @@ function infusion_theme_setup() {
 			'2c-l'      => __( '2 Columns: Content / Sidebar', 'infusion' ),
 			'2c-r'      => __( '2 Columns: Sidebar / Content', 'infusion' )
 		),
-		array( 'default' => is_rtl() ? '2c-r' :'2c-l' ) 
+		array( 'default' => '2c-l' ) 
 	);
 
 	/* Load stylesheets. */

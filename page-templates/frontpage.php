@@ -2,37 +2,39 @@
 /**
  * Template Name: Front Page
  *
- * This is the template used to display the home page. 
+ * This is the template used for displaying the home page. 
  *
- * @package infusion-child
+ * @package Infusion
  * @subpackage Template
  */
 
-get_header(); // Loads the header.php template. ?>
+get_header(); ?>
 
-	<div class="content">
+<?php if ( have_posts() ) : // Checks if any posts were found. ?>
 
-		<?php if ( have_posts() ) : ?>
+<?php while ( have_posts() ) : // Begins the loop through found posts. ?>
 
-			<?php while ( have_posts() ) : the_post(); ?>
+	<?php the_post(); // Loads the post data. ?>
 
-				<div id="page-<?php the_ID(); ?>" class="<?php hybrid_entry_class(); ?>">
+	<main <?php hybrid_attr( 'content' ); ?>>
 
-					<div class="entry-content">
+		<header class="entry-header">
+			<h1 <?php hybrid_attr( 'entry-title' ); ?>><?php single_post_title(); ?></h1>
+		</header><!-- .entry-header -->
 
-						<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', hybrid_get_parent_textdomain() ) ); ?>
+		<div <?php hybrid_attr( 'entry-content' ); ?>>
+			<?php the_content(); ?>
+			<?php wp_link_pages(); ?>
+		</div><!-- .entry-content -->
 
-						<?php wp_link_pages( array( 'before' => '<p class="page-links">' . __( 'Pages:', hybrid_get_parent_textdomain() ), 'after' => '</p>' ) ); ?>
+		<footer class="entry-footer">
+			<?php edit_post_link(); ?>
+		</footer><!-- .entry-footer -->
 
-					</div><!-- .entry-content -->
-							
-				</div><!-- .hentry -->
+	</main>
 
+<?php endwhile; // End found posts loop. ?>
 
-			<?php endwhile; ?>
-
-		<?php endif; ?>		
-  		
-	</div><!-- .content -->
+<?php endif; // End check for posts. ?>
 
 <?php get_footer(); // Loads the footer.php template. ?>

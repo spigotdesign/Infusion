@@ -6,6 +6,31 @@
  *
  */
  
+  // Media Queries
+
+@mixin mq($mq) {
+  @if $mq == 480  { @media (min-width: 30em) { @content; } } // 
+  @if $mq == 640  { @media (min-width: 40em) { @content; } }
+  @if $mq == 800  { @media (min-width: 50em) { @content; } }
+  @if $mq == 960  { @media (min-width: 60em) { @content; } }
+
+
+  @if $mq == max  { @media (max-width: 600px) { @content; } }
+
+  @if $mq == lsp { @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape)  { @content; } } // Landscape Phone
+
+  @if $mq == retina {
+    @media
+      only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (   min--moz-device-pixel-ratio: 2),
+      only screen and (     -o-min-device-pixel-ratio: 2/1),
+      only screen and (        min-device-pixel-ratio: 2),
+      only screen and (                min-resolution: 192dpi),
+      only screen and (                min-resolution: 2dppx) {
+        @content;
+    }
+  }
+}
 
 // Clearfix
 
