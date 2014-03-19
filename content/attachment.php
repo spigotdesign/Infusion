@@ -19,7 +19,7 @@
 
 	<?php else : // If not viewing a single attachment. ?>
 
-		<?php get_the_image( array( 'size' => 'infusion-full', 'order' => array( 'featured', 'attachment' ) ) ); ?>
+		<?php get_the_image( array( 'size' => 'full', 'order' => array( 'featured', 'attachment' ) ) ); ?>
 
 		<header class="entry-header">
 			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>

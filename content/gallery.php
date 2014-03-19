@@ -28,7 +28,7 @@
 
 	<?php else : // If not viewing a single post. ?>
 
-		<?php get_the_image( array( 'size' => 'infusion-full' ) ); ?>
+		<?php get_the_image( array( 'size' => 'full' ) ); ?>
 
 		<header class="entry-header">
 

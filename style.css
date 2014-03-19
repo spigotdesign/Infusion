@@ -448,7 +448,7 @@ table {
  */
 /* Scaffolding  */
 /* line 8, scss/_scaffolding.scss */
-* {
+*, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -506,12 +506,12 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   *zoom: 1;
 }
-/* line 15, scss/_mixins.scss */
+/* line 40, scss/_mixins.scss */
 #menu-primary:before, #menu-primary:after {
   display: table;
   content: "";
 }
-/* line 19, scss/_mixins.scss */
+/* line 44, scss/_mixins.scss */
 #menu-primary:after {
   clear: both;
 }
@@ -651,12 +651,12 @@ body {
   -o-border-radius: 50px;
   border-radius: 50px;
 }
-/* line 15, scss/_mixins.scss */
+/* line 40, scss/_mixins.scss */
 .conversation img.avatar:before, .conversation img.avatar:after {
   display: table;
   content: "";
 }
-/* line 19, scss/_mixins.scss */
+/* line 44, scss/_mixins.scss */
 .conversation img.avatar:after {
   clear: both;
 }
@@ -2333,12 +2333,12 @@ input#submit:active {
 .group {
   *zoom: 1;
 }
-/* line 15, scss/_mixins.scss */
+/* line 40, scss/_mixins.scss */
 .group:before, .group:after {
   display: table;
   content: "";
 }
-/* line 19, scss/_mixins.scss */
+/* line 44, scss/_mixins.scss */
 .group:after {
   clear: both;
 }

@@ -5,7 +5,7 @@
 // @subpackage    Sass Stylesheet
 // @version       1.0
 
-* {
+*, *:before, *:after {
   @include box-sizing(border-box);
 }
 
