@@ -20,6 +20,8 @@ $white:                 white;
 
 // Accent colors
 $blue:                  #049cdb;
+$orange:				#f39c12;
+$red:					#c0392b;
 
 
 
@@ -41,25 +43,25 @@ $toolTipTextColor:		$white;
 
 
 // Typography
-$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+
+$baseFontFamily:		'Proxima Nova Light', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$thinFontFamily:        'Proxima Nova Thin', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$midFontFamily:			'Proxima Nova', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$boldFontFamily:		'Proxima Nova Semibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$italicFontFamily:		'Proxima Nova Light Italic', "Helvetica Neue", Helvetica, Arial, sans-serif;
 $monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
-
-
 $iconFontFamily:        "icomoon";
 
-$baseFontSize:          16px;
-$baseFontFamily:        $sansFontFamily;
-$baseLineHeight:        18px;
-$baseFontStyle:         normal;
-$altFontFamily:         $serifFontFamily;
+$baseFontSize:			100%;
+$baseFontStyle:			normal;
 
-
-$headingsFontFamily:    $sansFontFamily;
-$headingsFontWeight:    700;   
+// Headings
+$headingsFontFamily:    $thinFontFamily;
+$headingsFontWeight:    normal;
 $headingsColor:         $black;
 
-$primaryNavFontFamily:  $sansFontFamily;
+// Navigation
+$primaryNavFontFamily:  $baseFontFamily;
 $primaryNavFontWeight:  300;
 $primaryNavFontStyle:   normal;
 

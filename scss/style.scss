@@ -1,19 +1,17 @@
 /*
- Theme Name:    Infusion
+ Theme Name:    Jarrett Moe
  Theme URI:    	http://spigotdesign.com/
  Author:        Spigot Design
  Author URI:    http://spigotdesign.com/
- Description:   Description: A custom theme for Enter Client Name Here. The theme is built on the rock-solid Hybrid Core theme framework. It's built with search-engine optimization (SEO) in mind by utilizing the most current HTML5 conventions and <a href="http://schema.org">Schema.org</a> microdata.
- Version:       2.0
- Text Domain: 	infusion
+ Description:   Description: A custom theme built on the rock-solid Hybrid Core theme framework. It's built with search-engine optimization (SEO) in mind by utilizing the most current HTML5 conventions and <a href="http://schema.org">Schema.org</a> microdata.
+ Version:       1.0
+ Text Domain: 	jmoe
  License:     	GNU General Public License v2.0 or later
  License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 // Comapss
 @import "compass/css3";
-//@import "compass/typography";
-//@import "compass/utilities";
 
 // Reset, Variables, Mixins, Etc
 @import "normalize";
@@ -45,5 +43,4 @@
 @import "tooltip";
 
 // Utilities
-@import "retina";
 @import "utilities";

@@ -8,7 +8,7 @@
 
 
 form {
-  margin: 0 0 $baseLineHeight;
+  
 }
 
 fieldset {
@@ -22,9 +22,8 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: $baseLineHeight * 1.5;
-  font-size: $baseFontSize * 1.5;
-  line-height: $baseLineHeight * 2;
+  font-size: 16px;
+  font-size: 1rem;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
 
@@ -36,15 +35,14 @@ input,
 button,
 select,
 textarea {
-  font-size: $baseFontSize;
-  font-weight: normal;
-  line-height: $baseLineHeight;
+  font-size: 16px;
+  font-size: 1rem;
 }
 input,
 button,
 select,
 textarea {
-  font-family: $baseFontFamily; // And only set font-family here for those that need it (note the missing label element)
+  font-family: $baseFontFamily;
 }
 
 // Identify controls by their labels
@@ -61,13 +59,14 @@ select,
 textarea,
 input[type="text"],
 input[type="email"],
-input[type="search"]  {
+input[type="search"],
+input[type="tel"],
+input[type="url"]  {
   display: inline-block;
   height: auto;
-  padding: 7px 10px;
-  margin-bottom: 9px;
-  font-size: $baseFontSize;
-  line-height: $baseLineHeight;
+  padding: .25em .5em;
+  font-size: 16px;
+  font-size: 1rem;
 }
 
 
@@ -80,20 +79,24 @@ textarea {
 textarea,
 input[type="text"],
 input[type="email"],
-input[type="search"] {
-  background-color: $inputBackground;
-  border: 1px solid $inputBorder;
-  @include border-radius($inputBorderRadius);
-  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
-  $transition: border linear .2s, box-shadow linear .2s;
-  @include transition($transition);
+input[type="search"],
+input[type="tel"],
+input[type="url"] {
+background-color: $inputBackground;
+border: 1px solid $inputBorder;
+@include border-radius($inputBorderRadius);
+@include transition(all .2s ease-in-out);
+color: $gray;
 
   // Focus state
   &:focus {
     border-color: rgba(82,168,236,.8);
+    background: white;
     outline: 0;
     outline: thin dotted \9; /* IE6-9 */
-    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 10px rgba(44,172,219,.75));
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 10px rgba(44,172,219,.35));
+    color: $black;
+    font-family: $boldFontFamily;
   }
 }
 
@@ -101,7 +104,6 @@ input[type="search"] {
 input[type="radio"],
 input[type="checkbox"] {
   margin: 3px 0;
-  *margin-top: 0; /* IE7 */
   line-height: normal;
   cursor: pointer;
 }
@@ -125,7 +127,6 @@ input[type="checkbox"] {
 select,
 input[type="file"] {
   height: 28px; /* In IE7, the height of the select element cannot be changed by height, only font-size */
-  *margin-top: 4px; /* For IE7, add top margin to align select with labels */
   line-height: 28px;
 }
 
@@ -160,7 +161,12 @@ select[size] {
 
 // Gravity Forms
 // ------------------------------------ //
+.gform_wrapper .top_label .no-title .gfield_label { display: none; }
 
+
+.entry-content .gform_fields {
+  padding-left: 0;
+}
 
 .gform_wrapper {
   overflow: inherit;
@@ -187,7 +193,7 @@ select[size] {
 
 .gform_wrapper .gform_heading {
   width: 98%;
-  margin-bottom: $baseLineHeight;
+  // @include typecsset-space(margin-bottom);
 }
 
 
