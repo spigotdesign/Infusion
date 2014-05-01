@@ -1,0 +1,117 @@
+
+/*
+ * Responsive Menu
+ *
+ * @package   Sass Stylesheet
+ * @version   1.0
+ *
+ * Resources: http://spig.io/3L20360Y0X1V 
+ *
+ */
+
+ // Variables
+
+$button-size:         1.5rem; 
+$transition:          .2s; // increase this to see the transformations in slow-motion
+
+ // Mixin
+
+ @mixin line {
+  display: inline-block;
+  width: $button-size;
+  height: $button-size/7;
+  background: $grayDark;
+  border-radius: $button-size/14; 
+  transition: $transition;
+}
+
+.toggle-menu {
+  display: inline-block;
+  padding: $button-size/2 $button-size/4;
+  transition: .3s;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  padding: 0;
+  border:none;
+  position: absolute;
+  top: $button-size/2.5;
+  left: $button-size/2.5;
+  z-index: 12000;
+ 
+  &:hover {
+    opacity: 1;
+  }
+ 
+  &:active {
+    transition: 0;
+    background: rgba(0,0,0,.1);
+  }
+  
+  @include mq(800) {
+    display: none; // Don't show on the big screen
+  }
+
+  &:focus { outline: 0; }
+}
+
+.toggle-menu span {
+   
+  //create middle line
+  @include line;
+  position: relative; 
+ 
+  /*create the upper and lower lines as pseudo-elements of the middle line*/
+  &:before, &:after {
+   
+    @include line;
+      position: absolute;
+      left:0;
+      content: '';
+      @include transform-origin ($button-size/14 center);
+    }
+  &:before { top: $button-size/4; }
+  &:after { top: -$button-size/4; }
+}
+
+.toggle-menu.close {
+
+  //@include transform(scale3d(.8,.8,.8));
+  
+
+  span {
+    background: transparent;
+    &:before, &:after{
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+      top:0;
+      width: $button-size;
+
+    }
+    &:before{
+      -webkit-transform: rotate3d(0,0,1,45deg); 
+              transform: rotate3d(0,0,1,45deg); 
+
+    }
+    &:after{
+      -webkit-transform: rotate3d(0,0,1,-45deg); 
+              transform: rotate3d(0,0,1,-45deg); 
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

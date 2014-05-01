@@ -8,7 +8,7 @@
 
 /* Base btn */
  @mixin btn($primaryColor, $secondaryColor) {
-  font-family: $boldFontFamily;
+  font-weight: $boldFontWeight;
   display: inline-block;
   text-transform: uppercase;
   padding: .5em .875em;

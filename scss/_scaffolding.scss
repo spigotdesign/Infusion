@@ -38,8 +38,12 @@ body {
 }
 // Site Structure
 
-.container {
-
+.contain {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1em;
+  max-width: $containerWidth;
+  position: relative;
 }
 
 .main-container {

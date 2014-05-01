@@ -8,7 +8,9 @@
  
 
 #menu-primary {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
   margin-bottom: 2em;
   font-family: $primaryNavFontFamily;
 

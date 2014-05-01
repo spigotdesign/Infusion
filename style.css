@@ -1,11 +1,11 @@
-/*
- Theme Name:    Jarrett Moe
+/*!
+ Theme Name:    Summit Restoration
  Theme URI:    	http://spigotdesign.com/
- Author:        Spigot Design
+ Author:        Spigot
  Author URI:    http://spigotdesign.com/
  Description:   Description: A custom theme built on the rock-solid Hybrid Core theme framework. It's built with search-engine optimization (SEO) in mind by utilizing the most current HTML5 conventions and <a href="http://schema.org">Schema.org</a> microdata.
  Version:       1.0
- Text Domain: 	jmoe
+ Text Domain: 	summmitrest
  License:     	GNU General Public License v2.0 or later
  License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -467,12 +467,12 @@ html {
 
 /* line 18, scss/_scaffolding.scss */
 body {
-  font-family: "Proxima Nova Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: black;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #292929;
   font-size: 100%;
   line-height: 1.5;
   font-style: normal;
-  color: black;
+  color: #292929;
   background-color: white;
   -webkit-animation-delay: 0.1s;
   -webkit-animation-name: fontfix;
@@ -492,6 +492,15 @@ body {
     opacity: 1;
   }
 }
+/* line 41, scss/_scaffolding.scss */
+.contain {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1em;
+  max-width: 1440px;
+  position: relative;
+}
+
 /*
  * Header
  *
@@ -499,7 +508,31 @@ body {
  * @version   1.0
  *
  */
-/* line 18, scss/_header.scss */
+/* line 11, scss/_header.scss */
+.leaderboard {
+  background: #292929;
+}
+
+/* line 15, scss/_header.scss */
+.site-description {
+  margin: 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  font-size: 1.125em;
+  color: #fafafa;
+  padding: .875em 0;
+}
+
+/* line 27, scss/_header.scss */
+.site-header {
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.35);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.35);
+  background-color: white;
+}
+
+/* line 35, scss/_header.scss */
 .site-title a {
   font: 0/0 a;
   color: transparent;
@@ -507,11 +540,11 @@ body {
   background-color: transparent;
   border: 0;
   display: block;
-}
-
-/* line 31, scss/_header.scss */
-.site-description {
-  display: none;
+  background: url(img/icons/summit-rest-logo.svg) center center no-repeat;
+  width: 282px;
+  height: 87px;
+  background-size: 282px 87px;
+  position: relative;
 }
 
 /*
@@ -523,9 +556,11 @@ body {
  */
 /* line 10, scss/_navigation.scss */
 #menu-primary {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
   margin-bottom: 2em;
-  font-family: "Proxima Nova Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Bitter", serif;
   *zoom: 1;
 }
 /* line 39, scss/_mixins.scss */
@@ -537,14 +572,14 @@ body {
 #menu-primary:after {
   clear: both;
 }
-/* line 17, scss/_navigation.scss */
+/* line 19, scss/_navigation.scss */
 #menu-primary ul {
   position: relative;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 23, scss/_navigation.scss */
+/* line 25, scss/_navigation.scss */
 #menu-primary ul li {
   padding: 0 0 1em 0;
   margin: 0 .625em;
@@ -553,11 +588,11 @@ body {
   text-transform: uppercase;
   position: relative;
 }
-/* line 31, scss/_navigation.scss */
+/* line 33, scss/_navigation.scss */
 #menu-primary ul li:hover {
   visibility: inherit;
 }
-/* line 34, scss/_navigation.scss */
+/* line 36, scss/_navigation.scss */
 #menu-primary ul li:hover > ul {
   left: .625em;
   top: 1.5em;
@@ -565,17 +600,17 @@ body {
   visibility: visible;
   opacity: 1;
 }
-/* line 41, scss/_navigation.scss */
+/* line 43, scss/_navigation.scss */
 #menu-primary ul li:hover > ul ul {
   left: 100%;
   top: 0;
 }
-/* line 48, scss/_navigation.scss */
+/* line 50, scss/_navigation.scss */
 #menu-primary ul li a {
-  background: white;
+  background: #fafafa;
   padding: 0 1em;
 }
-/* line 57, scss/_navigation.scss */
+/* line 59, scss/_navigation.scss */
 #menu-primary ul.sub-menu {
   position: absolute;
   width: 15em;
@@ -591,26 +626,128 @@ body {
   -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
 }
-/* line 68, scss/_navigation.scss */
+/* line 70, scss/_navigation.scss */
 #menu-primary ul.sub-menu li {
   width: 100%;
   padding: 0;
   margin: 0;
   line-height: 1.3;
 }
-/* line 74, scss/_navigation.scss */
+/* line 76, scss/_navigation.scss */
 #menu-primary ul.sub-menu li a {
   display: block;
   padding: 5px 0 5px 10px;
 }
-/* line 79, scss/_navigation.scss */
+/* line 81, scss/_navigation.scss */
 #menu-primary ul.sub-menu li a:hover, #menu-primary ul.sub-menu li.current-menu-item a {
   background: #049cdb;
-  color: white;
+  color: #fafafa;
 }
-/* line 86, scss/_navigation.scss */
+/* line 88, scss/_navigation.scss */
 #menu-primary ul.sub-menu ul {
   left: 0;
+}
+
+/*
+ * Responsive Menu
+ *
+ * @package   Sass Stylesheet
+ * @version   1.0
+ *
+ * Resources: http://spig.io/3L20360Y0X1V 
+ *
+ */
+/* line 28, scss/_toggle-menu.scss */
+.toggle-menu {
+  display: inline-block;
+  padding: 0.75rem 0.375rem;
+  transition: .3s;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 12000;
+}
+/* line 42, scss/_toggle-menu.scss */
+.toggle-menu:hover {
+  opacity: 1;
+}
+/* line 46, scss/_toggle-menu.scss */
+.toggle-menu:active {
+  transition: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 50em) {
+  /* line 28, scss/_toggle-menu.scss */
+  .toggle-menu {
+    display: none;
+  }
+}
+/* line 55, scss/_toggle-menu.scss */
+.toggle-menu:focus {
+  outline: 0;
+}
+
+/* line 58, scss/_toggle-menu.scss */
+.toggle-menu span {
+  display: inline-block;
+  width: 1.5rem;
+  height: 0.21429rem;
+  background: #333333;
+  border-radius: 0.10714rem;
+  transition: 0.2s;
+  position: relative;
+  /*create the upper and lower lines as pseudo-elements of the middle line*/
+}
+/* line 65, scss/_toggle-menu.scss */
+.toggle-menu span:before, .toggle-menu span:after {
+  display: inline-block;
+  width: 1.5rem;
+  height: 0.21429rem;
+  background: #333333;
+  border-radius: 0.10714rem;
+  transition: 0.2s;
+  position: absolute;
+  left: 0;
+  content: '';
+  -moz-transform-origin: 0.10714rem center 50%;
+  -ms-transform-origin: 0.10714rem center 50%;
+  -webkit-transform-origin: 0.10714rem center 50%;
+  transform-origin: 0.10714rem center 50%;
+}
+/* line 73, scss/_toggle-menu.scss */
+.toggle-menu span:before {
+  top: 0.375rem;
+}
+/* line 74, scss/_toggle-menu.scss */
+.toggle-menu span:after {
+  top: -0.375rem;
+}
+
+/* line 82, scss/_toggle-menu.scss */
+.toggle-menu.close span {
+  background: transparent;
+}
+/* line 84, scss/_toggle-menu.scss */
+.toggle-menu.close span:before, .toggle-menu.close span:after {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  top: 0;
+  width: 1.5rem;
+}
+/* line 91, scss/_toggle-menu.scss */
+.toggle-menu.close span:before {
+  -webkit-transform: rotate3d(0, 0, 1, 45deg);
+  transform: rotate3d(0, 0, 1, 45deg);
+}
+/* line 96, scss/_toggle-menu.scss */
+.toggle-menu.close span:after {
+  -webkit-transform: rotate3d(0, 0, 1, -45deg);
+  transform: rotate3d(0, 0, 1, -45deg);
 }
 
 /*
@@ -809,7 +946,7 @@ body {
 }
 /* line 34, scss/_search.scss */
 .search .search-form label {
-  color: white;
+  color: #fafafa;
 }
 /* line 39, scss/_search.scss */
 .search .search-form input[type="submit"] {
@@ -831,14 +968,14 @@ body {
   -o-transition: all 0.5s ease-in-out;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
-  background: black url(img/icons/icon-search.png) 10px 50% no-repeat;
-  color: white;
+  background: #292929 url(img/icons/icon-search.png) 10px 50% no-repeat;
+  color: #fafafa;
 }
 /* line 57, scss/_search.scss */
 .search .search-form input[type="text"]:focus {
   width: 30em;
   padding: 14px 5px 12px 15px;
-  background-color: black;
+  background-color: #292929;
   outline: none;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
@@ -863,9 +1000,9 @@ p {
 
 /* line 17, scss/_type.scss */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Proxima Nova Thin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Bitter", serif;
   font-weight: normal;
-  color: black;
+  color: #292929;
   text-rendering: optimizelegibility;
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
@@ -926,18 +1063,19 @@ h5, .h5 {
 
 /* line 75, scss/_type.scss */
 h6, .h6 {
-  font-family: "Proxima Nova Semibold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-size: 1.125rem;
 }
 
-/* line 82, scss/_type.scss */
+/* line 84, scss/_type.scss */
 code {
   padding: 3px 5px;
-  color: black;
+  color: #292929;
   font-weight: bold;
   display: inline;
 }
 
-/* line 92, scss/_type.scss */
+/* line 94, scss/_type.scss */
 pre {
   overflow: auto;
   display: block;
@@ -948,24 +1086,24 @@ pre {
   white-space: pre-wrap;
   background-color: #333333;
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  color: white;
+  color: #fafafa;
   font-weight: normal;
   margin-bottom: 2em;
 }
-/* line 108, scss/_type.scss */
+/* line 110, scss/_type.scss */
 pre code {
   padding: 0;
-  color: white;
+  color: #fafafa;
   font-weight: normal;
 }
 
-/* line 117, scss/_type.scss */
+/* line 119, scss/_type.scss */
 ul, ol {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
 }
 
-/* line 121, scss/_type.scss */
+/* line 123, scss/_type.scss */
 ul ul,
 ul ol,
 ol ol,
@@ -973,57 +1111,55 @@ ol ul {
   margin-bottom: 0;
 }
 
-/* line 127, scss/_type.scss */
+/* line 129, scss/_type.scss */
 ul {
   list-style: disc;
 }
 
-/* line 130, scss/_type.scss */
+/* line 132, scss/_type.scss */
 ol {
   list-style: decimal;
 }
 
-/* line 133, scss/_type.scss */
+/* line 135, scss/_type.scss */
 li {
   line-height: 1.6875;
 }
 
-/* line 138, scss/_type.scss */
+/* line 140, scss/_type.scss */
 .entry-content ul, .entry-content ol {
   padding: 0 0 0 1.6875rem;
 }
 
-/* line 144, scss/_type.scss */
+/* line 146, scss/_type.scss */
 strong {
-  font-family: "Proxima Nova Semibold", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 700;
 }
 
-/* line 148, scss/_type.scss */
+/* line 150, scss/_type.scss */
 em {
-  font-style: normal;
-  font-family: "Proxima Nova Light Italic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
 }
 
-/* line 154, scss/_type.scss */
+/* line 156, scss/_type.scss */
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted black;
+  border-bottom: 1px dotted #292929;
 }
 
-/* line 160, scss/_type.scss */
+/* line 162, scss/_type.scss */
 .entry blockquote {
   padding: 0 2em;
   margin: 2em;
   border-left: 3px solid #dfdfdf;
 }
-/* line 165, scss/_type.scss */
+/* line 167, scss/_type.scss */
 .entry blockquote p {
   font-size: 130%;
-  font-family: "Proxima Nova Light Italic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
 }
 
-/* line 173, scss/_type.scss */
+/* line 175, scss/_type.scss */
 sup, sub {
   vertical-align: baseline;
   position: relative;
@@ -1032,7 +1168,7 @@ sup, sub {
   padding: 0 .125em;
 }
 
-/* line 180, scss/_type.scss */
+/* line 182, scss/_type.scss */
 sub {
   top: 0.4em;
 }
@@ -1150,7 +1286,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Proxima Nova Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 /* line 49, scss/_forms.scss */
@@ -1186,7 +1322,7 @@ input[type="email"],
 input[type="search"],
 input[type="tel"],
 input[type="url"] {
-  background-color: white;
+  background-color: #fafafa;
   border: 1px solid #cccccc;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -1212,8 +1348,8 @@ input[type="url"]:focus {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px rgba(44, 172, 219, 0.35);
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px rgba(44, 172, 219, 0.35);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px rgba(44, 172, 219, 0.35);
-  color: black;
-  font-family: "Proxima Nova Semibold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #292929;
+  font-weight: 700;
 }
 
 /* line 104, scss/_forms.scss */
@@ -1739,7 +1875,7 @@ li.gfield + li.gfield.gfield_creditcard_warning {
 /* line 13, scss/_tables.scss */
 table {
   max-width: 100%;
-  background-color: white;
+  background-color: #fafafa;
   border-collapse: collapse;
   border-spacing: 0;
 }
@@ -1759,7 +1895,7 @@ table {
 /* line 15, scss/_pagination.scss */
 .pagination ul {
   display: inline-block;
-  background: white;
+  background: #fafafa;
   text-align: center;
   -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
   -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
@@ -1782,13 +1918,13 @@ table {
 }
 /* line 37, scss/_pagination.scss */
 .pagination a:hover {
-  background-color: black;
-  color: white;
+  background-color: #292929;
+  color: #fafafa;
 }
 /* line 42, scss/_pagination.scss */
 .pagination span.current {
-  background-color: black;
-  color: white;
+  background-color: #292929;
+  color: #fafafa;
 }
 /* line 47, scss/_pagination.scss */
 .pagination .prev {
@@ -1826,8 +1962,8 @@ table {
 }
 /* line 21, scss/_loop-nav.scss */
 .loop-nav ul li a {
-  color: black;
-  background: white;
+  color: #292929;
+  background: #fafafa;
   opacity: .6;
   display: block;
   line-height: 1;
@@ -1867,7 +2003,7 @@ table {
 /* Base btn */
 /* line 29, scss/_buttons.scss */
 .btn, input#submit, .gform_button, .button {
-  font-family: "Proxima Nova Semibold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
   display: inline-block;
   text-transform: uppercase;
   padding: .5em .875em;
@@ -1884,7 +2020,7 @@ table {
 /* line 20, scss/_buttons.scss */
 .btn:hover, input#submit:hover, .gform_button:hover, .button:hover {
   background-color: #333333;
-  color: white;
+  color: #fafafa;
   text-decoration: none;
 }
 
@@ -1895,15 +2031,15 @@ input#submit {
 
 /* line 37, scss/_buttons.scss */
 .btn.white, input.white#submit, .white.gform_button, .button.white {
-  font-family: "Proxima Nova Semibold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
   display: inline-block;
   text-transform: uppercase;
   padding: .5em .875em;
-  border: 1px solid white;
+  border: 1px solid #fafafa;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  color: white;
+  color: #fafafa;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
@@ -1911,7 +2047,7 @@ input#submit {
 }
 /* line 20, scss/_buttons.scss */
 .btn.white:hover, input.white#submit:hover, .white.gform_button:hover, .button.white:hover {
-  background-color: white;
+  background-color: #fafafa;
   color: #333333;
   text-decoration: none;
 }
@@ -1928,7 +2064,7 @@ input#submit, .gform_button {
 .orange-btn {
   background-color: #f39c12;
   border: 1px solid #f39c12;
-  color: white;
+  color: #fafafa;
 }
 /* line 56, scss/_buttons.scss */
 .orange-btn:hover {
@@ -1974,7 +2110,7 @@ input#submit, .gform_button {
   margin-left: -5px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #4e5055;
+  border-top: 5px solid #292929;
 }
 /* line 37, scss/_tooltip.scss */
 .tooltip.right {
@@ -1987,7 +2123,7 @@ input#submit, .gform_button {
   margin-top: -5px;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
-  border-right: 5px solid #4e5055;
+  border-right: 5px solid #292929;
 }
 /* line 49, scss/_tooltip.scss */
 .tooltip.bottom {
@@ -2000,7 +2136,7 @@ input#submit, .gform_button {
   margin-left: -5px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 5px solid #4e5055;
+  border-bottom: 5px solid #292929;
 }
 /* line 61, scss/_tooltip.scss */
 .tooltip.left {
@@ -2013,7 +2149,7 @@ input#submit, .gform_button {
   margin-top: -5px;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
-  border-left: 5px solid #4e5055;
+  border-left: 5px solid #292929;
 }
 
 /* line 77, scss/_tooltip.scss */
@@ -2023,10 +2159,10 @@ input#submit, .gform_button {
 .tooltip-inner {
   max-width: 250px;
   padding: 3px 8px;
-  color: white;
+  color: #fafafa;
   text-align: center;
   text-decoration: none;
-  background-color: #4e5055;
+  background-color: #292929;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;

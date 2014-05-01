@@ -73,7 +73,9 @@ h5, .h5 {
 }
 
 h6, .h6 {
-  font-family: $boldFontFamily;
+  font-size: 18px;
+  font-size: 1.125rem;
+  //line-height: 1.5;
 
 }
 
@@ -142,12 +144,12 @@ li {
 
 // Emphasis
 strong {
-    font-family: $boldFontFamily;
-    font-weight: normal;
+    // font-family: $boldFontFamily;
+    font-weight: $boldFontWeight;
 }
 em {
-  font-style: normal;
-  font-family: $italicFontFamily;
+  font-style: italic;
+  // font-family: $italicFontFamily;
 }
 
 // Abbreviations and acronyms
@@ -164,7 +166,7 @@ abbr[title] {
 
     p { 
       font-size: 130%;
-      font-family: $italicFontFamily;
+      font-style: italic;
     }
 }
 

@@ -195,11 +195,9 @@ function infusion_enqueue_scripts() {
  * @return void
  */
 function infusion_register_styles() {
-	// wp_deregister_style( 'mediaelement' );
-	// wp_deregister_style( 'wp-mediaelement' );
 
-	wp_register_style( 'infusion-fonts',        '//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic|Open+Sans:300,400,600,700' );
-	//wp_register_style( 'infusion-mediaelement', trailingslashit( get_template_directory_uri() ) . 'css/mediaelement/mediaelement.min.css' );
+	wp_register_style( 'infusion-fonts', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Bitter' );
+
 }
 
 /**

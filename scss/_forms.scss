@@ -96,7 +96,7 @@ color: $gray;
     outline: thin dotted \9; /* IE6-9 */
     @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 10px rgba(44,172,219,.35));
     color: $black;
-    font-family: $boldFontFamily;
+    font-weight: $boldFontWeight;
   }
 }
 

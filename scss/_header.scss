@@ -6,10 +6,27 @@
  *
  */
 
+// Leaderboard 
+
+.leaderboard {
+  background: $black;
+}
+
+.site-description {
+  margin: 0;
+  font-family: $sansFontFamily;
+  font-weight: normal;
+  font-size: 18px;
+  font-size: 1.125em;
+  color: $white;
+  padding: .875em 0;
+}
+
 
 // Header
 .site-header {
-
+  @include box-shadow(0 2px 2px 0 rgba(0,0,0,.35));
+  background-color: white;
 }
 
 // Site Title 
@@ -18,14 +35,12 @@
    a {
    	@include hide-text;
   	display: block;
-  	// background: url(img/icons/spigot-logo.png) center center no-repeat;
-  	// width: 250px;
-  	// height: 100px;
-  	// position: relative;
-  	// top: 5px;
-  	// left: -13px;
+  	background: url(img/icons/summit-rest-logo.svg) center center no-repeat;
+  	width: 282px;
+  	height: 87px;
+    background-size: 282px 87px;
+  	position: relative;
+
    }
 }
 
-// Site Description 
-.site-description 		{ display: none; }
