@@ -1,13 +1,13 @@
 <?php
 /**
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU 
- * General Public License as published by the Free Software Foundation; either version 2 of the License, 
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
+ * General Public License as published by the Free Software Foundation; either version 2 of the License,
  * or (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * You should have received a copy of the GNU General Public License along with this program; if not, write 
+ * You should have received a copy of the GNU General Public License along with this program; if not, write
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package    Infusion
@@ -24,7 +24,7 @@ $infusion_dir = trailingslashit( get_template_directory() );
 /* Load the Hybrid Core framework and launch it. */
 require_once( $infusion_dir . 'library/hybrid.php' );
 new Hybrid();
- 
+
 add_action( 'after_setup_theme', 'infusion_theme_setup', 5 );
 
 /**
@@ -35,17 +35,17 @@ add_action( 'after_setup_theme', 'infusion_theme_setup', 5 );
  * @return void
  */
 function infusion_theme_setup() {
-	
+
 	/* Theme layouts. */
-	add_theme_support( 
-		'theme-layouts', 
+	add_theme_support(
+		'theme-layouts',
 		array(
 			'1c'        => __( '1 Column Wide',                'infusion' ),
 			'1c-narrow' => __( '1 Column Narrow',              'infusion' ),
 			'2c-l'      => __( '2 Columns: Content / Sidebar', 'infusion' ),
 			'2c-r'      => __( '2 Columns: Sidebar / Content', 'infusion' )
 		),
-		array( 'default' => '2c-l' ) 
+		array( 'default' => '2c-l' )
 	);
 
 	/* Load stylesheets. */
@@ -100,16 +100,16 @@ function infusion_theme_setup() {
 
 	/* Removes post type support */
 	add_action( 'init', 'infusion_remove_post_type_support', 15 );
-	
-	
+
+
 }
 
 
 /**
  * Function to show what template file is currently being used.
- * 
- */ 
-function show_template() {  
+ *
+ */
+function show_template() {
     global $template;
     echo '<span class="show-template">' . $template . '</span>';
 }
@@ -180,12 +180,12 @@ function infusion_register_sidebars() {
  */
 function infusion_enqueue_scripts() {
 
- 	wp_enqueue_script( 'jQuery');
-	// wp_enqueue_script( 'modernizr', trailingslashit( get_template_directory_uri() ) . '/js/modernizr.js', null, '2.6.2', false );
-	wp_enqueue_script( 'plugins', 	trailingslashit( get_template_directory_uri() ) . '/js/plugins-ck.js', null, '1.0', true ); // Use plugins.js if not using Codekit
-	wp_enqueue_script( 'scripts', 	trailingslashit( get_template_directory_uri() ) . '/js/scripts-ck.js', null, '1.0', true ); // Use scripts.js if not using Codekit
+  	wp_enqueue_script( 'modernizr', trailingslashit( get_template_directory_uri() ) . '/js/modernizr.min.js', array( 'jquery' ), '2.8.2', false );
+	wp_enqueue_script( 'plugins', trailingslashit( get_template_directory_uri() ) . 'js/plugins.min.js', array( 'jquery' ), null, true );
+	wp_enqueue_script( 'scripts', trailingslashit( get_template_directory_uri() ) . 'js/scripts.min.js', array( 'jquery' ), null, true );
 
 }
+
 
 /**
  * Registers custom stylesheets for the front end.
@@ -196,7 +196,7 @@ function infusion_enqueue_scripts() {
  */
 function infusion_register_styles() {
 
-	wp_register_style( 'infusion-fonts', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Bitter' );
+	// wp_register_style( 'infusion-fonts', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Bitter' );
 
 }
 
@@ -259,7 +259,7 @@ function infusion_tiny_mce_before_init( $settings ) {
 
 
 /**
- * Modifies the theme layout on attachment pages.  If a specific layout is not selected and the global layout 
+ * Modifies the theme layout on attachment pages.  If a specific layout is not selected and the global layout
  * isn't set to '1c-narrow', this filter will change the layout to '1c'.
  *
  * @since  1.0.0
@@ -292,5 +292,5 @@ function infusion_mod_theme_layout( $layout ) {
 function infusion_remove_post_type_support() {
 
 	// remove_post_type_support( 'my-cpt-name', 'theme-layouts' );
-	
+
 }
