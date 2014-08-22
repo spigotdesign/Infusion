@@ -5,96 +5,169 @@
  * @version   1.0
  *
  */
- 
 
 #menu-primary {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-bottom: 2em;
-  font-family: $primaryNavFontFamily;
-
-  @include group;
-  
-  ul {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    
-    li {
-      padding: 0 0 1em 0;
-      margin: 0 .625em;
-      font-size: 1rem;
-      display: inline-block;
-      text-transform: uppercase;
-      position: relative;
-
-      &:hover { // Dropdown functionality
-      visibility: inherit; 
-
-        > ul {
-          left: .625em;
-          top: 1.5em;
-          z-index: 99;
-          visibility: visible;
-          opacity: 1;
-
-          ul {
-            left: 100%;
-            top: 0;
-          }
-        }
-      }
-      
-      a { 
-        background: $white;
-        padding: 0 1em;
-
-      }
-    }
-  }
-  
-  // Dropdown menu styles
-  ul.sub-menu {
     position: absolute;
-    width: 15em;
-    top: -999em;
-    text-align: left;
-    visibility: hidden;
     opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    right: 0;
+    margin-bottom: 2em;
+    background: $grayDark;
+    font-family: $primaryNavFontFamily;
+    @include transition(all 0.3s ease-in-out);
 
-    @include transition(all .2s ease-in-out);      
-    @include box-shadow( 0px 0px 2px 0px rgba(0, 0, 0, .15) );
-
-    li {
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      line-height: 1.3;
-
-      a {
-        display: block;
-        padding: 5px 0 5px 10px;
-      }
-
-      & a:hover,
-      &.current-menu-item a {
-        background: $blue;
-        color: $white;
-      }
+    // MQ
+    @include mq(960) {
+        top: 2.5em;
+        background: transparent;
+        text-align: right;
+        opacity: 1;
+        visibility: visible;
     }
 
+    .open & {
+        top: 5.25em;
+        opacity: 1;
+        width: 100%;
+        overflow: hidden;
+        visibility: visible;
+        @include mq(480) { top: 7em; }
+    }
     ul {
-      left: 0;
+        position: relative;
+        margin: 0;
+        padding: .5em 0 0;
+        list-style: none;
+
+        @include mq($mobileNavWidth) {
+            padding: 0;
+        }
+
+        li {
+            padding: 0;
+            margin: 0;
+            font-size: 1;
+            position: relative;
+
+            @include mq(1040) { font-size: 1.1rem; }
+            @include mq(1120) { font-size: 1.2rem; }
+            @include mq(1280) { font-size: 1.375rem; }
+
+
+
+            @include mq($mobileNavWidth) {
+              padding-bottom: 1em;
+              display: inline-block;
+            }
+
+            &:hover {
+                // Dropdown functionality
+                visibility: inherit;
+                > ul {
+                    z-index: 99;
+                    visibility: visible;
+                    opacity: 1;
+                    // MQ Dropdowns
+                    @include mq($mobileNavWidth) {
+                        left: 1.125em;
+                        top: 2em;
+                    }
+
+                    ul {
+                        left: 100%;
+                        top: 0;
+                    }
+                }
+            }
+            a {
+                color: $white;
+                display: block;
+                padding: .5em 1em;
+                &:hover {
+                    background-color: $red;
+
+                    @include mq($mobileNavWidth) {
+                        color: $red;
+                        background-color: transparent;
+                    }
+                }
+                @include mq($mobileNavWidth) {
+                    color: $textColor;
+                    display: inline-block;
+                    padding: 0 1.5em;
+                }
+            }
+
+            &.current_page_item > a{
+              background-color: $red;
+
+              @include mq($mobileNavWidth) {
+                color: $red;
+                background-color: transparent;
+              }
+            }
+
+            &.current-menu-ancestor a {
+
+              @include mq($mobileNavWidth) { color: $red; }
+            }
+        }
     }
-  }
+    // Dropdown menu styles
+    ul.sub-menu {
+        position: relative;
+        text-align: left;
+        padding-top: 0;
 
+
+        @include mq($mobileNavWidth) {
+            position: absolute;
+            top: -999em;
+            width: 15em;
+            background-color: white;
+            visibility: hidden;
+            opacity: 0;
+
+            @include box-shadow(0px 0px 3px 0px rgba(0, 0, 0, 0.35));
+        }
+
+        li {
+            width: 100%;
+
+            margin: 0;
+            line-height: 1.3;
+            font-family: $sansFontFamily;
+
+            @include mq($mobileNavWidth) {
+                padding: 0;
+            }
+
+            a {
+                display: block;
+                padding: .5em 1.5em;
+
+                @include mq($mobileNavWidth) {
+                  padding-left: .5em;
+                }
+
+            }
+            & a:hover,
+            &.current-menu-item a {
+                background: $red;
+                color: $white;
+            }
+
+            &:last-child a {
+              @include mq($mobileNavWidth) { @include border-radius( 0 0 3px 3px ); }
+            }
+
+            &:first-child a {
+              @include mq($mobileNavWidth) { @include border-radius( 3px 3px 0 0 ); }
+            }
+        }
+        ul {
+            left: 0;
+        }
+    }
 }
-
-
-
-
-
-
-

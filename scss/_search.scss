@@ -6,64 +6,38 @@
  *
  */
 
-.search {
-        position: absolute;
-        right: 0;
-
-      ::-webkit-input-placeholder { 
-        //color: $offWhite;
-        padding-top: 3px;
-      }
-
-      :-moz-placeholder { /* Firefox 18- */
-        //color: $offWhite;  
-      }
-
-      ::-moz-placeholder {  /* Firefox 19+ */
-        //color: $offWhite;  
-      }
-
-      :-ms-input-placeholder {  
-        //color: $offWhite;  
-      }
-
-      .search-form {
-        
-
-
-        label {
-            color: $white;
-
-        }
-
-        input[type="submit"] { display: none; }
-
-        input[type="text"]{
-            
-            text-indent: 40px;
-            width: 49px;
-            height: 49px;
-            cursor:pointer;
-            border: none;
-            padding: 5px 5px 0 45px;
-            font-size: 1.2em;
-            @include box-shadow(none);
-            @include transition(all 0.5s ease-in-out);
-            background: $black url(img/icons/icon-search.png) 10px 50% no-repeat;
-            color: $white;
-
-        }
-
-        input[type="text"]:focus{
-            width:30em;
-            padding: 14px 5px 12px 15px;
-            background-color: $black;
-            outline:none;
-            // color: $offWhite;
-          
-          
-          @include transition(all 0.5s ease-in-out);
-            cursor:text;
-        }
-      }
+.search-form {
+    position: relative;
+    z-index: 1000;
+    margin-left: 1em;
+    @include placeholder {
+        color: $white;
+        font-family: $serifFontFamily;
+        font-weight: lighter;
     }
+
+    label {
+        color: $white;
+    }
+    input[type="submit"] {
+        display: none;
+    }
+    input[type="search"] {
+        font-family: $serifFontFamily;
+        font-weight: normal;
+        width: 190px;
+        border: none;
+        padding: .5em 0 .5em 2.5em;
+        background: transparent url(img/icons/search.svg) 10px 50% no-repeat;
+        color: $white;
+    }
+    input[type="search"]:focus {
+        outline: none;
+        background-color: transparent;
+        background: transparent url(img/icons/search.svg) 10px 50% no-repeat;
+        @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px rgba($white, 0.35));
+        color: $white;
+        font-weight: lighter;
+        padding: .5em 0 .5em 2.5em;
+    }
+}

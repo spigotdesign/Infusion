@@ -5,13 +5,13 @@
  * @package   Sass Stylesheet
  * @version   1.0
  *
- * Resources: http://spig.io/3L20360Y0X1V 
+ * Resources: http://spig.io/3L20360Y0X1V
  *
  */
 
  // Variables
 
-$button-size:         1.5rem; 
+$button-size:         1.5rem;
 $transition:          .2s; // increase this to see the transformations in slow-motion
 
  // Mixin
@@ -21,7 +21,7 @@ $transition:          .2s; // increase this to see the transformations in slow-m
   width: $button-size;
   height: $button-size/7;
   background: $grayDark;
-  border-radius: $button-size/14; 
+  border-radius: $button-size/14;
   transition: $transition;
 }
 
@@ -38,17 +38,17 @@ $transition:          .2s; // increase this to see the transformations in slow-m
   top: $button-size/2.5;
   left: $button-size/2.5;
   z-index: 12000;
- 
+
   &:hover {
     opacity: 1;
   }
- 
+
   &:active {
     transition: 0;
     background: rgba(0,0,0,.1);
   }
-  
-  @include mq(800) {
+
+  @include mq($mobileNavWidth) {
     display: none; // Don't show on the big screen
   }
 
@@ -56,14 +56,14 @@ $transition:          .2s; // increase this to see the transformations in slow-m
 }
 
 .toggle-menu span {
-   
+
   //create middle line
   @include line;
-  position: relative; 
- 
+  position: relative;
+
   /*create the upper and lower lines as pseudo-elements of the middle line*/
   &:before, &:after {
-   
+
     @include line;
       position: absolute;
       left:0;
@@ -77,7 +77,7 @@ $transition:          .2s; // increase this to see the transformations in slow-m
 .toggle-menu.close {
 
   //@include transform(scale3d(.8,.8,.8));
-  
+
 
   span {
     background: transparent;
@@ -89,29 +89,14 @@ $transition:          .2s; // increase this to see the transformations in slow-m
 
     }
     &:before{
-      -webkit-transform: rotate3d(0,0,1,45deg); 
-              transform: rotate3d(0,0,1,45deg); 
+      -webkit-transform: rotate3d(0,0,1,45deg);
+              transform: rotate3d(0,0,1,45deg);
 
     }
     &:after{
-      -webkit-transform: rotate3d(0,0,1,-45deg); 
-              transform: rotate3d(0,0,1,-45deg); 
+      -webkit-transform: rotate3d(0,0,1,-45deg);
+              transform: rotate3d(0,0,1,-45deg);
     }
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
