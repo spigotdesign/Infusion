@@ -85,11 +85,10 @@ function infusion_theme_setup() {
 	/* Register sidebars. */
 	add_action( 'widgets_init', 'infusion_register_sidebars', 5 );
 
-	/* Add custom scripts. */
+	/* Add custom styles and scripts. */
 	add_action( 'wp_enqueue_scripts', 'infusion_enqueue_scripts' );
 
-	/* Register custom styles. */
-	add_action( 'wp_enqueue_scripts',    'infusion_register_styles', 0 );
+	/* Register admin styles and scripts. */
 	add_action( 'admin_enqueue_scripts', 'infusion_admin_register_styles', 0 );
 
 	/* Adds custom settings for the visual editor. */
@@ -180,23 +179,16 @@ function infusion_register_sidebars() {
  */
 function infusion_enqueue_scripts() {
 
-  	wp_enqueue_script( 'modernizr', trailingslashit( get_template_directory_uri() ) . '/js/modernizr.min.js', array( 'jquery' ), '2.8.2', false );
-	wp_enqueue_script( 'plugins', trailingslashit( get_template_directory_uri() ) . 'js/plugins.min.js', array( 'jquery' ), null, true );
-	wp_enqueue_script( 'scripts', trailingslashit( get_template_directory_uri() ) . 'js/scripts.min.js', array( 'jquery' ), null, true );
+  	// Header
+	wp_enqueue_script( 'modernizr', trailingslashit( get_template_directory_uri() ) . '/js/build/modernizr.min.js', array( 'jquery' ), '2.8.3', false );
 
-}
+	// Footer
+	wp_enqueue_script( 'plugins', trailingslashit( get_template_directory_uri() ) . 'js/build/plugins.min.js', array( 'jquery' ), null, true );
+	wp_enqueue_script( 'scripts', trailingslashit( get_template_directory_uri() ) . 'js/build/scripts.min.js', array( 'jquery' ), null, true );
 
-
-/**
- * Registers custom stylesheets for the front end.
- *
- * @since  1.0.0
- * @access public
- * @return void
- */
-function infusion_register_styles() {
-
+	// Stylesheets
 	// wp_register_style( 'infusion-fonts', 'http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Bitter' );
+
 
 }
 
