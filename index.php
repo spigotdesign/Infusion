@@ -4,7 +4,7 @@
 
 		<?php if ( !is_front_page() && !is_singular() && !is_404() ) : // If viewing a multi-post page ?>
 
-			<?php locate_template( array( 'misc/loop-meta.php' ), true ); // Loads the misc/loop-meta.php template. ?>
+			<?php locate_template( array( 'inc/loop-meta.php' ), true ); // Loads the inc/loop-meta.php template. ?>
 
 		<?php endif; // End check for multi-post page. ?>
 
@@ -24,7 +24,7 @@
 
 		<?php endwhile; // End found posts loop. ?>
 
-		<?php locate_template( array( 'misc/loop-nav.php' ), true ); // Loads the misc/loop-nav.php template. ?>
+		<?php locate_template( array( 'inc/loop-nav.php' ), true ); // Loads the inc/loop-nav.php template. ?>
 
 	<?php else : // If no posts were found. ?>
 

@@ -21,13 +21,13 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 				); ?>
 			</ol><!-- .comment-list -->
 
-			<?php locate_template( array( 'misc/comments-nav.php' ), true ); // Loads the misc/comments-nav.php template. ?>
+			<?php locate_template( array( 'inc/comments-nav.php' ), true ); // Loads the inc/comments-nav.php template. ?>
 
 		</div><!-- #comments-->
 
 	<?php endif; // End check for comments. ?>
 
-	<?php locate_template( array( 'misc/comments-error.php' ), true ); // Loads the misc/comments-error.php template. ?>
+	<?php locate_template( array( 'inc/comments-error.php' ), true ); // Loads the inc/comments-error.php template. ?>
 
 	<?php comment_form(); // Loads the comment form. ?>
 
