@@ -84,7 +84,7 @@ input[type="tel"],
 input[type="url"] {
 background-color: $inputBackground;
 border: 1px solid $inputBorder;
-@include border-radius($inputBorderRadius);
+border-radius: $inputBorderRadius;
 @include transition(all .2s ease-in-out);
 color: $gray;
 
@@ -94,7 +94,7 @@ color: $gray;
     background: white;
     outline: 0;
     outline: thin dotted \9; /* IE6-9 */
-    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 10px rgba(44,172,219,.35));
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 10px rgba(44,172,219,.35);
     color: $black;
     font-weight: $boldFontWeight;
   }

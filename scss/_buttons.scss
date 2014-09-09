@@ -13,7 +13,7 @@
   text-transform: uppercase;
   padding: .5em .875em;
   border: 1px solid $primaryColor;
-  @include border-radius(3px);
+  border-radius: 3px;
   color: $primaryColor;
   @include transition(all .2s ease-in-out);
 
@@ -56,7 +56,7 @@ input#submit, .gform_button {
     &:hover {
       border-color: darken($orange, 10%);
       background-color: lighten($orange, 5%);
-      @include box-shadow(0 0 5px 0 rgba($orange,.95));
+      box-shadow: 0 0 5px 0 rgba($orange,.95);
       text-decoration: none;
     }
 }

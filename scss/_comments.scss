@@ -54,7 +54,7 @@
     padding: .25em;
     border: 1px solid $grayLight;
     @include group();
-    @include border-radius(50px);
+    border-radius: 50px;
   }
     
     .comment-meta {
