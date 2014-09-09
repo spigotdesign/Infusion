@@ -21,9 +21,5 @@ jQuery(document).ready(function($){
 
 	$(window).resize(checkWidth);
 
-	// Bootstrap Tooltips
-
-  	$("[rel=tooltip]").tooltip();
-  	$("[rel=popover]").popover();
 
 });

@@ -1,4 +1,4 @@
-/* Modernizr 2.8.2 (Custom Build) | MIT & BSD
+/* Modernizr 2.8.3 (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-rgba-cssgradients-svg-shiv-cssclasses-teststyles-prefixes-load
  */
 ;
@@ -7,7 +7,7 @@
 
 window.Modernizr = (function( window, document, undefined ) {
 
-    var version = '2.8.2',
+    var version = '2.8.3',
 
     Modernizr = {},
 
@@ -37,7 +37,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
     slice = classes.slice,
 
-    featureName,
+    featureName, 
 
 
     injectElementWithStyles = function( rule, callback, nodes, testnames ) {
@@ -86,7 +86,7 @@ window.Modernizr = (function( window, document, undefined ) {
       };
     }
     else {
-      hasOwnProp = function (object, property) {
+      hasOwnProp = function (object, property) { 
         return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
       };
     }
@@ -222,7 +222,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
        }
 
-       return Modernizr;
+       return Modernizr; 
      };
 
 
