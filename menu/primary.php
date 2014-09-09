@@ -1,6 +1,12 @@
 <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
 	<nav <?php hybrid_attr( 'menu', 'primary' ); ?>>
+
+		<button class="toggle-menu" type="button" role="button" aria-label="Toggle Navigation">
+    		
+			<span class="screen-reader-text"><?php _e( 'Navigation', 'infusion' ); ?></span>
+
+		</button>
 	
 		<?php wp_nav_menu(
 			array(

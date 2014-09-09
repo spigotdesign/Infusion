@@ -6,41 +6,24 @@
  *
  */
 
-// Leaderboard 
 
-.leaderboard {
-  background: $black;
-}
-
-.site-description {
-  margin: 0;
-  font-family: $sansFontFamily;
-  font-weight: normal;
-  font-size: 18px;
-  font-size: 1.125em;
-  color: $white;
-  padding: .875em 0;
-}
-
-
-// Header
+ // Header
 .site-header {
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,.35);
-  background-color: white;
+  
 }
 
 // Site Title 
 .site-title { 
    
-   a {
-   	@include hide-text;
-  	display: block;
-  	background: url(img/icons/summit-rest-logo.svg) center center no-repeat;
-  	width: 282px;
-  	height: 87px;
-    background-size: 282px 87px;
-  	position: relative;
-
-   }
+   
 }
+
+.site-description {
+  
+}
+
+
+
+
+
 
