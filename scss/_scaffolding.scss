@@ -1,9 +1,10 @@
-//
- /* Scaffolding  */
- // 
-// @package       Infusion
-// @subpackage    Sass Stylesheet
-// @version       1.0
+/*
+ * Scaffolding
+ *
+ * @package   Sass Stylesheet
+ * @version   1.0
+ *
+ */
 
 *, *:before, *:after {
   @include box-sizing(border-box);
@@ -15,19 +16,34 @@ html {
   }
 
 body {
-  margin: 0;
-  font-family: $baseFontFamily;
-  font-size: $baseFontSize;
-  line-height: $baseLineHeight;
-  font-style: $baseFontStyle;
-  color: $textColor;
+  font-family:      $baseFontFamily;
+  color:            $textColor;
+  font-size:        100%;
+  line-height:      1.5;
+  font-style:       normal;
+  color:            $textColor;
   background-color: $bodyBackground;
+
+  // Chrome font fix
+  -webkit-animation-delay: 0.1s;
+  -webkit-animation-name: fontfix;
+  -webkit-animation-duration: 0.1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
 }
 
+@-webkit-keyframes fontfix {
+    from { opacity: 1; }
+    to   { opacity: 1; }
+}
 // Site Structure
 
-.container {
-
+.contain {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1em;
+  max-width: $containerWidth;
+  position: relative;
 }
 
 .main-container {

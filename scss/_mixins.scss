@@ -5,15 +5,24 @@
  * @version   1.0
  *
  */
- 
-  // Media Queries
+
+
+// Media Queries
 
 @mixin mq($mq) {
-  @if $mq == 480  { @media (min-width: 30em) { @content; } } // 
-  @if $mq == 640  { @media (min-width: 40em) { @content; } }
-  @if $mq == 800  { @media (min-width: 50em) { @content; } }
-  @if $mq == 960  { @media (min-width: 60em) { @content; } }
-
+  @if $mq == 320    { @media (min-width: 20em)  { @content; } }
+  @if $mq == 480    { @media (min-width: 30em)  { @content; } } 
+  @if $mq == 640    { @media (min-width: 40em)  { @content; } }
+  @if $mq == 800    { @media (min-width: 50em)  { @content; } }
+  @if $mq == 960    { @media (min-width: 60em)  { @content; } }
+  @if $mq == 1040   { @media (min-width: 65em)  { @content; } }
+  @if $mq == 1120   { @media (min-width: 70em)  { @content; } }
+  @if $mq == 1280   { @media (min-width: 80em)  { @content; } }
+  @if $mq == 1440   { @media (min-width: 90em)  { @content; } }
+  @if $mq == 1600   { @media (min-width: 100em) { @content; } }
+  @if $mq == 1760   { @media (min-width: 110em) { @content; } }
+  @if $mq == 1920   { @media (min-width: 120em) { @content; } }
+  @if $mq == 2080   { @media (min-width: 130em) { @content; } }
 
   @if $mq == max  { @media (max-width: 600px) { @content; } }
 
@@ -44,6 +53,14 @@
   &:after {
     clear: both;
   }
+}
+
+// Placeholder 
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content};
+  :-moz-placeholder           {@content};
+  ::-moz-placeholder          {@content};
+  :-ms-input-placeholder      {@content}; 
 }
 
  // Layout and Structure

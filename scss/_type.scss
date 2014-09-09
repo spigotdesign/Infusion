@@ -1,73 +1,124 @@
-
-/* Type Sass Stylesheet */
+/*
+ * Typography
+ *
+ * @package   Sass Stylesheet
+ * @version   1.0
+ *
+ */
 
 p {
-  margin: 0 0 $baseLineHeight / 2;
-  line-height: $baseLineHeight * 1.333333334;
+  line-height: 1.6875;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
-
-// HEADINGS
-// --------
+// Headings
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  font-family: $headingsFontFamily;
-  font-weight: $headingsFontWeight;
-  color: $headingsColor;
-  text-rendering: optimizelegibility; // Fix the character spacing for headings
-}
-h1 {
-  font-size: 45px;
-  line-height: $baseLineHeight * 2;
+  font-family:      $headingsFontFamily;
+  font-weight:      $headingsFontWeight;
+  color:            $headingsColor;
+  text-rendering:   optimizelegibility; // Fix the character spacing for headings
+  margin-bottom:    24px;
+  margin-bottom:    1.5rem;
 
 }
-h2 {
+
+h1, .h1 {
+  font-size: 40px;
+  font-size: 2.5rem;
+  line-height: 1.2;
+
+  @include mq(800) { 
+    font-size: 48px;
+    font-size: 3rem;
+  }
+}
+
+h2, .h2 {
+  font-size: 32px;
+  font-size: 2rem;
+  line-height: 1.2;
+
+  &.entry-title {
+    margin-bottom: 6px;
+    margin-bottom: .375rem;
+  }
+
+  @include mq(800) { 
+    font-size: 40px;
+    font-size: 2.5rem;
+  }
+}
+
+h3, .h3 {
+  font-size: 30px;
+  font-size: 1.875rem;
+  line-height: 1.6;
+
+}
+
+h4, .h4 {
   font-size: 24px;
-  line-height: $baseLineHeight * 2;
+  font-size: 1.5rem;
+  line-height: 1.5;
 
 }
-h3 {
+
+h5, .h5 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  //line-height: 1.5;
+
+}
+
+h6, .h6 {
   font-size: 18px;
-  line-height: $baseLineHeight * 1.5;
+  font-size: 1.125rem;
+  //line-height: 1.5;
 
 }
-h4, h5, h6 {
-  line-height: $baseLineHeight;
-}
-h4 {
-  font-size: 14px;
+
+
+// Inline code
+code {
+  padding: 3px 5px;
+  color: $black;
+  font-weight: bold;
+  display: inline;
+
 
 }
-h5 {
-  font-size: 12px;
-}
-h6 {
-  font-size: 12px;
-}
-
-// Inline and block code styles
-
 
 // Blocks of code
 pre {
+  overflow: auto;
   display: block;
-  line-height: $baseLineHeight;
+  padding: 0 1.5em 1.5em;
+  line-height: 1.5;
   word-break: break-all;
   word-wrap: break-word;
-  white-space: pre;
   white-space: pre-wrap;
+  background-color: $grayDark;
   font-family: $monoFontFamily;
+  color: $white;
+  font-weight: normal;
+  margin-bottom: 2em;
 
+
+  // Account for some code outputs that place code tags in pre tags
+  code {
+    padding: 0;
+    color: $white;
+
+    font-weight: normal;
+  }
 }
 
-// LISTS
-// -----
-
-// Unordered and Ordered lists
+// Lists
 ul, ol {
-  padding: 0;
-  margin: 0 0 $baseLineHeight / 2 25px;
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 ul ul,
 ul ol,
@@ -82,27 +133,23 @@ ol {
   list-style: decimal;
 }
 li {
-  line-height: $baseLineHeight;
+  line-height: 1.6875;
 }
 
-
-// MISC
-// ----
-
-// Horizontal rules
-hr {
-  margin: $baseLineHeight 0;
-  border: 0;
-  border-top: 1px solid $black;
-  border-bottom: 1px solid $white;
+.entry-content {
+  ul, ol {
+    padding: 0 0 0 1.6875rem;
+  }
 }
 
 // Emphasis
 strong {
-   font-weight: bold;
+    // font-family: $boldFontFamily;
+    font-weight: $boldFontWeight;
 }
 em {
   font-style: italic;
+  // font-family: $italicFontFamily;
 }
 
 // Abbreviations and acronyms
@@ -112,7 +159,24 @@ abbr[title] {
 }
 
 // Blockquotes
-blockquote {
-  
+.entry blockquote {
+    padding: 0 2em;
+    margin: 2em;
+    border-left: 3px solid $borderColor;
+
+    p { 
+      font-size: 130%;
+      font-style: italic;
+    }
 }
 
+// Sub/Superscripts
+
+sup, sub {
+   vertical-align: baseline;
+   position: relative;
+   top: -0.4em;
+   font-size: 60%;
+   padding: 0 .125em;
+}
+sub { top: 0.4em; }

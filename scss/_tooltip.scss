@@ -84,8 +84,7 @@
   text-align: center;
   text-decoration: none;
   background-color: $toolTipColor;
-
-  @include border-radius(4px);
+  border-radius: 4px;
 }
 .tooltip-arrow {
   position: absolute;

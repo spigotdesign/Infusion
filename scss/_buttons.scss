@@ -7,83 +7,56 @@
  */
 
 /* Base btn */
- @mixin btn($baseBG, $baseHL) {
-  
-  color: #565656;
+ @mixin btn($primaryColor, $secondaryColor) {
+  font-weight: $boldFontWeight;
   display: inline-block;
-  line-height: 1.25;
-  padding: 5px 10px 4px 10px;
-  margin:0 3px 10px 0;
-  text-align: center;
-  text-decoration: none;
-  
-  @include border-radius(3px);
-  border: 1px solid darken($baseBG, 20%);
-  text-shadow: 0px 1px 0px #ffffff;
-  filter: dropshadow(color=#ffffff, offx=0, offy=1);
-  
-  background: $baseBG; /* Old browsers */
-  background: -moz-linear-gradient(top, $baseHL 0%, $baseBG 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$baseHL), color-stop(100%,$baseBG)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, $baseHL 0%,$baseBG 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, $baseHL 0%,$baseBG 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, $baseHL 0%,$baseBG 100%); /* IE10+ */
-  background: linear-gradient(top, $baseHL 0%,$baseBG 100%); /* W3C */
-  filter:     progid:DXImageTransform.Microsoft.gradient( startColorstr='$baseHL', endColorstr='$baseBG',GradientType=0 ); /* IE6-9 */  
-  
-  
-  /*Box shadow*/
-  
-  -webkit-box-shadow:   inset 0 1px 0 hsla(0,100%,100%,.1) /*Top*/, 
-                        inset 0 0 2px hsla(0,100%,100%,.3) /*Shine*/,
-                        0px 1px 1px 0px rgba(0, 0, 0, .15) /*Shadow*/; 
-  -moz-box-shadow:      inset 0 1px 0 hsla(0,100%,100%,.1) /*Top*/, 
-                        inset 0 0 2px hsla(0,100%,100%,.3) /*Shine*/,
-                        0px 1px 1px 0px rgba(0, 0, 0, .15) /*Shadow*/; 
-  box-shadow:           inset 0 1px 0 hsla(0,100%,100%,.1) /*Top*/, 
-                        inset 0 0 2px hsla(0,100%,100%,.3) /*Shine*/,
-                        0px 1px 1px 0px rgba(0, 0, 0, .15) /*Shadow*/;
-            
-            
-    &:hover {
-      border-color: darken($baseBG, 25%);
-      text-decoration: none !important;
-      /*Background*/
-      background: $baseBG; /* Old browsers */
-      background: -moz-linear-gradient(top, $baseBG 0%, $baseHL 100%); /* FF3.6+ */
-      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$baseBG), color-stop(100%,$baseHL)); /* Chrome,Safari4+ */
-      background: -webkit-linear-gradient(top, $baseBG 0%,$baseHL 100%); /* Chrome10+,Safari5.1+ */
-      background: -o-linear-gradient(top, $baseBG 0%,$baseHL 100%); /* Opera 11.10+ */
-      background: -ms-linear-gradient(top, $baseBG 0%,$baseHL 100%); /* IE10+ */
-      background: linear-gradient(top, $baseBG 0%,$baseHL 100%); /* W3C */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$baseBG', endColorstr='$baseHL',GradientType=0 ); /* IE6-9 */
-      
-      
-    }
-    
-    &:active  {
-      /*Box shadow*/
-      -webkit-box-shadow: inset 0 0 7px hsla(0,0%,0%,.3) /*Shine*/,
-                0 1px 0 hsla(0, 100%, 100%, 1) /*Shadow*/;
-      -moz-box-shadow:  inset 0 0 7px hsla(0,0%,0%,.3) /*Shine*/,
-                0 1px 0 hsla(0, 100%, 100%, 1) /*Shadow*/;
-      box-shadow:     inset 0 0 7px hsla(0,0%,0%,.3) /*Shine*/,
-                0 1px 0 hsla(0, 100%, 100%, 1) /*Shadow*/;
-    }
-        
+  text-transform: uppercase;
+  padding: .5em .875em;
+  border: 1px solid $primaryColor;
+  border-radius: 3px;
+  color: $primaryColor;
+  @include transition(all .2s ease-in-out);
+
+  &:hover {
+    background-color: $primaryColor;
+    color: $secondaryColor;
+    text-decoration: none;
+  }
+
+
+}
+
+.btn, .button {
+  @include btn($grayDark, $white);
+}
+
+input#submit {
+  border: 1px solid #ccc;
+}
+
+.btn.white, .button.white {
+  @include btn($white, $grayDark);
 }
 
 // Comment Form Submit
 
-input#submit {
-  @include btn(#f0f0f0, #f9f9f9);
-  // .btn-blue();
-  @include border-radius(3px);
+input#submit, .gform_button {
+  @extend .btn;
+  background-color: transparent;
+  padding: .5em 1em;
+  margin: 1em 0;
+  cursor: pointer;
 }
 
-.btn, .button {
-	@include btn(#f0f0f0, #f9f9f9);
+.orange-btn {
+  background-color: $orange;
+  border: 1px solid $orange;
+  color: $white;
+
+    &:hover {
+      border-color: darken($orange, 10%);
+      background-color: lighten($orange, 5%);
+      box-shadow: 0 0 5px 0 rgba($orange,.95);
+      text-decoration: none;
+    }
 }
-
-
-

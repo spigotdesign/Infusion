@@ -5,7 +5,7 @@
  * @package    HybridCore
  * @subpackage Functions
  * @author     Justin Tadlock <justin@justintadlock.com>
- * @copyright  Copyright (c) 2008 - 2013, Justin Tadlock
+ * @copyright  Copyright (c) 2008 - 2014, Justin Tadlock
  * @link       http://themehybrid.com/hybrid-core
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -90,7 +90,7 @@ function hybrid_link_pingback() {
  * @param  string  $seplocation
  * @return string
  */
-function hybrid_wp_title( $title, $separator, $seplocation ) {
+function hybrid_wp_title( $doctitle, $separator, $seplocation ) {
 
 	if ( is_front_page() )
 		$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );

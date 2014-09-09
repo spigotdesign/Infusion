@@ -9,23 +9,31 @@
 
 
 // Grays
-$black:                 black;
-$grayDarker:            #4e5055;
+$black:                 #292929;
+$white:                 #fafafa;
+
+// Unused
+$grayDarker:            #292929;
 $grayDark:              #333333;
 $gray:                  #a7a9ac;
 $grayLight:             #dfdfdf;
 $grayLighter:           #f3f3f3;
-$white:                 white;
+
 
 
 // Accent colors
 $blue:                  #049cdb;
+$orange:				#f39c12;
+$red:					#c0392b;
 
 
 
 // Scaffolding
-$bodyBackground:        $white;
+$bodyBackground:        white;
 $textColor:             $black;
+
+// Mobile Nav
+$mobileNavWidth:        960;
 
 
 // Links
@@ -41,38 +49,41 @@ $toolTipTextColor:		$white;
 
 
 // Typography
-$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serifFontFamily:       Georgia, "Times New Roman", Times, serif;
+
+$sansFontFamily:		'Source Sans Pro', sans-serif;
+$serifFontFamily:		'Bitter', serif;
 $monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
-
-
 $iconFontFamily:        "icomoon";
 
-$baseFontSize:          16px;
-$baseFontFamily:        $sansFontFamily;
-$baseLineHeight:        18px;
-$baseFontStyle:         normal;
-$altFontFamily:         $serifFontFamily;
+$baseFontFamily:		$sansFontFamily;
+$baseFontSize:			100%;
+$baseFontStyle:			normal;
 
+$boldFontWeight:		700;
+$midFontWeight:			600;
+$regFontWeight:			400;
+$lightFontWeight:		300;
 
-$headingsFontFamily:    $sansFontFamily;
-$headingsFontWeight:    700;   
+// Headings
+$headingsFontFamily:    $serifFontFamily;
+$headingsFontWeight:    normal;
 $headingsColor:         $black;
 
-$primaryNavFontFamily:  $sansFontFamily;
+// Navigation
+$primaryNavFontFamily:  $serifFontFamily;
 $primaryNavFontWeight:  300;
 $primaryNavFontStyle:   normal;
 
 
 
 // Forms
-$inputBackground:               $white;
-$inputBorder:                   #ccc;
-$inputBorderRadius:             3px;
+$inputBackground:        $white;
+$inputBorder:            #ccc;
+$inputBorderRadius:      3px;
 
 
 // CONTAINER
-$containerWidth:          940px;
+$containerWidth:          1440px;
 
 
 // Alignment
@@ -80,7 +91,3 @@ $containerWidth:          940px;
 $floatMarginLeft:         20px;
 $floatMarginRight:        20px;
 $floatMarginBottom:       24px;
-
-
-
-
