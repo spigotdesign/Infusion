@@ -1,11 +1,11 @@
 /*!
- Theme Name:    Summit Restoration
+ Theme Name:    Infusion
  Theme URI:    	http://spigotdesign.com/
  Author:        Spigot
  Author URI:    http://spigotdesign.com/
  Description:   Description: A custom theme built on the rock-solid Hybrid Core theme framework. It's built with search-engine optimization (SEO) in mind by utilizing the most current HTML5 conventions and <a href="http://schema.org">Schema.org</a> microdata.
- Version:       1.0
- Text Domain: 	summmitrest
+ Version:       2.1
+ Text Domain: 	infusion
  License:     	GNU General Public License v2.0 or later
  License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -467,7 +467,7 @@ html {
 
 /* line 18, scss/_scaffolding.scss */
 body {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: Helvetica, sans-serif;
   color: #292929;
   font-size: 100%;
   line-height: 1.5;
@@ -505,43 +505,6 @@ body {
  * @version   1.0
  *
  */
-/* line 11, scss/_header.scss */
-.leaderboard {
-  background: #292929;
-}
-
-/* line 15, scss/_header.scss */
-.site-description {
-  margin: 0;
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: normal;
-  font-size: 18px;
-  font-size: 1.125em;
-  color: #fafafa;
-  padding: .875em 0;
-}
-
-/* line 27, scss/_header.scss */
-.site-header {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.35);
-  background-color: white;
-}
-
-/* line 35, scss/_header.scss */
-.site-title a {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-  display: block;
-  background: url(img/icons/summit-rest-logo.svg) center center no-repeat;
-  width: 282px;
-  height: 87px;
-  background-size: 282px 87px;
-  position: relative;
-}
-
 /*
  * Navigation
  *
@@ -558,7 +521,7 @@ body {
   right: 0;
   margin-bottom: 2em;
   background: #333333;
-  font-family: "Bitter", serif;
+  font-family: Helvetica, serif;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -719,7 +682,7 @@ body {
   width: 100%;
   margin: 0;
   line-height: 1.3;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 @media (min-width: 60em) {
   /* line 135, scss/_navigation.scss */
@@ -1047,25 +1010,25 @@ body {
 /* line 60, scss/_mixins.scss */
 .search-form ::-webkit-input-placeholder {
   color: #fafafa;
-  font-family: "Bitter", serif;
+  font-family: Helvetica, serif;
   font-weight: lighter;
 }
 /* line 61, scss/_mixins.scss */
 .search-form :-moz-placeholder {
   color: #fafafa;
-  font-family: "Bitter", serif;
+  font-family: Helvetica, serif;
   font-weight: lighter;
 }
 /* line 62, scss/_mixins.scss */
 .search-form ::-moz-placeholder {
   color: #fafafa;
-  font-family: "Bitter", serif;
+  font-family: Helvetica, serif;
   font-weight: lighter;
 }
 /* line 63, scss/_mixins.scss */
 .search-form :-ms-input-placeholder {
   color: #fafafa;
-  font-family: "Bitter", serif;
+  font-family: Helvetica, serif;
   font-weight: lighter;
 }
 /* line 19, scss/_search.scss */
@@ -1078,7 +1041,7 @@ body {
 }
 /* line 25, scss/_search.scss */
 .search-form input[type="search"] {
-  font-family: "Bitter", serif;
+  font-family: Helvetica, serif;
   font-weight: normal;
   width: 190px;
   border: none;
@@ -1113,7 +1076,7 @@ p {
 
 /* line 17, scss/_type.scss */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Bitter", serif;
+  font-family: Helvetica, serif;
   font-weight: normal;
   color: #292929;
   text-rendering: optimizelegibility;
@@ -1398,7 +1361,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 /* line 49, scss/_forms.scss */
