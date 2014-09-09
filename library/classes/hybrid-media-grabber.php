@@ -155,6 +155,10 @@ class Hybrid_Media_Grabber {
 	 */
 	public function set_media() {
 
+		/* Get the media if the post type is an attachment. */
+		if ( 'attachment' === get_post_type( $this->args['post_id'] ) )
+			$this->do_attachment_media();
+
 		/* Find media in the post content based on WordPress' media-related shortcodes. */
 		if ( empty( $this->media ) )
 			$this->do_shortcode_media();
@@ -213,6 +217,12 @@ class Hybrid_Media_Grabber {
 				/* Call the method related to the specific shortcode found and break out of the loop. */
 				if ( in_array( $shortcode[2], array( 'playlist', 'embed', $this->type ) ) ) {
 					call_user_func( array( $this, "do_{$shortcode[2]}_shortcode_media" ), $shortcode );
+					break;
+				}
+
+				/* Check for Jetpack audio/video shortcodes. */
+				elseif ( in_array( $shortcode[2], array( 'blip.tv', 'dailymotion', 'flickr', 'ted', 'vimeo', 'vine', 'youtube', 'wpvideo', 'soundcloud', 'bandcamp' ) ) ) {
+					$this->do_jetpack_shortcode_media( $shortcode );
 					break;
 				}
 			}
@@ -281,6 +291,21 @@ class Hybrid_Media_Grabber {
 
 		/* Need to filter dimensions here to overwrite WP's <div> surrounding the [video] shortcode. */
 		$this->media = do_shortcode( $this->filter_dimensions( $this->original_media ) );
+	}
+
+	/**
+	 * Handles the output of audio/video shortcodes included with the Jetpack plugin (or Jetpack 
+	 * Slim) via the Shortcode Embeds feature.
+	 *
+	 * @since  2.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function do_jetpack_shortcode_media( $shortcode ) {
+
+		$this->original_media = array_shift( $shortcode );
+
+		$this->media = do_shortcode( $this->original_media );
 	}
 
 	/**
@@ -355,6 +380,22 @@ class Hybrid_Media_Grabber {
 	}
 
 	/**
+	 * If the post type itself is an attachment, run the shortcode for the media type.
+	 *
+	 * @since  2.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function do_attachment_media() {
+
+		/* Gets the URI for the attachment (the media file). */
+		$url = wp_get_attachment_url( $this->args['post_id'] );
+
+		/* Run the media as a shortcode using WordPress' built-in [audio] and [video] shortcodes. */
+		$this->media = do_shortcode( "[{$this->type} src='{$url}']" );
+	}
+
+	/**
 	 * Removes the found media from the content.  The purpose of this is so that themes can retrieve the 
 	 * media from the content and display it elsewhere on the page based on its design.
 	 *
@@ -424,14 +465,16 @@ class Hybrid_Media_Grabber {
 		$patterns = array(
 			'/(width=[\'"]).+?([\'"])/i',
 			'/(height=[\'"]).+?([\'"])/i',
-			'/(<div.+?style=[\'"].*?width:.+?).+?(px;.+?[\'"].*?>)/i'
+			'/(<div.+?style=[\'"].*?width:.+?).+?(px;.+?[\'"].*?>)/i',
+			'/(<div.+?style=[\'"].*?height:.+?).+?(px;.+?[\'"].*?>)/i'
 		);
 
 		/* Set up the replacements for the 'width' and 'height' attributes. */
 		$replacements = array(
 			'${1}' . $width . '${2}',
 			'${1}' . $height . '${2}',
-			'${1}' . $width . '${2}'
+			'${1}' . $width . '${2}',
+			'${1}' . $height . '${2}',
 		);
 
 		/* Filter the dimensions and return the media HTML. */
