@@ -4,11 +4,11 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 	return;
 ?>
 
-<section id="comments-template">
+<section id="conversation">
 
 	<?php if ( have_comments() ) : // Check if there are any comments. ?>
 
-		<div id="comments">
+		<div class="comments">
 
 			<h3 id="comments-number"><?php comments_number(); ?></h3>
 
@@ -21,14 +21,18 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 				); ?>
 			</ol><!-- .comment-list -->
 
-			<?php locate_template( array( 'inc/comments-nav.php' ), true ); // Loads the inc/comments-nav.php template. ?>
+			<?php locate_template( array( 'comment/comments-nav.php' ), true );  ?>
 
 		</div><!-- #comments-->
 
 	<?php endif; // End check for comments. ?>
 
-	<?php locate_template( array( 'inc/comments-error.php' ), true ); // Loads the inc/comments-error.php template. ?>
+	<?php locate_template( array( 'comment/comments-error.php' ), true );  ?>
 
-	<?php comment_form(); // Loads the comment form. ?>
+	<?php comment_form(
+		array(
+			'comment_notes_after' => ' ',
+		)
+	); ?>
 
 </section><!-- #comments-template -->
