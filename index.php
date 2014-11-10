@@ -1,37 +1,37 @@
-<?php get_header(); // Loads the header.php template. ?>
+<?php get_header(); ?>
 
 	<main <?php hybrid_attr( 'content' ); ?>>
 
-		<?php if ( !is_front_page() && !is_singular() && !is_404() ) : // If viewing a multi-post page ?>
+		<?php if ( !is_front_page() && !is_singular() && !is_404() ) : ?>
 
-			<?php locate_template( array( 'inc/loop-meta.php' ), true ); // Loads the inc/loop-meta.php template. ?>
+			<?php locate_template( array( 'inc/loop-meta.php' ), true ); ?>
 
-		<?php endif; // End check for multi-post page. ?>
+		<?php endif; ?>
 
-		<?php if ( have_posts() ) : // Checks if any posts were found. ?>
+		<?php if ( have_posts() ) : ?>
 
-		<?php while ( have_posts() ) : // Begins the loop through found posts. ?>
+		<?php while ( have_posts() ) :  ?>
 
-			<?php the_post(); // Loads the post data. ?>
+			<?php the_post();  ?>
 
-			<?php hybrid_get_content_template(); // Loads the content/*.php template. ?>
+			<?php hybrid_get_content_template(); ?>
 
-			<?php if ( is_singular() ) : // If viewing a single post/page/CPT. ?>
+			<?php if ( is_singular() && !is_page() ) : ?>
 
-				<?php comments_template( '', true ); // Loads the comments.php template. ?>
+				<?php comments_template( '', true ); ?>
 
-			<?php endif; // End check for single post. ?>
+			<?php endif; ?>
 
-		<?php endwhile; // End found posts loop. ?>
+		<?php endwhile; ?>
 
-		<?php locate_template( array( 'inc/loop-nav.php' ), true ); // Loads the inc/loop-nav.php template. ?>
+		<?php locate_template( array( 'inc/loop-nav.php' ), true ); ?>
 
-	<?php else : // If no posts were found. ?>
+		<?php else : ?>
 
-		<?php locate_template( array( 'content/error.php' ), true ); // Loads the content/error.php template. ?>
+			<?php locate_template( array( 'content/error.php' ), true ); ?>
 
-	<?php endif; // End check for posts. ?>
+		<?php endif; ?>
 
-</main>
+	</main>
 
-<?php get_footer(); // Loads the footer.php template. ?>
+<?php get_footer();  ?>

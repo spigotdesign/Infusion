@@ -11,9 +11,11 @@
 
 		<header class="site-header" role="banner">
 			
-			<div class="branding">
+			<div class="branding" itemscope itemtype="http://schema.org/Organization">
 
-				<h1 class="site-title"><a href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>	
+				<h1 class="site-title"><a itemprop="url" href="<?php echo home_url(); ?>" title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+
+				<meta  itemprop="logo" content="/images/logo.png" />	
 
 			</div>
 			
