@@ -1,12 +1,16 @@
 <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
-	<nav <?php hybrid_attr( 'menu', 'primary' ); ?>>
-
-		<button class="toggle-menu" type="button" role="button" aria-label="Toggle Navigation">
+	<button class="toggle-menu" type="button" role="button" aria-label="Toggle Navigation">
     		
-			<span class="screen-reader-text"><?php _e( 'Navigation', 'infusion' ); ?></span>
+		<span class="screen-reader-text"><?php _e( 'Navigation', 'leadercreative' ); ?></span>
 
-		</button>
+	</button>
+
+	<ul class="toggle-btns">
+		<li class="tel"><a href="tel:4356141342"><i class="icon-phone"></i></a></li>
+	</ul>
+
+	<nav <?php hybrid_attr( 'menu', 'primary' ); ?>>
 	
 		<?php wp_nav_menu(
 			array(
