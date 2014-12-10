@@ -1,0 +1,25 @@
+{
+  "name": "wordpress-starter-theme",
+  "version": "1.0.0",
+  "author": "Spigot",
+  "license": "GNU General Public Licence 2.0",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-ruby-sass": "*",
+    "gulp-sass": "*",
+    "gulp-livereload": "*",
+    "gulp-plumber": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-minify-css": "*",
+    "gulp-rename": "*",
+    "del": "*",
+    "gulp-concat": "*",
+    "gulp-jshint": "^1.9.0",
+    "gulp-cache": "*",
+    "gulp-uglify": "*",
+    "gulp-notify": "^2.0.1",
+    "gulp-imagemin": "^2.0.0",
+    "gulp-newer": "^0.5.0",
+    "imagemin-pngquant": "^4.0.0"
+  }
+}
