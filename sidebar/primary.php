@@ -1,6 +1,6 @@
 <?php if ( !in_array( get_theme_mod( 'theme_layout' ), array( '1c', '1c-narrow' ) ) ) : // If not a one-column layout. ?>
 
-	<aside <?php hybrid_attr( 'sidebar', 'primary' ); ?>>
+	<aside class="sidebar-primary sidebar" role="complementary" aria-label="Primary Sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
 
 		<?php if ( is_active_sidebar( 'primary' ) ) : // If the sidebar has widgets. ?>
 
@@ -11,9 +11,9 @@
 			<?php the_widget(
 				'WP_Widget_Text',
 				array(
-					'title'  => __( 'Example Widget', 'infusion' ),
+					'title'  => __( 'Example Widget', 'armentum' ),
 					/* Translators: The %s are placeholders for HTML, so the order can't be changed. */
-					'text'   => sprintf( __( 'This is an example widget to show how the Primary sidebar looks by default. You can add custom widgets from the %swidgets screen%s in the admin.', 'infusion' ), current_user_can( 'edit_theme_options' ) ? '<a href="' . admin_url( 'widgets.php' ) . '">' : '', current_user_can( 'edit_theme_options' ) ? '</a>' : '' ),
+					'text'   => sprintf( __( 'This is an example widget to show how the Primary sidebar looks by default. You can add custom widgets from the %swidgets screen%s in the admin.', 'armentum' ), current_user_can( 'edit_theme_options' ) ? '<a href="' . admin_url( 'widgets.php' ) . '">' : '', current_user_can( 'edit_theme_options' ) ? '</a>' : '' ),
 					'filter' => true,
 				),
 				array(

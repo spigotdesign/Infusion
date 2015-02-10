@@ -34,6 +34,11 @@ wp-content/plugins/*
 wp-content/themes/*
 !wp-content/themes/infusion
 !wp-content/themes/infusion-child
+
+# Ignore Gulp files 
+node_modules
+
+# Ignore extra files
 sitemap.xml
 sitemap.xml.gz
 .sass-cache

@@ -1,5 +1,5 @@
 {
-  "name": "wordpress-starter-theme",
+  "name": "Armentum",
   "version": "1.0.0",
   "author": "Spigot",
   "license": "GNU General Public Licence 2.0",
@@ -19,7 +19,8 @@
     "gulp-uglify": "*",
     "gulp-notify": "^2.0.1",
     "gulp-imagemin": "^2.0.0",
-    "gulp-newer": "^0.5.0",
-    "imagemin-pngquant": "^4.0.0"
+    "imagemin-pngquant": "^4.0.0",
+    "gulp-strip-debug": "^1.0.2",
+    "gulp-sourcemaps": "^1.3.0"
   }
 }
