@@ -10,13 +10,14 @@ var gulp      = require('gulp'),
   imagemin    = require('gulp-imagemin'),
   pngquant    = require('imagemin-pngquant'),
   concat      = require('gulp-concat'),
+  sourcemaps  = require('gulp-sourcemaps');
   stripDebug  = require('gulp-strip-debug');
 
 
 // Styles
 gulp.task('styles', function() {
 
-  return sass('scss/style.scss', { style: 'expanded'})
+  return sass('scss/style.scss', { style: 'expanded', lineNumbers: true })
   .on('error', function (err) {
       console.error('Error!', err.message);
    })
