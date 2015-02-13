@@ -33,7 +33,6 @@ wp-content/plugins/*
 # specify (see the commented-out example for a hint on how to do this.)
 wp-content/themes/*
 !wp-content/themes/infusion
-!wp-content/themes/infusion-child
 
 # Ignore Gulp files 
 node_modules
