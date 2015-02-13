@@ -12,49 +12,45 @@
     visibility: hidden;
     width: 100%;
     right: 0;
+    top: 5.25em;
     margin-bottom: 2em;
     background: $grayDark;
     font-family: $primaryNavFontFamily;
     @include transition(all 0.3s ease-in-out);
 
     // MQ
-    @include mq(960) {
-        top: 2.5em;
+    @include mq($mobileNavWidth) {
+        position: relative;
+        margin: 0;
         background: transparent;
         text-align: right;
         opacity: 1;
         visibility: visible;
+        top: 1em;
     }
 
     .open & {
-        top: 5.25em;
         opacity: 1;
         width: 100%;
         overflow: hidden;
         visibility: visible;
-        @include mq(480) { top: 7em; }
+        @include mq(480) { top: 5.25em; }
     }
     ul {
         position: relative;
         margin: 0;
-        padding: .5em 0 0;
+        padding: 0;
         list-style: none;
 
-        @include mq($mobileNavWidth) {
-            padding: 0;
-        }
+        
 
         li {
             padding: 0;
             margin: 0;
-            font-size: 1;
+            font-size: 14px;
+            font-size: .875rem;
             position: relative;
-
-            @include mq(1040) { font-size: 1.1rem; }
-            @include mq(1120) { font-size: 1.2rem; }
-            @include mq(1280) { font-size: 1.375rem; }
-
-
+            text-transform: uppercase;
 
             @include mq($mobileNavWidth) {
               padding-bottom: 1em;
@@ -93,9 +89,9 @@
                     }
                 }
                 @include mq($mobileNavWidth) {
-                    color: $textColor;
+                    color: $white;
                     display: inline-block;
-                    padding: 0 1.5em;
+                    padding: 0 .5em;
                 }
             }
 
@@ -168,6 +164,45 @@
         }
         ul {
             left: 0;
+        }
+    }
+}
+
+ul.toggle-btns {
+    list-style: none;
+    position: absolute;
+    top: 1.25em;
+    right: 2.25em;
+    z-index: 15000;
+    margin: 0;
+    @include transition(all .2s ease-in-out);
+
+    @include mq($mobileNavWidth) {
+        display: none;
+    }
+
+    .scroll & {
+            top: .5em;
+        }
+
+    li {
+        font-size: 1.25em;
+        display: inline;
+        margin: 0 .25em;
+        a {
+            color: $black;
+            display: inline-block;
+            padding: .25em .4em;
+            border-radius: 3px;
+            line-height: 0;
+            &:hover {
+                background: $black;
+                color: $white;
+            }
+            i {
+                line-height: 1;
+                font-size: 26px;
+            }
         }
     }
 }
