@@ -24,7 +24,8 @@
   @if $mq == 1920   { @media (min-width: 120em) { @content; } }
   @if $mq == 2080   { @media (min-width: 130em) { @content; } }
 
-  @if $mq == max  { @media (max-width: 600px) { @content; } }
+  @if $mq == bar1    { @media (max-width: 783px) { @content; } }
+  @if $mq == bar2    { @media (max-width: 600px) { @content; } }
 
   @if $mq == lsp { @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape)  { @content; } } // Landscape Phone
 

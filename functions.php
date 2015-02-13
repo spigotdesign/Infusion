@@ -73,9 +73,6 @@ function infusion_theme_setup() {
 	// Note: this is the largest size based on the theme's various layouts.
 	hybrid_set_content_width( 1025 );
 
-	/* Show Template. Outputs the template name and filepath for testing purposes. Comment it out if not needed. */
-	// add_action( 'wp_head', 'show_template');
-
 	/* Register custom image sizes. */
 	// add_action( 'init', 'infusion_register_image_sizes', 5 );
 
@@ -102,17 +99,6 @@ function infusion_theme_setup() {
 
 
 }
-
-
-/**
- * Function to show what template file is currently being used.
- *
- */
-function show_template() {
-    global $template;
-    echo '<span class="show-template">' . $template . '</span>';
-}
-
 
 
 /**
@@ -247,28 +233,6 @@ function infusion_tiny_mce_before_init( $settings ) {
 	$settings['body_class'] = join( ' ', get_body_class() );
 
 	return $settings;
-}
-
-
-/**
- * Modifies the theme layout on attachment pages.  If a specific layout is not selected and the global layout
- * isn't set to '1c-narrow', this filter will change the layout to '1c'.
- *
- * @since  1.0.0
- * @access public
- * @param  string  $layout
- * @return string
- */
-function infusion_mod_theme_layout( $layout ) {
-
-	if ( is_attachment() && wp_attachment_is_image() ) {
-		$post_layout = get_post_layout( get_queried_object_id() );
-
-		if ( 'default' === $post_layout && '1c-narrow' !== $layout )
-			$layout = '1c';
-	}
-
-	return $layout;
 }
 
 

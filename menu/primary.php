@@ -2,15 +2,11 @@
 
 	<button class="toggle-menu" type="button" role="button" aria-label="Toggle Navigation">
     		
-		<span class="screen-reader-text"><?php _e( 'Navigation', 'leadercreative' ); ?></span>
+		<span class="screen-reader-text"><?php _e( 'Navigation', 'infusion' ); ?></span>
 
 	</button>
 
-	<ul class="toggle-btns">
-		<li class="tel"><a href="tel:4356141342"><i class="icon-phone"></i></a></li>
-	</ul>
-
-	<nav <?php hybrid_attr( 'menu', 'primary' ); ?>>
+	<nav class="menu-primary" aria-label="Primary Menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	
 		<?php wp_nav_menu(
 			array(

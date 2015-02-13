@@ -20,7 +20,7 @@ $transition:          .2s; // increase this to see the transformations in slow-m
   display: inline-block;
   width: $button-size;
   height: $button-size/7;
-  background: $grayDark;
+  background: $red;
   border-radius: $button-size/14;
   transition: $transition;
 }
@@ -35,8 +35,8 @@ $transition:          .2s; // increase this to see the transformations in slow-m
   padding: 0;
   border:none;
   position: absolute;
-  top: $button-size/2.5;
-  left: $button-size/2.5;
+  top: 30%;
+  right: 1em;
   z-index: 12000;
 
   &:hover {

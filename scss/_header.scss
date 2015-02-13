@@ -1,12 +1,10 @@
-/*
+-/*
  * Header
  *
  * @package   Sass Stylesheet
  * @version   1.0
  *
  */
-
-// Currently based on work done for benpieper.com
 
 // Header
 .site-header {
@@ -19,12 +17,12 @@
     z-index: 1000;
 
     .admin-bar & {
-    	top: 32px;
+        top: 32px;
 
-    	@include mq(bar1) {
-    		top: 46px;
+        @include mq(bar1) {
+            top: 46px;
             
-    	}
+        }
 
         @include mq(bar2) {
             // position: relative;
@@ -34,20 +32,20 @@
     }
 
     .scroll & {
-    	padding: .25em 1em;
-    	min-height: 70px;
+        padding: .25em 1em;
+        min-height: 70px;
     }
 
     @include mq($mobileNavWidth) {
-    	min-height: 100px;
+        min-height: 100px;
     }
 }
 
 // Branding 
 
 .branding {
-	position: absolute;
-	// width: 100%;
+    position: absolute;
+    // width: 100%;
 }
 
 .site-title {
@@ -68,8 +66,8 @@
         background-size: 300px 41px;
 
         width: 300px;
-    	height: 41px;
-    	top: 7px;
+        height: 41px;
+        top: 7px;
 
     }
     @include mq(1040) {
@@ -82,9 +80,4 @@
 
     
 }
-
-
-
-
-
 
