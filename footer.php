@@ -4,10 +4,7 @@
 	
 	<footer class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
 
-			<p class="credit">
-				&copy; Copyright <?php the_date('Y'); ?> <?php echo hybrid_get_site_link(); ?>. All rights reserved.
-			</p>
-
+		<p class="credit">&copy; Copyright <?php the_date('Y'); ?> <?php echo hybrid_get_site_link(); ?>. All rights reserved.</p>
 
 	</footer>
 
