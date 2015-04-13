@@ -7,7 +7,7 @@
 		<div <?php hybrid_attr( 'entry-content' ); ?>>
 			<?php the_content(); ?>
 			<?php wp_link_pages(); ?>
-		</div><!-- .entry-content -->
+		</div>
 
 	<?php else : // If not viewing a single page. ?>
 
@@ -17,8 +17,8 @@
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php the_excerpt(); ?>
-		</div><!-- .entry-summary -->
+		</div>
 
 	<?php endif; // End single page check. ?>
 
-</article><!-- .entry -->
+</article>

@@ -6,7 +6,7 @@
 
 		<div class="loop-description blog-description">
 			<?php echo apply_filters( 'the_content', get_post_field( 'post_content', get_queried_object_id() ) ); ?>
-		</div><!-- .loop-description -->
+		</div>
 
 	<?php } elseif ( is_category() ) { ?>
 
@@ -14,7 +14,7 @@
 
 		<div class="loop-description category-description">
 			<?php echo category_description(); ?>
-		</div><!-- .loop-description -->
+		</div>
 
 	<?php } elseif ( is_tag() ) { ?>
 
@@ -22,7 +22,7 @@
 
 		<div class="loop-description tag-description">
 			<?php echo tag_description(); ?>
-		</div><!-- .loop-description -->
+		</div>
 
 	<?php } elseif ( is_tax() ) { ?>
 
@@ -30,7 +30,7 @@
 
 		<div class="loop-description tax-description">
 			<?php echo term_description( '', get_query_var( 'taxonomy' ) ); ?>
-		</div><!-- .loop-description -->
+		</div>
 
 	<?php } elseif ( is_author() ) { ?>
 
@@ -38,7 +38,7 @@
 
 		<div class="loop-description author-description">
 			<?php echo wpautop( get_the_author_meta( 'description', get_query_var( 'author' ) ) ); ?>
-		</div><!-- .loop-description -->
+		</div>
 
 	<?php } elseif ( is_search() ) { ?>
 
@@ -46,7 +46,7 @@
 
 		<div class="loop-description search-description">
 			<?php echo wpautop( sprintf( __( 'You are browsing the search results for "%s"', 'infusion' ), esc_attr( get_search_query() ) ) ); ?>
-		</div><!-- .loop-description -->
+		</div>
 
 	<?php } elseif ( is_post_type_archive() ) { ?>
 
@@ -56,7 +56,7 @@
 
 		<div class="loop-description cpt-description">
 			<?php if ( !empty( $post_type->description ) ) echo wpautop( $post_type->description ); ?>
-		</div><!-- .loop-description -->
+		</div>
 
 	<?php } elseif ( is_day() || is_month() || is_year() ) { ?>
 
@@ -73,7 +73,7 @@
 
 		<div class="loop-description date-description">
 			<?php echo wpautop( sprintf( __( 'You are browsing the site archives for %s.', 'infusion' ), $date ) ); ?>
-		</div><!-- .loop-description -->
+		</div>
 
 	<?php } elseif ( is_archive() ) { ?>
 
@@ -81,8 +81,8 @@
 
 		<div class="loop-description archive-description">
 			<?php echo wpautop( __( 'You are browsing the site archives.', 'infusion' ) ); ?>
-		</div><!-- .loop-description -->
+		</div>
 
 	<?php } // End if check ?>
 
-</div><!-- .loop-meta -->
+</div>

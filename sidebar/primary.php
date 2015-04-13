@@ -26,6 +26,6 @@
 
 		<?php endif; // End widgets check. ?>
 
-	</aside><!-- #sidebar-primary -->
+	</aside>
 
 <?php endif; // End layout check. ?>

@@ -40,7 +40,7 @@
 				<?php edit_post_link(); ?>
 			</div>
 
-		</header><!-- .entry-header -->
+		</header>
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php the_excerpt(); ?>
