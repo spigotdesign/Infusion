@@ -4,26 +4,25 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 	return;
 ?>
 
-<section id="conversation">
+<section class="conversation">
 
 	<?php if ( have_comments() ) : // Check if there are any comments. ?>
 
 		<div class="comments">
 
-			<h3 id="comments-number"><?php comments_number(); ?></h3>
+			<h3 class="comments-number"><?php comments_number(); ?></h3>
 
-			<ol class="comment-list">
 				<?php wp_list_comments(
 					array(
-						'callback'     => 'hybrid_comments_callback',
-						'end-callback' => 'hybrid_comments_end_callback'
+						'callback'     	=> 'hybrid_comments_callback',
+						'end-callback' 	=> 'hybrid_comments_end_callback',
+						'style'			=> null
 					)
 				); ?>
-			</ol><!-- .comment-list -->
 
 			<?php locate_template( array( 'comment/comments-nav.php' ), true );  ?>
 
-		</div><!-- #comments-->
+		</div>
 
 	<?php endif; // End check for comments. ?>
 
@@ -35,4 +34,4 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 		)
 	); ?>
 
-</section><!-- #comments-template -->
+</section>
