@@ -17,7 +17,7 @@
 !wp-content/
  
 # Ignore everything in the "wp-content" directory, except the "plugins"
-# and "themes" directories.
+# "mu-plugins" and "themes" directories.
 wp-content/*
 !wp-content/plugins/
 !wp-content/themes/
@@ -34,7 +34,7 @@ wp-content/plugins/*
 wp-content/themes/*
 !wp-content/themes/infusion
 
-# Ignore Gulp files 
+# Ignore Node files 
 node_modules
 
 # Ignore extra files

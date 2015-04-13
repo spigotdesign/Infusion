@@ -92,7 +92,7 @@ function infusion_theme_setup() {
 	add_filter( 'tiny_mce_before_init', 'infusion_tiny_mce_before_init' );
 
 	/* Modifies the theme layout. */
-	add_filter( 'theme_mod_theme_layout', 'infusion_mod_theme_layout', 15 );
+	// add_filter( 'theme_mod_theme_layout', 'infusion_mod_theme_layout', 15 );
 
 	/* Removes post type support */
 	add_action( 'init', 'infusion_remove_post_type_support', 15 );
@@ -249,4 +249,28 @@ function infusion_remove_post_type_support() {
 
 	// remove_post_type_support( 'my-cpt-name', 'theme-layouts' );
 
+}
+
+
+/**
+ * Modifies the theme layout
+ *
+ * @since  1.0
+ * @access public
+ * @param  string  $layout
+ * @return string
+ */
+function infusion_mod_theme_layout( $layout ) {
+
+	if ( is_home() || is_singular('post') || is_404() ) {
+
+        $layout = '2c-l';
+
+    } elseif ( is_archive() && !is_archive('portfolio') ) {
+        
+        $layout = '2c-l';
+
+    }
+
+	return $layout;
 }

@@ -13,6 +13,6 @@
 
 		<?php next_comments_link( _x( 'Next &rarr;', 'comments navigation', 'infusion' ) ); ?>
 
-	</nav><!-- .comments-nav -->
+	</nav>
 
 <?php endif; // End check for paged comments. ?>

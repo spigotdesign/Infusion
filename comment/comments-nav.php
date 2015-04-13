@@ -11,6 +11,6 @@
 
 		<?php next_comments_link( _x( 'Next &rarr;', 'comments navigation', 'spigot' ) ); ?>
 
-	</div><!-- .comments-nav -->
+	</div>
 
 <?php endif; // End check for paged comments. ?>
