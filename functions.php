@@ -12,9 +12,9 @@
  *
  * @package    Infusion
  * @subpackage Functions
- * @version    2.1
+ * @version    2.1.1
  * @author     Spigot Design <http://spigotdesign.com/>
- * @copyright  Copyright (c) 2014
+ * @copyright  Copyright (c) 2015
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
