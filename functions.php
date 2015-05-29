@@ -37,7 +37,7 @@ add_action( 'after_setup_theme', 'infusion_theme_setup', 5 );
 function infusion_theme_setup() {
 
 	// Load stylesheets
-	add_action( 'wp_enqueue_scripts', 'cinchws_styles' );
+	add_action( 'wp_enqueue_scripts', 'infusion_styles' );
 
 	// Layout Support
 	add_theme_support( 'theme-layouts', array( 'default' => '1c' ) );
@@ -80,7 +80,7 @@ function infusion_theme_setup() {
  *
  */
 
-function cinchws_styles() {
+function infusion_styles() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 }
 
@@ -95,7 +95,7 @@ function infusion_register_layouts() {
     hybrid_register_layout(
         '1c',
         array(
-            'label'            => _x( '1 Column', 'theme layout', 'cinchws' ),
+            'label'            => _x( '1 Column', 'theme layout', 'infusion' ),
             'is_global_layout' => true,
             'is_post_layout'   => true,
             'image'            => '%s/img/layouts/1c.png', 
@@ -105,7 +105,7 @@ function infusion_register_layouts() {
     hybrid_register_layout(
         '2c-l',
         array(
-            'label'            => _x( '2 Columns: Sidebar / Content', 'theme layout', 'cinchws' ),
+            'label'            => _x( '2 Columns: Sidebar / Content', 'theme layout', 'infusion' ),
             'is_global_layout' => true,
             'is_post_layout'   => true,
             'image'            => '%s/img/layouts/2c-l.png', 
