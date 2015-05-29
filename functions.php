@@ -51,6 +51,9 @@ function infusion_theme_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'post-formats', array( 'aside', 'audio', 'image', 'gallery', 'link', 'quote', 'status', 'video' ) );
 
+	// Register custom image sizes. 
+	// add_action( 'init', 'infusion_register_image_sizes', 5 );
+
 	// Editor styles.
 	add_editor_style( infusion_get_editor_styles() );
 
