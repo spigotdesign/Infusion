@@ -10,17 +10,5 @@
 			"email"   : "bryan@spigotdesign.com",
 			"homepage": "http://spigotdesign.com/"
 		}
-	],
-
-    "type"    : "wordpress-theme",
-    "require" : {
-        "composer/installers" : "~1.0"
-    },
-
-    "extra" : {
-        "installer-paths" : {
-            "content/themes/{$name}/": ["type:wordpress-theme"]
-        }
-    }
-
+	]
 }
