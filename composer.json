@@ -1,0 +1,14 @@
+{
+	"name"       : "spigot/infusion",
+	"description": "A starter theme from Spigot. Uses Hybrid Core",
+	"keywords"   : ["wordpress"],
+	"homepage"   : "http://spigotdesign.com/",
+	"license"    : "GPL-2.0+",
+	"authors"    : [
+		{
+			"name"    : "Bryan Hoffman",
+			"email"   : "bryan@spigotdesign.com",
+			"homepage": "http://spigotdesign.com/"
+		}
+	]
+}
