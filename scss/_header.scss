@@ -1,4 +1,4 @@
--/*
+/*
  * Header
  *
  * @package   Sass Stylesheet
@@ -54,7 +54,7 @@
     @include transition(all 0.2s ease-in-out);
     @include hide-text;
     display: block;
-    background: url(img/build/ben-pieper.svg) center center no-repeat;
+    background: url(img/build/logo.svg) center center no-repeat;
     background-size: 280px 38px;
     width: 280px;
     height: 38px;

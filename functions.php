@@ -12,7 +12,7 @@
  *
  * @package    Infusion
  * @subpackage Functions
- * @version    2.1.1
+ * @version    2.2.0
  * @author     Spigot Design <http://spigotdesign.com/>
  * @copyright  Copyright (c) 2015
  * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -22,7 +22,7 @@
 $infusion_dir = trailingslashit( get_template_directory() );
 
 /* Load the Hybrid Core framework and launch it. */
-require_once( $infusion_dir . 'library/hybrid.php' );
+require_once( $infusion_dir . 'hybrid-core/hybrid.php' );
 new Hybrid();
 
 add_action( 'after_setup_theme', 'infusion_theme_setup', 5 );
@@ -36,94 +36,93 @@ add_action( 'after_setup_theme', 'infusion_theme_setup', 5 );
  */
 function infusion_theme_setup() {
 
-	/* Theme layouts. */
-	add_theme_support(
-		'theme-layouts',
-		array(
-			'1c'        => __( '1 Column Wide',                'infusion' ),
-			'1c-narrow' => __( '1 Column Narrow',              'infusion' ),
-			'2c-l'      => __( '2 Columns: Content / Sidebar', 'infusion' ),
-			'2c-r'      => __( '2 Columns: Sidebar / Content', 'infusion' )
-		),
-		array( 'default' => '2c-l' )
-	);
+	// Load stylesheets
+	add_action( 'wp_enqueue_scripts', 'infusion_styles' );
 
-	/* Load stylesheets. */
-	add_theme_support(
-		'hybrid-core-styles',
-		array( 'style' )
-	);
+	// Layout Support
+	add_theme_support( 'theme-layouts', array( 'default' => '1c' ) );
+	add_action( 'hybrid_register_layouts', 'infusion_register_layouts' );
 
-	/* Hybrid Core functions and extensions */
+	// Hybrid Core functions and extensions
 	add_theme_support( 'hybrid-core-template-hierarchy' );
-	add_theme_support( 'loop-pagination' );
 	add_theme_support( 'get-the-image' );
-	add_theme_support( 'breadcrumb-trail' );
-	add_theme_support( 'cleaner-gallery' );
-	add_theme_support( 'cleaner-caption' );
 
-	/* WordPress theme support */
+	// WordPress theme support
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'post-formats', array( 'aside', 'audio', 'image', 'gallery', 'link', 'quote', 'status', 'video' ) );
 
-	/* Editor styles. */
-	add_editor_style( infusion_get_editor_styles() );
-
-	/* Handle content width for embeds and images. */
-	// Note: this is the largest size based on the theme's various layouts.
-	hybrid_set_content_width( 1025 );
-
-	/* Register custom image sizes. */
+	// Register custom image sizes. 
 	// add_action( 'init', 'infusion_register_image_sizes', 5 );
 
-	/* Register custom menus. */
+	// Editor styles.
+	add_editor_style( infusion_get_editor_styles() );
+
+	// Register custom menus.
 	add_action( 'init', 'infusion_register_menus', 5 );
 
-	/* Register sidebars. */
+	// Register sidebars.
 	add_action( 'widgets_init', 'infusion_register_sidebars', 5 );
 
-	/* Add custom styles and scripts. */
+	// Add custom styles and scripts.
 	add_action( 'wp_enqueue_scripts', 'infusion_enqueue_scripts' );
 
-	/* Register admin styles and scripts. */
+	// Register admin styles and scripts.
 	add_action( 'admin_enqueue_scripts', 'infusion_admin_register_styles', 0 );
 
-	/* Adds custom settings for the visual editor. */
+	// Adds custom settings for the visual editor.
 	add_filter( 'tiny_mce_before_init', 'infusion_tiny_mce_before_init' );
 
-	/* Modifies the theme layout. */
+	// Modifies the theme layout.
 	// add_filter( 'theme_mod_theme_layout', 'infusion_mod_theme_layout', 15 );
-
-	/* Removes post type support */
-	add_action( 'init', 'infusion_remove_post_type_support', 15 );
 
 
 }
 
+/**
+ * Registers stylesheets for the frontend
+ *
+ */
+
+function infusion_styles() {
+	wp_enqueue_style( 'style', get_stylesheet_uri() );
+}
+
 
 /**
- * Registers custom image sizes for the theme.
+ * Registers custom theme layouts
  *
- * @since  1.0.0
- * @access public
- * @return void
  */
-function infusion_register_image_sizes() {
 
-	/* Sets the 'post-thumbnail' size. */
-	// set_post_thumbnail_size( 175, 131, true );
+function infusion_register_layouts() {
 
-	/* Adds the 'infusion-full' image size. */
-	// add_image_size( 'infusion-full', 1025, 500, false );
+    hybrid_register_layout(
+        '1c',
+        array(
+            'label'            => _x( '1 Column', 'theme layout', 'infusion' ),
+            'is_global_layout' => true,
+            'is_post_layout'   => true,
+            'image'            => '%s/img/layouts/1c.png', 
+        )
+    );
+
+    hybrid_register_layout(
+        '2c-l',
+        array(
+            'label'            => _x( '2 Columns: Sidebar / Content', 'theme layout', 'infusion' ),
+            'is_global_layout' => true,
+            'is_post_layout'   => true,
+            'image'            => '%s/img/layouts/2c-l.png', 
+        )
+    );
+
+    
 }
 
 /**
  * Registers nav menu locations.
  *
- * @since  1.0.0
- * @access public
- * @return void
  */
+
 function infusion_register_menus() {
 	register_nav_menu( 'primary',   _x( 'Primary',   'nav menu location', 'infusion' ) );
 	register_nav_menu( 'secondary', _x( 'Secondary', 'nav menu location', 'infusion' ) );
@@ -133,10 +132,8 @@ function infusion_register_menus() {
 /**
  * Registers sidebars.
  *
- * @since  1.0.0
- * @access public
- * @return void
  */
+
 function infusion_register_sidebars() {
 
 	hybrid_register_sidebar(
@@ -159,14 +156,9 @@ function infusion_register_sidebars() {
 /**
  * Enqueues scripts.
  *
- * @since  1.0.0
- * @access public
- * @return void
  */
-function infusion_enqueue_scripts() {
 
-  	// Header
-	wp_enqueue_script( 'modernizr', trailingslashit( get_template_directory_uri() ) . '/js/build/modernizr.min.js', array( 'jquery' ), '2.8.3', false );
+function infusion_enqueue_scripts() {
 
 	// Footer
 	wp_enqueue_script( 'plugins', trailingslashit( get_template_directory_uri() ) . 'js/build/plugins.min.js', array( 'jquery' ), null, true );
@@ -179,11 +171,24 @@ function infusion_enqueue_scripts() {
 }
 
 /**
- * Registers stylesheets for use in the admin.
+ * Registers custom image sizes for the theme.
  *
  * @since  1.0.0
  * @access public
  * @return void
+ */
+function infusion_register_image_sizes() {
+
+	/* Sets the 'post-thumbnail' size. */
+	// set_post_thumbnail_size( 175, 131, true );
+
+	/* Adds the 'infusion-full' image size. */
+	// add_image_size( 'infusion-full', 1025, 500, false );
+}
+
+/**
+ * Registers stylesheets for use in the admin.
+ *
  */
 function infusion_admin_register_styles() {
 
@@ -194,9 +199,6 @@ function infusion_admin_register_styles() {
 /**
  * Callback function for adding editor styles.  Use along with the add_editor_style() function.
  *
- * @since  1.0.0
- * @access public
- * @return array
  */
 function infusion_get_editor_styles() {
 
@@ -230,7 +232,7 @@ function infusion_get_editor_styles() {
  */
 function infusion_tiny_mce_before_init( $settings ) {
 
-	$settings['body_class'] = join( ' ', get_body_class() );
+	$settings['body_class'] = join( ' ', array_merge( get_body_class(), get_post_class() ) );
 
 	return $settings;
 }

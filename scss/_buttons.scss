@@ -6,57 +6,55 @@
  *
  */
 
-/* Base btn */
- @mixin btn($primaryColor, $secondaryColor) {
-  font-weight: $boldFontWeight;
+.button, .btn, input.submit {
   display: inline-block;
   text-transform: uppercase;
-  padding: .5em .875em;
-  border: 1px solid $primaryColor;
+  padding: .375em 1em;
+  border: 1px solid $grayDark;
   border-radius: 3px;
-  color: $primaryColor;
+  color: $grayDark;
+  // background-color: $orange;
+  font-family: $sansFontFamily;
+  font-weight: bold;
+  font-size: 14px;
+  font-size: .875rem;
+  text-align: center;
   @include transition(all .2s ease-in-out);
 
   &:hover {
-    background-color: $primaryColor;
-    color: $secondaryColor;
-    text-decoration: none;
+    background-color: $grayDark;
+    color: $white;
+
   }
 
-
-}
-
-.btn, .button {
-  @include btn($grayDark, $white);
-}
-
-input#submit {
-  border: 1px solid #ccc;
 }
 
 .btn.white, .button.white {
-  @include btn($white, $grayDark);
+  @extend .button;
+  background-color: transparent;
+  border-color: $white;
+  color: $white;
+
+  &:hover {
+    background-color: $white;
+    color: $grayDark;
+  }
 }
 
 // Comment Form Submit
 
 input#submit, .gform_button {
   @extend .btn;
-  background-color: transparent;
-  padding: .5em 1em;
+  background-color: $orange;
+  color: $white;
+  border-color: darken($orange, 5%);
   margin: 1em 0;
   cursor: pointer;
+
+  &:hover {
+    background-color: darken($orange, 7%);
+    border-color: darken($orange, 15%)
+  }
+  
 }
 
-.orange-btn {
-  background-color: $orange;
-  border: 1px solid $orange;
-  color: $white;
-
-    &:hover {
-      border-color: darken($orange, 10%);
-      background-color: lighten($orange, 5%);
-      box-shadow: 0 0 5px 0 rgba($orange,.95);
-      text-decoration: none;
-    }
-}

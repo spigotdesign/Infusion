@@ -56,6 +56,15 @@
   }
 }
 
+// Vertical Align
+
+@mixin vert-align($percnt) {
+  position: relative;
+  top: $percnt;
+  @include transform(translateY($percnt));
+}
+
+
 // Placeholder 
 @mixin placeholder {
   ::-webkit-input-placeholder {@content};
