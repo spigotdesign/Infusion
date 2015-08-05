@@ -12,6 +12,14 @@
             "homepage": "http://spigotdesign.com/"
         }
     ],
+
+    "repositories": [
+    {
+      "type": "composer",
+      "url" : "https://packagist.org"
+    }
+  ],
+
     "require" : {
         "composer/installers" : "~1.0",
         "justintadlock/hybrid-core": "dev-dev"
