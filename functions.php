@@ -171,6 +171,22 @@ function infusion_enqueue_scripts() {
 }
 
 /**
+ * Registers custom image sizes for the theme.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function infusion_register_image_sizes() {
+
+	/* Sets the 'post-thumbnail' size. */
+	// set_post_thumbnail_size( 175, 131, true );
+
+	/* Adds the 'infusion-full' image size. */
+	// add_image_size( 'infusion-full', 1025, 500, false );
+}
+
+/**
  * Registers stylesheets for use in the admin.
  *
  */
