@@ -1,8 +1,8 @@
 <?php
 /**
- * Adds the template meta box to the post editing screen for public post types.  This feature allows users and 
- * devs to create custom templates for any post type, not just pages as default in WordPress core.  The 
- * functions in this file create the template meta box and save the template chosen by the user when the 
+ * Adds the template meta box to the post editing screen for public post types.  This feature allows users and
+ * devs to create custom templates for any post type, not just pages as default in WordPress core.  The
+ * functions in this file create the template meta box and save the template chosen by the user when the
  * post is saved.  This file is only used if the theme supports the 'hybrid-core-template-hierarchy' feature.
  *
  * @package    HybridCore
@@ -22,7 +22,7 @@ add_action( 'add_attachment',  'hybrid_meta_box_post_save_template'        );
 add_action( 'edit_attachment', 'hybrid_meta_box_post_save_template'        );
 
 /**
- * Adds the post template meta box for all public post types, excluding the 'page' post type since WordPress 
+ * Adds the post template meta box for all public post types, excluding the 'page' post type since WordPress
  * core already handles page templates.
  *
  * @since  1.2.0
@@ -52,8 +52,8 @@ function hybrid_meta_box_post_add_template( $post_type, $post ) {
  */
 function hybrid_meta_box_post_display_template( $post, $box ) {
 
-	// Get a list of available custom templates for the post type.
-	$templates = hybrid_get_post_templates( $post->post_type );
+	$templates     = hybrid_get_post_templates( $post->post_type );
+	$post_template = hybrid_get_post_template( $post->ID );
 
 	wp_nonce_field( basename( __FILE__ ), 'hybrid-post-template-nonce' ); ?>
 
@@ -63,7 +63,7 @@ function hybrid_meta_box_post_display_template( $post, $box ) {
 			<option value=""></option>
 
 			<?php foreach ( $templates as $label => $template ) : ?>
-				<option value="<?php echo esc_attr( $template ); ?>" <?php selected( esc_attr( get_post_meta( $post->ID, "_wp_{$post->post_type}_template", true ) ), esc_attr( $template ) ); ?>><?php echo esc_html( $label ); ?></option>
+				<option value="<?php echo esc_attr( $template ); ?>" <?php selected( $post_template, $template ); ?>><?php echo esc_html( $label ); ?></option>
 			<?php endforeach; ?>
 
 		</select>
@@ -71,7 +71,7 @@ function hybrid_meta_box_post_display_template( $post, $box ) {
 <?php }
 
 /**
- * Saves the post template meta box settings as post metadata. Note that this meta is sanitized using the 
+ * Saves the post template meta box settings as post metadata. Note that this meta is sanitized using the
  * hybrid_sanitize_meta() callback function prior to being saved.
  *
  * @since  1.2.0
@@ -97,17 +97,14 @@ function hybrid_meta_box_post_save_template( $post_id, $post = '' ) {
 	// Get the posted meta value.
 	$new_meta_value = sanitize_text_field( $_POST['hybrid-post-template'] );
 
-	// Set the $meta_key variable based off the post type name.
-	$meta_key = "_wp_{$post->post_type}_template";
-
 	// Get the meta value of the meta key.
-	$meta_value = get_post_meta( $post_id, $meta_key, true );
+	$meta_value = hybrid_get_post_template( $post_id );
 
 	// If there is no new meta value but an old value exists, delete it.
 	if ( '' == $new_meta_value && $meta_value )
-		delete_post_meta( $post_id, $meta_key, $meta_value );
+		hybrid_delete_post_template( $post_id );
 
 	// If the new meta value does not match the old value, update it.
 	elseif ( $new_meta_value != $meta_value )
-		update_post_meta( $post_id, $meta_key, $new_meta_value );
+		hybrid_set_post_template( $post_id, $new_meta_value );
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * General template functions.  These functions are for use throughout the theme's various template files.  
+ * General template functions.  These functions are for use throughout the theme's various template files.
  * Their main purpose is to handle many of the template tags that are currently lacking in core WordPress.
  *
  * @package    HybridCore
@@ -74,11 +74,11 @@ function hybrid_theme_link() {
  * @return string
  */
 function hybrid_get_theme_link() {
-	$theme = wp_get_theme( get_template() );
-	$uri   = $theme->display( 'ThemeURI' );
-	$name  = $theme->display( 'Name', false, true );
+	$theme   = wp_get_theme( get_template() );
+	$allowed = array( 'abbr' => array( 'title' => true ), 'acronym' => array( 'title' => true ), 'code' => true, 'em' => true, 'strong' => true );
 
-	return sprintf( '<a class="theme-link" href="%s">%s</a>', esc_url( $uri ), esc_html( $name ) );
+	// Note: URI is escaped via `WP_Theme::markup_header()`.
+	return sprintf( '<a class="theme-link" href="%s">%s</a>', $theme->display( 'ThemeURI' ), wp_kses( $theme->display( 'Name' ), $allowed ) );
 }
 
 /**
@@ -104,16 +104,16 @@ function hybrid_get_child_theme_link() {
 	if ( !is_child_theme() )
 		return '';
 
-	$theme = wp_get_theme();
-	$uri   = $theme->display( 'ThemeURI' );
-	$name  = $theme->display( 'Name', false, true );
+	$theme   = wp_get_theme();
+	$allowed = array( 'abbr' => array( 'title' => true ), 'acronym' => array( 'title' => true ), 'code' => true, 'em' => true, 'strong' => true );
 
-	return sprintf( '<a class="child-link" href="%s">%s</a>', esc_url( $uri ), esc_html( $name ) );
+	// Note: URI is escaped via `WP_Theme::markup_header()`.
+	return sprintf( '<a class="child-link" href="%s">%s</a>', $theme->display( 'ThemeURI' ), wp_kses( $theme->display( 'Name' ), $allowed ) );
 }
 
 /**
- * Gets the "blog" (posts page) page URL.  `home_url()` will not always work for this because it 
- * returns the front page URL.  Sometimes the blog page URL is set to a different page.  This 
+ * Gets the "blog" (posts page) page URL.  `home_url()` will not always work for this because it
+ * returns the front page URL.  Sometimes the blog page URL is set to a different page.  This
  * function handles both scenarios.
  *
  * @since  2.0.0
@@ -121,19 +121,18 @@ function hybrid_get_child_theme_link() {
  * @return string
  */
 function hybrid_get_blog_url() {
-	$blog_url = '';
 
 	if ( 'posts' === get_option( 'show_on_front' ) )
-		$blog_url = esc_url( home_url() );
+		$blog_url = home_url();
 
 	elseif ( 0 < ( $page_for_posts = get_option( 'page_for_posts' ) ) )
-		$blog_url = esc_url( get_permalink( $page_for_posts ) );
+		$blog_url = get_permalink( $page_for_posts );
 
-	return $blog_url;
+	return $blog_url ? esc_url( $blog_url ) : '';
 }
 
 /**
- * Outputs the site title. 
+ * Outputs the site title.
  *
  * @since  0.1.0
  * @access public
@@ -185,6 +184,19 @@ function hybrid_get_site_description() {
 }
 
 /**
+ * Function for figuring out if we're viewing a "plural" page.  In WP, these pages are archives,
+ * search results, and the home/blog posts index.  Note that this is similar to, but not quite
+ * the same as `!is_singular()`, which wouldn't account for the 404 page.
+ *
+ * @since  3.0.0
+ * @access public
+ * @return bool
+ */
+function hybrid_is_plural() {
+	return apply_filters( 'hybrid_is_plural', is_home() || is_archive() || is_search() );
+}
+
+/**
  * Print the general archive title.
  *
  * @since  2.0.0
@@ -225,7 +237,7 @@ function hybrid_single_author_title() {
  * @return void
  */
 function hybrid_get_single_author_title() {
-	return get_the_author_meta( 'display_name', get_query_var( 'author' ) );
+	return get_the_author_meta( 'display_name', absint( get_query_var( 'author' ) ) );
 }
 
 /**

@@ -17,11 +17,11 @@ add_action( 'customize_register', 'hybrid_load_customize_classes', 0 );
 add_action( 'customize_register', 'hybrid_customize_register' );
 
 # Register customize controls scripts/styles.
-add_action( 'customize_controls_enqueue_scripts', 'hybrid_customize_controls_register_scripts', 5 );
-add_action( 'customize_controls_enqueue_scripts', 'hybrid_customize_controls_register_styles',  5 );
+add_action( 'customize_controls_enqueue_scripts', 'hybrid_customize_controls_register_scripts', 0 );
+add_action( 'customize_controls_enqueue_scripts', 'hybrid_customize_controls_register_styles',  0 );
 
 # Register/Enqueue customize preview scripts/styles.
-add_action( 'customize_preview_init', 'hybrid_customize_preview_register_scripts', 5 );
+add_action( 'customize_preview_init', 'hybrid_customize_preview_register_scripts', 0 );
 add_action( 'customize_preview_init', 'hybrid_customize_preview_enqueue_scripts'     );
 
 /**
@@ -32,9 +32,10 @@ add_action( 'customize_preview_init', 'hybrid_customize_preview_enqueue_scripts'
  * @access public
  * @return void
  */
-function hybrid_load_customize_classes() {
+function hybrid_load_customize_classes( $wp_customize ) {
 
 	// Load customize setting classes.
+	require_once( HYBRID_CUSTOMIZE . 'setting-array-map.php'  );
 	require_once( HYBRID_CUSTOMIZE . 'setting-image-data.php' );
 
 	// Load customize control classes.
@@ -44,9 +45,15 @@ function hybrid_load_customize_classes() {
 	require_once( HYBRID_CUSTOMIZE . 'control-radio-image.php'       );
 	require_once( HYBRID_CUSTOMIZE . 'control-select-group.php'      );
 	require_once( HYBRID_CUSTOMIZE . 'control-select-multiple.php'   );
-	require_once( HYBRID_CUSTOMIZE . 'control-background-image.php'  );
 
 	require_if_theme_supports( 'theme-layouts', HYBRID_CUSTOMIZE . 'control-layout.php' );
+
+	// Register JS control types.
+	$wp_customize->register_control_type( 'Hybrid_Customize_Control_Checkbox_Multiple' );
+	$wp_customize->register_control_type( 'Hybrid_Customize_Control_Palette'           );
+	$wp_customize->register_control_type( 'Hybrid_Customize_Control_Radio_Image'       );
+	$wp_customize->register_control_type( 'Hybrid_Customize_Control_Select_Group'      );
+	$wp_customize->register_control_type( 'Hybrid_Customize_Control_Select_Multiple'   );
 }
 
 /**
@@ -62,8 +69,8 @@ function hybrid_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'layout',
 		array(
-			'title'      => esc_html__( 'Layout', 'hybrid-core' ),
-			'priority'   => 30,
+			'title'    => esc_html__( 'Layout', 'hybrid-core' ),
+			'priority' => 30,
 		)
 	);
 
@@ -74,8 +81,8 @@ function hybrid_customize_register( $wp_customize ) {
 		$wp_customize->add_setting(
 			'theme_layout',
 			array(
-				'default'           => hybrid_get_theme_layout(),
-				'sanitize_callback' => 'sanitize_html_class',
+				'default'           => hybrid_get_default_layout(),
+				'sanitize_callback' => 'sanitize_key',
 				'transport'         => 'postMessage'
 			)
 		);
@@ -85,10 +92,7 @@ function hybrid_customize_register( $wp_customize ) {
 			new Hybrid_Customize_Control_Layout(
 				$wp_customize,
 				'theme_layout',
-				array(
-					'label'    => esc_html__( 'Global Layout', 'hybrid-core' ),
-					'section'  => 'layout',
-				)
+				array( 'label' => esc_html__( 'Global Layout', 'hybrid-core' ) )
 			)
 		);
 	}
@@ -102,7 +106,7 @@ function hybrid_customize_register( $wp_customize ) {
  * @return void
  */
 function hybrid_customize_controls_register_scripts() {
-	wp_register_script( 'hybrid-customize-controls', esc_url( HYBRID_JS . 'customize-controls' . hybrid_get_min_suffix() . '.js' ), array( 'jquery' ), '20150507', true );
+	wp_register_script( 'hybrid-customize-controls', HYBRID_JS . 'customize-controls' . hybrid_get_min_suffix() . '.js', array( 'customize-controls' ), null, true );
 }
 
 /**
@@ -113,7 +117,7 @@ function hybrid_customize_controls_register_scripts() {
  * @return void
  */
 function hybrid_customize_controls_register_styles() {
-	wp_register_style( 'hybrid-customize-controls', esc_url( HYBRID_CSS . 'customize-controls' . hybrid_get_min_suffix() . '.css' ) );
+	wp_register_style( 'hybrid-customize-controls', HYBRID_CSS . 'customize-controls' . hybrid_get_min_suffix() . '.css' );
 }
 
 /**
@@ -124,7 +128,7 @@ function hybrid_customize_controls_register_styles() {
  * @return void
  */
 function hybrid_customize_preview_register_scripts() {
-	wp_register_script( 'hybrid-customize-preview', esc_url( HYBRID_JS . 'customize-preview' . hybrid_get_min_suffix() . '.js' ), array( 'jquery' ), '20150507', true );
+	wp_register_script( 'hybrid-customize-preview', HYBRID_JS . 'customize-preview' . hybrid_get_min_suffix() . '.js', array( 'jquery' ), null, true );
 }
 
 /**
@@ -136,6 +140,6 @@ function hybrid_customize_preview_register_scripts() {
  */
 function hybrid_customize_preview_enqueue_scripts() {
 
-	if ( current_theme_supports( 'theme-layouts' ) )
+	if ( current_theme_supports( 'theme-layouts', 'customize' ) )
 		wp_enqueue_script( 'hybrid-customize-preview' );
 }

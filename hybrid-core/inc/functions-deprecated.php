@@ -1,13 +1,13 @@
 <?php
 /**
- * Deprecated functions that should be avoided in favor of newer functions. Developers should not use 
- * these functions in their parent themes and users should not use these functions in their child themes.  
- * All deprecated functions will be removed at some point in a future release.  If your theme is using one 
+ * Deprecated functions that should be avoided in favor of newer functions. Developers should not use
+ * these functions in their parent themes and users should not use these functions in their child themes.
+ * All deprecated functions will be removed at some point in a future release.  If your theme is using one
  * of these, you should use the listed alternative or remove it from your theme if necessary.
  *
- * This file also maintains a list of "removed" functions.  Removed functions simply exist as function names 
- * for an added layer of protection in the off-chance that a developer failed to switch over to an 
- * alternative when the function was first deprecated.  Removed functions are periodically permanently 
+ * This file also maintains a list of "removed" functions.  Removed functions simply exist as function names
+ * for an added layer of protection in the off-chance that a developer failed to switch over to an
+ * alternative when the function was first deprecated.  Removed functions are periodically permanently
  * removed from the code base.
  *
  * Functions deprecated prior to the 2.0.0 version are no longer available.
@@ -23,7 +23,7 @@
 /* === Deprecated Functions === */
 
 /**
- * Loop pagination function for paginating loops with multiple posts.  This should be used on archive, blog, and 
+ * Loop pagination function for paginating loops with multiple posts.  This should be used on archive, blog, and
  * search pages.  It is not for singular views.
  *
  * @since      loop-pagination-0.1.0
@@ -54,7 +54,7 @@ function hybrid_loop_title() {
 }
 
 /**
- * Gets the loop title.  This function should only be used on archive-type pages, such as archive, blog, and 
+ * Gets the loop title.  This function should only be used on archive-type pages, such as archive, blog, and
  * search results pages.  It outputs the title of the page.
  *
  * @link       http://core.trac.wordpress.org/ticket/21995
@@ -84,7 +84,7 @@ function hybrid_loop_description() {
 }
 
 /**
- * Gets the loop description.  This function should only be used on archive-type pages, such as archive, blog, and 
+ * Gets the loop description.  This function should only be used on archive-type pages, such as archive, blog, and
  * search results pages.  It outputs the description of the page.
  *
  * @link       http://core.trac.wordpress.org/ticket/21995
@@ -99,11 +99,22 @@ function hybrid_get_loop_description() {
 	return get_the_archive_description();
 }
 
+/**
+ * Registers admin scripts.
+ *
+ * @note   Temp. deprecated. We might need in future.
+ * @since  3.0.0
+ * @access public
+ * @return void
+ */
+function hybrid_admin_register_scripts() {}
+
 /* === Removed Functions === */
 
 /* Fuctions removed in the 3.0 branch. */
 
 // class Hybrid_Customize_Control_Textarea extends WP_Customize_Control {}
+// class Hybrid_Customize_Control_Background_Image extends WP_Customize_Background_Image_Control {}
 class Hybrid_Theme_Settings{}
 function hybrid_get_styles() {}
 function hybrid_doctitle() {}
@@ -169,6 +180,8 @@ function hybrid_image_size_names_choose() {}
 function hybrid_meta_template() {}
 function hybrid_load_customize_controls() {}
 function hybrid_is_textdomain_loaded() {}
+function hybrid_get_the_post_format_chat() {}
+function hybrid_chat_row_id() {}
 
 /* Functions removed in the 2.0 branch. */
 

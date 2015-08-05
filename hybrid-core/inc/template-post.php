@@ -1,6 +1,6 @@
 <?php
 /**
- * Template functions related to posts.  The functions in this file are for handling template tags or features 
+ * Template functions related to posts.  The functions in this file are for handling template tags or features
  * of template tags that WordPress core does not currently handle.
  *
  * @package    HybridCore
@@ -12,50 +12,92 @@
  */
 
 /**
- * Checks if a post of any post type has a custom template.  This is the equivalent of WordPress' 
- * is_page_template() function with the exception that it works for all post types.
+ * Gets a post template.
+ *
+ * @since  3.0.0
+ * @access public
+ * @param  int     $post_id
+ * @return bool
+ */
+function hybrid_get_post_template( $post_id ) {
+	return get_post_meta( $post_id, hybrid_get_post_template_meta_key( $post_id ), true );
+}
+
+/**
+ * Sets a post template.
+ *
+ * @since  3.0.0
+ * @access public
+ * @param  int     $post_id
+ * @param  string  $template
+ * @return bool
+ */
+function hybrid_set_post_template( $post_id, $template ) {
+	return update_post_meta( $post_id, hybrid_get_post_template_meta_key( $post_id ), $template );
+}
+
+/**
+ * Deletes a post template.
+ *
+ * @since  3.0.0
+ * @access public
+ * @param  int     $post_id
+ * @return bool
+ */
+function hybrid_delete_post_template( $post_id ) {
+	return delete_post_meta( $post_id, hybrid_get_post_template_meta_key( $post_id ) );
+}
+
+/**
+ * Checks if a post of any post type has a custom template.  This is the equivalent of WordPress'
+ * `is_page_template()` function with the exception that it works for all post types.
  *
  * @since  1.2.0
  * @access public
  * @param  string  $template  The name of the template to check for.
- * @return bool               Whether the post has a template.
+ * @param  int     $post_id
+ * @return bool
  */
-function hybrid_has_post_template( $template = '' ) {
+function hybrid_has_post_template( $template = '', $post_id = '' ) {
 
-	// Assume we're viewing a singular post.
-	if ( is_singular() ) {
+	if ( ! $post_id )
+		$post_id = get_the_ID();
 
-		// Get the queried object.
-		$post = get_queried_object();
+	// Get the post template, which is saved as metadata.
+	$post_template = hybrid_get_post_template( $post_id );
 
-		// Get the post template, which is saved as metadata.
-		$post_template = get_post_meta( get_queried_object_id(), "_wp_{$post->post_type}_template", true );
+	// If a specific template was input, check that the post template matches.
+	if ( $template && $template === $post_template )
+		return true;
 
-		// If a specific template was input, check that the post template matches.
-		if ( !empty( $template ) && $template == $post_template )
-			return true;
-
-		// If no specific template was input, check if the post has a template.
-		elseif ( empty( $template ) && !empty( $post_template ) )
-			return true;
-	}
-
-	// Return false for everything else.
-	return false;
+	// Return whether we have a post template.
+	return !empty( $post_template );
 }
 
 /**
- * Checks if a post has any content. Useful if you need to check if the user has written any content 
+ * Returns the post template meta key.
+ *
+ * @since  3.0.0
+ * @access public
+ * @param  int     $post_id
+ * @return string
+ */
+function hybrid_get_post_template_meta_key( $post_id ) {
+	return sprintf( '_wp_%s_template', get_post_type( $post_id ) );
+}
+
+/**
+ * Checks if a post has any content. Useful if you need to check if the user has written any content
  * before performing any actions.
  *
  * @since  1.6.0
  * @access public
- * @param  int    $id  The ID of the post.
+ * @param  int    $post_id
  * @return bool
  */
-function hybrid_post_has_content( $id = 0 ) {
-	$post = get_post( $id );
-	return !empty( $post->post_content ) ? true : false;
+function hybrid_post_has_content( $post_id = 0 ) {
+	$post = get_post( $post_id );
+	return !empty( $post->post_content );
 }
 
 /**
@@ -70,7 +112,7 @@ function hybrid_post_format_link() {
 }
 
 /**
- * Generates a link to the current post format's archive.  If the post doesn't have a post format, the link 
+ * Generates a link to the current post format's archive.  If the post doesn't have a post format, the link
  * will go to the post permalink.
  *
  * @since  2.0.0
@@ -80,7 +122,7 @@ function hybrid_post_format_link() {
 function hybrid_get_post_format_link() {
 
 	$format = get_post_format();
-	$url    = empty( $format ) ? get_permalink() : get_post_format_link( $format );
+	$url    = $format ? get_post_format_link( $format ) : get_permalink();
 
 	return sprintf( '<a href="%s" class="post-format-link">%s</a>', esc_url( $url ), get_post_format_string( $format ) );
 }
@@ -98,9 +140,9 @@ function hybrid_post_author( $args = array() ) {
 }
 
 /**
- * Function for getting the current post's author in The Loop and linking to the author archive page.  
- * This function was created because core WordPress does not have template tags with proper translation 
- * and RTL support for this.  An equivalent getter function for `the_author_posts_link()` would 
+ * Function for getting the current post's author in The Loop and linking to the author archive page.
+ * This function was created because core WordPress does not have template tags with proper translation
+ * and RTL support for this.  An equivalent getter function for `the_author_posts_link()` would
  * instantly solve this issue.
  *
  * @since  2.0.0
@@ -127,7 +169,7 @@ function hybrid_get_post_author( $args = array() ) {
 	$link = ob_get_clean();
 	// A small piece of my soul just died.  Kittens no longer purr.  Dolphins lost the ability to swim with grace.
 
-	if ( !empty( $link ) ) {
+	if ( $link ) {
 		$html .= $args['before'];
 		$html .= sprintf( $args['wrap'], hybrid_get_attr( 'entry-author' ), sprintf( $args['text'], $link ) );
 		$html .= $args['after'];
@@ -149,12 +191,12 @@ function hybrid_post_terms( $args = array() ) {
 }
 
 /**
- * This template tag is meant to replace template tags like `the_category()`, `the_terms()`, etc.  These core 
- * WordPress template tags don't offer proper translation and RTL support without having to write a lot of 
- * messy code within the theme's templates.  This is why theme developers often have to resort to custom 
- * functions to handle this (even the default WordPress themes do this).  Particularly, the core functions 
- * don't allow for theme developers to add the terms as placeholders in the accompanying text (ex: "Posted in %s"). 
- * This funcion is a wrapper for the WordPress `get_the_terms_list()` function.  It uses that to build a 
+ * This template tag is meant to replace template tags like `the_category()`, `the_terms()`, etc.  These core
+ * WordPress template tags don't offer proper translation and RTL support without having to write a lot of
+ * messy code within the theme's templates.  This is why theme developers often have to resort to custom
+ * functions to handle this (even the default WordPress themes do this).  Particularly, the core functions
+ * don't allow for theme developers to add the terms as placeholders in the accompanying text (ex: "Posted in %s").
+ * This funcion is a wrapper for the WordPress `get_the_terms_list()` function.  It uses that to build a
  * better post terms list.
  *
  * @since  2.0.0
@@ -172,7 +214,7 @@ function hybrid_get_post_terms( $args = array() ) {
 		'text'       => '%s',
 		'before'     => '',
 		'after'      => '',
-		'items_wrap' => '<span %s>%s</span>',
+		'wrap'       => '<span %s>%s</span>',
 		// Translators: Separates tags, categories, etc. when displaying a post.
 		'sep'        => _x( ', ', 'taxonomy terms separator', 'hybrid-core' )
 	);
@@ -181,9 +223,9 @@ function hybrid_get_post_terms( $args = array() ) {
 
 	$terms = get_the_term_list( $args['post_id'], $args['taxonomy'], '', $args['sep'], '' );
 
-	if ( !empty( $terms ) ) {
+	if ( $terms ) {
 		$html .= $args['before'];
-		$html .= sprintf( $args['items_wrap'], hybrid_get_attr( 'entry-terms', $args['taxonomy'] ), sprintf( $args['text'], $terms ) );
+		$html .= sprintf( $args['wrap'], hybrid_get_attr( 'entry-terms', $args['taxonomy'] ), sprintf( $args['text'], $terms ) );
 		$html .= $args['after'];
 	}
 
@@ -193,9 +235,9 @@ function hybrid_get_post_terms( $args = array() ) {
 /* === Galleries === */
 
 /**
- * Gets the gallery *item* count.  This is different from getting the gallery *image* count.  By default, 
- * WordPress only allows attachments with the 'image' mime type in galleries.  However, some scripts such 
- * as Cleaner Gallery allow for other mime types.  This is a more accurate count than the 
+ * Gets the gallery *item* count.  This is different from getting the gallery *image* count.  By default,
+ * WordPress only allows attachments with the 'image' mime type in galleries.  However, some scripts such
+ * as Cleaner Gallery allow for other mime types.  This is a more accurate count than the
  * hybrid_get_gallery_image_count() function since it will count all gallery items regardless of mime type.
  *
  * @todo Check for the [gallery] shortcode with the 'mime_type' parameter and use that in get_posts().
@@ -223,21 +265,17 @@ function hybrid_get_gallery_item_count() {
 	}
 
 	// If an item count wasn't returned, get the post attachments.
-	$attachments = get_posts( 
-		array( 
+	$attachments = get_posts(
+		array(
 			'fields'         => 'ids',
-			'post_parent'    => get_the_ID(), 
-			'post_type'      => 'attachment', 
-			'numberposts'    => -1 
-		) 
+			'post_parent'    => get_the_ID(),
+			'post_type'      => 'attachment',
+			'numberposts'    => -1
+		)
 	);
 
 	// Return the attachment count if items were found.
-	if ( !empty( $attachments ) )
-		return count( $attachments );
-
-	// Return 0 for everything else.
-	return 0;
+	return !empty( $attachments ) ? count( $attachments ) : 0;
 }
 
 /**
@@ -261,14 +299,14 @@ function hybrid_get_gallery_image_count() {
 
 	// If there are no images in the array, just grab the attached images.
 	if ( empty( $images ) ) {
-		$images = get_posts( 
-			array( 
+		$images = get_posts(
+			array(
 				'fields'         => 'ids',
-				'post_parent'    => get_the_ID(), 
-				'post_type'      => 'attachment', 
-				'post_mime_type' => 'image', 
-				'numberposts'    => -1 
-			) 
+				'post_parent'    => get_the_ID(),
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'numberposts'    => -1
+			)
 		);
 	}
 
@@ -295,25 +333,24 @@ function hybrid_get_content_url( $content ) {
 }
 
 /**
- * Filters 'get_the_post_format_url' to make for a more robust and back-compatible function.  If WP did 
+ * Filters 'get_the_post_format_url' to make for a more robust and back-compatible function.  If WP did
  * not find a URL, check the post content for one.  If nothing is found, return the post permalink.
  *
  * @since  1.6.0
  * @access public
  * @param  string  $url
  * @param  object  $post
- * @note   Setting defaults for the parameters so that this function can become a filter in future WP versions.
  * @return string
  */
 function hybrid_get_the_post_format_url( $url = '', $post = null ) {
 
-	if ( empty( $url ) ) {
+	if ( ! $url ) {
 
 		$post = is_null( $post ) ? get_post() : $post;
 
 		$content_url = hybrid_get_content_url( $post->post_content );
 
-		$url = !empty( $content_url ) ? esc_url( $content_url ) : esc_url( get_permalink( $post->ID ) );
+		$url = $content_url ? esc_url( $content_url ) : esc_url( get_permalink( $post->ID ) );
 	}
 
 	return $url;

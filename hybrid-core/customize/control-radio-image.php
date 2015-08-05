@@ -1,16 +1,16 @@
 <?php
 /**
- * The radio image customize control extends the WP_Customize_Control class.  This class allows 
+ * The radio image customize control extends the WP_Customize_Control class.  This class allows
  * developers to create a list of image radio inputs.
  *
- * Note, the `$choices` array is slightly different than normal and should be in the form of 
+ * Note, the `$choices` array is slightly different than normal and should be in the form of
  * `array(
  *	$value => array( 'url' => $image_url, 'label' => $text_label ),
  *	$value => array( 'url' => $image_url, 'label' => $text_label ),
  * )`
  *
  * @package    Hybrid
- * @subpackage Classes
+ * @subpackage Customize
  * @author     Justin Tadlock <justin@justintadlock.com>
  * @copyright  Copyright (c) 2008 - 2015, Justin Tadlock
  * @link       http://themehybrid.com/hybrid-core
@@ -28,58 +28,73 @@ class Hybrid_Customize_Control_Radio_Image extends WP_Customize_Control {
 	/**
 	 * The type of customize control being rendered.
 	 *
-	 * @since 3.0.0
-	 * @var   string
+	 * @since  3.0.0
+	 * @access public
+	 * @var    string
 	 */
 	public $type = 'radio-image';
 
 	/**
-	 * Loads the jQuery UI Button script and framework scripts/styles.
+	 * Loads the framework scripts/styles.
 	 *
 	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'jquery-ui-button'          );
 		wp_enqueue_script( 'hybrid-customize-controls' );
 		wp_enqueue_style(  'hybrid-customize-controls' );
 	}
 
 	/**
-	 * Displays the control content.
+	 * Add custom parameters to pass to the JS via JSON.
 	 *
 	 * @since  3.0.0
 	 * @access public
 	 * @return void
 	 */
-	public function render_content() {
+	public function to_json() {
+		parent::to_json();
 
-		// If no choices are provided, bail.
-		if ( empty( $this->choices ) )
-			return; ?>
+		// We need to make sure we have the correct image URL.
+		foreach ( $this->choices as $value => $args )
+			$this->choices[ $value ]['url'] = esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) );
 
-		<?php if ( !empty( $this->label ) ) : ?>
-			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-		<?php endif; ?>
+		$this->json['choices'] = $this->choices;
+		$this->json['link']    = $this->get_link();
+		$this->json['value']   = $this->value();
+		$this->json['id']      = $this->id;
+	}
 
-		<?php if ( !empty( $this->description ) ) : ?>
-			<span class="description customize-control-description"><?php echo $this->description; ?></span>
-		<?php endif; ?>
+	/**
+	 * Underscore JS template to handle the control's output.
+	 *
+	 * @since  3.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function content_template() { ?>
 
-		<div class="buttonset">
+		<# if ( ! data.choices ) {
+			return;
+		} #>
 
-			<?php foreach ( $this->choices as $value => $args ) : ?>
+		<# if ( data.label ) { #>
+			<span class="customize-control-title">{{ data.label }}</span>
+		<# } #>
 
-				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( "_customize-radio-{$this->id}" ); ?>" id="<?php echo esc_attr( "{$this->id}-{$value}" ); ?>" <?php $this->link(); ?> <?php checked( $this->value(), $value ); ?> /> 
+		<# if ( data.description ) { #>
+			<span class="description customize-control-description">{{{ data.description }}}</span>
+		<# } #>
 
-				<label for="<?php echo esc_attr( "{$this->id}-{$value}" ); ?>">
-					<span class="screen-reader-text"><?php echo esc_html( $args['label'] ); ?></span>
-					<img src="<?php echo esc_url( sprintf( $args['url'], get_template_directory_uri(), get_stylesheet_directory_uri() ) ); ?>" alt="<?php echo esc_attr( $args['label'] ); ?>" />
-				</label>
+		<# _.each( data.choices, function( args, choice ) { #>
+			<label>
+				<input type="radio" value="{{ choice }}" name="_customize-{{ data.type }}-{{ data.id }}" {{{ data.link }}} <# if ( choice === data.value ) { #> checked="checked" <# } #> />
 
-			<?php endforeach; ?>
+				<span class="screen-reader-text">{{ args.label }}</span>
 
-		</div><!-- .buttonset -->
+				<img src="{{ args.url }}" alt="{{ args.label }}" />
+			</label>
+		<# } ) #>
 	<?php }
 }

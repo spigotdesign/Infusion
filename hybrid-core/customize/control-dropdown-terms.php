@@ -1,12 +1,12 @@
 <?php
 /**
- * A dropdown taxonomy terms `<select>` customizer control class.  This control is built on top of 
- * the core `wp_dropdown_categories()` function (works for any taxonomy).  By passing in a custom 
- * `$args` parameter, which is passed to `wp_dropdown_categories()`, you can alter the output of the 
+ * A dropdown taxonomy terms `<select>` customizer control class.  This control is built on top of
+ * the core `wp_dropdown_categories()` function (works for any taxonomy).  By passing in a custom
+ * `$args` parameter, which is passed to `wp_dropdown_categories()`, you can alter the output of the
  * dropdown select.
  *
  * @package    Hybrid
- * @subpackage Classes
+ * @subpackage Customize
  * @author     Justin Tadlock <justin@justintadlock.com>
  * @copyright  Copyright (c) 2008 - 2015, Justin Tadlock
  * @link       http://themehybrid.com/hybrid-core
@@ -16,23 +16,26 @@
 /**
  * Dropdown terms customize control class.
  *
- * @since 3.0.0
+ * @since  3.0.0
+ * @access public
  */
 class Hybrid_Customize_Control_Dropdown_Terms extends WP_Customize_Control {
 
 	/**
 	 * The type of customize control being rendered.
 	 *
-	 * @since 3.0.0
-	 * @var   string
+	 * @since  3.0.0
+	 * @access public
+	 * @var    string
 	 */
 	public $type = 'dropdown-terms';
 
 	/**
 	 * Custom arguments to pass into `wp_dropdown_categories()`.
 	 *
-	 * @since 3.0.0
-	 * @var   string
+	 * @since  3.0.0
+	 * @access public
+	 * @var    string
 	 */
 	public $args = array();
 

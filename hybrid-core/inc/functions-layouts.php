@@ -2,8 +2,9 @@
 /**
  * Layouts API - An API for themes to build layout options.
  *
- * Theme Layouts was created to allow theme developers to easily style themes with dynamic layout 
+ * Theme Layouts was created to allow theme developers to easily style themes with dynamic layout
  * structures. This file merely contains the API function calls at theme developers' disposal.
+ * See `inc/class-layout.php` and `inc/class-layout-factory.php` for the muscle behind the API.
  *
  * @package    HybridCore
  * @subpackage Includes
@@ -19,18 +20,19 @@ add_action( 'init', 'hybrid_register_layouts', 95 );
 # Filters `current_theme_supports( 'theme-layouts', $arg )`.
 add_filter( 'current_theme_supports-theme-layouts', 'hybrid_theme_layouts_support', 10, 3 );
 
-# Filters the theme layout mod.
-add_filter( 'theme_mod_theme_layout', 'hybrid_filter_layout', 5 );
+# Filters the theme layout.
+add_filter( 'hybrid_get_theme_layout', 'hybrid_filter_layout', 5 );
 
 /**
- * Returns the instance of the Hybrid_Layouts object. Use this function to access the object.
+ * Returns the instance of the `Hybrid_Layout_Factory` object. Use this function to access the object.
  *
+ * @see    Hybrid_Layout_Factory
  * @since  3.0.0
  * @access public
  * @return object
  */
 function hybrid_layouts() {
-	return Hybrid_Layouts::get_instance();
+	return Hybrid_Layout_Factory::get_instance();
 }
 
 /**
@@ -60,7 +62,7 @@ function hybrid_register_layouts() {
 /**
  * Function for registering a layout.
  *
- * @see    Hybrid_Layouts::register()
+ * @see    Hybrid_Layout_Factory::register_layout()
  * @since  3.0.0
  * @access public
  * @param  string  $name
@@ -74,7 +76,7 @@ function hybrid_register_layout( $name, $args = array() ) {
 /**
  * Unregisters a layout.
  *
- * @see    Hybrid_Layouts::unregister()
+ * @see    Hybrid_Layout_Factory::unregister_layout()
  * @since  3.0.0
  * @access public
  * @param  string  $name
@@ -87,7 +89,7 @@ function hybrid_unregister_layout( $name ) {
 /**
  * Checks if a layout exists.
  *
- * @see    Hybrid_Layouts::exists()
+ * @see    Hybrid_Layout_Factory::layout_exists()
  * @since  3.0.0
  * @access public
  * @param  string  $name
@@ -100,6 +102,7 @@ function hybrid_layout_exists( $name ) {
 /**
  * Returns an array of registered layout objects.
  *
+ * @see    Hybrid_Layout_Factory::layout
  * @since  3.0.0
  * @access public
  * @return array
@@ -111,7 +114,8 @@ function hybrid_get_layouts() {
 /**
  * Returns a layout object if it exists.  Otherwise, `FALSE`.
  *
- * @see    Hybrid_Layouts::get()
+ * @see    Hybrid_Layout_Factory::get_layout()
+ * @see    Hybrid_Layout
  * @since  3.0.0
  * @access public
  * @param  string      $name
@@ -122,7 +126,7 @@ function hybrid_get_layout( $name ) {
 }
 
 /**
- * Gets the theme layout.  This is the global theme layout defined. Other functions filter the 
+ * Gets the theme layout.  This is the global theme layout defined. Other functions filter the
  * available `theme_mod_theme_layout` hook to overwrite this.
  *
  * @since  3.0.0
@@ -130,6 +134,17 @@ function hybrid_get_layout( $name ) {
  * @return string
  */
 function hybrid_get_theme_layout() {
+	return apply_filters( 'hybrid_get_theme_layout', hybrid_get_global_layout() );
+}
+
+/**
+ * Returns the theme mod used for the global layout setting.
+ *
+ * @since  3.0.0
+ * @access public
+ * @return string
+ */
+function hybrid_get_global_layout() {
 	return get_theme_mod( 'theme_layout', hybrid_get_default_layout() );
 }
 
@@ -254,8 +269,8 @@ function hybrid_has_user_layout( $layout, $user_id = '' ) {
 }
 
 /**
- * Default filter on the `theme_mod_theme_layout` hook.  By default, we'll check for per-post 
- * or per-author layouts saved as metadata.  If set, we'll filter.  Else, just return the 
+ * Default filter on the `theme_mod_theme_layout` hook.  By default, we'll check for per-post
+ * or per-author layouts saved as metadata.  If set, we'll filter.  Else, just return the
  * global layout.
  *
  * @since  3.0.0

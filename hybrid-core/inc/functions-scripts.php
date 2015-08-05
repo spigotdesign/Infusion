@@ -1,7 +1,7 @@
 <?php
 /**
- * Functions for handling JavaScript in the framework.  Themes can add support for the 
- * 'hybrid-core-scripts' feature to allow the framework to handle loading the stylesheets into 
+ * Functions for handling JavaScript in the framework.  Themes can add support for the
+ * 'hybrid-core-scripts' feature to allow the framework to handle loading the stylesheets into
  * the theme header or footer at an appropriate time.
  *
  * @package    HybridCore
@@ -20,7 +20,7 @@ add_action( 'wp_enqueue_scripts', 'hybrid_enqueue_scripts', 5 );
 
 /**
  * Registers JavaScript files for the framework.  This function merely registers scripts with WordPress using
- * the wp_register_script() function.  It does not load any script files on the site.  If a theme wants to register 
+ * the wp_register_script() function.  It does not load any script files on the site.  If a theme wants to register
  * its own custom scripts, it should do so on the 'wp_enqueue_scripts' hook.
  *
  * @since  1.2.0
@@ -30,7 +30,7 @@ add_action( 'wp_enqueue_scripts', 'hybrid_enqueue_scripts', 5 );
 function hybrid_register_scripts() {
 
 	// Register the 'mobile-toggle' script'.
-	wp_register_script( 'hybrid-mobile-toggle', esc_url( HYBRID_JS . 'mobile-toggle' . hybrid_get_min_suffix() . '.js' ), array( 'jquery' ), '20130528', true );
+	wp_register_script( 'hybrid-mobile-toggle', HYBRID_JS . 'mobile-toggle' . hybrid_get_min_suffix() . '.js', array( 'jquery' ), '20130528', true );
 }
 
 /**

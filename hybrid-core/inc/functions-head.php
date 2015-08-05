@@ -17,7 +17,7 @@ add_action( 'wp_head', 'hybrid_meta_generator', 1 );
 add_action( 'wp_head', 'hybrid_link_pingback',  3 );
 
 # Filter the WordPress title.
-add_filter( 'wp_title', 'hybrid_wp_title', 1, 3 );
+add_filter( 'wp_title', 'hybrid_wp_title', 0 );
 
 /**
  * Adds the meta charset to the header.
@@ -41,7 +41,7 @@ function hybrid_meta_viewport() {
 }
 
 /**
- * Adds the theme generator meta tag.  This is particularly useful for checking theme users' version 
+ * Adds the theme generator meta tag.  This is particularly useful for checking theme users' version
  * when handling support requests.
  *
  * @since  3.0.0
@@ -68,19 +68,17 @@ function hybrid_link_pingback() {
 }
 
 /**
- * Filters the `wp_title` output early. Note that since WordPress 4.1.0 introduced the `_wp_render_title_tag()` 
- * function, theme authors can no longer control this on their own. In the past, Hybrid Core defaulted to 
- * a colon, so we're overwriting this regardless of what it was defined as. Later filters on `wp_title` can 
+ * Filters the `wp_title` output early. Note that since WordPress 4.1.0 introduced the `_wp_render_title_tag()`
+ * function, theme authors can no longer control this on their own. In the past, Hybrid Core defaulted to
+ * a colon, so we're overwriting this regardless of what it was defined as. Later filters on `wp_title` can
  * change if needed.  Since core is now defining the separator, this shouldn't be an issue.
  *
  * @since  2.0.0
  * @access publc
  * @param  string  $title
- * @param  string  $separator
- * @param  string  $seplocation
  * @return string
  */
-function hybrid_wp_title( $doctitle, $separator, $seplocation ) {
+function hybrid_wp_title( $doctitle ) {
 
 	// Custom separator for backwards compatibility.
 	$separator = ':';
@@ -91,7 +89,7 @@ function hybrid_wp_title( $doctitle, $separator, $seplocation ) {
 	elseif ( is_home() || is_singular() )
 		$doctitle = single_post_title( '', false );
 
-	elseif ( is_category() ) 
+	elseif ( is_category() )
 		$doctitle = single_cat_title( '', false );
 
 	elseif ( is_tag() )
@@ -142,7 +140,5 @@ function hybrid_wp_title( $doctitle, $separator, $seplocation ) {
 		$doctitle = sprintf( __( '%1$s Page %2$s', 'hybrid-core' ), $doctitle . $separator, number_format_i18n( absint( $page ) ) );
 
 	// Trim separator + space from beginning and end.
-	$doctitle = trim( strip_tags( $doctitle ), "{$separator} " );
-
-	return esc_html( $doctitle );
+	return trim( strip_tags( $doctitle ), "{$separator} " );
 }

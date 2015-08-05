@@ -1,6 +1,6 @@
 <?php
 /**
- * Helper functions for working with the WordPress sidebar system.  Currently, the framework creates a 
+ * Helper functions for working with the WordPress sidebar system.  Currently, the framework creates a
  * simple function for registering HTML5-ready sidebars instead of the default WordPress unordered lists.
  *
  * @package    HybridCore
@@ -12,9 +12,9 @@
  */
 
 /**
- * Wrapper function for WordPress' register_sidebar() function.  This function exists so that theme authors 
- * can more quickly register sidebars with an HTML5 structure instead of having to write the same code 
- * over and over.  Theme authors are also expected to pass in the ID, name, and description of the sidebar. 
+ * Wrapper function for WordPress' register_sidebar() function.  This function exists so that theme authors
+ * can more quickly register sidebars with an HTML5 structure instead of having to write the same code
+ * over and over.  Theme authors are also expected to pass in the ID, name, and description of the sidebar.
  * This function can handle the rest at that point.
  *
  * @since  2.0.0
@@ -35,20 +35,14 @@ function hybrid_register_sidebar( $args ) {
 		'after_title'   => '</h3>'
 	);
 
-	// Allow developers to filter the default sidebar arguments.
-	$defaults = apply_filters( 'hybrid_sidebar_defaults', $defaults );
-
 	// Parse the arguments.
-	$args = wp_parse_args( $args, $defaults );
-
-	// Allow developers to filter the sidebar arguments.
-	$args = apply_filters( 'hybrid_sidebar_args', $args );
+	$args = wp_parse_args( $args, apply_filters( 'hybrid_sidebar_defaults', $defaults ) );
 
 	// Remove action.
 	remove_action( 'widgets_init', '__return_false', 95 );
 
 	// Register the sidebar.
-	return register_sidebar( $args );
+	return register_sidebar( apply_filters( 'hybrid_sidebar_args', $args ) );
 }
 
 # Compatibility for when a theme doesn't register any sidebars.
@@ -59,14 +53,12 @@ add_action( 'widgets_init', '__return_false', 95 );
  *
  * @since  2.0.0
  * @access public
+ * @global array   $wp_registered_sidebars
  * @param  string  $sidebar_id
  * @return string
  */
 function hybrid_get_sidebar_name( $sidebar_id ) {
 	global $wp_registered_sidebars;
 
-	if ( isset( $wp_registered_sidebars[ $sidebar_id ] ) )
-		return $wp_registered_sidebars[ $sidebar_id ]['name'];
-
-	return '';
+	return isset( $wp_registered_sidebars[ $sidebar_id ] ) ? $wp_registered_sidebars[ $sidebar_id ]['name'] : '';
 }
