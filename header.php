@@ -7,7 +7,7 @@
 
 <body <?php hybrid_attr( 'body' ); ?>>
 
-	<div class="container">
+	<div id="page" class="hfeed site">
 
 		<header class="site-header" role="banner">
 			
@@ -23,4 +23,4 @@
 
 		</header>
 
-		<div class="main-container" role="main">
+		<main class="content group" itemprop="mainContentOfPage">

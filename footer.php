@@ -1,6 +1,8 @@
 		<?php hybrid_get_sidebar( 'primary' ); // Loads the sidebar-primary.php template. ?>
 
 		<?php hybrid_get_sidebar( 'subsidiary' ); // Loads the sidebar/subsidiary.php template. ?>
+
+	</main>
 	
 	<footer class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
 
@@ -8,9 +10,11 @@
 
 	</footer>
 
-</div><?php // end .container  ?>
 
-<?php wp_footer(); // wp_footer ?>
+
+<?php wp_footer(); ?>
+
+</div> <?php // end #page ?>
 
 </body>
 </html>

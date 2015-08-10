@@ -1,12 +1,14 @@
 <?php get_header(); ?>
 
-	<main <?php hybrid_attr( 'content' ); ?>>
+	<div class="main">
 
 		<?php if ( !is_front_page() && !is_singular() && !is_404() ) : ?>
 
 			<?php locate_template( array( 'inc/loop-meta.php' ), true ); ?>
 
 		<?php endif; ?>
+
+		<div class="page-contents">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -24,6 +26,8 @@
 
 		<?php endwhile; ?>
 
+		</div>
+
 		<?php locate_template( array( 'inc/loop-nav.php' ), true ); ?>
 
 		<?php else : ?>
@@ -32,6 +36,6 @@
 
 		<?php endif; ?>
 
-	</main>
+	</div>
 
 <?php get_footer();  ?>
