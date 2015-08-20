@@ -1,10 +1,10 @@
 /*!
- Theme Name:    Behind the Light
+ Theme Name:    Infusion
  Theme URI:    	http://spigotdesign.com/
  Author:        Spigot
  Author URI:    http://spigotdesign.com/
  Description:   Description: A custom theme built on the rock-solid Hybrid Core theme framework. It's built with search-engine optimization (SEO) in mind by utilizing the most current HTML5 conventions and <a href="http://schema.org">Schema.org</a> microdata.
- Version:       1.0
+ Version:       2.2
  Text Domain: 	infusion
  License:     	GNU General Public License v2.0 or later
  License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
@@ -166,7 +166,6 @@ dfn {
  */
 /* line 160, scss/_normalize.scss */
 hr {
-  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0;
 }
@@ -382,8 +381,6 @@ input[type="radio"] {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box;
 }
@@ -455,8 +452,6 @@ table {
  */
 /* line 9, scss/_scaffolding.scss */
 *, *:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -511,8 +506,6 @@ body {
   position: fixed;
   width: 100%;
   padding: 1.25em 1em;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   min-height: 90px;
   z-index: 1000;
@@ -554,8 +547,6 @@ body {
 .site-title {
   padding: .5em;
   margin-top: .25em;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   font: 0/0 a;
   color: transparent;
@@ -605,8 +596,6 @@ body {
   margin-bottom: 2em;
   background: #333333;
   font-family: Helvetica, serif;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 @media (min-width: 60em) {
@@ -793,8 +782,6 @@ ul.toggle-btns {
   right: 2.25em;
   z-index: 15000;
   margin: 0;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 @media (min-width: 60em) {
@@ -847,6 +834,9 @@ ul.toggle-btns li a i {
   padding: 0.75rem 0.375rem;
   transition: .3s;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   background: transparent;
   padding: 0;
@@ -899,9 +889,6 @@ ul.toggle-btns li a i {
   left: 0;
   content: '';
   -webkit-transform-origin: 0.10714rem center;
-  -moz-transform-origin: 0.10714rem center;
-  -ms-transform-origin: 0.10714rem center;
-  -o-transform-origin: 0.10714rem center;
   transform-origin: 0.10714rem center;
 }
 /* line 73, scss/_toggle-menu.scss */
@@ -1370,8 +1357,6 @@ sub {
 a {
   color: #049cdb;
   text-decoration: none;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 
@@ -1503,8 +1488,6 @@ input[type="url"] {
   background-color: #fafafa;
   border: 1px solid #ccc;
   border-radius: 3px;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   color: #a7a9ac;
 }
@@ -2169,8 +2152,6 @@ table {
   font-size: 14px;
   font-size: .875rem;
   text-align: center;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
 }
 /* line 24, scss/_buttons.scss */

@@ -21,6 +21,10 @@ gulp.task('styles', function() {
   .on('error', function (err) {
       console.error('Error!', err.message);
    })
+  .pipe(prefix({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
   .pipe(gulp.dest('.'))
   .pipe(livereload())
 });
@@ -58,7 +62,7 @@ gulp.task('watch', function(){
 
 // Images
 gulp.task('images', function () {
-    return gulp.src('img/icons/*')
+    return gulp.src('img/org/**/*')
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
