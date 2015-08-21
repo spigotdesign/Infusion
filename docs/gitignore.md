@@ -17,7 +17,7 @@
 !wp-content/
  
 # Ignore everything in the "wp-content" directory, except the "plugins"
-# and "themes" directories.
+# "mu-plugins" and "themes" directories.
 wp-content/*
 !wp-content/plugins/
 !wp-content/themes/
@@ -33,7 +33,11 @@ wp-content/plugins/*
 # specify (see the commented-out example for a hint on how to do this.)
 wp-content/themes/*
 !wp-content/themes/infusion
-!wp-content/themes/infusion-child
+
+# Ignore Node files 
+node_modules
+
+# Ignore extra files
 sitemap.xml
 sitemap.xml.gz
 .sass-cache

@@ -4,31 +4,34 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 	return;
 ?>
 
-<section id="comments-template">
+<section class="conversation">
 
 	<?php if ( have_comments() ) : // Check if there are any comments. ?>
 
-		<div id="comments">
+		<div class="comments">
 
-			<h3 id="comments-number"><?php comments_number(); ?></h3>
+			<h3 class="comments-number"><?php comments_number(); ?></h3>
 
-			<ol class="comment-list">
 				<?php wp_list_comments(
 					array(
-						'callback'     => 'hybrid_comments_callback',
-						'end-callback' => 'hybrid_comments_end_callback'
+						'callback'     	=> 'hybrid_comments_callback',
+						'end-callback' 	=> 'hybrid_comments_end_callback',
+						'style'			=> null
 					)
 				); ?>
-			</ol><!-- .comment-list -->
 
-			<?php locate_template( array( 'misc/comments-nav.php' ), true ); // Loads the misc/comments-nav.php template. ?>
+			<?php locate_template( array( 'comment/comments-nav.php' ), true );  ?>
 
-		</div><!-- #comments-->
+		</div>
 
 	<?php endif; // End check for comments. ?>
 
-	<?php locate_template( array( 'misc/comments-error.php' ), true ); // Loads the misc/comments-error.php template. ?>
+	<?php locate_template( array( 'comment/comments-error.php' ), true );  ?>
 
-	<?php comment_form(); // Loads the comment form. ?>
+	<?php comment_form(
+		array(
+			'comment_notes_after' => ' ',
+		)
+	); ?>
 
-</section><!-- #comments-template -->
+</section>

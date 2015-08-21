@@ -1,4 +1,4 @@
-/*
+-/*
  * Header
  *
  * @package   Sass Stylesheet
@@ -6,41 +6,78 @@
  *
  */
 
-// Leaderboard 
-
-.leaderboard {
-  background: $black;
-}
-
-.site-description {
-  margin: 0;
-  font-family: $sansFontFamily;
-  font-weight: normal;
-  font-size: 18px;
-  font-size: 1.125em;
-  color: $white;
-  padding: .875em 0;
-}
-
-
 // Header
 .site-header {
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,.35);
-  background-color: white;
+    background: rgba(black, .6);
+    position: fixed;
+    width: 100%;
+    padding: 1.25em 1em;
+    @include transition(all 0.2s ease-in-out);
+    min-height: 90px;
+    z-index: 1000;
+
+    .admin-bar & {
+        top: 32px;
+
+        @include mq(bar1) {
+            top: 46px;
+            
+        }
+
+        @include mq(bar2) {
+            // position: relative;
+            // top: 0;
+            top: 46px;
+        }
+    }
+
+    .scroll & {
+        padding: .25em 1em;
+        min-height: 70px;
+    }
+
+    @include mq($mobileNavWidth) {
+        min-height: 100px;
+    }
 }
 
-// Site Title 
-.site-title { 
-   
-   a {
-   	@include hide-text;
-  	display: block;
-  	background: url(img/icons/summit-rest-logo.svg) center center no-repeat;
-  	width: 282px;
-  	height: 87px;
-    background-size: 282px 87px;
-  	position: relative;
+// Branding 
 
-   }
+.branding {
+    position: absolute;
+    // width: 100%;
+}
+
+.site-title {
+    padding: .5em;
+    margin-top: .25em;
+    @include transition(all 0.2s ease-in-out);
+    @include hide-text;
+    display: block;
+    background: url(img/build/ben-pieper.svg) center center no-repeat;
+    background-size: 280px 38px;
+    width: 280px;
+    height: 38px;
+    position: relative;
+    margin: 0;
+    z-index: 1000;
+
+    .scroll & {
+        background-size: 300px 41px;
+
+        width: 300px;
+        height: 41px;
+        top: 7px;
+
+    }
+    @include mq(1040) {
+        width: 381px;
+        height: 52px;
+        background-size: 381px 52px;
+      
+        
+    }
+
+    
 }
 

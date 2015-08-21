@@ -6,14 +6,14 @@
 
 			<header class="entry-header">
 				<?php echo get_avatar( get_the_author_meta( 'email' ) ); ?>
-			</header><!-- .entry-header -->
+			</header>
 
 		<?php endif; // End avatars check. ?>
 
 		<div <?php hybrid_attr( 'entry-content' ); ?>>
 			<?php the_content(); ?>
 			<?php wp_link_pages(); ?>
-		</div><!-- .entry-content -->
+		</div>
 
 		<footer class="entry-footer">
 			<?php hybrid_post_format_link(); ?>
@@ -22,7 +22,7 @@
 			<?php edit_post_link(); ?>
 			<?php hybrid_post_terms( array( 'taxonomy' => 'category', 'text' => __( 'Posted in %s', 'infusion' ) ) ); ?>
 			<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag', 'text' => __( 'Tagged %s', 'infusion' ), 'before' => '<br />' ) ); ?>
-		</footer><!-- .entry-footer -->
+		</footer>
 
 	<?php else : // If not viewing a single post. ?>
 
@@ -30,13 +30,13 @@
 
 			<header class="entry-header">
 				<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php echo get_avatar( get_the_author_meta( 'email' ) ); ?></a>
-			</header><!-- .entry-header -->
+			</header>
 
 		<?php endif; // End avatars check. ?>
 
 		<div <?php hybrid_attr( 'entry-content' ); ?>>
 			<?php the_content(); ?>
-		</div><!-- .entry-content -->
+		</div>
 
 		<?php if ( !get_option( 'show_avatars' ) ) : // If avatars are not enabled. ?>
 
@@ -46,10 +46,10 @@
 				<a class="entry-permalink" href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php _e( 'Permalink', 'infusion' ); ?></a>
 				<?php comments_popup_link( number_format_i18n( 0 ), number_format_i18n( 1 ), '%', 'comments-link', '' ); ?>
 				<?php edit_post_link(); ?>
-			</footer><!-- .entry-footer -->
+			</footer>
 
 		<?php endif; // End avatars check. ?>
 
 	<?php endif; // End single post check. ?>
 
-</article><!-- .entry -->
+</article>

@@ -12,27 +12,27 @@
 				<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
 				<?php comments_popup_link( number_format_i18n( 0 ), number_format_i18n( 1 ), '%', 'comments-link', '' ); ?>
 				<?php edit_post_link(); ?>
-			</div><!-- .entry-byline -->
+			</div>
 
-		</header><!-- .entry-header -->
+		</header>
 
 		<?php if ( has_excerpt() ) : // If the post has an excerpt. ?>
 
 			<div <?php hybrid_attr( 'entry-summary' ); ?>>
 				<?php the_excerpt(); ?>
-			</div><!-- .entry-summary -->
+			</div>
 
 		<?php endif; // End post excerpt check. ?>
 
 		<div <?php hybrid_attr( 'entry-content' ); ?>>
 			<?php the_content(); ?>
 			<?php wp_link_pages(); ?>
-		</div><!-- .entry-content -->
+		</div>
 
 		<footer class="entry-footer">
 			<?php hybrid_post_terms( array( 'taxonomy' => 'category', 'text' => __( 'Posted in %s', 'infusion' ) ) ); ?>
 			<?php hybrid_post_terms( array( 'taxonomy' => 'post_tag', 'text' => __( 'Tagged %s', 'infusion' ), 'before' => '<br />' ) ); ?>
-		</footer><!-- .entry-footer -->
+		</footer>
 
 	<?php else : // If not viewing a single post. ?>
 
@@ -46,14 +46,14 @@
 				<time <?php hybrid_attr( 'entry-published' ); ?>><?php echo get_the_date(); ?></time>
 				<?php comments_popup_link( number_format_i18n( 0 ), number_format_i18n( 1 ), '%', 'comments-link', '' ); ?>
 				<?php edit_post_link(); ?>
-			</div><!-- .entry-byline -->
+			</div>
 
-		</header><!-- .entry-header -->
+		</header>
 
 		<div <?php hybrid_attr( 'entry-summary' ); ?>>
 			<?php the_excerpt(); ?>
-		</div><!-- .entry-summary -->
+		</div>
 
 	<?php endif; // End single post check. ?>
 
-</article><!-- .entry -->
+</article>

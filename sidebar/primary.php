@@ -1,6 +1,6 @@
 <?php if ( !in_array( get_theme_mod( 'theme_layout' ), array( '1c', '1c-narrow' ) ) ) : // If not a one-column layout. ?>
 
-	<aside <?php hybrid_attr( 'sidebar', 'primary' ); ?>>
+	<aside class="sidebar-primary sidebar" role="complementary" aria-label="Primary Sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
 
 		<?php if ( is_active_sidebar( 'primary' ) ) : // If the sidebar has widgets. ?>
 
@@ -26,6 +26,6 @@
 
 		<?php endif; // End widgets check. ?>
 
-	</aside><!-- #sidebar-primary -->
+	</aside>
 
 <?php endif; // End layout check. ?>

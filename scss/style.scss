@@ -1,11 +1,11 @@
 /*!
- Theme Name:    Summit Restoration
+ Theme Name:    Infusion
  Theme URI:    	http://spigotdesign.com/
  Author:        Spigot
  Author URI:    http://spigotdesign.com/
  Description:   Description: A custom theme built on the rock-solid Hybrid Core theme framework. It's built with search-engine optimization (SEO) in mind by utilizing the most current HTML5 conventions and <a href="http://schema.org">Schema.org</a> microdata.
- Version:       1.0
- Text Domain: 	summmitrest
+ Version:       2.1
+ Text Domain: 	infusion
  License:     	GNU General Public License v2.0 or later
  License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -24,6 +24,7 @@
 @import "navigation";
 @import "toggle-menu";
 @import "pages";
+@import "page_frontpage";
 @import "posts";
 @import "comments";
 @import "footer";

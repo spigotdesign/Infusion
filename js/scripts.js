@@ -21,5 +21,16 @@ jQuery(document).ready(function($){
 
 	$(window).resize(checkWidth);
 
+	// Header Scroll 
+
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 200) {
+            $("body").addClass('scroll');
+        } else {
+            $("body").removeClass('scroll');
+        }
+    });
 
 });

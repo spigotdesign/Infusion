@@ -1,10 +1,6 @@
 <?php if ( has_nav_menu( 'subsidiary' ) ) : // Check if there's a menu assigned to the 'subsidiary' location. ?>
 
-	<nav <?php hybrid_attr( 'menu', 'subsidiary' ); ?>>
-
-		<h3 class="menu-toggle">
-			<span class="screen-reader-text"><?php _e( 'Navigation', 'infusion' ); ?></span>
-		</h3><!-- .menu-toggle -->
+	<nav class="menu-subsidiary" aria-label="Subsidiary Menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 
 		<?php wp_nav_menu(
 			array(
@@ -17,6 +13,7 @@
 			)
 		); ?>
 
-	</nav><!-- #menu-subsidiary -->
+	</nav>
 
 <?php endif; // End check for menu. ?>
+

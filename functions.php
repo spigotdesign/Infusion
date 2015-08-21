@@ -73,9 +73,6 @@ function infusion_theme_setup() {
 	// Note: this is the largest size based on the theme's various layouts.
 	hybrid_set_content_width( 1025 );
 
-	/* Show Template. Outputs the template name and filepath for testing purposes. Comment it out if not needed. */
-	// add_action( 'wp_head', 'show_template');
-
 	/* Register custom image sizes. */
 	// add_action( 'init', 'infusion_register_image_sizes', 5 );
 
@@ -95,24 +92,13 @@ function infusion_theme_setup() {
 	add_filter( 'tiny_mce_before_init', 'infusion_tiny_mce_before_init' );
 
 	/* Modifies the theme layout. */
-	add_filter( 'theme_mod_theme_layout', 'infusion_mod_theme_layout', 15 );
+	// add_filter( 'theme_mod_theme_layout', 'infusion_mod_theme_layout', 15 );
 
 	/* Removes post type support */
 	add_action( 'init', 'infusion_remove_post_type_support', 15 );
 
 
 }
-
-
-/**
- * Function to show what template file is currently being used.
- *
- */
-function show_template() {
-    global $template;
-    echo '<span class="show-template">' . $template . '</span>';
-}
-
 
 
 /**
@@ -251,28 +237,6 @@ function infusion_tiny_mce_before_init( $settings ) {
 
 
 /**
- * Modifies the theme layout on attachment pages.  If a specific layout is not selected and the global layout
- * isn't set to '1c-narrow', this filter will change the layout to '1c'.
- *
- * @since  1.0.0
- * @access public
- * @param  string  $layout
- * @return string
- */
-function infusion_mod_theme_layout( $layout ) {
-
-	if ( is_attachment() && wp_attachment_is_image() ) {
-		$post_layout = get_post_layout( get_queried_object_id() );
-
-		if ( 'default' === $post_layout && '1c-narrow' !== $layout )
-			$layout = '1c';
-	}
-
-	return $layout;
-}
-
-
-/**
  * Removes post_type support from post types.
  *
  * @since  1.0.0
@@ -285,4 +249,28 @@ function infusion_remove_post_type_support() {
 
 	// remove_post_type_support( 'my-cpt-name', 'theme-layouts' );
 
+}
+
+
+/**
+ * Modifies the theme layout
+ *
+ * @since  1.0
+ * @access public
+ * @param  string  $layout
+ * @return string
+ */
+function infusion_mod_theme_layout( $layout ) {
+
+	if ( is_home() || is_singular('post') || is_404() ) {
+
+        $layout = '2c-l';
+
+    } elseif ( is_archive() && !is_archive('portfolio') ) {
+        
+        $layout = '2c-l';
+
+    }
+
+	return $layout;
 }

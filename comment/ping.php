@@ -5,6 +5,6 @@
 		<time <?php hybrid_attr( 'comment-published' ); ?>><?php printf( __( '%s ago', 'infusion' ), human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) ); ?></time>
 		<a <?php hybrid_attr( 'comment-permalink' ); ?>><?php _e( 'Permalink', 'infusion' ); ?></a>
 		<?php edit_comment_link(); ?>
-	</header><!-- .comment-meta -->
+	</header>
 
 <?php /* No closing </li> is needed.  WordPress will know where to add it. */ ?>

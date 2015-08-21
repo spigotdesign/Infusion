@@ -118,6 +118,27 @@ function hybrid_get_child_theme_link() {
 }
 
 /**
+ * Gets the "blog" (posts page) page URL.  `home_url()` will not always work for this because it 
+ * returns the front page URL.  Sometimes the blog page URL is set to a different page.  This 
+ * function handles both scenarios.
+ *
+ * @since  2.0.0
+ * @access public
+ * @return string
+ */
+function hybrid_get_blog_url() {
+	$blog_url = '';
+
+	if ( 'posts' === get_option( 'show_on_front' ) )
+		$blog_url = home_url();
+
+	elseif ( 0 < ( $page_for_posts = get_option( 'page_for_posts' ) ) )
+		$blog_url = get_permalink( $page_for_posts );
+
+	return $blog_url;
+}
+
+/**
  * Outputs the site title. 
  *
  * @since  0.1.0
@@ -129,7 +150,7 @@ function hybrid_site_title() {
 }
 
 /**
- * Returns the linked site title wrapped in an `<h2>` tag.
+ * Returns the linked site title wrapped in an `<h1>` tag.
  *
  * @since  2.0.0
  * @access public
@@ -206,7 +227,7 @@ function hybrid_get_loop_title() {
 		$loop_title = single_term_title( '', false );
 
 	elseif ( is_author() )
-		$loop_title = get_the_author();
+		$loop_title = hybrid_single_author_title( '', false );
 
 	elseif ( is_search() )
 		$loop_title = hybrid_search_title( '', false );
@@ -316,6 +337,25 @@ function hybrid_get_loop_description() {
 function hybrid_single_archive_title( $prefix = '', $display = true ) {
 
 	$title = $prefix . __( 'Archives', 'hybrid-core' );
+
+	if ( false === $display )
+		return $title;
+
+	echo $title;
+}
+
+/**
+ * Retrieve the author archive title.
+ *
+ * @since  2.0.0
+ * @access public
+ * @param  string  $prefix
+ * @param  bool    $display
+ * @return string
+ */
+function hybrid_single_author_title( $prefix = '', $display = true ) {
+
+	$title = $prefix . get_the_author_meta( 'display_name', get_query_var( 'author' ) );
 
 	if ( false === $display )
 		return $title;
