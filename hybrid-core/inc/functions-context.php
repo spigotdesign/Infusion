@@ -204,6 +204,7 @@ function hybrid_body_class_filter( $classes, $class ) {
 
 		// Checks for custom template.
 		$template = str_replace( array ( "{$post->post_type}-template-", "{$post->post_type}-" ), '', basename( hybrid_get_post_template( $post->ID ), '.php' ) );
+
 		if ( $template )
 			$classes[] = "{$post->post_type}-template-{$template}";
 
@@ -237,7 +238,7 @@ function hybrid_body_class_filter( $classes, $class ) {
 		$classes[] = sanitize_html_class( 'layout-' . hybrid_get_theme_layout() );
 
 	// Input class.
-	if ( !empty( $class ) ) {
+	if ( $class ) {
 		$class   = is_array( $class ) ? $class : preg_split( '#\s+#', $class );
 		$classes = array_merge( $classes, $class );
 	}
@@ -265,21 +266,18 @@ function hybrid_post_class_filter( $classes, $class, $post_id ) {
 	$_classes    = array();
 	$post        = get_post( $post_id );
 	$post_type   = get_post_type();
-	$post_status = get_post_status();
 
-	$remove = array( 'hentry', "type-{$post_type}", "status-{$post_status}", 'post-password-required' );
+	// Set up array of classes that we want to remove.
+	$remove = array( 'hentry', 'post-password-required' );
 
-	foreach ( $classes as $key => $class ) {
+	if ( post_type_supports( $post_type, 'post-formats' ) )
+		$remove[] = 'post_format-post-format-' . get_post_format();
 
-		if ( in_array( $class, $remove ) )
-			unset( $classes[ $key ] );
-		else
-			$classes[ $key ] = str_replace( 'tag-', 'post_tag-', $class );
-	}
+	// Remove classes.
+	$classes = array_diff( $classes, $remove );
 
+	// Entry class.
 	$_classes[] = 'entry';
-	$_classes[] = $post_type;
-	$_classes[] = $post_status;
 
 	// Author class.
 	$_classes[] = 'author-' . sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
@@ -289,11 +287,11 @@ function hybrid_post_class_filter( $classes, $class, $post_id ) {
 		$_classes[] = 'protected';
 
 	// Has excerpt.
-	if ( post_type_supports( $post->post_type, 'excerpt' ) && has_excerpt() )
+	if ( post_type_supports( $post_type, 'excerpt' ) && has_excerpt() )
 		$_classes[] = 'has-excerpt';
 
 	// Has <!--more--> link.
-	if ( !is_singular() && false !== strpos( $post->post_content, '<!--more' ) )
+	if ( ! is_singular() && false !== strpos( $post->post_content, '<!--more' ) )
 		$_classes[] = 'has-more-link';
 
 	// Has <!--nextpage--> links.
