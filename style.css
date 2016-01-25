@@ -9,75 +9,13 @@
  License:     	GNU General Public License v2.0 or later
  License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
 */
-/*
- * Normalize
- *
- * @package   Sass Stylesheet
- * @version   1.0
- *
- */
-/*! normalize.css v2.1.3 | MIT License | git.io/normalize */
-/* ==========================================================================
-   HTML5 display definitions
-   ========================================================================== */
-/**
- * Correct `block` display not defined in IE 8/9.
- */
-/* line 19, scss/_normalize.scss */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
-  display: block;
-}
-
-/**
- * Correct `inline-block` display not defined in IE 8/9.
- */
-/* line 38, scss/_normalize.scss */
-audio,
-canvas,
-video {
-  display: inline-block;
-}
-
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-/* line 49, scss/_normalize.scss */
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-/**
- * Address `[hidden]` styling not present in IE 8/9.
- * Hide the `template` element in IE, Safari, and Firefox < 22.
- */
-/* line 59, scss/_normalize.scss */
-[hidden],
-template {
-  display: none;
-}
-
-/* ==========================================================================
-   Base
-   ========================================================================== */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
  */
-/* line 74, scss/_normalize.scss */
+/* line 9, scss/_normalize.scss */
 html {
   font-family: sans-serif;
   /* 1 */
@@ -90,127 +28,157 @@ html {
 /**
  * Remove default margin.
  */
-/* line 84, scss/_normalize.scss */
+/* line 19, scss/_normalize.scss */
 body {
   margin: 0;
 }
 
-/* ==========================================================================
-   Links
+/* HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+/* line 33, scss/_normalize.scss */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+/* line 53, scss/_normalize.scss */
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+/* line 66, scss/_normalize.scss */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+ */
+/* line 76, scss/_normalize.scss */
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
    ========================================================================== */
 /**
  * Remove the gray background color from active links in IE 10.
  */
-/* line 96, scss/_normalize.scss */
+/* line 88, scss/_normalize.scss */
 a {
-  background: transparent;
+  background-color: transparent;
 }
 
 /**
- * Address `outline` inconsistency between Chrome and other browsers.
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
  */
-/* line 104, scss/_normalize.scss */
-a:focus {
-  outline: thin dotted;
-}
-
-/**
- * Improve readability when focused and also mouse hovered in all browsers.
- */
-/* line 112, scss/_normalize.scss */
+/* line 97, scss/_normalize.scss */
 a:active,
 a:hover {
   outline: 0;
 }
 
-/* ==========================================================================
-   Typography
+/* Text-level semantics
    ========================================================================== */
 /**
- * Address variable `h1` font-size and margin within `section` and `article`
- * contexts in Firefox 4+, Safari 5, and Chrome.
+ * Address inconsistent styling of `abbr[title]`.
+ * 1. Correct styling in Firefox 39 and Opera 12.
+ * 2. Correct missing styling in Chrome, Edge, IE, Opera, and Safari.
  */
-/* line 126, scss/_normalize.scss */
+/* line 111, scss/_normalize.scss */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/**
+ * Address inconsistent styling of b and strong.
+ * 1. Correct duplicate application of `bolder` in Safari 6.0.2.
+ * 2. Correct style set to `bold` in Edge 12+, Safari 6.2+, and Chrome 18+.
+ */
+/* line 123, scss/_normalize.scss */
+b,
+strong {
+  font-weight: inherit;
+  /* 1 */
+}
+
+/* line 128, scss/_normalize.scss */
+b,
+strong {
+  font-weight: bolder;
+  /* 2 */
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+/* line 137, scss/_normalize.scss */
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+/* line 146, scss/_normalize.scss */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
 /**
- * Address styling not present in IE 8/9, Safari 5, and Chrome.
- */
-/* line 135, scss/_normalize.scss */
-abbr[title] {
-  border-bottom: 1px dotted;
-}
-
-/**
- * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
- */
-/* line 143, scss/_normalize.scss */
-b,
-strong {
-  font-weight: bold;
-}
-
-/**
- * Address styling not present in Safari 5 and Chrome.
- */
-/* line 152, scss/_normalize.scss */
-dfn {
-  font-style: italic;
-}
-
-/**
- * Address differences between Firefox and other browsers.
- */
-/* line 160, scss/_normalize.scss */
-hr {
-  box-sizing: content-box;
-  height: 0;
-}
-
-/**
  * Address styling not present in IE 8/9.
  */
-/* line 170, scss/_normalize.scss */
+/* line 155, scss/_normalize.scss */
 mark {
-  background: #ff0;
+  background-color: #ff0;
   color: #000;
-}
-
-/**
- * Correct font family set oddly in Safari 5 and Chrome.
- */
-/* line 179, scss/_normalize.scss */
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, serif;
-  font-size: 1em;
-}
-
-/**
- * Improve readability of pre-formatted text in all browsers.
- */
-/* line 191, scss/_normalize.scss */
-pre {
-  white-space: pre-wrap;
-}
-
-/**
- * Set consistent quote types.
- */
-/* line 199, scss/_normalize.scss */
-q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
 /**
  * Address inconsistent and variable font size in all browsers.
  */
-/* line 207, scss/_normalize.scss */
+/* line 164, scss/_normalize.scss */
 small {
   font-size: 80%;
 }
@@ -218,7 +186,7 @@ small {
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
  */
-/* line 215, scss/_normalize.scss */
+/* line 172, scss/_normalize.scss */
 sub,
 sup {
   font-size: 75%;
@@ -227,106 +195,119 @@ sup {
   vertical-align: baseline;
 }
 
-/* line 223, scss/_normalize.scss */
+/* line 180, scss/_normalize.scss */
 sup {
   top: -0.5em;
 }
 
-/* line 227, scss/_normalize.scss */
+/* line 184, scss/_normalize.scss */
 sub {
   bottom: -0.25em;
 }
 
-/* ==========================================================================
-   Embedded content
+/* Embedded content
    ========================================================================== */
 /**
- * Remove border when inside `a` element in IE 8/9.
+ * Remove border when inside `a` element in IE 8/9/10.
  */
-/* line 239, scss/_normalize.scss */
+/* line 195, scss/_normalize.scss */
 img {
   border: 0;
 }
 
 /**
- * Correct overflow displayed oddly in IE 9.
+ * Correct overflow not hidden in IE 9/10/11.
  */
-/* line 247, scss/_normalize.scss */
+/* line 203, scss/_normalize.scss */
 svg:not(:root) {
   overflow: hidden;
 }
 
-/* ==========================================================================
-   Figures
+/* Grouping content
    ========================================================================== */
 /**
- * Address margin not present in IE 8/9 and Safari 5.
+ * Address margin not present in IE 8/9 and Safari.
  */
-/* line 259, scss/_normalize.scss */
+/* line 214, scss/_normalize.scss */
 figure {
-  margin: 0;
-}
-
-/* ==========================================================================
-   Forms
-   ========================================================================== */
-/**
- * Define consistent border, margin, and padding.
- */
-/* line 271, scss/_normalize.scss */
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
+  margin: 1em 40px;
 }
 
 /**
- * 1. Correct `color` not being inherited in IE 8/9.
- * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ * Address inconsistent styling of `hr`.
+ * 1. Correct `box-sizing` set to `border-box` in Firefox.
+ * 2. Correct `overflow` set to `hidden` in IE 8/9/10/11 and Edge 12.
  */
-/* line 282, scss/_normalize.scss */
-legend {
-  border: 0;
+/* line 224, scss/_normalize.scss */
+hr {
+  box-sizing: content-box;
   /* 1 */
-  padding: 0;
+  height: 0;
+  /* 1 */
+  overflow: visible;
   /* 2 */
 }
 
 /**
- * 1. Correct font family not being inherited in all browsers.
- * 2. Correct font size not being inherited in all browsers.
- * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ * Contain overflow in all browsers.
  */
-/* line 293, scss/_normalize.scss */
+/* line 234, scss/_normalize.scss */
+pre {
+  overflow: auto;
+}
+
+/**
+ * 1. Correct inheritance and scaling of font-size for preformatted text.
+ * 2. Address odd `em`-unit font size rendering in all browsers.
+ */
+/* line 243, scss/_normalize.scss */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+/**
+ * 1. Correct font properties not being inherited.
+ * 2. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+/* line 264, scss/_normalize.scss */
 button,
 input,
+optgroup,
 select,
 textarea {
-  font-family: inherit;
+  font: inherit;
   /* 1 */
-  font-size: 100%;
-  /* 2 */
   margin: 0;
-  /* 3 */
+  /* 2 */
 }
 
 /**
- * Address Firefox 4+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
  */
-/* line 307, scss/_normalize.scss */
-button,
-input {
-  line-height: normal;
+/* line 277, scss/_normalize.scss */
+button {
+  overflow: visible;
 }
 
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
  * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
- * Correct `select` style inheritance in Firefox 4+ and Opera.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
  */
-/* line 319, scss/_normalize.scss */
+/* line 288, scss/_normalize.scss */
 button,
 select {
   text-transform: none;
@@ -339,7 +320,7 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-/* line 332, scss/_normalize.scss */
+/* line 301, scss/_normalize.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -353,17 +334,39 @@ input[type="submit"] {
 /**
  * Re-set default cursor for disabled elements.
  */
-/* line 344, scss/_normalize.scss */
+/* line 313, scss/_normalize.scss */
 button[disabled],
 html input[disabled] {
   cursor: default;
 }
 
 /**
+ * Remove inner padding and border in Firefox 4+.
+ */
+/* line 322, scss/_normalize.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+/* line 333, scss/_normalize.scss */
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
  * 1. Address box sizing set to `content-box` in IE 8/9/10.
  * 2. Remove excess padding in IE 8/9/10.
  */
-/* line 354, scss/_normalize.scss */
+/* line 345, scss/_normalize.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -373,60 +376,89 @@ input[type="radio"] {
 }
 
 /**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+/* line 357, scss/_normalize.scss */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Address `appearance` set to `searchfield` in Safari and Chrome.
  */
 /* line 366, scss/_normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
-  /* 1 */
-  /* 2 */
-  box-sizing: content-box;
 }
 
 /**
- * Remove inner padding and search cancel button in Safari 5 and Chrome
- * on OS X.
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
  */
-/* line 378, scss/_normalize.scss */
+/* line 376, scss/_normalize.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
 /**
- * Remove inner padding and border in Firefox 4+.
+ * Define consistent border, margin, and padding.
  */
-/* line 387, scss/_normalize.scss */
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
+/* line 385, scss/_normalize.scss */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
 }
 
 /**
- * 1. Remove default vertical scrollbar in IE 8/9.
- * 2. Improve readability and alignment in all browsers.
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
-/* line 398, scss/_normalize.scss */
-textarea {
-  overflow: auto;
+/* line 396, scss/_normalize.scss */
+legend {
+  border: 0;
   /* 1 */
-  vertical-align: top;
+  padding: 0;
   /* 2 */
 }
 
-/* ==========================================================================
-   Tables
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+/* line 405, scss/_normalize.scss */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+/* line 414, scss/_normalize.scss */
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
    ========================================================================== */
 /**
  * Remove most spacing between table cells.
  */
-/* line 411, scss/_normalize.scss */
+/* line 425, scss/_normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+/* line 430, scss/_normalize.scss */
+td,
+th {
+  padding: 0;
 }
 
 /*
@@ -538,13 +570,8 @@ body {
   }
 }
 
-/* line 46, scss/_header.scss */
-.branding {
-  position: absolute;
-}
-
 /* line 51, scss/_header.scss */
-.site-title {
+.site-title a {
   padding: .5em;
   margin-top: .25em;
   transition: all 0.2s ease-in-out;
@@ -563,19 +590,11 @@ body {
   z-index: 1000;
 }
 /* line 65, scss/_header.scss */
-.scroll .site-title {
+.scroll .site-title a {
   background-size: 300px 41px;
   width: 300px;
   height: 41px;
   top: 7px;
-}
-@media (min-width: 65em) {
-  /* line 51, scss/_header.scss */
-  .site-title {
-    width: 381px;
-    height: 52px;
-    background-size: 381px 52px;
-  }
 }
 
 /*
@@ -586,7 +605,7 @@ body {
  *
  */
 /* line 9, scss/_navigation.scss */
-#menu-primary {
+.menu-primary {
   position: absolute;
   opacity: 0;
   visibility: hidden;
@@ -600,7 +619,7 @@ body {
 }
 @media (min-width: 60em) {
   /* line 9, scss/_navigation.scss */
-  #menu-primary {
+  .menu-primary {
     position: relative;
     margin: 0;
     background: transparent;
@@ -611,7 +630,7 @@ body {
   }
 }
 /* line 32, scss/_navigation.scss */
-.open #menu-primary {
+.open .menu-primary {
   opacity: 1;
   width: 100%;
   overflow: hidden;
@@ -619,19 +638,19 @@ body {
 }
 @media (min-width: 30em) {
   /* line 32, scss/_navigation.scss */
-  .open #menu-primary {
+  .open .menu-primary {
     top: 5.25em;
   }
 }
 /* line 39, scss/_navigation.scss */
-#menu-primary ul {
+.menu-primary ul {
   position: relative;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 /* line 47, scss/_navigation.scss */
-#menu-primary ul li {
+.menu-primary ul li {
   padding: 0;
   margin: 0;
   font-size: 14px;
@@ -641,84 +660,84 @@ body {
 }
 @media (min-width: 60em) {
   /* line 47, scss/_navigation.scss */
-  #menu-primary ul li {
+  .menu-primary ul li {
     padding-bottom: 1em;
     display: inline-block;
   }
 }
 /* line 60, scss/_navigation.scss */
-#menu-primary ul li:hover {
+.menu-primary ul li:hover {
   visibility: inherit;
 }
 /* line 63, scss/_navigation.scss */
-#menu-primary ul li:hover > ul {
+.menu-primary ul li:hover > ul {
   z-index: 99;
   visibility: visible;
   opacity: 1;
 }
 @media (min-width: 60em) {
   /* line 63, scss/_navigation.scss */
-  #menu-primary ul li:hover > ul {
+  .menu-primary ul li:hover > ul {
     left: 1.125em;
     top: 2em;
   }
 }
 /* line 73, scss/_navigation.scss */
-#menu-primary ul li:hover > ul ul {
+.menu-primary ul li:hover > ul ul {
   left: 100%;
   top: 0;
 }
 /* line 79, scss/_navigation.scss */
-#menu-primary ul li a {
+.menu-primary ul li a {
   color: #fafafa;
   display: block;
   padding: .5em 1em;
 }
 /* line 83, scss/_navigation.scss */
-#menu-primary ul li a:hover {
+.menu-primary ul li a:hover {
   background-color: #c0392b;
 }
 @media (min-width: 60em) {
   /* line 83, scss/_navigation.scss */
-  #menu-primary ul li a:hover {
+  .menu-primary ul li a:hover {
     color: #c0392b;
     background-color: transparent;
   }
 }
 @media (min-width: 60em) {
   /* line 79, scss/_navigation.scss */
-  #menu-primary ul li a {
+  .menu-primary ul li a {
     color: #fafafa;
     display: inline-block;
     padding: 0 .5em;
   }
 }
 /* line 98, scss/_navigation.scss */
-#menu-primary ul li.current_page_item > a {
+.menu-primary ul li.current_page_item > a {
   background-color: #c0392b;
 }
 @media (min-width: 60em) {
   /* line 98, scss/_navigation.scss */
-  #menu-primary ul li.current_page_item > a {
+  .menu-primary ul li.current_page_item > a {
     color: #c0392b;
     background-color: transparent;
   }
 }
 @media (min-width: 60em) {
   /* line 107, scss/_navigation.scss */
-  #menu-primary ul li.current-menu-ancestor a {
+  .menu-primary ul li.current-menu-ancestor a {
     color: #c0392b;
   }
 }
 /* line 114, scss/_navigation.scss */
-#menu-primary ul.sub-menu {
+.menu-primary ul.sub-menu {
   position: relative;
   text-align: left;
   padding-top: 0;
 }
 @media (min-width: 60em) {
   /* line 114, scss/_navigation.scss */
-  #menu-primary ul.sub-menu {
+  .menu-primary ul.sub-menu {
     position: absolute;
     top: -999em;
     width: 15em;
@@ -729,7 +748,7 @@ body {
   }
 }
 /* line 131, scss/_navigation.scss */
-#menu-primary ul.sub-menu li {
+.menu-primary ul.sub-menu li {
   width: 100%;
   margin: 0;
   line-height: 1.3;
@@ -737,40 +756,40 @@ body {
 }
 @media (min-width: 60em) {
   /* line 131, scss/_navigation.scss */
-  #menu-primary ul.sub-menu li {
+  .menu-primary ul.sub-menu li {
     padding: 0;
   }
 }
 /* line 142, scss/_navigation.scss */
-#menu-primary ul.sub-menu li a {
+.menu-primary ul.sub-menu li a {
   display: block;
   padding: .5em 1.5em;
 }
 @media (min-width: 60em) {
   /* line 142, scss/_navigation.scss */
-  #menu-primary ul.sub-menu li a {
+  .menu-primary ul.sub-menu li a {
     padding-left: .5em;
   }
 }
 /* line 151, scss/_navigation.scss */
-#menu-primary ul.sub-menu li a:hover, #menu-primary ul.sub-menu li.current-menu-item a {
+.menu-primary ul.sub-menu li a:hover, .menu-primary ul.sub-menu li.current-menu-item a {
   background: #c0392b;
   color: #fafafa;
 }
 @media (min-width: 60em) {
   /* line 157, scss/_navigation.scss */
-  #menu-primary ul.sub-menu li:last-child a {
+  .menu-primary ul.sub-menu li:last-child a {
     border-radius: 0 0 3px 3px;
   }
 }
 @media (min-width: 60em) {
   /* line 161, scss/_navigation.scss */
-  #menu-primary ul.sub-menu li:first-child a {
+  .menu-primary ul.sub-menu li:first-child a {
     border-radius: 3px 3px 0 0;
   }
 }
 /* line 165, scss/_navigation.scss */
-#menu-primary ul.sub-menu ul {
+.menu-primary ul.sub-menu ul {
   left: 0;
 }
 
@@ -782,7 +801,7 @@ ul.toggle-btns {
   right: 2.25em;
   z-index: 15000;
   margin: 0;
-  transition: all 0.2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 @media (min-width: 60em) {
   /* line 171, scss/_navigation.scss */
@@ -916,7 +935,7 @@ ul.toggle-btns li a i {
   -webkit-transform: rotate3d(0, 0, 1, 45deg);
   transform: rotate3d(0, 0, 1, 45deg);
 }
-/* line 96, scss/_toggle-menu.scss */
+/* line 95, scss/_toggle-menu.scss */
 .toggle-menu.close span:after {
   -webkit-transform: rotate3d(0, 0, 1, -45deg);
   transform: rotate3d(0, 0, 1, -45deg);
@@ -1343,7 +1362,7 @@ sub {
  * Fonts
  *
  * @package   Sass Stylesheet
- * @version   2.0
+ * @version   1.0
  *
  */
 /*
@@ -1357,7 +1376,7 @@ sub {
 a {
   color: #049cdb;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 /* line 17, scss/_links.scss */
@@ -1405,7 +1424,7 @@ img {
 }
 
 /* line 16, scss/_figures.scss */
-iframe {
+iframe, .embed-youtube, .embed-vimeo {
   margin-bottom: 2em;
 }
 
@@ -1488,7 +1507,7 @@ input[type="url"] {
   background-color: #fafafa;
   border: 1px solid #ccc;
   border-radius: 3px;
-  transition: all 0.2s ease-in-out;
+  transition: all .2s ease-in-out;
   color: #a7a9ac;
 }
 /* line 92, scss/_forms.scss */
@@ -1565,137 +1584,705 @@ select[size] {
   margin-left: -18px;
 }
 
-/* line 164, scss/_forms.scss */
-.gform_wrapper .top_label .no-title .gfield_label {
-  display: none;
+/*
+ * Gravity Forms
+ *
+ * @package   Sass Stylesheet
+ * @version   1.9
+ *
+ */
+/*
+----------------------------------------------------------------
+
+formreset.css
+Gravity Forms CSS Reset
+http://www.gravityforms.com
+updated: March 17, 2013 8:21 PM
+
+Gravity Forms is a Rocketgenius project
+copyright 2013 Rocketgenius Inc.
+http: //www.rocketgenius.com
+this may not be redistributed without the
+express written permission of the author.
+
+NOTE: DO NOT EDIT THIS FILE! MAKE ANY MODIFICATIONS IN YOUR
+THEME STYLESHEET. THIS FILE IS REPLACED DURING AUTO-UPDATES
+AND ANY CHANGES MADE HERE WILL BE OVERWRITTEN.
+
+If you need to make extensive customizations,
+copy the contents of this file to your theme
+style sheet for editing. Then, go to the form
+settings page & set the 'output CSS' option
+to no.
+
+----------------------------------------------------------------
+*/
+/* Ready Class to reset elements inside the form wrapper ------------------------- */
+/* line 30, scss/gravityforms/_formreset.scss */
+body .gform_wrapper.gf_reset_wrapper,
+body .gform_wrapper.gf_reset_wrapper div,
+body .gform_wrapper.gf_reset_wrapper span,
+body .gform_wrapper.gf_reset_wrapper iframe,
+body .gform_wrapper.gf_reset_wrapper h1,
+body .gform_wrapper.gf_reset_wrapper h2,
+body .gform_wrapper.gf_reset_wrapper h3,
+body .gform_wrapper.gf_reset_wrapper h4,
+body .gform_wrapper.gf_reset_wrapper h5,
+body .gform_wrapper.gf_reset_wrapper h6,
+body .gform_wrapper.gf_reset_wrapper p,
+body .gform_wrapper.gf_reset_wrapper img,
+body .gform_wrapper.gf_reset_wrapper ol,
+body .gform_wrapper.gf_reset_wrapper ul,
+body .gform_wrapper.gf_reset_wrapper li,
+body .gform_wrapper.gf_reset_wrapper fieldset,
+body .gform_wrapper.gf_reset_wrapper form,
+body .gform_wrapper.gf_reset_wrapper label,
+body .gform_wrapper.gf_reset_wrapper legend,
+body .gform_wrapper.gf_reset_wrapper input[type=text],
+body .gform_wrapper.gf_reset_wrapper input[type=email],
+body .gform_wrapper.gf_reset_wrapper input[type=tel],
+body .gform_wrapper.gf_reset_wrapper input[type=url],
+body .gform_wrapper.gf_reset_wrapper input[type=number],
+body .gform_wrapper.gf_reset_wrapper input[type=password],
+body .gform_wrapper.gf_reset_wrapper select,
+body .gform_wrapper.gf_reset_wrapper textarea,
+body .gform_wrapper.gf_reset_wrapper input[type=submit],
+body .gform_wrapper.gf_reset_wrapper input[type=button],
+body .gform_wrapper.gf_reset_wrapper input[type=image],
+body .gform_wrapper.gf_reset_wrapper button,
+body .gform_wrapper.gf_reset_wrapper table,
+body .gform_wrapper.gf_reset_wrapper caption,
+body .gform_wrapper.gf_reset_wrapper tbody,
+body .gform_wrapper.gf_reset_wrapper tfoot,
+body .gform_wrapper.gf_reset_wrapper thead,
+body .gform_wrapper.gf_reset_wrapper tr,
+body .gform_wrapper.gf_reset_wrapper th,
+body .gform_wrapper.gf_reset_wrapper td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
 }
 
-/* line 167, scss/_forms.scss */
-.entry-content .gform_fields {
-  padding-left: 0;
+/* line 75, scss/gravityforms/_formreset.scss */
+body .gform_wrapper.gf_reset_wrapper div,
+body .gform_wrapper.gf_reset_wrapper span,
+body .gform_wrapper.gf_reset_wrapper iframe,
+body .gform_wrapper.gf_reset_wrapper p,
+body .gform_wrapper.gf_reset_wrapper img,
+body .gform_wrapper.gf_reset_wrapper ol,
+body .gform_wrapper.gf_reset_wrapper ul,
+body .gform_wrapper.gf_reset_wrapper li,
+body .gform_wrapper.gf_reset_wrapper fieldset,
+body .gform_wrapper.gf_reset_wrapper form,
+body .gform_wrapper.gf_reset_wrapper label,
+body .gform_wrapper.gf_reset_wrapper legend,
+body .gform_wrapper.gf_reset_wrapper input[type=text],
+body .gform_wrapper.gf_reset_wrapper input[type=email],
+body .gform_wrapper.gf_reset_wrapper input[type=tel],
+body .gform_wrapper.gf_reset_wrapper input[type=url],
+body .gform_wrapper.gf_reset_wrapper input[type=number],
+body .gform_wrapper.gf_reset_wrapper input[type=password],
+body .gform_wrapper.gf_reset_wrapper select,
+body .gform_wrapper.gf_reset_wrapper textarea,
+body .gform_wrapper.gf_reset_wrapper input[type=submit],
+body .gform_wrapper.gf_reset_wrapper input[type=button],
+body .gform_wrapper.gf_reset_wrapper input[type=image],
+body .gform_wrapper.gf_reset_wrapper button,
+body .gform_wrapper.gf_reset_wrapper table,
+body .gform_wrapper.gf_reset_wrapper caption,
+body .gform_wrapper.gf_reset_wrapper tbody,
+body .gform_wrapper.gf_reset_wrapper tfoot,
+body .gform_wrapper.gf_reset_wrapper thead,
+body .gform_wrapper.gf_reset_wrapper tr,
+body .gform_wrapper.gf_reset_wrapper th,
+body .gform_wrapper.gf_reset_wrapper td {
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  line-height: 1;
+  font-weight: normal;
 }
 
-/* line 171, scss/_forms.scss */
+/* line 116, scss/gravityforms/_formreset.scss */
+body .gform_wrapper.gf_reset_wrapper div,
+body .gform_wrapper.gf_reset_wrapper span,
+body .gform_wrapper.gf_reset_wrapper p {
+  line-height: 1.8;
+}
+
+/* line 122, scss/gravityforms/_formreset.scss */
+body .gform_wrapper.gf_reset_wrapper fieldset,
+body .gform_wrapper.gf_reset_wrapper img {
+  border: 0;
+}
+
+/* line 127, scss/gravityforms/_formreset.scss */
+body .gform_wrapper.gf_reset_wrapper ol,
+body .gform_wrapper.gf_reset_wrapper ul,
+body .gform_wrapper.gf_reset_wrapper li {
+  list-style: none;
+}
+
+/* line 133, scss/gravityforms/_formreset.scss */
+body .gform_wrapper.gf_reset_wrapper a img {
+  border: none;
+}
+
+/* line 137, scss/gravityforms/_formreset.scss */
+body .gform_wrapper.gf_reset_wrapper :focus {
+  outline: 0;
+}
+
+/*
+----------------------------------------------------------------
+
+Gravity Forms Front End Form Styles
+Version 1.9
+http: //www.gravityforms.com
+updated: February 5, 2015 12:25 PM
+
+Gravity Forms is a Rocketgenius project
+copyright 2008-2015 Rocketgenius Inc.
+http: //www.rocketgenius.com
+this may not be redistributed without the
+express written permission of the author.
+
+NOTE: DO NOT EDIT THIS FILE! MAKE ANY MODIFICATIONS IN YOUR
+THEME STYLESHEET. THIS FILE IS REPLACED DURING AUTO-UPDATES
+AND ANY CHANGES MADE HERE WILL BE OVERWRITTEN.
+
+If you need to make extensive customizations,
+copy the contents of this file to your theme
+style sheet for editing. Then, go to the form
+settings page & set the 'output CSS' option
+to no.
+
+----------------------------------------------------------------
+*/
+/* line 28, scss/gravityforms/_formsmain.scss */
 .gform_wrapper {
   overflow: inherit;
-  margin: 10px 0;
+  margin: 1em 0;
   max-width: 98%;
 }
 
-/* line 177, scss/_forms.scss */
-.gform_wrapper ul {
-  margin: 0;
-  list-style-type: none;
+/* line 34, scss/gravityforms/_formsmain.scss */
+.gform_wrapper h1,
+.gform_wrapper h2,
+.gform_wrapper h3 {
+  font-weight: normal;
+  border: none;
+  outline: none;
+  background: none;
 }
 
-/* line 182, scss/_forms.scss */
+/* line 43, scss/gravityforms/_formsmain.scss */
+.gform_wrapper :focus {
+  outline: 0;
+}
+
+/* line 47, scss/gravityforms/_formsmain.scss */
+.gform_wrapper form {
+  text-align: left;
+}
+
+/* line 51, scss/gravityforms/_formsmain.scss */
+.gform_wrapper input[type=text],
+.gform_wrapper input[type=url],
+.gform_wrapper input[type=email],
+.gform_wrapper input[type=tel],
+.gform_wrapper input[type=number],
+.gform_wrapper input[type=password] {
+  outline-style: none;
+  font-size: 16px;
+  font-size: 1rem;
+  font-family: Helvetica, sans-serif;
+  letter-spacing: normal;
+}
+
+/* line 65, scss/gravityforms/_formsmain.scss */
+.gform_wrapper input[type=image] {
+  border: none !important;
+  padding: 0 !important;
+  width: auto !important;
+}
+
+/* line 71, scss/gravityforms/_formsmain.scss */
+.gform_wrapper textarea {
+  outline-style: none;
+  font-size: 16px;
+  font-size: 1rem;
+  font-family: Helvetica, sans-serif;
+  letter-spacing: normal;
+  resize: none;
+}
+
+/* line 80, scss/gravityforms/_formsmain.scss */
+.gform_wrapper ul {
+  margin: 0 !important;
+  list-style-type: none;
+  font-family: Helvetica, sans-serif;
+}
+
+/* line 86, scss/gravityforms/_formsmain.scss */
+html > body .entry ul,
+.gform_wrapper ul {
+  text-indent: 0;
+}
+
+/* line 92, scss/gravityforms/_formsmain.scss */
 .gform_wrapper li,
 .gform_wrapper form li {
+  margin-left: 0 !important;
   list-style-type: none !important;
   list-style-image: none !important;
   list-style: none !important;
   overflow: visible;
 }
 
-/* line 189, scss/_forms.scss */
+/* line 101, scss/gravityforms/_formsmain.scss */
 .gform_wrapper ul li.gfield {
   clear: both;
 }
 
-/* line 194, scss/_forms.scss */
-.gform_wrapper .gform_heading {
-  width: 98%;
+/* line 105, scss/gravityforms/_formsmain.scss */
+.gform_wrapper ul.gfield_radio li,
+.gform_wrapper ul.gfield_checkbox li {
+  overflow: hidden;
 }
 
-/* line 201, scss/_forms.scss */
-.gform_wrapper .ginput_complex .ginput_left {
-  width: 50%;
+/* line 110, scss/gravityforms/_formsmain.scss */
+.gform_wrapper ul.right_label li,
+.gform_wrapper form ul.right_label li,
+.gform_wrapper ul.left_label li,
+.gform_wrapper form ul.left_label li {
+  margin-bottom: 14px;
+}
+
+/* line 117, scss/gravityforms/_formsmain.scss */
+.gform_wrapper ul.right_label li ul.gfield_radio li,
+.gform_wrapper form ul.right_label li ul.gfield_radio li,
+.gform_wrapper ul.left_label li ul.gfield_radio li,
+.gform_wrapper form ul.left_label li ul.gfield_radio li,
+.gform_wrapper ul.right_label li ul.gfield_checkbox li,
+.gform_wrapper form ul.right_label li ul.gfield_checkbox li,
+.gform_wrapper ul.left_label li ul.gfield_checkbox li,
+.gform_wrapper form ul.left_label li ul.gfield_checkbox li {
+  margin-bottom: 10px;
+}
+
+/* line 128, scss/gravityforms/_formsmain.scss */
+.gform_wrapper ul li:before,
+.gform_wrapper ul li:after,
+.gform_wrapper ul.gform_fields {
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+/* line 136, scss/gravityforms/_formsmain.scss */
+.gform_wrapper select {
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: normal;
+}
+
+/* line 142, scss/gravityforms/_formsmain.scss */
+.gform_wrapper select option {
+  padding: 0.125em 0.125em;
+  display: block;
+}
+
+/* line 147, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .inline {
+  display: inline !important;
+}
+
+/* line 151, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gform_heading {
+  width: 98%;
+  margin-bottom: 1.125em;
+}
+
+/* line 156, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_time_hour,
+.gform_wrapper .gfield_time_minute,
+.gform_wrapper .gfield_date_month,
+.gform_wrapper .gfield_date_day,
+.gform_wrapper .gfield_date_year {
+  width: 4.688em;
+  vertical-align: top;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+}
+
+/* line 168, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_time_hour i {
+  font-style: normal !important;
+  font-family: sans-serif !important;
+  width: 0.625em;
+  text-align: center;
+  float: right;
+  margin-top: 9%;
+}
+
+/* line 177, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_date_month,
+.gform_wrapper .gfield_date_day,
+.gform_wrapper .gfield_date_year {
+  margin-right: 0.750em;
+}
+
+/* line 183, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_date_dropdown_month,
+.gform_wrapper .gfield_date_dropdown_day,
+.gform_wrapper .gfield_date_dropdown_year {
+  vertical-align: top;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+}
+
+/* line 192, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_date_dropdown_month,
+.gform_wrapper .gfield_date_dropdown_day,
+.gform_wrapper .gfield_date_dropdown_year {
+  margin-right: 0.375em;
+}
+
+/* line 198, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_time_ampm {
+  vertical-align: top;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+}
+
+/* line 205, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_time_ampm select {
+  width: 4.688em !important;
+}
+
+/* line 209, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_time_hour input,
+.gform_wrapper .gfield_time_minute input,
+.gform_wrapper .gfield_date_month input,
+.gform_wrapper .gfield_date_day input,
+.gform_wrapper .gfield_date_year input {
+  width: 70% !important;
+}
+
+/* line 217, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_date_month,
+.gform_wrapper .gfield_date_day,
+.gform_wrapper .gfield_date_year {
+  width: 3.125em;
   float: left;
 }
 
-/* line 205, scss/_forms.scss */
-.gform_wrapper .ginput_complex .ginput_right {
-  width: 49%;
-  float: right;
+/* line 224, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_date_month input,
+.gform_wrapper .gfield_date_day input,
+.gform_wrapper .gfield_date_year input {
+  width: 85% !important;
 }
 
-/* line 209, scss/_forms.scss */
-.gform_wrapper .gfield_error .ginput_complex .ginput_left,
-.gform_wrapper .gfield_error .ginput_complex .ginput_right {
-  width: 50%;
+/* line 230, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .field_hover {
+  border: 1px dashed #2175A9;
+  cursor: pointer;
 }
 
-/* line 213, scss/_forms.scss */
-.gform_wrapper .gfield_error .ginput_complex .ginput_left input {
-  width: 90% !important;
+/* line 235, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .field_selected {
+  background-color: #DFEFFF;
+  border: 1px solid #C2D7EF;
 }
 
-/* line 216, scss/_forms.scss */
-.gform_wrapper .gfield_error .ginput_complex .ginput_right input {
+/* line 240, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .field_name_first,
+.gform_wrapper .field_name_middle,
+.gform_wrapper .field_name_last {
+  width: 49.5%;
+  float: left;
+}
+
+/* line 247, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex.ginput_container {
+  overflow: hidden;
+}
+
+/* line 251, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .field_name_first input,
+.gform_wrapper .ginput_complex .ginput_left input {
+  width: 95% !important;
+}
+
+/* line 256, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .field_name_last input {
   width: 93% !important;
 }
 
-/* line 219, scss/_forms.scss */
-.gform_wrapper .ginput_complex input,
+/* line 260, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .datepicker {
+  width: 6.750em !important;
+}
+
+/* line 264, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex .ginput_left {
+  width: 49.5%;
+  float: left;
+}
+
+/* line 269, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex .ginput_right {
+  width: 49.5%;
+  float: right;
+  margin-right: .5%;
+}
+
+/* line 275, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_error .ginput_complex .ginput_left,
+.gform_wrapper .gfield_error .ginput_complex .ginput_right {
+  width: 49.5%;
+}
+
+/* line 280, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=text],
+.gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=url],
+.gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=email],
+.gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=tel],
+.gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=number],
+.gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=password] {
+  width: 90% !important;
+}
+
+/* line 289, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=text],
+.gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=url],
+.gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=email],
+.gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=tel],
+.gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=number],
+.gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=password] {
+  width: 95% !important;
+}
+
+/* line 298, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex input[type=text],
+.gform_wrapper .ginput_complex input[type=url],
+.gform_wrapper .ginput_complex input[type=email],
+.gform_wrapper .ginput_complex input[type=tel],
+.gform_wrapper .ginput_complex input[type=number],
+.gform_wrapper .ginput_complex input[type=password],
 .gform_wrapper .ginput_complex select {
   width: 95% !important;
 }
 
-/* line 223, scss/_forms.scss */
-.gform_wrapper .ginput_complex .ginput_right input,
+/* line 308, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex .ginput_right input[type=text],
+.gform_wrapper .ginput_complex .ginput_right input[type=url],
+.gform_wrapper .ginput_complex .ginput_right input[type=email],
+.gform_wrapper .ginput_complex .ginput_right input[type=tel],
+.gform_wrapper .ginput_complex .ginput_right input[type=number],
+.gform_wrapper .ginput_complex .ginput_right input[type=password],
 .gform_wrapper .ginput_complex .ginput_right select {
-  width: 96% !important;
+  width: 95% !important;
 }
 
-/* line 228, scss/_forms.scss */
-.gform_wrapper .ginput_complex .name_prefix {
-  float: left;
-  width: 30px !important;
-  margin-right: 14px;
+/* line 318, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex label,
+.gform_wrapper .gfield_time_hour label,
+.gform_wrapper .gfield_time_minute label,
+.gform_wrapper .gfield_time_ampm label,
+.gform_wrapper .gfield_date_month label,
+.gform_wrapper .gfield_date_day label,
+.gform_wrapper .gfield_date_year label,
+.gform_wrapper .instruction {
+  display: block;
+  font-size: 0.875em;
+  letter-spacing: 0.5pt;
 }
 
-/* line 233, scss/_forms.scss */
-.gform_wrapper .ginput_complex .name_suffix {
-  float: left;
-  width: 30px !important;
+/* line 331, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex label,
+.gform_wrapper .gfield_time_hour label,
+.gform_wrapper .gfield_time_minute label,
+.gform_wrapper .gfield_time_ampm label,
+.gform_wrapper .gfield_date_month label,
+.gform_wrapper .gfield_date_day label,
+.gform_wrapper .gfield_date_year label,
+.gform_wrapper .instruction {
+  margin: 0.188em 0 0.750em .25em;
+  font-size: 13px;
+  font-size: 0.8125rem;
+  color: #333333;
 }
 
-/* line 237, scss/_forms.scss */
-.gform_wrapper .ginput_complex .name_first,
-.gform_wrapper .ginput_complex .name_last {
-  float: left;
-  width: 100px;
-  margin-right: 8px;
+/* line 344, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .field_sublabel_above .ginput_complex label,
+.gform_wrapper .field_sublabel_above .gfield_time_hour label,
+.gform_wrapper .field_sublabel_above .gfield_time_minute label,
+.gform_wrapper .field_sublabel_above .gfield_time_ampm label,
+.gform_wrapper .field_sublabel_above .gfield_date_month label,
+.gform_wrapper .field_sublabel_above .gfield_date_day label,
+.gform_wrapper .field_sublabel_above .gfield_date_year label,
+.gform_wrapper .field_sublabel_above .instruction {
+  margin: 0.75em 0 0.188em 0;
 }
 
-/* line 243, scss/_forms.scss */
+/* line 355, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex span.name_prefix,
+.gform_wrapper .ginput_complex span.name_suffix {
+  display: block;
+  clear: right;
+  overflow: hidden;
+}
+
+/* line 362, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex span.name_prefix {
+  min-height: 2.2em;
+}
+
+/* line 366, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex span.name_prefix select {
+  width: auto !important;
+}
+
+/* line 370, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex.has_middle span.name_suffix input[type=text] {
+  width: 32%;
+}
+
+/* line 374, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex span.name_first,
+.gform_wrapper .ginput_complex span.name_middle,
+.gform_wrapper .ginput_complex span.name_last {
+  vertical-align: bottom;
+  min-height: 2.813em;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+}
+
+/* line 384, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex span.name_first,
+.gform_wrapper .ginput_complex span.name_middle {
+  margin-right: 0.313em;
+}
+
+/* line 389, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .field_sublabel_above .ginput_complex .name_prefix,
+.gform_wrapper .field_sublabel_above .ginput_complex span.name_suffix,
+.gform_wrapper .field_sublabel_above .ginput_complex span.name_first,
+.gform_wrapper .field_sublabel_above .ginput_complex span.name_middle,
+.gform_wrapper .field_sublabel_above .ginput_complex span.name_last {
+  vertical-align: top;
+}
+
+/* line 397, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex.ginput_container.has_first_name span,
+.gform_wrapper .ginput_complex.ginput_container.has_middle_name span,
+.gform_wrapper .ginput_complex.ginput_container.has_last_name span {
+  width: 99.5%;
+}
+
+/* line 403, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex.ginput_container.has_first_name.has_last_name span {
+  width: 49%;
+}
+
+/* line 407, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.has_last_name span {
+  width: 32%;
+}
+
+/* line 411, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .top_label .gfield_label {
-  margin: 10px 0 4px 0;
+  margin: 0.625em 0 0.500em 0;
   font-weight: bold;
   display: -moz-inline-stack;
   display: inline-block;
-  line-height: 1.3em;
+  line-height: 1.30em;
   clear: both;
 }
 
-/* line 251, scss/_forms.scss */
+/* line 420, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .left_label .gfield_label {
   float: left;
-  margin: 0 15px 0 0;
+  margin: 0.75em 15px 0 0;
   width: 29%;
   font-weight: bold;
 }
 
-/* line 257, scss/_forms.scss */
+/* line 427, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .left_label li.field_sublabel_below .gfield_label {
+  margin: 0 1em 0 0;
+}
+
+/* line 431, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .right_label .gfield_label {
   float: left;
-  margin: 0 15px 0 0;
+  margin: 0.75em 1em 0 0;
   width: 29%;
   font-weight: bold;
   text-align: right;
 }
 
-/* line 264, scss/_forms.scss */
+/* line 439, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .right_label li.field_sublabel_below .gfield_label {
+  margin: 0 1em 0 0;
+}
+
+/* line 443, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .left_label li.hidden_label input,
+.gform_wrapper .right_label li.hidden_label input {
+  margin-left: 30.7%;
+}
+
+/* line 448, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .left_label li.gfield .gfield_password_strength,
+.gform_wrapper .right_label li.gfield .gfield_password_strength {
+  margin-left: 30.7%;
+}
+
+/* line 453, scss/gravityforms/_formsmain.scss */
+body .gform_wrapper label.gfield_label + div.ginput_container {
+  margin-top: 0.375em;
+}
+
+/* Field Label Placement Overrides  ------------------------------------------------------*/
+/* line 459, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .hidden_label .gfield_label {
+  display: none !important;
+}
+
+/* line 463, scss/gravityforms/_formsmain.scss */
+.gfield.right_label,
+.gfield.left_label {
+  padding-top: 10px;
+}
+
+/* line 468, scss/gravityforms/_formsmain.scss */
+.gform_wrapper li.hidden_label input {
+  margin-top: 0.75em;
+}
+
+/* line 472, scss/gravityforms/_formsmain.scss */
+.gform_wrapper label.hidden_sub_label {
+  display: none;
+}
+
+/* line 476, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .field_sublabel_hidden_label .ginput_complex.ginput_container input[type=text],
+.gform_wrapper .field_sublabel_hidden_label .ginput_complex.ginput_container select {
+  margin-bottom: 0.750em;
+}
+
+/* line 481, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .left_label ul.gfield_checkbox,
 .gform_wrapper .right_label ul.gfield_checkbox,
 .gform_wrapper .left_label ul.gfield_radio,
@@ -1704,31 +2291,34 @@ select[size] {
   overflow: hidden;
 }
 
-/* line 271, scss/_forms.scss */
+/* line 489, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .top_label input.small,
 .gform_wrapper .top_label select.small {
   width: 25%;
 }
 
-/* line 275, scss/_forms.scss */
+/* line 494, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .top_label input.medium,
 .gform_wrapper .top_label select.medium {
   width: 47%;
 }
 
-/* line 279, scss/_forms.scss */
+/* line 499, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .top_label input.medium {
   padding-right: 2px;
 }
 
-/* line 282, scss/_forms.scss */
+/* line 503, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .top_label input.large,
 .gform_wrapper .top_label select.large,
-.gform_wrapper .top_label textarea.textarea {
+.gform_wrapper .top_label textarea.textarea,
+.gform_wrapper .hidden_label input.large,
+.gform_wrapper .hidden_label select.large,
+.gform_wrapper .hidden_label textarea.textarea {
   width: 99.2%;
 }
 
-/* line 287, scss/_forms.scss */
+/* line 512, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .right_label input.small,
 .gform_wrapper .right_label select.small,
 .gform_wrapper .left_label input.small,
@@ -1736,7 +2326,7 @@ select[size] {
   width: 15%;
 }
 
-/* line 293, scss/_forms.scss */
+/* line 519, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .right_label input.medium,
 .gform_wrapper .right_label select.medium,
 .gform_wrapper .left_label input.medium,
@@ -1744,7 +2334,7 @@ select[size] {
   width: 35%;
 }
 
-/* line 299, scss/_forms.scss */
+/* line 526, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .right_label input.large,
 .gform_wrapper .right_label select.large,
 .gform_wrapper .left_label input.large,
@@ -1753,20 +2343,20 @@ select[size] {
   width: 63%;
 }
 
-/* line 306, scss/_forms.scss */
+/* line 534, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .right_label div.ginput_complex,
 .gform_wrapper .left_label div.ginput_complex {
   width: 64%;
 }
 
-/* line 310, scss/_forms.scss */
+/* line 539, scss/gravityforms/_formsmain.scss */
 .gform_wrapper h2.gsection_title {
   margin: 0 !important;
   padding: 0 !important;
   letter-spacing: normal !important;
 }
 
-/* line 315, scss/_forms.scss */
+/* line 545, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .gsection .gfield_label,
 .gform_wrapper h2.gsection_title,
 .gform_wrapper h3.gform_title {
@@ -1774,55 +2364,46 @@ select[size] {
   font-size: 1.3em;
 }
 
-/* line 321, scss/_forms.scss */
+/* line 552, scss/gravityforms/_formsmain.scss */
 .gform_wrapper h3.gform_title {
   letter-spacing: normal !important;
-  margin: 10px 0 6px 0;
+  margin: 0.625em 0 0.375em 0;
 }
 
-/* line 325, scss/_forms.scss */
+/* line 557, scss/gravityforms/_formsmain.scss */
 .gform_wrapper span.gform_description {
   font-weight: normal;
 }
 
-/* line 328, scss/_forms.scss */
-.gform_wrapper h2.gsection_title,
-.gform_wrapper .gsection_description,
-.gform_wrapper h3.gform_title {
-  width: 98%;
-}
-
-/* line 333, scss/_forms.scss */
+/* line 561, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .gsection {
   border-bottom: 1px dotted #CCC;
-  padding: 0 0 8px 0;
-  margin: 16px 0;
+  padding: 0 0 .5em 0;
+  margin: 1.8em 0;
   clear: both;
 }
 
-/* line 339, scss/_forms.scss */
+/* line 568, scss/gravityforms/_formsmain.scss */
 .gform_wrapper ul.gfield_checkbox li input[type=checkbox],
 .gform_wrapper ul.gfield_radio li input[type=radio] {
   width: auto !important;
-  position: relative;
-  top: 2px;
 }
 
 /* radio and checkbox styling - justifies lenghty labels ------------------------------------------------------*/
-/* line 348, scss/_forms.scss */
+/* line 576, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .gfield_checkbox li,
 .gform_wrapper .gfield_radio li {
   position: relative;
 }
 
-/* line 352, scss/_forms.scss */
+/* line 581, scss/gravityforms/_formsmain.scss */
 .gform_wrapper ul.gfield_checkbox,
 .gform_wrapper ul.gfield_radio {
   margin: 6px 0;
   padding: 0;
 }
 
-/* line 356, scss/_forms.scss */
+/* line 587, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .gfield_checkbox li label,
 .gform_wrapper .gfield_radio li label {
   display: block;
@@ -1833,120 +2414,156 @@ select[size] {
   vertical-align: top;
 }
 
-/* line 365, scss/_forms.scss */
+/* line 597, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .gfield_checkbox li input[type=checkbox],
 .gform_wrapper .gfield_radio li input[type=radio],
 .gform_wrapper .gfield_checkbox li input {
   float: left;
-  margin-top: 2px;
+  margin-top: 5px;
 }
 
-/* line 371, scss/_forms.scss */
+/* line 604, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .description,
 .gform_wrapper .gfield_description,
 .gform_wrapper .gsection_description,
 .gform_wrapper .instruction {
-  font-size: 0.85em;
+  font-size: 0.875em;
   line-height: 1.5em;
   clear: both;
-  font-family: sans-serif;
   letter-spacing: normal;
 }
 
-/* line 381, scss/_forms.scss */
+/* line 615, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .description,
 .gform_wrapper .gfield_description,
 .gform_wrapper .gsection_description {
-  padding: 4px 0 8px 0;
+  padding: 0.5em 0;
 }
 
-/* line 386, scss/_forms.scss */
+/* line 621, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .gfield_description {
-  padding: 10px 0 0 0;
+  padding: 0.625em 0 0 0;
   width: 99.8%;
 }
 
-/* line 390, scss/_forms.scss */
+/* line 626, scss/gravityforms/_formsmain.scss */
+.gform_wrapper li.field_description_above .gfield_description {
+  margin-bottom: 0.75em;
+}
+
+/* line 630, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .left_label .gfield_description,
 .gform_wrapper .right_label .gfield_description {
   width: 63%;
 }
 
-/* line 394, scss/_forms.scss */
+/* line 635, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .description_above .gfield_description {
-  padding: 0 0 10px 0;
+  padding: 0 0 0.625em 0;
 }
 
-/* line 397, scss/_forms.scss */
+/* line 639, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .field_description_below .gfield_description {
+  padding: 0.625em 0 1em 0;
+}
+
+/* line 643, scss/gravityforms/_formsmain.scss */
 .gfield_date_year + .gfield_description {
   padding: 0;
 }
 
-/* line 400, scss/_forms.scss */
+/* line 647, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .right_label .gfield_description,
 .gform_wrapper .left_label .gfield_description,
 .gform_wrapper .left_label .instruction,
 .gform_wrapper .right_label .instruction {
-  margin-left: 31%;
+  margin-left: 30%;
 }
 
-/* line 407, scss/_forms.scss */
+/* line 654, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .left_label .gsection .gsection_description,
+.gform_wrapper .right_label .gsection .gsection_description {
+  margin-left: 0;
+  padding-top: 0.250em;
+  padding-left: 0;
+  line-height: 1.5em;
+}
+
+/* line 662, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .gfield_required {
   color: #790000;
-  margin-left: 4px;
+  margin-left: 0.250em;
 }
 
-/* line 411, scss/_forms.scss */
+/* line 667, scss/gravityforms/_formsmain.scss */
 .gform_wrapper textarea.small {
-  height: 80px;
+  height: 5em;
 }
 
-/* line 414, scss/_forms.scss */
+/* line 671, scss/gravityforms/_formsmain.scss */
 .gform_wrapper textarea.medium {
-  height: 190px;
+  height: 9.375em;
 }
 
-/* line 417, scss/_forms.scss */
+/* line 675, scss/gravityforms/_formsmain.scss */
 .gform_wrapper textarea.large {
-  height: 250px;
+  height: 15.625em;
 }
 
-/* line 420, scss/_forms.scss */
-.gform_wrapper li.gfield.gfield_error {
-  background-color: #FFDFDF;
+/* line 679, scss/gravityforms/_formsmain.scss */
+.gform_wrapper li.gfield.gfield_error,
+.gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning {
+  background-color: #FFDFE0;
   margin-bottom: 6px !important;
   padding: 6px 6px 4px 6px !important;
-  border: 1px solid #C89797;
+  border-top: 1px solid #C89797;
+  border-bottom: 1px solid #C89797;
 }
 
-/* line 428, scss/_forms.scss */
+/* line 688, scss/gravityforms/_formsmain.scss */
+.gform_wrapper li.gfield.gfield_creditcard_warning {
+  margin-bottom: 6px !important;
+  padding: 6px 6px 4px 6px !important;
+  border: 1px dashed #C89797;
+}
+
+/* line 694, scss/gravityforms/_formsmain.scss */
+.gform_wrapper li.gfield.gfield_creditcard_warning div.gfield_creditcard_warning_message {
+  font-size: 1em;
+  font-family: "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+  padding: 10px 20px 10px 45px;
+  min-height: 25px;
+  background-color: #790000;
+  border-bottom: 1px solid #620101;
+  color: #FFF;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  line-height: 1.3em;
+  letter-spacing: 0.2pt;
+}
+
+/* line 707, scss/gravityforms/_formsmain.scss */
 li.gfield + li.gfield.gfield_creditcard_warning {
   margin-top: 14px !important;
 }
 
-/* line 431, scss/_forms.scss */
-.gform_wrapper li.gfield.gfield_error .gfield_description {
-  color: #790000;
-}
-
-/* line 434, scss/_forms.scss */
+/* line 711, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .top_label .gfield_error .ginput_container {
   max-width: 99%;
 }
 
-/* line 437, scss/_forms.scss */
+/* line 715, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .top_label .gfield_error {
   width: 97%;
 }
 
-/* line 440, scss/_forms.scss */
+/* line 719, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .top_label .gfield_error input.large,
 .gform_wrapper .top_label .gfield_error select.large,
 .gform_wrapper .top_label .gfield_error textarea.textarea {
   width: 100%;
 }
 
-/* line 445, scss/_forms.scss */
+/* line 725, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .right_label .gfield_error input.large,
 .gform_wrapper .right_label .gfield_error select.large,
 .gform_wrapper .right_label .gfield_error textarea.textarea,
@@ -1956,71 +2573,1171 @@ li.gfield + li.gfield.gfield_creditcard_warning {
   width: 66%;
 }
 
-/* line 453, scss/_forms.scss */
+/* line 734, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .gfield_error .gfield_label {
   color: #790000;
 }
 
-/* line 456, scss/_forms.scss */
+/* line 738, scss/gravityforms/_formsmain.scss */
 .gform_wrapper li.gfield.gfield_error.gfield_contains_required {
   margin-top: 12px;
   margin-bottom: 12px !important;
+  padding-left: 10px !important;
 }
 
-/* line 460, scss/_forms.scss */
+/* line 744, scss/gravityforms/_formsmain.scss */
 .gform_wrapper li.gfield.gfield_error.gfield_contains_required label.gfield_label,
 .gform_wrapper li.gfield.gfield_error.gfield_contains_required div.ginput_container {
-  margin-top: 12px;
+  margin-top: 0.750em;
 }
 
-/* line 464, scss/_forms.scss */
-.gform_wrapper .validation_error {
+/* line 749, scss/gravityforms/_formsmain.scss */
+.gform_wrapper div.validation_error {
+  color: #790000;
+  font-size: 1.200em;
+  font-weight: bold;
+  margin-bottom: 1.600em;
+  border-top: 2px solid #790000;
+  border-bottom: 2px solid #790000;
+  padding: 1em 0 1em 0;
+}
+
+/* line 759, scss/gravityforms/_formsmain.scss */
+div.gf_page_steps + div.validation_error {
+  margin-top: 1em;
+}
+
+/* line 763, scss/gravityforms/_formsmain.scss */
+.gform_wrapper div.gfield_description.validation_error {
   color: #790000;
   font-weight: bold;
-  font-size: 14px;
-  line-height: 1.5em;
-  margin-bottom: 16px;
+  font-size: 0.875em;
+  line-height: 1.200em;
+  margin-bottom: 1em;
 }
 
-/* line 471, scss/_forms.scss */
+/* line 771, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .validation_message {
   color: #790000;
+  font-weight: bold;
   letter-spacing: normal;
 }
 
-/* line 475, scss/_forms.scss */
+/* line 777, scss/gravityforms/_formsmain.scss */
+.gform_wrapper li.gfield_error input[type=text],
+.gform_wrapper li.gfield_error input[type=url],
+.gform_wrapper li.gfield_error input[type=email],
+.gform_wrapper li.gfield_error input[type=tel],
+.gform_wrapper li.gfield_error input[type=number],
+.gform_wrapper li.gfield_error input[type=password],
+.gform_wrapper li.gfield_error textarea {
+  border: 1px solid #790000;
+}
+
+/* line 787, scss/gravityforms/_formsmain.scss */
+.gform_wrapper li.gfield_error div.ginput_complex.ginput_container label,
+.gform_wrapper li.gfield_error ul.gfield_checkbox,
+.gform_wrapper li.gfield_error ul.gfield_radio {
+  color: #790000;
+}
+
+/* line 793, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .gform_footer {
-  padding: 16px 0 10px 0;
-  margin: 16px 0 0 0;
+  padding: 1em 0 0.625em 0;
+  margin: 1em 0 0 0;
   clear: both;
 }
 
-/* line 481, scss/_forms.scss */
+/* line 799, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gform_footer.right_label,
+.gform_wrapper .gform_footer.left_label {
+  padding: 1em 0 0.625em 30.5%;
+}
+
+/* line 805, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gform_footer a.gform_save_link {
+  font-size: 1em;
+  margin-left: 1em;
+}
+
+/* line 810, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gform_footer input[type=image] {
+  padding: 0;
+  width: auto !important;
+  background: none !important;
+  border: none !important;
+}
+
+/* line 817, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .ginput_complex .ginput_left,
 .gform_wrapper .ginput_complex .ginput_right,
 .gform_wrapper .ginput_complex .ginput_full {
-  min-height: 43px;
+  min-height: 2.813em;
   display: block;
+  overflow: hidden;
 }
 
-/* line 487, scss/_forms.scss */
-.gform_wrapper .ginput_complex .ginput_full input {
-  width: 98% !important;
+/* line 825, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_complex .ginput_full input[type=text],
+.gform_wrapper .ginput_complex .ginput_full input[type=url],
+.gform_wrapper .ginput_complex .ginput_full input[type=email],
+.gform_wrapper .ginput_complex .ginput_full input[type=tel],
+.gform_wrapper .ginput_complex .ginput_full input[type=number],
+.gform_wrapper .ginput_complex .ginput_full input[type=password] {
+  width: 97% !important;
 }
 
-/* line 490, scss/_forms.scss */
+/* line 834, scss/gravityforms/_formsmain.scss */
 .gform_wrapper .gfield_checkbox li,
 .gform_wrapper .gfield_radio li {
-  margin: 0 0 8px 0;
-  line-height: 1.3em;
+  margin: 0 0 0.500em 0;
+  line-height: 1.300em;
 }
 
-/* line 495, scss/_forms.scss */
+/* line 840, scss/gravityforms/_formsmain.scss */
 .gform_wrapper ul.gfield_radio li input[type="radio"]:checked + label,
 .gform_wrapper ul.gfield_checkbox li input[type="checkbox"]:checked + label {
   font-weight: bold;
 }
 
+/* line 845, scss/gravityforms/_formsmain.scss */
+.gform_wrapper input.datepicker.datepicker_with_icon {
+  margin-right: 0.250em !important;
+  display: -moz-inline-stack;
+  display: inline-block;
+  zoom: 1;
+}
+
+/* tame those pesky hidden fields ------------------------------------------------------*/
+/* line 855, scss/gravityforms/_formsmain.scss */
+.gform_wrapper input[type=hidden],
+.gform_wrapper input.gform_hidden,
+.gform_wrapper .gform_hidden,
+.gform_wrapper .gf_hidden {
+  display: none !important;
+  max-height: 1px !important;
+  overflow: hidden;
+}
+
+/* line 864, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_full br,
+.gform_wrapper .ginput_left br,
+.gform_wrapper .ginput_right br {
+  display: none !important;
+}
+
+/* additional spacing and padding tweaks ------------------------------------------------------*/
+/* line 873, scss/gravityforms/_formsmain.scss */
+.gform_wrapper ul.gfield_checkbox li,
+.gform_wrapper ul.gfield_radio li {
+  padding: .125em !important;
+}
+
+/* line 878, scss/gravityforms/_formsmain.scss */
+.gform_wrapper ul.gfield_radio li input + input {
+  margin-left: 0.250em;
+}
+
+/* line 882, scss/gravityforms/_formsmain.scss */
+.gform_wrapper ul.gfield_radio li input[value=gf_other_choice] {
+  margin-right: 0.375em;
+  margin-top: 0.250em;
+}
+
+/* line 887, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .top_label .gfield_description {
+  padding: 0.625em 0 0 0;
+}
+
+/* line 891, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .top_label .gfield_description.validation_message,
+.gform_wrapper .gfield_description.validation_message {
+  padding: 0.625em 0 !important;
+}
+
+/* line 896, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_container + .gfield_description.validation_message {
+  margin-top: 0.375em;
+}
+
+/* line 900, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gfield_description + .gform_wrapper .gfield_description.validation_message {
+  margin-top: 0.375em;
+}
+
+/* line 904, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .ginput_container.ginput_list + .gfield_description.validation_message {
+  margin-top: 0;
+}
+
+/* line 908, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .left_label .ginput_container.ginput_list,
+.gform_wrapper .right_label .ginput_container.ginput_list {
+  padding-top: 0.750em !important;
+}
+
+/* line 913, scss/gravityforms/_formsmain.scss */
+.gform_wrapper .gform_fileupload_multifile .gform_drop_area {
+  padding: 25px;
+  border: 2px dashed #ddd;
+  text-align: center;
+  color: #AAA;
+  margin-bottom: 10px;
+}
+
+/* Responsive Layout Changes -------------------------------------------------------*/
+@media screen and (max-width: 570px) and (min-width: 480px) {
+  /* line 928, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .ginput_complex.ginput_container.has_first_name span,
+  body .gform_wrapper .ginput_complex.ginput_container.has_middle_name span,
+  body .gform_wrapper .ginput_complex.ginput_container.has_last_name span {
+    width: 95%;
+  }
+
+  /* line 934, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_last_name span {
+    width: 46%;
+  }
+
+  /* line 938, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .ginput_complex.ginput_container.has_first_name.has_middle_name.has_last_name span {
+    width: 30%;
+  }
+}
+@media all and (max-width: 480px), all and (max-device-width: 480px) {
+  /* line 946, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper ul li.gfield,
+  body .gform_wrapper .ginput_container,
+  body .gform_wrapper div.ginput_complex,
+  body .gform_wrapper div.ginput_complex span,
+  body .gform_wrapper div.ginput_complex span.ginput_left,
+  body .gform_wrapper div.ginput_complex span.ginput_right,
+  body .gform_wrapper div.gfield_password_strength,
+  body .gform_wrapper div.gf_page_steps,
+  body .gform_wrapper div.gf_page_steps div {
+    display: block !important;
+    float: none !important;
+    clear: both !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* line 962, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper ul li.gfield[style="display: none;"] {
+    display: none !important;
+  }
+
+  /* line 966, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .ginput_container,
+  body .gform_wrapper div.ginput_complex,
+  body .gform_wrapper div.gf_page_steps,
+  body .gform_wrapper div.gf_page_steps div {
+    width: 95% !important;
+  }
+
+  /* line 973, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper div.gfield_password_strength {
+    width: 90% !important;
+  }
+
+  /* line 977, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper ul li.gfield,
+  body .gform_wrapper div.ginput_complex span,
+  body .gform_wrapper div.ginput_complex span.ginput_left,
+  body .gform_wrapper div.ginput_complex span.ginput_right {
+    width: 100% !important;
+  }
+
+  /* line 984, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .ginput_complex .ginput_right input[type=text],
+  body .gform_wrapper .ginput_complex .ginput_right input[type=url],
+  body .gform_wrapper .ginput_complex .ginput_right input[type=email],
+  body .gform_wrapper .ginput_complex .ginput_right input[type=tel],
+  body .gform_wrapper .ginput_complex .ginput_right input[type=number],
+  body .gform_wrapper .ginput_complex .ginput_right input[type=password],
+  body .gform_wrapper .ginput_complex .ginput_left input[type=text],
+  body .gform_wrapper .ginput_complex .ginput_left input[type=url],
+  body .gform_wrapper .ginput_complex .ginput_left input[type=email],
+  body .gform_wrapper .ginput_complex .ginput_left input[type=tel],
+  body .gform_wrapper .ginput_complex .ginput_left input[type=number],
+  body .gform_wrapper .ginput_complex .ginput_left input[type=password],
+  body .gform_wrapper .ginput_complex .ginput_full input[type=text],
+  body .gform_wrapper .ginput_complex .ginput_full input[type=url],
+  body .gform_wrapper .ginput_complex .ginput_full input[type=email],
+  body .gform_wrapper .ginput_complex .ginput_full input[type=tel],
+  body .gform_wrapper .ginput_complex .ginput_full input[type=number],
+  body .gform_wrapper .ginput_complex .ginput_full input[type=password],
+  body .gform_wrapper .ginput_complex .ginput_full select,
+  body .gform_wrapper input.gform_button.button,
+  body .gform_wrapper input[type=submit] {
+    width: 95% !important;
+  }
+
+  /* line 1008, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .ginput_container input.small,
+  body .gform_wrapper .ginput_container input.medium,
+  body .gform_wrapper .ginput_container input.large,
+  body .gform_wrapper .ginput_container select.small,
+  body .gform_wrapper .ginput_container select.medium,
+  body .gform_wrapper .ginput_container select.large,
+  body .gform_wrapper .ginput_container textarea.small,
+  body .gform_wrapper .ginput_container textarea.medium,
+  body .gform_wrapper .ginput_container textarea.large {
+    width: 95% !important;
+  }
+
+  /* line 1020, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper div.chosen-container.chosen-container-single[style] {
+    width: 95% !important;
+  }
+
+  /* line 1024, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper img.ui-datepicker-trigger {
+    display: none !important;
+  }
+
+  /* line 1028, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .gfield_time_hour input,
+  body .gform_wrapper .gfield_time_minute input,
+  body .gform_wrapper .gfield_date_month input,
+  body .gform_wrapper .gfield_date_day input,
+  body .gform_wrapper .gfield_date_year input {
+    width: 95% !important;
+  }
+
+  /* line 1036, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .gfield_time_hour i {
+    display: none !important;
+  }
+
+  /* line 1040, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .ginput_complex input[type=text],
+  body .gform_wrapper .ginput_complex input[type=url],
+  body .gform_wrapper .ginput_complex input[type=email],
+  body .gform_wrapper .ginput_complex input[type=tel],
+  body .gform_wrapper .ginput_complex input[type=number],
+  body .gform_wrapper .ginput_complex input[type=password] {
+    width: 95% !important;
+  }
+
+  /* line 1049, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .ginput_complex .ginput_right input[type=text],
+  body .gform_wrapper .ginput_complex .ginput_right input[type=url],
+  body .gform_wrapper .ginput_complex .ginput_right input[type=email],
+  body .gform_wrapper .ginput_complex .ginput_right input[type=tel],
+  body .gform_wrapper .ginput_complex .ginput_right input[type=number],
+  body .gform_wrapper .ginput_complex .ginput_right input[type=password] {
+    width: 95% !important;
+  }
+
+  /* line 1058, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=text],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=url],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=email],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=tel],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=number],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_left input[type=password],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=text],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=url],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=email],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=tel],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=number],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_right input[type=password],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_full input[type=text],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_full input[type=url],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_full input[type=email],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_full input[type=tel],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_full input[type=number],
+  body .gform_wrapper .gfield_error .ginput_complex .ginput_full input[type=password] {
+    width: 95% !important;
+  }
+
+  /* line 1079, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .ginput_complex span.name_suffix input[type=text] {
+    width: 97.5% !important;
+  }
+
+  /* line 1083, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .ginput_complex .ginput_right select,
+  body .gform_wrapper .ginput_complex .ginput_left select,
+  body .gform_wrapper .ginput_complex span.name_prefix.name_prefix_select select,
+  body .gform_wrapper .gfield_time_ampm select,
+  body .gform_wrapper .ginput_complex select,
+  body .gform_wrapper .ginput_complex .ginput_right select {
+    width: 97% !important;
+  }
+
+  /* line 1092, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .right_label .gfield_description,
+  body .gform_wrapper .left_label .gfield_description,
+  body .gform_wrapper .left_label .instruction,
+  body .gform_wrapper .right_label .instruction {
+    margin-left: 0 !important;
+  }
+
+  /* line 1099, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .gform_footer.right_label,
+  body .gform_wrapper .gform_footer.left_label {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* line 1105, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .gfield_description,
+  body .gform_wrapper .gsection_description,
+  body .gform_wrapper .gfield_description p,
+  body .gform_wrapper .gsection_description p {
+    width: 95% !important;
+    text-align: justify;
+  }
+
+  /* line 1113, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper label.gfield_label + div.ginput_container {
+    margin-top: 0;
+  }
+
+  /* line 1117, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .gfield .ginput_complex.has_suffix span.name_suffix {
+    width: 98% !important;
+  }
+
+  /* line 1121, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .gfield .ginput_complex.has_suffix span.name_suffix input {
+    width: 97.5%;
+  }
+
+  /* line 1125, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper ul.gform_fields.left_label li.gfield label.gfield_label,
+  body .gform_wrapper ul.gform_fields.right_label li.gfield label.gfield_label {
+    margin-left: 0 !important;
+    float: none !important;
+  }
+
+  /* line 1131, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper ul li.gfield.gfield_html img {
+    max-width: 95%  !important;
+  }
+
+  /* line 1135, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .gform_footer a.gform_save_link {
+    display: block;
+    margin: 1em 0 1em 0;
+    text-align: center;
+  }
+
+  /* line 1141, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper ul li.gfield.gfield_html h1,
+  body .gform_wrapper ul li.gfield.gfield_html h2,
+  body .gform_wrapper ul li.gfield.gfield_html h3,
+  body .gform_wrapper ul li.gfield.gfield_html h4,
+  body .gform_wrapper ul li.gfield.gfield_html h5,
+  body .gform_wrapper ul li.gfield.gfield_html h6 {
+    white-space: normal !important;
+  }
+
+  /* line 1150, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .top_label .gfield_error {
+    width: 90% !important;
+  }
+
+  /* line 1154, scss/gravityforms/_formsmain.scss */
+  body .form_saved_message {
+    font-size: 0.813em;
+  }
+
+  /* line 1158, scss/gravityforms/_formsmain.scss */
+  body .form_saved_message_sent {
+    font-size: 0.813em;
+  }
+
+  /* line 1162, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper div.validation_error {
+    font-size: 1em;
+  }
+
+  /* line 1166, scss/gravityforms/_formsmain.scss */
+  body .form_saved_message .form_saved_message_emailform input,
+  body .form_saved_message .form_saved_message_emailform input[type=submit] {
+    width: 95% !important;
+  }
+}
+@media all and (max-device-width: 480px) {
+  /* line 1175, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper {
+    font-size: inherit;
+  }
+
+  /* line 1179, scss/gravityforms/_formsmain.scss */
+  body .gform_wrapper .gfield_checkbox li input[type=checkbox],
+  body .gform_wrapper .gfield_radio li input[type=radio],
+  body .gform_wrapper .gfield_checkbox li input {
+    margin-top: 2.50em !important;
+    width: auto !important;
+    height: auto !important;
+  }
+}
+/*
+----------------------------------------------------------------
+
+readyclass.css
+Gravity Forms Ready Class Pre-Set Styles
+http://www.gravityforms.com
+updated: January 28, 2015 1:27 PM
+
+Gravity Forms is a Rocketgenius project
+copyright 2008-2015 Rocketgenius Inc.
+http: //www.rocketgenius.com
+this may not be redistributed without the
+express written permission of the author.
+
+NOTE: DO NOT EDIT THIS FILE! MAKE ANY MODIFICATIONS IN YOUR
+THEME STYLESHEET. THIS FILE IS REPLACED DURING AUTO-UPDATES
+AND ANY CHANGES MADE HERE WILL BE OVERWRITTEN.
+
+If you need to make extensive customizations,
+copy the contents of this file to your theme
+style sheet for editing. Then, go to the form
+settings page & set the 'output CSS' option
+to no.
+
+----------------------------------------------------------------
+*/
+@media (min-device-width: 481px) and (min-width: 481px) {
+  /* inline fields ready class ------------------------------------------------------*/
+  /* line 34, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_inline {
+    vertical-align: top;
+    width: auto !important;
+    margin-right: 0.875em;
+    float: none !important;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+  }
+
+  /* line 44, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=text].large,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=url].large,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=email].large,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=tel].large,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=number].large,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=password].large {
+    width: 25.4em !important;
+  }
+
+  /* line 53, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=text].medium,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=url].medium,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=email].medium,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=tel].medium,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=number].medium,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=password].medium {
+    width: 18.7em !important;
+  }
+
+  /* line 62, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=text].datepicker.medium {
+    width: 6em !important;
+  }
+
+  /* line 66, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=text].small,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=url].small,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=email].small,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=tel].small,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=number].small,
+  .gform_wrapper .top_label li.gfield.gf_inline input[type=password].small {
+    width: 5em !important;
+  }
+
+  /* line 75, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_inline select {
+    width: auto !important;
+  }
+
+  /* line 79, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_inline textarea {
+    width: 95% !important;
+  }
+
+  /* line 83, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_hour input[type=text],
+  .gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_minute input[type=text] {
+    width: 70% !important;
+  }
+
+  /* line 88, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_hour,
+  .gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_minute,
+  .gform_wrapper .top_label li.gfield.gf_inline div.gfield_date_month,
+  .gform_wrapper .top_label li.gfield.gf_inline div.gfield_date_day,
+  .gform_wrapper .top_label li.gfield.gf_inline div.gfield_date_year {
+    width: 3.125em;
+  }
+
+  /* line 96, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_inline div.gfield_time_ampm {
+    width: auto;
+  }
+
+  /* line 100, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gf_inline div.ginput_container {
+    white-space: nowrap !important;
+  }
+
+  /* 2 column ready class ------------------------------------------------------*/
+  /* line 106, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_half {
+    margin: 0 0 0.50em 0;
+    width: 49%;
+  }
+
+  /* line 111, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_right_half {
+    margin: 0 0 0.50em 0;
+    width: 49%;
+  }
+
+  /* line 116, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gfield_error.gf_left_half,
+  .gform_wrapper .top_label li.gfield.gfield_error.gf_right_half {
+    width: 47.20%;
+  }
+
+  /* line 121, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gfield_error.gf_right_half {
+    margin-right: 1%;
+  }
+
+  /* line 125, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_half {
+    float: left;
+    clear: left !important;
+  }
+
+  /* line 130, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_right_half {
+    float: right;
+    clear: right !important;
+  }
+
+  /* line 135, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_half input.medium,
+  .gform_wrapper .top_label li.gfield.gf_left_half input.large,
+  .gform_wrapper .top_label li.gfield.gf_left_half select.medium,
+  .gform_wrapper .top_label li.gfield.gf_left_half select.large,
+  .gform_wrapper .top_label li.gfield.gf_right_half input.medium,
+  .gform_wrapper .top_label li.gfield.gf_right_half input.large,
+  .gform_wrapper .top_label li.gfield.gf_right_half select.medium,
+  .gform_wrapper .top_label li.gfield.gf_right_half select.large {
+    width: 97%;
+  }
+
+  /* line 146, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_half textarea,
+  .gform_wrapper .top_label li.gfield.gf_right_half textarea {
+    width: 98%;
+  }
+
+  /* line 151, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_half input.small,
+  .gform_wrapper .top_label li.gfield.gf_right_half input.small {
+    width: 35%;
+  }
+
+  /* line 156, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_half + li.gsection,
+  .gform_wrapper .top_label li.gfield.gf_right_half + li.gsection {
+    padding: 1em 0 0.50em 0;
+  }
+
+  /* line 161, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_half + li.gfield.gsection.gf_left_half,
+  .gform_wrapper .top_label li.gfield.gf_right_half + li.gfield.gsection.gf_left_half,
+  .gform_wrapper .top_label li.gfield.gf_left_half + li.gfield.gsection.gf_right_half,
+  .gform_wrapper .top_label li.gfield.gf_right_half + li.gfield.gsection.gf_right_half,
+  .gform_wrapper .top_label li.gfield.gsection.gf_left_half + li.gfield.gsection.gf_left_half,
+  .gform_wrapper .top_label li.gfield.gsection.gf_right_half + li.gfield.gsection.gf_left_half,
+  .gform_wrapper .top_label li.gfield.gsection.gf_right_half + li.gfield.gsection.gf_right_half {
+    padding: 1em 0 0.50em 0;
+  }
+
+  /* line 171, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gsection.gf_left_half + li.gfield.gsection.gf_right_half {
+    padding: 0 0 0.50em 0;
+  }
+
+  /* line 175, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gsection.gf_left_half + li.gfield.gsection.gf_right_half + li.gfield.gsection.gf_left_half + li.gfield.gsection.gf_right_half {
+    padding: 1em 0 0.50em 0;
+  }
+
+  /* line 179, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_half + li.gfield,
+  .gform_wrapper .top_label li.gfield.gf_right_half + li.gfield,
+  .gform_wrapper .top_label li.gfield.gf_left_half + .gform_footer,
+  .gform_wrapper .top_label li.gfield.gf_right_half + .gform_footer {
+    clear: both;
+  }
+
+  /* 3 column ready class ------------------------------------------------------*/
+  /* line 188, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_third,
+  .gform_wrapper .top_label li.gfield.gf_middle_third,
+  .gform_wrapper .top_label li.gfield.gf_right_third {
+    margin: 0 0 0.50em 0;
+    width: 32%;
+  }
+
+  /* line 195, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gfield_error.gf_left_third,
+  .gform_wrapper .top_label li.gfield.gfield_error.gf_middle_third,
+  .gform_wrapper .top_label li.gfield.gfield_error.gf_right_third {
+    width: 29%;
+  }
+
+  /* line 201, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gfield_error.gf_right_third {
+    margin-right: 1%;
+  }
+
+  /* line 205, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_third {
+    float: left;
+    clear: left !important;
+  }
+
+  /* line 210, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_middle_third {
+    float: left;
+    margin-left: 2% !important;
+    clear: none !important;
+  }
+
+  /* line 216, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gfield_error.gf_middle_third {
+    margin-left: 3%;
+  }
+
+  /* line 220, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_right_third {
+    float: right;
+    clear: right !important;
+  }
+
+  /* line 225, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_third input.medium,
+  .gform_wrapper .top_label li.gfield.gf_left_third input.large,
+  .gform_wrapper .top_label li.gfield.gf_left_third select.medium,
+  .gform_wrapper .top_label li.gfield.gf_left_third select.large,
+  .gform_wrapper .top_label li.gfield.gf_middle_third input.medium,
+  .gform_wrapper .top_label li.gfield.gf_middle_third input.large,
+  .gform_wrapper .top_label li.gfield.gf_middle_third select.medium,
+  .gform_wrapper .top_label li.gfield.gf_middle_third select.large,
+  .gform_wrapper .top_label li.gfield.gf_right_third input.medium,
+  .gform_wrapper .top_label li.gfield.gf_right_third input.large,
+  .gform_wrapper .top_label li.gfield.gf_right_third select.medium,
+  .gform_wrapper .top_label li.gfield.gf_right_third select.large {
+    width: 95%;
+  }
+
+  /* line 240, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_third + li.gsection,
+  .gform_wrapper .top_label li.gfield.gf_right_third + li.gsection {
+    padding: 1em 0 0.50em 0;
+  }
+
+  /* line 245, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper .top_label li.gfield.gf_left_third + li.gfield,
+  .gform_wrapper .top_label li.gfield.gf_middle_third + li.gfield,
+  .gform_wrapper .top_label li.gfield.gf_right_third + li.gfield,
+  .gform_wrapper .top_label li.gfield.gf_left_third + .gform_footer,
+  .gform_wrapper .top_label li.gfield.gf_middle_third + .gform_footer,
+  .gform_wrapper .top_label li.gfield.gf_right_third + .gform_footer {
+    clear: both;
+  }
+
+  /* radio/checkbox sub-column ready classes ------------------------------------------------------*/
+  /* line 256, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_2col ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_list_2col ul.gfield_radio li,
+  .gform_wrapper li.gfield.gf_2col ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_2col ul.gfield_radio li {
+    width: 50%;
+    float: left;
+    margin: 0 0 0.50em 0;
+    min-height: 1.8em;
+  }
+
+  /* line 266, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_3col ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_list_3col ul.gfield_radio li,
+  .gform_wrapper li.gfield.gf_3col ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_3col ul.gfield_radio li {
+    width: 33%;
+    float: left;
+    margin: 0 0 0.50em 0;
+    min-height: 1.8em;
+  }
+
+  /* line 276, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_4col ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_list_4col ul.gfield_radio li {
+    width: 25%;
+    float: left;
+    margin: 0 0 0.5em 0;
+    min-height: 1.8em;
+  }
+
+  /* line 284, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_5col ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_list_5col ul.gfield_radio li {
+    width: 20%;
+    float: left;
+    margin: 0 0 0.50em 0;
+    min-height: 1.8em;
+  }
+
+  /* line 292, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_2col ul.gfield_checkbox,
+  .gform_wrapper li.gfield.gf_list_2col ul.gfield_radio,
+  .gform_wrapper li.gfield.gf_list_3col ul.gfield_checkbox,
+  .gform_wrapper li.gfield.gf_list_3col ul.gfield_radio,
+  .gform_wrapper li.gfield.gf_list_4col ul.gfield_checkbox,
+  .gform_wrapper li.gfield.gf_list_4col ul.gfield_radio,
+  .gform_wrapper li.gfield.gf_list_5col ul.gfield_checkbox,
+  .gform_wrapper li.gfield.gf_list_5col ul.gfield_radio,
+  .gform_wrapper li.gfield.gf_2col ul.gfield_checkbox,
+  .gform_wrapper li.gfield.gf_2col ul.gfield_radio,
+  .gform_wrapper li.gfield.gf_3col ul.gfield_checkbox,
+  .gform_wrapper li.gfield.gf_3col ul.gfield_radio {
+    overflow: hidden;
+  }
+
+  /* line 307, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_2col label.gfield_label,
+  .gform_wrapper li.gfield.gf_list_3col label.gfield_label,
+  .gform_wrapper li.gfield.gf_list_4col label.gfield_label,
+  .gform_wrapper li.gfield.gf_list_5col label.gfield_label,
+  .gform_wrapper li.gfield.gf_list_inline label.gfield_label {
+    margin: 0.625em 0 0.625em 0;
+  }
+
+  /* optional height settings for the radio/checkbox columns */
+  /* line 317, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_height_25 ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_list_height_25 ul.gfield_radio li {
+    height: 25px;
+  }
+
+  /* line 322, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_height_50 ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_list_height_50 ul.gfield_radio li {
+    height: 50px;
+  }
+
+  /* line 327, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_height_75 ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_list_height_75 ul.gfield_radio li {
+    height: 75px;
+  }
+
+  /* line 332, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_height_100 ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_list_height_100 ul.gfield_radio li {
+    height: 100px;
+  }
+
+  /* line 337, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_height_125 ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_list_height_125 ul.gfield_radio li {
+    height: 125px;
+  }
+
+  /* line 341, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gfield.gf_list_height_150 ul.gfield_checkbox li,
+  .gform_wrapper li.gfield.gf_list_height_150 ul.gfield_radio li {
+    height: 150px;
+  }
+
+  /* radio/checkbox inline list ready classes ------------------------------------------------------*/
+  /* line 348, scss/gravityforms/_readyclass.scss */
+  .gform_wrapper li.gf_list_inline ul.gfield_checkbox li,
+  .gform_wrapper li.gf_list_inline ul.gfield_radio li {
+    width: auto !important;
+    float: none !important;
+    margin: 0 0.625em 0.625em 0;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+  }
+
+  /* line 358, scss/gravityforms/_readyclass.scss */
+  body.gform_wrapper .top_label li.gsection.gf_scroll_text {
+    width: 92.5% !important;
+  }
+}
+/* hide am/pm field ready class ------------------------------------------------------*/
+/* line 367, scss/gravityforms/_readyclass.scss */
+.gform_wrapper li.gf_hide_ampm div.gfield_time_ampm {
+  display: none !important;
+}
+
+/* scrolling text section break ready class - only works with top label option ------------------------------------------------------*/
+/* line 373, scss/gravityforms/_readyclass.scss */
+.gform_wrapper .top_label li.gsection.gf_scroll_text {
+  height: 11.250em;
+  width: 97.5% !important;
+  overflow: auto;
+  border: 1px solid #CCC;
+  border-bottom: 1px solid #CCC !important;
+}
+
+/* line 381, scss/gravityforms/_readyclass.scss */
+.gform_wrapper .top_label li.gsection.gf_scroll_text h2.gsection_title {
+  margin: 0.625em 0.625em 0 0.50em !important;
+}
+
+/* line 385, scss/gravityforms/_readyclass.scss */
+.gform_wrapper.gf_browser_gecko .top_label li.gsection.gf_scroll_text h2.gsection_title,
+.gform_wrapper.gf_browser_chrome .top_label li.gsection.gf_scroll_text h2.gsection_title {
+  margin: 0 0.625em 0 0.50em !important;
+}
+
+/* line 390, scss/gravityforms/_readyclass.scss */
+.gform_wrapper .top_label li.gsection.gf_scroll_text .gsection_description {
+  margin: 0.625em;
+  font-size: 0.8em;
+}
+
+/* line 395, scss/gravityforms/_readyclass.scss */
+.gform_wrapper div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ul li,
+.gform_wrapper form div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ul li {
+  list-style-type: disc !important;
+  margin: 0 0 0.5em;
+  overflow: visible;
+  padding-left: 0;
+}
+
+/* line 403, scss/gravityforms/_readyclass.scss */
+.gform_wrapper div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ul,
+.gform_wrapper form div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ul {
+  list-style-type: disc !important;
+  margin: 1em 0 1em 1.5em;
+  padding-left: 0;
+}
+
+/* line 410, scss/gravityforms/_readyclass.scss */
+.gform_wrapper div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ol li,
+.gform_wrapper form div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ol li {
+  list-style-type: decimal !important;
+  overflow: visible;
+  margin: 0 0 0.5em;
+  padding-left: 0;
+}
+
+/* line 418, scss/gravityforms/_readyclass.scss */
+.gform_wrapper div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ol,
+.gform_wrapper form div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ol {
+  list-style-type: decimal !important;
+  margin: 1em 0 1.5em 2.0em;
+  padding-left: 0;
+}
+
+/* line 425, scss/gravityforms/_readyclass.scss */
+.gform_wrapper div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ol li ul,
+.gform_wrapper form div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ol li ul li {
+  list-style-type: disc !important;
+  padding-left: 0;
+}
+
+/* line 431, scss/gravityforms/_readyclass.scss */
+.gform_wrapper div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ol li ul {
+  margin: 1em 0 1em 1.5em;
+}
+
+/* line 435, scss/gravityforms/_readyclass.scss */
+.gform_wrapper form div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description ol li ul li {
+  margin: 0 0 0.5em;
+}
+
+/* line 439, scss/gravityforms/_readyclass.scss */
+.gform_wrapper div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description dl {
+  margin: 0 0 1.5em 0;
+  padding-left: 0;
+}
+
+/* line 444, scss/gravityforms/_readyclass.scss */
+.gform_wrapper div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description dl dt {
+  font-weight: bold;
+}
+
+/* line 448, scss/gravityforms/_readyclass.scss */
+.gform_wrapper div.gform_ul.gform_fields .top_label li.gfield.gsection.gf_scroll_text div.gsection_description dl dd {
+  margin: 0 0 1em 1.5em;
+}
+
+/* HTML field alert style ready classes  ------------------------------------------------------*/
+/* line 454, scss/gravityforms/_readyclass.scss */
+.gform_wrapper li.gfield.gfield_html.gf_alert_green,
+.gform_wrapper li.gfield.gfield_html.gf_alert_red,
+.gform_wrapper li.gfield.gfield_html.gf_alert_yellow,
+.gform_wrapper li.gfield.gfield_html.gf_alert_gray,
+.gform_wrapper li.gfield.gfield_html.gf_alert_blue {
+  border-radius: 3px;
+  margin: 1.250em 0 !important;
+  padding: 1.250em !important;
+}
+
+/* line 466, scss/gravityforms/_readyclass.scss */
+.gform_wrapper li.gfield.gfield_html.gf_alert_green {
+  border: 1px solid #97B48A;
+  background-color: #CBECA0;
+  text-shadow: #DFB 1px 1px;
+  color: #030;
+}
+
+/* line 473, scss/gravityforms/_readyclass.scss */
+.gform_wrapper li.gfield.gfield_html.gf_alert_red {
+  border: 1px solid #CFADB3;
+  background-color: #FAF2F5;
+  text-shadow: #FFF 1px 1px;
+  color: #832525;
+}
+
+/* line 480, scss/gravityforms/_readyclass.scss */
+.gform_wrapper li.gfield.gfield_html.gf_alert_yellow {
+  border: 1px solid #E6DB55;
+  background-color: #FFFBCC;
+  text-shadow: #FCFAEA 1px 1px;
+  color: #222;
+}
+
+/* line 487, scss/gravityforms/_readyclass.scss */
+.gform_wrapper li.gfield.gfield_html.gf_alert_gray {
+  border: 1px solid #CCC;
+  background-color: #EEE;
+  text-shadow: #FFF 1px 1px;
+  color: #424242;
+}
+
+/* line 494, scss/gravityforms/_readyclass.scss */
+.gform_wrapper li.gfield.gfield_html.gf_alert_blue {
+  border: 1px solid #a7c2e7;
+  background-color: #D1E4F3;
+  text-shadow: #E0F1FF 1px 1px;
+  color: #314475;
+}
+
+/* confirmation styles Ready Classes ------------------------------------------------------*/
+/* line 504, scss/gravityforms/_readyclass.scss */
+div.gform_confirmation_wrapper.gf_confirmation_simple_yellow {
+  margin: 1.875em 0;
+  max-width: 99%;
+  border-top: 1px solid #E6DB55;
+  border-bottom: 1px solid #E6DB55;
+  padding: 2em;
+  background-color: #FFFBCC;
+  color: #424242;
+  font-size: 1.6em;
+}
+
+/* line 515, scss/gravityforms/_readyclass.scss */
+div.gform_confirmation_wrapper.gf_confirmation_simple_gray {
+  margin: 1.875em 0;
+  max-width: 99%;
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  padding: 2em;
+  background-color: #EAEAEA;
+  color: #424242;
+  font-size: 1.6em;
+}
+
+/* line 526, scss/gravityforms/_readyclass.scss */
+div.gform_confirmation_wrapper.gf_confirmation_yellow_gradient {
+  position: relative;
+  background-color: #FFFBD2;
+  margin: 1.875em 0;
+  border: 1px solid #E6DB55;
+  box-shadow: 0px 0px 5px rgba(221, 215, 131, 0.75);
+}
+
+/* line 536, scss/gravityforms/_readyclass.scss */
+div.gform_confirmation_wrapper.gf_confirmation_yellow_gradient div.gforms_confirmation_message {
+  margin: 0;
+  padding: 2.50em;
+  max-width: 99%;
+  font-size: 1.8em;
+  border-top: 2px solid #FFF;
+  border-bottom: 1px solid #E6DB55;
+  background-color: #FFFBCC;
+  color: #424242;
+  background: #fffce5;
+  background: linear-gradient(to bottom, #fffce5 0%, #fff9bf 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffce5', endColorstr='#fff9bf',GradientType=0 );
+}
+
+/* line 555, scss/gravityforms/_readyclass.scss */
+div.gform_confirmation_wrapper.gf_confirmation_green_gradient {
+  position: relative;
+  background-color: #f1fcdf;
+  margin: 1.875em 0;
+  border: 1px solid #a7c37c;
+  box-shadow: 0px 0px 5px rgba(86, 122, 86, 0.4);
+}
+
+/* line 565, scss/gravityforms/_readyclass.scss */
+div.gform_confirmation_wrapper.gf_confirmation_green_gradient div.gforms_confirmation_message {
+  margin: 0;
+  padding: 2.50em;
+  max-width: 99%;
+  font-size: 1.8em;
+  border-top: 2px solid #effade;
+  border-bottom: 1px solid #a7c37c;
+  background-color: #FFFBCC;
+  text-shadow: #DFB 1px 1px;
+  color: #030;
+  background: #dbf2b7;
+  background: linear-gradient(to bottom, #dbf2b7 0%, #b4d088 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbf2b7', endColorstr='#b4d088',GradientType=0 );
+}
+
+/* line 585, scss/gravityforms/_readyclass.scss */
+div.gform_confirmation_wrapper.gf_confirmation_yellow_gradient:before,
+div.gform_confirmation_wrapper.gf_confirmation_yellow_gradient:after,
+div.gform_confirmation_wrapper.gf_confirmation_green_gradient:before,
+div.gform_confirmation_wrapper.gf_confirmation_green_gradient:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 40%;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.2);
+  -webkit-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+
+/* line 608, scss/gravityforms/_readyclass.scss */
+div.gform_confirmation_wrapper.gf_confirmation_yellow_gradient:after,
+div.gform_confirmation_wrapper.gf_confirmation_green_gradient:after {
+  -webkit-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+/*
+ * Custom Gravity Form styles
+ *
+ * @package   Sass Stylesheet
+ * @version   1.0
+ *
+ */
 /*
  * Tables
  *
@@ -2028,7 +3745,7 @@ li.gfield + li.gfield.gfield_creditcard_warning {
  * @version   1.0
  *
  */
-/* line 13, scss/_tables.scss */
+/* line 10, scss/_tables.scss */
 table {
   max-width: 100%;
   background-color: #fafafa;
@@ -2140,7 +3857,7 @@ table {
  *
  */
 /* line 9, scss/_buttons.scss */
-.button, .btn.white, input.white#submit, .white.gform_button, .button.white, .btn, input#submit, .gform_button, input.submit {
+.button, .btn, input.submit {
   display: inline-block;
   text-transform: uppercase;
   padding: .375em 1em;
@@ -2152,135 +3869,12 @@ table {
   font-size: 14px;
   font-size: .875rem;
   text-align: center;
-  transition: all 0.2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 /* line 24, scss/_buttons.scss */
-.button:hover, .btn.white:hover, input.white#submit:hover, .white.gform_button:hover, .btn:hover, input#submit:hover, .gform_button:hover, input.submit:hover {
+.button:hover, .btn:hover, input.submit:hover {
   background-color: #333333;
   color: #fafafa;
-}
-
-/* line 32, scss/_buttons.scss */
-.btn.white, input.white#submit, .white.gform_button, .button.white, .white.btn, input.white#submit, .white.gform_button {
-  background-color: transparent;
-  border-color: #fafafa;
-  color: #fafafa;
-}
-/* line 38, scss/_buttons.scss */
-.btn.white:hover, input.white#submit:hover, .white.gform_button:hover, .button.white:hover, .white.btn:hover, input.white#submit:hover, .white.gform_button:hover {
-  background-color: #fafafa;
-  color: #333333;
-}
-
-/* line 46, scss/_buttons.scss */
-input#submit, .gform_button {
-  background-color: #f39c12;
-  color: #fafafa;
-  border-color: #e08e0b;
-  margin: 1em 0;
-  cursor: pointer;
-}
-/* line 54, scss/_buttons.scss */
-input#submit:hover, .gform_button:hover {
-  background-color: #d6880b;
-  border-color: #b06f09;
-}
-
-/*
- * Tooltips
- *
- * @package   Sass Stylesheet
- * @version   1.0
- *
- */
-/* line 10, scss/_tooltip.scss */
-.tooltip {
-  position: absolute;
-  z-index: 1020;
-  display: block;
-  visibility: visible;
-  padding: 5px;
-  font-size: 11px;
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
-/* line 20, scss/_tooltip.scss */
-.tooltip.in {
-  opacity: .8;
-  filter: alpha(opacity=100);
-}
-/* line 25, scss/_tooltip.scss */
-.tooltip.top {
-  margin-top: -2px;
-}
-/* line 28, scss/_tooltip.scss */
-.tooltip.top.tooltip-arrow {
-  bottom: 0;
-  left: 50%;
-  margin-left: -5px;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #292929;
-}
-/* line 37, scss/_tooltip.scss */
-.tooltip.right {
-  margin-left: 2px;
-}
-/* line 40, scss/_tooltip.scss */
-.tooltip.right .tooltip-arrow {
-  top: 50%;
-  left: 0;
-  margin-top: -5px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-right: 5px solid #292929;
-}
-/* line 49, scss/_tooltip.scss */
-.tooltip.bottom {
-  margin-top: 2px;
-}
-/* line 52, scss/_tooltip.scss */
-.tooltip.bottom .tooltip-arrow {
-  top: 0;
-  left: 50%;
-  margin-left: -5px;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid #292929;
-}
-/* line 61, scss/_tooltip.scss */
-.tooltip.left {
-  margin-left: -2px;
-}
-/* line 64, scss/_tooltip.scss */
-.tooltip.left .tooltip-arrow {
-  top: 50%;
-  right: 0;
-  margin-top: -5px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 5px solid #292929;
-}
-
-/* line 77, scss/_tooltip.scss */
-.tooltip.left,
-.tooltip.bottom,
-.tooltip.right,
-.tooltip-inner {
-  max-width: 250px;
-  padding: 3px 8px;
-  color: #fafafa;
-  text-align: center;
-  text-decoration: none;
-  background-color: #292929;
-  border-radius: 4px;
-}
-
-/* line 89, scss/_tooltip.scss */
-.tooltip-arrow {
-  position: absolute;
-  width: 0;
-  height: 0;
 }
 
 /*

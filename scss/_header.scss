@@ -8,11 +8,11 @@
 
 // Header
 .site-header {
-    background: rgba(black, .6);
+    background: rgba(black, 0.6);
     position: fixed;
     width: 100%;
     padding: 1.25em 1em;
-    @include transition(all 0.2s ease-in-out);
+    transition: all 0.2s ease-in-out;
     min-height: 90px;
     z-index: 1000;
 
@@ -21,8 +21,8 @@
 
         @include mq(bar1) {
             top: 46px;
-            
         }
+
 
         @include mq(bar2) {
             // position: relative;
@@ -41,43 +41,32 @@
     }
 }
 
-// Branding 
+// Branding
 
 .branding {
-    position: absolute;
-    // width: 100%;
+       
 }
 
 .site-title {
-    padding: .5em;
-    margin-top: .25em;
-    @include transition(all 0.2s ease-in-out);
-    @include hide-text;
-    display: block;
-    background: url(img/build/logo.svg) center center no-repeat;
-    background-size: 280px 38px;
-    width: 280px;
-    height: 38px;
-    position: relative;
-    margin: 0;
-    z-index: 1000;
+    a {
+        padding: .5em;
+        margin-top: .25em;
+        transition: all 0.2s ease-in-out;
+        @include hide-text;
+        display: block;
+        background: url(img/build/logo.svg) center center no-repeat;
+        background-size: 280px 38px;
+        width: 280px;
+        height: 38px;
+        position: relative;
+        margin: 0;
+        z-index: 1000;
 
-    .scroll & {
-        background-size: 300px 41px;
-
-        width: 300px;
-        height: 41px;
-        top: 7px;
-
+        .scroll & {
+            background-size: 300px 41px;
+            width: 300px;
+            height: 41px;
+            top: 7px;
+        }
     }
-    @include mq(1040) {
-        width: 381px;
-        height: 52px;
-        background-size: 381px 52px;
-      
-        
-    }
-
-    
 }
-

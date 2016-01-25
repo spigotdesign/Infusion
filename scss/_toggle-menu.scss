@@ -68,7 +68,7 @@ $transition:          .2s; // increase this to see the transformations in slow-m
       position: absolute;
       left:0;
       content: '';
-      @include transform-origin ($button-size/14 center);
+      transform-origin: $button-size/14 center;
     }
   &:before { top: $button-size/4; }
   &:after { top: -$button-size/4; }
@@ -89,13 +89,11 @@ $transition:          .2s; // increase this to see the transformations in slow-m
 
     }
     &:before{
-      -webkit-transform: rotate3d(0,0,1,45deg);
-              transform: rotate3d(0,0,1,45deg);
+      transform: rotate3d(0,0,1,45deg);
 
     }
     &:after{
-      -webkit-transform: rotate3d(0,0,1,-45deg);
-              transform: rotate3d(0,0,1,-45deg);
+      transform: rotate3d(0,0,1,-45deg);
     }
   }
 

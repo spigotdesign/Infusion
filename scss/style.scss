@@ -10,8 +10,6 @@
  License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-// Bourbon
-@import "bourbon/bourbon";
 
 // Reset, Variables, Mixins, Etc
 @import "normalize";
@@ -43,7 +41,6 @@
 @import "pagination";
 @import "loop-nav";
 @import "buttons";
-@import "tooltip";
 
 // Utilities
 @import "utilities";

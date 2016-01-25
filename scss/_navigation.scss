@@ -6,7 +6,7 @@
  *
  */
 
-#menu-primary {
+.menu-primary {
     position: absolute;
     opacity: 0;
     visibility: hidden;
@@ -16,7 +16,7 @@
     margin-bottom: 2em;
     background: $grayDark;
     font-family: $primaryNavFontFamily;
-    @include transition(all 0.3s ease-in-out);
+    transition: all 0.3s ease-in-out;
 
     // MQ
     @include mq($mobileNavWidth) {
@@ -175,7 +175,7 @@ ul.toggle-btns {
     right: 2.25em;
     z-index: 15000;
     margin: 0;
-    @include transition(all .2s ease-in-out);
+    transition: all .2s ease-in-out;
 
     @include mq($mobileNavWidth) {
         display: none;

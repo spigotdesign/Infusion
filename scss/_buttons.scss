@@ -19,7 +19,7 @@
   font-size: 14px;
   font-size: .875rem;
   text-align: center;
-  @include transition(all .2s ease-in-out);
+  transition: all .2s ease-in-out;
 
   &:hover {
     background-color: $grayDark;
@@ -27,34 +27,5 @@
 
   }
 
-}
-
-.btn.white, .button.white {
-  @extend .button;
-  background-color: transparent;
-  border-color: $white;
-  color: $white;
-
-  &:hover {
-    background-color: $white;
-    color: $grayDark;
-  }
-}
-
-// Comment Form Submit
-
-input#submit, .gform_button {
-  @extend .btn;
-  background-color: $orange;
-  color: $white;
-  border-color: darken($orange, 5%);
-  margin: 1em 0;
-  cursor: pointer;
-
-  &:hover {
-    background-color: darken($orange, 7%);
-    border-color: darken($orange, 15%)
-  }
-  
 }
 
