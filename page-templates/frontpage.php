@@ -4,7 +4,7 @@
  *
  * This is the template used for displaying the home page. 
  *
- * @package Infusion
+ * @package infusion
  * @subpackage Template
  */
 
@@ -16,22 +16,15 @@ get_header(); ?>
 
 	<?php the_post(); // Loads the post data. ?>
 
-	<main <?php hybrid_attr( 'content' ); ?>>
+	<div class="page-contents">
 
-		<header class="entry-header">
-			<h1 <?php hybrid_attr( 'entry-title' ); ?>><?php single_post_title(); ?></h1>
-		</header>
+		<section class="marquee" style="background-image(<?php the_field('background_image'); ?>)">
 
-		<div <?php hybrid_attr( 'entry-content' ); ?>>
-			<?php the_content(); ?>
-			<?php wp_link_pages(); ?>
-		</div>
 
-		<footer class="entry-footer">
-			<?php edit_post_link(); ?>
-		</footer>
+		</section>
 
-	</main>
+
+	</div>
 
 <?php endwhile; // End found posts loop. ?>
 
