@@ -49,13 +49,6 @@ function infusion_theme_setup() {
 
 	// WordPress theme support
 	add_theme_support( 'automatic-feed-links' );
-	add_theme_support( 'post-formats', array( 'aside', 'audio', 'image', 'gallery', 'link', 'quote', 'status', 'video' ) );
-
-	// Register custom image sizes. 
-	// add_action( 'init', 'infusion_register_image_sizes', 5 );
-
-	// Editor styles.
-	add_editor_style( infusion_get_editor_styles() );
 
 	// Register custom menus.
 	add_action( 'init', 'infusion_register_menus', 5 );
@@ -66,11 +59,9 @@ function infusion_theme_setup() {
 	// Add custom styles and scripts.
 	add_action( 'wp_enqueue_scripts', 'infusion_enqueue_scripts' );
 
-	// Register admin styles and scripts.
-	add_action( 'admin_enqueue_scripts', 'infusion_admin_register_styles', 0 );
-
-	// Adds custom settings for the visual editor.
-	add_filter( 'tiny_mce_before_init', 'infusion_tiny_mce_before_init' );
+	
+	// Register custom image sizes. 
+	// add_action( 'init', 'infusion_register_image_sizes', 5 );
 
 	// Modifies the theme layout.
 	// add_filter( 'theme_mod_theme_layout', 'infusion_mod_theme_layout', 15 );
@@ -101,7 +92,7 @@ function infusion_register_layouts() {
             'label'            => _x( '1 Column', 'theme layout', 'infusion' ),
             'is_global_layout' => true,
             'is_post_layout'   => true,
-            'image'            => '%s/img/layouts/1c.png', 
+            'image'            => '%s/img/layouts/1c.svg', 
         )
     );
 
@@ -111,7 +102,7 @@ function infusion_register_layouts() {
             'label'            => _x( '2 Columns: Sidebar / Content', 'theme layout', 'infusion' ),
             'is_global_layout' => true,
             'is_post_layout'   => true,
-            'image'            => '%s/img/layouts/2c-l.png', 
+            'image'            => '%s/img/layouts/2c-l.svg', 
         )
     );
 
@@ -160,6 +151,9 @@ function infusion_register_sidebars() {
 
 function infusion_enqueue_scripts() {
 
+	// Header
+	wp_enqueue_script( 'modernizr', trailingslashit( get_template_directory_uri() ) . 'js/build/modernizr-custom.min.js', array( 'jquery' ), null, false );
+
 	// Footer
 	wp_enqueue_script( 'plugins', trailingslashit( get_template_directory_uri() ) . 'js/build/plugins.min.js', array( 'jquery' ), null, true );
 	wp_enqueue_script( 'scripts', trailingslashit( get_template_directory_uri() ) . 'js/build/scripts.min.js', array( 'jquery' ), null, true );
@@ -184,57 +178,6 @@ function infusion_register_image_sizes() {
 
 	/* Adds the 'infusion-full' image size. */
 	// add_image_size( 'infusion-full', 1025, 500, false );
-}
-
-/**
- * Registers stylesheets for use in the admin.
- *
- */
-function infusion_admin_register_styles() {
-
-	wp_register_style( 'custom_wp_admin_css', trailingslashit( get_template_directory_uri() ) . '/css/admin-style.css', false, '1.0.0' );
-
-}
-
-/**
- * Callback function for adding editor styles.  Use along with the add_editor_style() function.
- *
- */
-function infusion_get_editor_styles() {
-
-	/* Set up an array for the styles. */
-	$editor_styles = array();
-
-	/* Add the theme's editor styles. */
-	$editor_styles[] = trailingslashit( get_template_directory_uri() ) . 'css/editor-style.css';
-
-	/* If a child theme, add its editor styles. Note: WP checks whether the file exists before using it. */
-	if ( is_child_theme() && file_exists( trailingslashit( get_stylesheet_directory() ) . 'css/editor-style.css' ) )
-		$editor_styles[] = trailingslashit( get_stylesheet_directory_uri() ) . 'css/editor-style.css';
-
-	/* Add the locale stylesheet. */
-	$editor_styles[] = get_locale_stylesheet_uri();
-
-	/* Uses Ajax to display custom theme styles added via the Theme Mods API. */
-	$editor_styles[] = add_query_arg( 'action', 'infusion_editor_styles', admin_url( 'admin-ajax.php' ) );
-
-	/* Return the styles. */
-	return $editor_styles;
-}
-
-/**
- * Adds the <body> class to the visual editor.
- *
- * @since  1.0.0
- * @access public
- * @param  array  $settings
- * @return array
- */
-function infusion_tiny_mce_before_init( $settings ) {
-
-	$settings['body_class'] = join( ' ', array_merge( get_body_class(), get_post_class() ) );
-
-	return $settings;
 }
 
 
