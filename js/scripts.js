@@ -10,6 +10,11 @@ jQuery(document).ready(function($){
 		$("html").toggleClass('open');
 	});
 
+	// Fitvids
+
+    jQuery(".embed-youtube").fitVids();
+    jQuery(".embed-vimeo").fitVids();
+
 
 	function checkWidth() {
 		if ($(window).width() > 960) {
