@@ -1,4 +1,4 @@
-<?php if ( !in_array( get_theme_mod( 'theme_layout' ), array( '1c', '1c-narrow' ) ) ) : // If not a one-column layout. ?>
+<?php if ( !in_array( hybrid_get_theme_layout(), array( '1c', '1c-narrow' ) ) ) : ?>
 
 	<aside class="sidebar-primary sidebar" role="complementary" aria-label="Primary Sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
 
