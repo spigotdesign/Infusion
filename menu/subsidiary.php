@@ -1,6 +1,6 @@
 <?php if ( has_nav_menu( 'subsidiary' ) ) : // Check if there's a menu assigned to the 'subsidiary' location. ?>
 
-	<nav class="menu-subsidiary" aria-label="Subsidiary Menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<nav class="menu-subsidiary" aria-label="Subsidiary Menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 
 		<?php wp_nav_menu(
 			array(

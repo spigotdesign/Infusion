@@ -9,7 +9,7 @@
 
 	<div id="page" class="hfeed site">
 
-		<header class="site-header" role="banner">
+		<header class="site-header">
 			
 			<div class="branding" itemscope itemtype="http://schema.org/Organization">
 

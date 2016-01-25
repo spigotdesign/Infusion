@@ -1,12 +1,12 @@
 <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
-	<button class="toggle-menu" type="button" role="button" aria-label="Toggle Navigation">
+	<button class="toggle-menu" type="button" aria-label="Toggle Navigation">
     		
 		<span class="screen-reader-text"><?php _e( 'Navigation', 'infusion' ); ?></span>
 
 	</button>
 
-	<nav class="menu-primary" aria-label="Primary Menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<nav class="menu-primary" aria-label="Primary Menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	
 		<?php wp_nav_menu(
 			array(

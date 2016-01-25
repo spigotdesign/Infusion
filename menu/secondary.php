@@ -1,6 +1,6 @@
 <?php if ( has_nav_menu( 'secondary' ) ) : // Check if there's a menu assigned to the 'secondary' location. ?>
 
-	<nav class="menu-secondary" aria-label="Secondary Menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<nav class="menu-secondary" aria-label="Secondary Menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 
 		<?php wp_nav_menu(
 			array(
