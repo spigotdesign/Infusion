@@ -1,6 +1,5 @@
 var gulp      = require('gulp'),
   sass        = require('gulp-ruby-sass'),
-  sourcemaps  = require('gulp-sourcemaps'),
   livereload  = require('gulp-livereload'),
   prefix      = require('gulp-autoprefixer'),
   plumber     = require('gulp-plumber'),
@@ -10,7 +9,6 @@ var gulp      = require('gulp'),
   imagemin    = require('gulp-imagemin'),
   pngquant    = require('imagemin-pngquant'),
   concat      = require('gulp-concat'),
-  sourcemaps  = require('gulp-sourcemaps');
   stripDebug  = require('gulp-strip-debug');
 
 
