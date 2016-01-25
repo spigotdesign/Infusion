@@ -1,6 +1,6 @@
 {
   "name": "Infusion",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "author": "Spigot",
   "license": "GNU General Public Licence 2.0",
   "devDependencies": {
@@ -12,9 +12,9 @@
     "gulp-rename": "*",
     "gulp-concat": "*",
     "gulp-uglify": "*",
-    "gulp-notify": "^2.0.1",
-    "gulp-imagemin": "^2.0.0",
-    "imagemin-pngquant": "^4.0.0",
-    "gulp-strip-debug": "^1.0.2"
+    "gulp-notify": "*",
+    "gulp-imagemin": "*",
+    "imagemin-pngquant": "*",
+    "gulp-strip-debug": "*"
   }
 }
