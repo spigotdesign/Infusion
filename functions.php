@@ -66,6 +66,9 @@ function infusion_theme_setup() {
 	// Modifies the theme layout.
 	// add_filter( 'theme_mod_theme_layout', 'infusion_mod_theme_layout', 15 );
 
+	// Gravity Forms enable Label visiblity
+	add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
+
 
 }
 
