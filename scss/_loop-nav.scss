@@ -12,7 +12,7 @@
   margin: 80px auto;
 
   a {
-     @include font_size(16px);
+     font-size: 16px;
      padding: 5px;
   }
    

@@ -20,7 +20,7 @@
 }
 
 .comment-meta {
-    @include font_size(14px);
+    font-size: 14px;
     margin-bottom: 1em;
     @include group;
 }
@@ -40,7 +40,7 @@ img.avatar {
     .comment-author {
         font-style: normal;
         font-weight: bold;
-        @include font_size(16px);
+        font-size: 16px;
     }
 }
 
@@ -54,7 +54,7 @@ img.avatar {
 
 .comment-reply-link {
     text-transform: uppercase;
-    @include font_size(12px);
+    font-size: 12px;
     border: 1px solid $borderColor;
     padding: .25em .5em;
     position: relative;

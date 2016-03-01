@@ -55,7 +55,7 @@ to no.
 .gform_wrapper input[type=number],
 .gform_wrapper input[type=password] {
 	outline-style: none;
-	@include font_size(16px);
+	font-size: 16px;
 	font-family: $sansFontFamily;
 	//padding: .;
 	letter-spacing: normal;
@@ -70,7 +70,7 @@ to no.
 
 .gform_wrapper textarea {
 	outline-style: none;
-	@include font_size(16px);
+	font-size: 16px;
 	font-family: $sansFontFamily;
 	letter-spacing: normal;
 	// padding: 0.250em 0.125em 0.250em 0.125em;
@@ -337,7 +337,7 @@ html>body .entry ul,
 .gform_wrapper .gfield_date_year label,
 .gform_wrapper .instruction {
 	margin: 0.188em 0 0.750em .25em;
-	@include font_size(13px);
+	font-size: 13px;
 	color: $grayDark;
 }
 

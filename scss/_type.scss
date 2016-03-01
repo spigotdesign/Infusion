@@ -9,7 +9,6 @@
 p {
   line-height: 1.6875;
   margin-bottom: 24px;
-  margin-bottom: 1.5rem;
   margin-top: 0;
 }
 
@@ -21,62 +20,41 @@ h1, h2, h3, h4, h5, h6 {
   color:            $headingsColor;
   text-rendering:   optimizelegibility; // Fix the character spacing for headings
   margin-bottom:    24px;
-  margin-bottom:    1.5rem;
 
 }
 
 h1, .h1 {
   font-size: 40px;
-  font-size: 2.5rem;
   line-height: 1.2;
 
-  @include mq(800) { 
-    font-size: 48px;
-    font-size: 3rem;
-  }
+
 }
 
 h2, .h2 {
   font-size: 32px;
-  font-size: 2rem;
   line-height: 1.2;
-
-  &.entry-title {
-    margin-bottom: 6px;
-    margin-bottom: .375rem;
-  }
-
-  @include mq(800) { 
-    font-size: 40px;
-    font-size: 2.5rem;
-  }
 }
 
 h3, .h3 {
   font-size: 30px;
-  font-size: 1.875rem;
   line-height: 1.6;
 
 }
 
 h4, .h4 {
   font-size: 24px;
-  font-size: 1.5rem;
   line-height: 1.5;
 
 }
 
 h5, .h5 {
   font-size: 20px;
-  font-size: 1.25rem;
-  //line-height: 1.5;
+  
 
 }
 
 h6, .h6 {
   font-size: 18px;
-  font-size: 1.125rem;
-  //line-height: 1.5;
 
 }
 
@@ -119,7 +97,6 @@ pre {
 // Lists
 ul, ol {
   margin-bottom: 24px;
-  margin-bottom: 1.5rem;
 }
 ul ul,
 ul ol,
@@ -139,7 +116,7 @@ li {
 
 .entry-content {
   ul, ol {
-    padding: 0 0 0 1.6875rem;
+    padding: 0 0 0 1.6875em;
   }
 }
 
