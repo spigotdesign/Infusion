@@ -16,15 +16,12 @@ get_header(); ?>
 
 	<?php the_post(); // Loads the post data. ?>
 
-	<div class="page-contents">
-
-		<section class="marquee" style="background-image(<?php the_field('background_image'); ?>)">
+	<section class="marquee" style="background-image(<?php the_field('background_image'); ?>)">
 
 
-		</section>
+	</section>
 
 
-	</div>
 
 <?php endwhile; // End found posts loop. ?>
 
