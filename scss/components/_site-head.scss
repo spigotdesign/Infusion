@@ -1,71 +1,8 @@
-/*
- * Site Header
- *
- *
- */
+//
+// Site Header
+//
 
 .site-header {
-  //background-color: $gray-lighter;
-  border-right: 1px solid transparent;
-
-  .open & {
-    border-color: darken($blue-dark, 2%);
-  }
-}
-
-.spigot-logo {
-  width: 50px;
-  padding: 10px;
-  margin-bottom: -15px;
   
-  transition: all .3s ease;
-
-  @include mq($desktop) {
-    width: 70px;
-    margin-bottom: -25px;
-  }
-
-  &:hover {
-    margin-bottom: -7px;
-
-    .spigot-logo__logotype {
-      opacity: 1;
-    }
-
-    .spigot-logo__icon {
-      transform: rotate(360deg);
-    }
-  }
-
-  &__icon {
-    fill: url(#spigot-logo__grad);
-    transition: all .3s ease;
-    transform-origin: 130.3px 130.3px;
-    //fill: red;
-  }
-
-  &__logotype {
-    opacity: 0;
-    transition: all .3s ease;
-    fill: $white;
-
-    @include mq($desktop) {
-      fill: $blue-dark;
-    }
-
-    .open & {
-      fill: $white;
-    }
-
-  }
-
-  &__offset {
-    &--1 {
-      stop-color: $logo-blue-1;
-    }
-
-    &--2 {
-      stop-color: $logo-blue-2;
-    }
-  }
 }
+

@@ -5,52 +5,5 @@
 
 .post {
 
-	&__content {
-		max-width: $post-width;
-		margin: 0 auto;
-		background-color: $white;
-		padding: 48px 24px;
-		border: 1px solid $border-color;
-		border-top: none;
-		border-radius: 3px;
-		//box-shadow: 0 1px 3px 0 rgba($black, .15);
-	}
 }
 
-.feed {
-
-	display: flex;
-	justify-content: space-between;
-	padding: 48px 0;
-
-	&__item {
-		text-align: center;
-		flex: 0 1 30%;
-		padding: 0 1.5%;
-		color: $white;
-		display: flex;
-		flex-direction: column;
-
-		h3 {
-			font-weight: bold;
-		}
-
-		a {
-			color: $white;
-
-			&:hover {
-				color: $blue;
-			}
-		}
-
-		.icon {
-			fill: $white;
-			width: 25px;
-			height: 25px;
-			margin-bottom: 24px;
-		}
-
-		
-	}
-
-}

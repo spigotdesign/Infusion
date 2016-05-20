@@ -26,16 +26,6 @@
   }
 }
 
-@mixin btn--cta {
-  background-color: $red;
-  border-color: lighten($red, 40%);
-
-  &:hover {
-    background-color: $blue;
-    text-shadow: 0 0 3px rgba($black, 0.15);
-  }
-}
-
 // Transitions
 
 @mixin transition--normal {

@@ -10,13 +10,6 @@
   -moz-osx-font-smoothing: grayscale; 
   -webkit-font-smoothing: antialiased;
   
-
-  .admin-bar & {
-    min-height: calc(100vh - 32px);
-  }
-
-
-  
 }
 
 body {
@@ -27,21 +20,5 @@ body {
   background-color: $body-background;
   transition: all .3s ease;
 
-
-  &.open  {
-    background-color: $blue-dark;
-  }
 }
 
-.site {
-  overflow: hidden;
-}
-
-.content {
-  box-shadow: -1px -1px 3px 0 rgba($black, .15);
-  min-height: 100vh;
-  position: relative;
-  z-index: 100;
-  background-color: $gray-lightest;
-  
-}
