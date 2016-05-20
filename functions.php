@@ -50,6 +50,12 @@ function infusion_theme_setup() {
 	// WordPress theme support
 	add_theme_support( 'automatic-feed-links' );
 
+	// Remove WordPress stuff
+	remove_action('wp_head', 'rsd_link');
+	remove_action('wp_head', 'wlwmanifest_link');
+	remove_action('wp_head', 'index_rel_link');
+	remove_action('wp_head', 'wp_generator');
+
 	// Register custom menus.
 	add_action( 'init', 'infusion_register_menus', 5 );
 
