@@ -1,0 +1,75 @@
+//
+// Site Scaffolding
+//
+
+.site {
+  display: flex;
+  flex-flow: column;
+
+  @include mq($desktop) {
+    flex-flow: row nowrap;
+  }
+}
+
+.wrapper {
+  margin: 0 auto;
+  padding: 0 20px;
+  list-style: none;
+  position: relative;
+  width: 100%;
+  max-width: $site-width;
+}
+
+.site-header {
+  flex: 1;
+  order: 2;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 9999;
+  transition: all .3s ease;
+  background-color: $blue-dark;
+
+  @include mq($desktop) {
+    order: 1;
+    height: auto;
+    min-height: 100vh;
+    background-color: $gray-lighter;
+    width: 70px;
+    z-index: 99;
+  }
+
+
+  .open & {
+    background-color: $blue-dark;
+  }
+}
+
+.content {
+  order: 1;
+  margin-bottom: 50px;
+  transition: all .7s ease;
+  width: 100%;
+
+  //padding: 20px;
+  z-index: 90;
+
+  @include mq($desktop) {
+    order: 2;
+    margin-left: 70px;
+    margin-bottom: 0;
+    padding: 0;
+    z-index: 100;
+  }
+
+
+  .open & {
+    transform: translateX(100%);
+    margin-left: 0;
+
+    @include mq($desktop) {
+      transform: translateX(69%);
+    }
+  }
+}

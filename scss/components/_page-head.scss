@@ -1,0 +1,128 @@
+//
+// Page Head
+//
+
+.page-head {
+  padding: 48px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+
+  &--marquee {
+    background: transparent;
+    height: 100vh;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    z-index: 1;
+    text-align: center;
+
+    @include mq($desktop) {
+      width: calc( 100% - 70px);
+    }
+
+    &:after {
+      width: 100%;
+      height: 100%;
+      content: "";
+      top: 0;
+      left: 0;
+
+      //background-image: url(img/rain.jpg);
+      background-size: cover;
+      position: absolute;
+      z-index: -1;
+      opacity: .05;
+    }
+
+    .icon--wireless {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      bottom: 90px;
+      left: 49%;
+      animation-name: bounce;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+
+      .admin-bar & {
+        bottom: 130px;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 21px;
+    text-align: center;
+  }
+
+  p {
+    font-family: 'Proxima Nova';
+  }
+
+  &--bgimg {
+    min-height: 269px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+      content: "";
+      position: absolute;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      z-index: 1;
+      overflow: hidden;
+      max-width: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      filter: blur(20px);
+      transform: scale(1.5);
+    }
+
+    .page-head__title {
+      color: $white;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__headline {
+    //background-color: red;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  &__title {
+
+
+  }
+
+  &__desc {
+    //color: $white;
+    //@include font-size(13px);
+
+    &--post {
+      color: $white;
+    }
+  }
+}

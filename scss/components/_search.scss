@@ -1,0 +1,61 @@
+/*
+ * Search
+ *
+ * @package   Sass Stylesheet
+ * @version   1.0
+ *
+ */
+
+.search-form {
+    position: relative;
+    z-index: 1000;
+    border: 1px solid rgba($white, .1);
+    margin-bottom: 48px;
+    
+    @include placeholder {
+        color: $white;
+        font-family: $base-font-family;
+        font-weight: lighter;
+    }
+
+    input[type="submit"] {
+       // display: none;
+       position: absolute;
+       right: 0;
+       top: 0;
+       height: 100%;
+       border: none;
+       background-color: darken($blue-dark, 2%);
+       color: $white;
+       border-left: 1px solid rgba($white, .1);
+       width: 70px;
+       font-size: 13px;
+       font-weight: bold;
+       text-transform: uppercase;
+       transition: all .3 ease;
+
+       &:hover {
+        background-color: darken($blue-dark, 5%);
+       }
+
+    }
+    input[type="search"] {
+        font-family: $base-font-family;
+        font-weight: normal;
+        width: 100%;
+        border: none;
+        padding: .5em 85px .5em 2.5em;
+        background: transparent url(img/icons/search.svg) 10px 50% no-repeat;
+        color: $white;
+        background-size: 24px 24px;
+        //padding-right: 85px;
+    }
+    input[type="search"]:focus {
+        outline: none;
+        background-color: transparent;
+        //background: transparent url(img/icons/search.svg) 10px 50% no-repeat;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 10px rgba($white, 0.35);
+        color: $white;
+        font-weight: lighter;
+    }
+}

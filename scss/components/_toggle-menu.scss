@@ -1,0 +1,120 @@
+/*
+ * Toggle button
+ *
+ */
+
+// Mixin
+
+$button-size: 24px;
+
+@mixin line {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: $white;
+  @include transition--normal;
+
+}
+
+.toggle-menu {
+  @include transition--normal;
+  background-color: darken($blue-dark, 2%);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  user-select: none;
+  width: 50px;
+  height: 50px;
+
+ @include mq($desktop) {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    background-color: $gray;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    background-color: $blue-dark;
+
+    .screen-reader {
+      opacity: 1;
+    }
+  }
+
+  .open & {
+    background-color: darken($blue-dark, 2%);
+
+    .toggle-menu__btn {
+      background: transparent;
+
+      &:before, &:after {
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        top: 0;
+        width: $button-size;
+        background-color: $white;
+      }
+
+      &:before {
+        transform: rotate3d(0, 0, 1, 45deg);
+      }
+
+      &:after {
+        transform: rotate3d(0, 0, 1, -45deg);
+      }
+    }
+
+    .screen-reader { opacity: 0; }
+
+    .screen-reader__open { display: none; }
+
+    .screen-reader__close { display: block; }
+  }
+}
+
+.toggle-menu__btn {
+  //create middle line
+  @include line;
+  position: relative;
+
+  @include mq($desktop) {
+    background: $blue-dark;
+  }
+
+  //top: -5px;
+
+  // upper & lower lines
+  &:before, &:after {
+    @include line;
+
+    position: absolute;
+    left: 0;
+    content: '';
+    transform-origin: ($button-size / 14) center;
+
+    @include mq($desktop) {
+    background: $blue-dark;
+  }
+  }
+
+  &:before {
+    top: $button-size / 4;
+  }
+
+  &:after {
+    top: -$button-size / 4;
+  }
+}
+
+
+
+

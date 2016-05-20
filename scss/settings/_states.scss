@@ -1,0 +1,43 @@
+/*
+ * States
+ *
+ *
+ */
+
+// Buttons
+@mixin btn {
+  
+  border-color: $blue;
+  
+  border-style: solid;
+  border-width: 1px;
+  color: $white;
+  display: inline-block;
+  font-family: $sans-font-family;
+  font-weight: 200;
+  padding: .25em .5em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    box-shadow: inset 0 0 3px 0 rgba($black, 0.25);
+    color: $white;
+  }
+}
+
+@mixin btn--cta {
+  background-color: $red;
+  border-color: lighten($red, 40%);
+
+  &:hover {
+    background-color: $blue;
+    text-shadow: 0 0 3px rgba($black, 0.15);
+  }
+}
+
+// Transitions
+
+@mixin transition--normal {
+  transition: all .3s ease;
+}

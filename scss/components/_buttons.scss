@@ -1,0 +1,14 @@
+/*
+ * Buttons
+ *
+ * @package   Sass Stylesheet
+ * @version   1.0
+ *
+ */
+
+button {
+
+	&:focus {
+		outline: none;
+	}
+}

@@ -1,0 +1,98 @@
+/*
+ * Comments
+ *
+ * @package   Sass Stylesheet
+ * @version   1.0
+ *
+ */
+
+// Conversation
+
+.conversation {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.comment {
+    margin-bottom: 4em;
+    //padding-bottom: 1em;
+    border-bottom: 1px solid $border-color;
+}
+
+.comment-meta {
+    font-size: 14px;
+    margin-bottom: 1em;
+    @include group;
+}
+
+img.avatar {
+    width: 5em;
+    height: 5em;
+    float: left;
+    margin: 0 1em 0 0;
+    @include group;
+    border-radius: 50px;
+    top: -10px;
+}
+
+.comment-meta {
+
+    .comment-author {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+    }
+}
+
+.comment-content {
+    clear: both;
+
+    p {
+        margin-bottom: 1em;
+    }
+}
+
+.comment-reply-link {
+    text-transform: uppercase;
+    font-size: 12px;
+    border: 1px solid $border-color;
+    padding: .25em .5em;
+    position: relative;
+    bottom: -1px;
+    border-bottom: none;
+}
+/* Comment text */
+
+/* Comment form elements */
+#respond label {
+    display: block;
+    text-transform: uppercase;
+    padding-left: 3px;
+}
+
+#respond input[type=text],
+#respond input.text-input {
+    padding: 10px 15px;
+}
+
+#respond form p {
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+#respond textarea,
+#respond input[type=text],
+#respond input.text-input {
+    width: 95.75%;
+    padding: 10px 15px;
+}
+
+#respond form .comment-action label,
+.comment-action input {
+    display: inline;
+}
+
+.comment-author {
+    margin-bottom: 8px;
+}

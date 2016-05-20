@@ -1,0 +1,25 @@
+/*
+ * Typography
+ *
+ *
+ */
+
+p {
+  
+  margin-bottom: 24px;
+  
+}
+
+// Headings
+
+h1, h2, h3, h4, h5, h6 {
+  font-family:      $headingsFontFamily;
+  font-weight:      $headingsFontWeight;
+  color:            $headingsColor;
+  text-rendering:   optimizelegibility; // Fix the character spacing for headings
+  margin-bottom:    24px;
+  line-height:  	1.2;
+
+}
+
+

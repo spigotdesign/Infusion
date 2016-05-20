@@ -1,0 +1,47 @@
+//
+// Site
+//
+
+ html {
+  font-size: 1em;
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale; 
+  -webkit-font-smoothing: antialiased;
+  
+
+  .admin-bar & {
+    min-height: calc(100vh - 32px);
+  }
+
+
+  
+}
+
+body {
+  font-family:      $base-font-family;
+  color:            $text-color;
+  line-height:      $base-line-height;
+  font-style:       normal;
+  background-color: $body-background;
+  transition: all .3s ease;
+
+
+  &.open  {
+    background-color: $blue-dark;
+  }
+}
+
+.site {
+  overflow: hidden;
+}
+
+.content {
+  box-shadow: -1px -1px 3px 0 rgba($black, .15);
+  min-height: 100vh;
+  position: relative;
+  z-index: 100;
+  background-color: $gray-lightest;
+  
+}

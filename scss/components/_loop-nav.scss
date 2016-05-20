@@ -1,0 +1,55 @@
+/*
+ * Loop Nav
+ *
+ * @package   Sass Stylesheet
+ * @version   1.0
+ *
+ */
+
+
+.loop-nav {
+  text-align: center;
+  margin: 0 -12px 24px -12px;
+  flex: 0 1 100%;
+  display: flex;
+
+  a {
+     font-size: 16px;
+     padding: 24px 0;
+     background-color: $gray;
+     display: block;
+     flex: 0 1 50%;
+     color: $text-color;
+     text-transform: uppercase;
+     @include font-size(20px);
+
+     &:hover {
+      background-color: $blue-dark;
+      color: $white;
+     }
+
+  }
+   
+   .previous {
+      right: 0;
+      
+      a {
+        border-radius: 3px 0 0 3px;
+     
+     }
+   }
+   
+   .next {
+    
+     a {
+      border-radius: 0 3px 3px 0;
+     }
+   }  
+
+}
+
+.loop-description p { 
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
