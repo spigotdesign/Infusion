@@ -1,4 +1,5 @@
 # Ignore everything in the root except the "wp-content" directory.
+/*
 !.gitignore
 !wp-content/
 
@@ -9,22 +10,23 @@ wp-content/*
 !wp-content/themes/
 !wp-content/mu-plugins/
 
-#Ignore everything in the "plugins" directory, except the plugins you
+# Ignore everything in the "plugins" directory, except the plugins you
 # specify (see the commented-out examples for hints on how to do this.)
 wp-content/plugins/*
 # !wp-content/plugins/my-single-file-plugin.php
 # !wp-content/plugins/my-directory-plugin/
 
-# gnore everything in the "themes" directory, except the themes you
+# Ignore everything in the "themes" directory, except the themes you
 # specify (see the commented-out example for a hint on how to do this.)
 wp-content/themes/*
 !wp-content/themes/infusion
 
 # Ignore Node files
-nod_modules
+node_modules
 
-# Ignore extra files
-sitemap.xml
-sitemap.xml.gz
+# Ignore cache files
 .sass-cache
+
+# Ignore OS X files
 .DS_Store
+
