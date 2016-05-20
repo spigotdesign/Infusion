@@ -1,5 +1,8 @@
 jQuery(document).ready(function($){
 
+	// Remove no-js
+	$('body').removeClass('no-js'); 
+
 	// Zebra Stripe
 	$(".table-body div:nth-child(odd)").addClass("odd");
 
@@ -20,7 +23,6 @@ jQuery(document).ready(function($){
 		if ($(window).width() > 960) {
 			$('html').removeClass('open');
 			$("button.toggle-menu").removeClass('close');
-
 		}
 	}
 
