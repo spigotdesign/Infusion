@@ -28,7 +28,7 @@ $transition:          .2s; // increase this to see the transformations in slow-m
   padding: 0;
   border:none;
   position: absolute;
-  top: 30%;
+  top: 60px;
   right: 1em;
   z-index: 12000;
 
@@ -53,6 +53,7 @@ $transition:          .2s; // increase this to see the transformations in slow-m
   //create middle line
   @include line;
   position: relative;
+  border-radius: 100px;
 
   /*create the upper and lower lines as pseudo-elements of the middle line*/
   &:before, &:after {
@@ -61,7 +62,7 @@ $transition:          .2s; // increase this to see the transformations in slow-m
       position: absolute;
       left:0;
       content: '';
-      @include transform-origin ($button-size/14 center);
+      @transform-origin: $button-size/14 center;
     }
   &:before { top: $button-size/4; }
   &:after { top: -$button-size/4; }

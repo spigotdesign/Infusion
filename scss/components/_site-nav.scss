@@ -1,18 +1,138 @@
-/*
- * Site Nav
- *
- *
- */
+//
+// Site Nav
+//
 
 .site-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+  &__home {
+    display: block;
+    height: 19.5px;
+    width: 225px;
+    position: relative;
+    z-index: 1001;
 
+    @include mq(1040) {
+      height: 26px;
+    }
+  }
+
+  // SVG Logo
+  &__logo {
+    width: 225px;
+    height: 19.5px;
+
+    @include mq(1040) {
+      width: 300px;
+      height: 26px;
+    }
+
+    .pulse {
+      @include transition--normal;
+      fill: $blue;
+      opacity: 0;
+    }
+
+    &:hover {
+
+      .pulse {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Unordered List
   &__list {
     list-style: none;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    position: absolute;
+    width: 100%;
+    top: 53px;
+    left: 0;
+    padding-top: 2em;
+    background-color: $blue-dark;
+    text-align: center;
+    //padding-top: 4em;
+    @include transition--normal;
+
+    @include mq($desktop) {
+      visibility: visible;
+      opacity: 1;
+      height: auto;
+      width: auto;
+      background-color: transparent;
+      position: relative;
+      width: auto; 
+      padding-top: 0;
+      top: 0;
+
+    }
+
+    .open & {
+      visibility: visible;
+      opacity: 1;
+      height: 100vh;
+    }
   }
 
+  // List Items
   &__item {
+    font-weight: bold;
+    text-transform: uppercase;
+
+    @include font-size(12px);
+
+    @include mq(1040) {
+      @include font-size(14px);
+    }
+
+    // desktop
+    @include mq($desktop) {
+      display: inline-block;
+    }
+
+
+    a {
+      @include nav-link;
+
+      &:hover {
+        @include nav-link-hover;
+      }
+    }
+
+    &--active a {
+      @include nav-link-hover;
+    }
+
+    .open & {
+      @include font-size(24px);
+      font-weight: lighter;
+
+    }
+  }
+
+ 
+
+  // Sub Menu
+  &__sub-menu {
+    @include mq($mobileNavWidth) {
+      background-color: white;
+      box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      position: absolute;
+      top: -999em;
+      visibility: hidden;
+      width: 15em;
+    }
+  }
+
+  // Mobile menu open
+  &--open {
 
   }
-    
 }

@@ -3,6 +3,23 @@
 //
 
 .site-header {
-  
+
+	background-color: $white;
+	border-bottom: 3px solid rgba($white, .5);
+	background-clip: padding-box;
+
+  .wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
+.site-title {
+  svg {
+    width: 400px;
+    height: 27px;
+    padding: 30px 0 27px;
+  }
+}

@@ -26,6 +26,27 @@
   }
 }
 
+// Navigation Links
+
+@mixin nav-link {
+  color: $gray-dark;
+  display: block;
+  padding: .375em 1em .25em;
+  //line-height: 1.2;
+
+  @include mq($desktop) {
+    background-color: transparent;
+    //border: 2px solid transparent;
+    border-radius: 50px;
+  }
+
+}
+
+@mixin nav-link-hover {
+  background-color: rgba(darken($blue-dark, 4%), .8);
+  color: $white;
+}
+
 // Transitions
 
 @mixin transition--normal {
