@@ -36,6 +36,9 @@ add_action( 'after_setup_theme', 'infusion_theme_setup', 5 );
  */
 function infusion_theme_setup() {
 
+	// Load BEM menu
+	require_once( trailingslashit( get_template_directory() ) . 'inc/wp_bem_menu.php' );
+
 	// Load stylesheets
 	add_action( 'wp_enqueue_scripts', 'infusion_styles' );
 

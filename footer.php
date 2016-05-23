@@ -10,6 +10,12 @@
 
 	</footer>
 
+	<button class="toggle-menu" type="button" aria-label="Toggle Navigation">
+    		
+		<span class="screen-reader-text"><?php _e( 'Navigation', 'infusion' ); ?></span>
+
+	</button>
+
 
 
 <?php wp_footer(); ?>
